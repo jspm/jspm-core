@@ -1,0 +1,91 @@
+import { a as dew } from './chunk-9a292033.js';
+
+var exports$1 = {},
+    _dewExec = false;
+function dew$1() {
+  if (_dewExec) return exports$1;
+  _dewExec = true;
+
+  exports$1 = function () {
+    // Import Events
+    var events = dew(); // Export Domain
+
+
+    var domain = {};
+
+    domain.createDomain = domain.create = function () {
+      var d = new events.EventEmitter();
+
+      function emitError(e) {
+        d.emit('error', e);
+      }
+
+      d.add = function (emitter) {
+        emitter.on('error', emitError);
+      };
+
+      d.remove = function (emitter) {
+        emitter.removeListener('error', emitError);
+      };
+
+      d.bind = function (fn) {
+        return function () {
+          var args = Array.prototype.slice.call(arguments);
+
+          try {
+            fn.apply(null, args);
+          } catch (err) {
+            emitError(err);
+          }
+        };
+      };
+
+      d.intercept = function (fn) {
+        return function (err) {
+          if (err) {
+            emitError(err);
+          } else {
+            var args = Array.prototype.slice.call(arguments, 1);
+
+            try {
+              fn.apply(null, args);
+            } catch (err) {
+              emitError(err);
+            }
+          }
+        };
+      };
+
+      d.run = function (fn) {
+        try {
+          fn();
+        } catch (err) {
+          emitError(err);
+        }
+
+        return this;
+      };
+
+      d.dispose = function () {
+        this.removeAllListeners();
+        return this;
+      };
+
+      d.enter = d.exit = function () {
+        return this;
+      };
+
+      return d;
+    };
+
+    return domain;
+  }.call(exports$1);
+
+  return exports$1;
+}
+
+const exports$2 = dew$1();
+const create = exports$2.create, createDomain = exports$2.createDomain;
+
+export default exports$2;
+export { create, createDomain };
