@@ -1,12 +1,11 @@
-import { a as dew } from './chunk-8a9a6273.js';
+import _process from './process.js';
 
 var exports$1 = {},
     _dewExec = false;
-function dew$1() {
+function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
-
-  var process = dew();
+  var process = _process;
 
   // Copyright Joyent, Inc. and other Node contributors.
   //
@@ -235,7 +234,7 @@ function dew$1() {
   return exports$1;
 }
 
-const exports$2 = dew$1();
+const exports$2 = dew();
 const _makeLong = exports$2._makeLong, basename = exports$2.basename, delimiter = exports$2.delimiter, dirname = exports$2.dirname, extname = exports$2.extname, format = exports$2.format, isAbsolute = exports$2.isAbsolute, join = exports$2.join, normalize = exports$2.normalize, parse = exports$2.parse, posix = exports$2.posix, relative = exports$2.relative, resolve = exports$2.resolve, sep = exports$2.sep, win32 = exports$2.win32;
 
 export default exports$2;

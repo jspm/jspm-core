@@ -1,16 +1,17 @@
-import { a as dew$1 } from './chunk-8a9a6273.js';
-import { a as dew$2 } from './chunk-00324d2c.js';
-import { a as dew$3 } from './chunk-e06c6f32.js';
-import { a as dew$4 } from './chunk-ea1c6f37.js';
+import _assert from './assert.js';
+import _process from './process.js';
+import _buffer from './buffer.js';
+import _stream from './stream.js';
+import _util from './util.js';
+import './chunk-30274fbf.js';
+import './chunk-fddb501f.js';
+import './events.js';
+import './string_decoder-a0532e16.js';
 import './chunk-1a62783c.js';
-import { a as dew } from './chunk-a21cc191.js';
-import './@empty.js';
-import './chunk-0d8b1bfc.js';
-import './chunk-9a292033.js';
 
 var exports$1 = {},
     _dewExec = false;
-function dew$5() {
+function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
 
@@ -78,7 +79,7 @@ function dew$5() {
 
 var exports$2 = {},
     _dewExec$1 = false;
-function dew$6() {
+function dew$1() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
   var TYPED_OK = typeof Uint8Array !== 'undefined' && typeof Uint16Array !== 'undefined' && typeof Int32Array !== 'undefined';
@@ -195,7 +196,7 @@ function dew$6() {
 
 var exports$3 = {},
     _dewExec$2 = false;
-function dew$7() {
+function dew$2() {
   if (_dewExec$2) return exports$3;
   _dewExec$2 = true;
 
@@ -217,7 +218,7 @@ function dew$7() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  var utils = dew$6();
+  var utils = dew$1();
   /* Public constants ==========================================================*/
 
   /* ===========================================================================*/
@@ -1711,7 +1712,7 @@ function dew$7() {
 
 var exports$4 = {},
     _dewExec$3 = false;
-function dew$8() {
+function dew$3() {
   if (_dewExec$3) return exports$4;
   _dewExec$3 = true;
 
@@ -1766,7 +1767,7 @@ function dew$8() {
 
 var exports$5 = {},
     _dewExec$4 = false;
-function dew$9() {
+function dew$4() {
   if (_dewExec$4) return exports$5;
   _dewExec$4 = true;
 
@@ -1830,7 +1831,7 @@ function dew$9() {
 
 var exports$6 = {},
     _dewExec$5 = false;
-function dew$a() {
+function dew$5() {
   if (_dewExec$5) return exports$6;
   _dewExec$5 = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -1885,7 +1886,7 @@ function dew$a() {
 
 var exports$7 = {},
     _dewExec$6 = false;
-function dew$b() {
+function dew$6() {
   if (_dewExec$6) return exports$7;
   _dewExec$6 = true;
 
@@ -1907,15 +1908,15 @@ function dew$b() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  var utils = dew$6();
+  var utils = dew$1();
 
-  var trees = dew$7();
+  var trees = dew$2();
 
-  var adler32 = dew$8();
+  var adler32 = dew$3();
 
-  var crc32 = dew$9();
+  var crc32 = dew$4();
 
-  var msg = dew$a();
+  var msg = dew$5();
   /* Public constants ==========================================================*/
 
   /* ===========================================================================*/
@@ -4040,7 +4041,7 @@ function dew$b() {
 
 var exports$8 = {},
     _dewExec$7 = false;
-function dew$c() {
+function dew$7() {
   if (_dewExec$7) return exports$8;
   _dewExec$7 = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -4504,7 +4505,7 @@ function dew$c() {
 
 var exports$9 = {},
     _dewExec$8 = false;
-function dew$d() {
+function dew$8() {
   if (_dewExec$8) return exports$9;
   _dewExec$8 = true;
 
@@ -4526,7 +4527,7 @@ function dew$d() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  var utils = dew$6();
+  var utils = dew$1();
 
   var MAXBITS = 15;
   var ENOUGH_LENS = 852;
@@ -4935,7 +4936,7 @@ function dew$d() {
 
 var exports$a = {},
     _dewExec$9 = false;
-function dew$e() {
+function dew$9() {
   if (_dewExec$9) return exports$a;
   _dewExec$9 = true;
 
@@ -4957,15 +4958,15 @@ function dew$e() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  var utils = dew$6();
+  var utils = dew$1();
 
-  var adler32 = dew$8();
+  var adler32 = dew$3();
 
-  var crc32 = dew$9();
+  var crc32 = dew$4();
 
-  var inflate_fast = dew$c();
+  var inflate_fast = dew$7();
 
-  var inflate_table = dew$d();
+  var inflate_table = dew$8();
 
   var CODES = 0;
   var LENS = 1;
@@ -7046,7 +7047,7 @@ function dew$e() {
 
 var exports$b = {},
     _dewExec$a = false;
-function dew$f() {
+function dew$a() {
   if (_dewExec$a) return exports$b;
   _dewExec$a = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -7116,24 +7117,22 @@ function dew$f() {
 
 var exports$c = {},
     _dewExec$b = false;
-function dew$g() {
+function dew$b() {
   if (_dewExec$b) return exports$c;
   _dewExec$b = true;
-
-  var Buffer = dew$2().Buffer;
-
-  var process = dew$1();
+  var Buffer = _buffer.Buffer;
+  var process = _process;
 
   /* eslint camelcase: "off" */
-  var assert = dew();
+  var assert = _assert;
 
-  var Zstream = dew$5();
+  var Zstream = dew();
 
-  var zlib_deflate = dew$b();
+  var zlib_deflate = dew$6();
 
-  var zlib_inflate = dew$e();
+  var zlib_inflate = dew$9();
 
-  var constants = dew$f();
+  var constants = dew$a();
 
   for (var key in constants) {
     exports$c[key] = constants[key];
@@ -7544,24 +7543,18 @@ function dew$g() {
 
 var exports$d = {},
     _dewExec$c = false;
-function dew$h() {
+function dew$c() {
   if (_dewExec$c) return exports$d;
   _dewExec$c = true;
+  var process = _process;
+  var Buffer = _buffer.Buffer;
+  var Transform = _stream.Transform;
 
-  var process = dew$1();
+  var binding = dew$b();
 
-  var Buffer = dew$2().Buffer;
-
-  var Transform = dew$3().Transform;
-
-  var binding = dew$g();
-
-  var util = dew$4();
-
-  var assert = dew().ok;
-
-  var kMaxLength = dew$2().kMaxLength;
-
+  var util = _util;
+  var assert = _assert.ok;
+  var kMaxLength = _buffer.kMaxLength;
   var kRangeErrorMessage = 'Cannot create final Buffer. It would be larger ' + 'than 0x' + kMaxLength.toString(16) + ' bytes'; // zlib doesn't provide these, so kludge them in following the same
   // const naming scheme zlib uses.
 
@@ -8169,7 +8162,7 @@ function dew$h() {
   return exports$d;
 }
 
-const exports$e = dew$h();
+const exports$e = dew$c();
 const Deflate = exports$e.Deflate, DeflateRaw = exports$e.DeflateRaw, Gunzip = exports$e.Gunzip, Gzip = exports$e.Gzip, Inflate = exports$e.Inflate, InflateRaw = exports$e.InflateRaw, Unzip = exports$e.Unzip, Z_BEST_COMPRESSION = exports$e.Z_BEST_COMPRESSION, Z_BEST_SPEED = exports$e.Z_BEST_SPEED, Z_BINARY = exports$e.Z_BINARY, Z_BLOCK = exports$e.Z_BLOCK, Z_BUF_ERROR = exports$e.Z_BUF_ERROR, Z_DATA_ERROR = exports$e.Z_DATA_ERROR, Z_DEFAULT_CHUNK = exports$e.Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION = exports$e.Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL = exports$e.Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL = exports$e.Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY = exports$e.Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS = exports$e.Z_DEFAULT_WINDOWBITS, Z_DEFLATED = exports$e.Z_DEFLATED, Z_ERRNO = exports$e.Z_ERRNO, Z_FILTERED = exports$e.Z_FILTERED, Z_FINISH = exports$e.Z_FINISH, Z_FIXED = exports$e.Z_FIXED, Z_FULL_FLUSH = exports$e.Z_FULL_FLUSH, Z_HUFFMAN_ONLY = exports$e.Z_HUFFMAN_ONLY, Z_MAX_CHUNK = exports$e.Z_MAX_CHUNK, Z_MAX_LEVEL = exports$e.Z_MAX_LEVEL, Z_MAX_MEMLEVEL = exports$e.Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS = exports$e.Z_MAX_WINDOWBITS, Z_MIN_CHUNK = exports$e.Z_MIN_CHUNK, Z_MIN_LEVEL = exports$e.Z_MIN_LEVEL, Z_MIN_MEMLEVEL = exports$e.Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS = exports$e.Z_MIN_WINDOWBITS, Z_NEED_DICT = exports$e.Z_NEED_DICT, Z_NO_COMPRESSION = exports$e.Z_NO_COMPRESSION, Z_NO_FLUSH = exports$e.Z_NO_FLUSH, Z_OK = exports$e.Z_OK, Z_PARTIAL_FLUSH = exports$e.Z_PARTIAL_FLUSH, Z_RLE = exports$e.Z_RLE, Z_STREAM_END = exports$e.Z_STREAM_END, Z_STREAM_ERROR = exports$e.Z_STREAM_ERROR, Z_SYNC_FLUSH = exports$e.Z_SYNC_FLUSH, Z_TEXT = exports$e.Z_TEXT, Z_TREES = exports$e.Z_TREES, Z_UNKNOWN = exports$e.Z_UNKNOWN, Zlib = exports$e.Zlib, codes = exports$e.codes, createDeflate = exports$e.createDeflate, createDeflateRaw = exports$e.createDeflateRaw, createGunzip = exports$e.createGunzip, createGzip = exports$e.createGzip, createInflate = exports$e.createInflate, createInflateRaw = exports$e.createInflateRaw, createUnzip = exports$e.createUnzip, deflate = exports$e.deflate, deflateRaw = exports$e.deflateRaw, deflateRawSync = exports$e.deflateRawSync, deflateSync = exports$e.deflateSync, gunzip = exports$e.gunzip, gunzipSync = exports$e.gunzipSync, gzip = exports$e.gzip, gzipSync = exports$e.gzipSync, inflate = exports$e.inflate, inflateRaw = exports$e.inflateRaw, inflateRawSync = exports$e.inflateRawSync, inflateSync = exports$e.inflateSync, unzip = exports$e.unzip, unzipSync = exports$e.unzipSync;
 
 export default exports$e;

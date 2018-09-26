@@ -1,22 +1,21 @@
-import { a as dew, b as dew$5 } from './chunk-0d8b1bfc.js';
-import { a as dew$1 } from './chunk-8a9a6273.js';
-import { a as dew$2, b as dew$6 } from './chunk-e06c6f32.js';
-import { a as dew$3 } from './chunk-1a62783c.js';
-import { a as dew$4 } from './chunk-00324d2c.js';
-import { a as dew$7 } from './chunk-8a13325b.js';
-import './@empty.js';
-import './chunk-9a292033.js';
+import { a as dew, b as _string_decoder } from './string_decoder-a0532e16.js';
+import _process from './process.js';
+import _stream from './stream.js';
+import { a as dew$1 } from './chunk-1a62783c.js';
+import _buffer from './buffer.js';
+import { a as _crypto } from './chunk-fddb501f.js';
+import _vm from './vm.js';
+import './events.js';
 
 var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$8() {
+function dew$2() {
   if (_dewExec) return exports$1;
   _dewExec = true;
-
-  var process = dew$1();
+  var process = _process;
 
   function oldBrowser() {
     throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11');
@@ -61,15 +60,15 @@ function dew$8() {
 
 var exports$2 = {},
     _dewExec$1 = false;
-function dew$9() {
+function dew$3() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
 
   var Buffer = dew().Buffer;
 
-  var Transform = dew$2().Transform;
+  var Transform = _stream.Transform;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function throwIfNotStringOrBuffer(val, prefix) {
     if (!Buffer.isBuffer(val) && typeof val !== 'string') {
@@ -171,15 +170,14 @@ function dew$9() {
 
 var exports$3 = {},
     _dewExec$2 = false;
-function dew$a() {
+function dew$4() {
   if (_dewExec$2) return exports$3;
   _dewExec$2 = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var inherits = dew$1();
 
-  var inherits = dew$3();
-
-  var HashBase = dew$9();
+  var HashBase = dew$3();
 
   var ARRAY16 = new Array(16);
 
@@ -328,15 +326,14 @@ function dew$a() {
 
 var exports$4 = {},
     _dewExec$3 = false;
-function dew$b() {
+function dew$5() {
   if (_dewExec$3) return exports$4;
   _dewExec$3 = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var inherits = dew$1();
 
-  var inherits = dew$3();
-
-  var HashBase = dew$9();
+  var HashBase = dew$3();
 
   var ARRAY16 = new Array(16);
   var zl = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8, 3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12, 1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2, 4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13];
@@ -480,7 +477,7 @@ var exports$5 = {},
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$c() {
+function dew$6() {
   if (_dewExec$4) return exports$5;
   _dewExec$4 = true;
 
@@ -572,7 +569,7 @@ var exports$6 = {},
 
 var _global$2 = typeof self !== "undefined" ? self : global;
 
-function dew$d() {
+function dew$7() {
   if (_dewExec$5) return exports$6;
   _dewExec$5 = true;
 
@@ -583,9 +580,9 @@ function dew$d() {
    * The difference between SHA-0 and SHA-1 is just a bitwise rotate left
    * operation was added.
    */
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -671,7 +668,7 @@ var exports$7 = {},
 
 var _global$3 = typeof self !== "undefined" ? self : global;
 
-function dew$e() {
+function dew$8() {
   if (_dewExec$6) return exports$7;
   _dewExec$6 = true;
 
@@ -683,9 +680,9 @@ function dew$e() {
    * Distributed under the BSD License
    * See http://pajhome.org.uk/crypt/md5 for details.
    */
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -775,7 +772,7 @@ var exports$8 = {},
 
 var _global$4 = typeof self !== "undefined" ? self : global;
 
-function dew$f() {
+function dew$9() {
   if (_dewExec$7) return exports$8;
   _dewExec$7 = true;
 
@@ -786,9 +783,9 @@ function dew$f() {
    * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
    *
    */
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -900,7 +897,7 @@ var exports$9 = {},
 
 var _global$5 = typeof self !== "undefined" ? self : global;
 
-function dew$g() {
+function dew$a() {
   if (_dewExec$8) return exports$9;
   _dewExec$8 = true;
 
@@ -911,11 +908,11 @@ function dew$g() {
    * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
    *
    */
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Sha256 = dew$f();
+  var Sha256 = dew$9();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -963,13 +960,13 @@ var exports$a = {},
 
 var _global$6 = typeof self !== "undefined" ? self : global;
 
-function dew$h() {
+function dew$b() {
   if (_dewExec$9) return exports$a;
   _dewExec$9 = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -1177,15 +1174,15 @@ var exports$b = {},
 
 var _global$7 = typeof self !== "undefined" ? self : global;
 
-function dew$i() {
+function dew$c() {
   if (_dewExec$a) return exports$b;
   _dewExec$a = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var SHA512 = dew$h();
+  var SHA512 = dew$b();
 
-  var Hash = dew$c();
+  var Hash = dew$6();
 
   var Buffer = dew().Buffer;
 
@@ -1245,7 +1242,7 @@ var exports$c = {},
 var module$1 = {
   exports: exports$c
 };
-function dew$j() {
+function dew$d() {
   if (_dewExec$b) return module$1.exports;
   _dewExec$b = true;
 
@@ -1256,12 +1253,12 @@ function dew$j() {
     return new Algorithm();
   };
 
-  exports.sha = dew$d();
-  exports.sha1 = dew$e();
-  exports.sha224 = dew$g();
-  exports.sha256 = dew$f();
-  exports.sha384 = dew$i();
-  exports.sha512 = dew$h();
+  exports.sha = dew$7();
+  exports.sha1 = dew$8();
+  exports.sha224 = dew$a();
+  exports.sha256 = dew$9();
+  exports.sha384 = dew$c();
+  exports.sha512 = dew$b();
   return module$1.exports;
 }
 
@@ -1270,17 +1267,16 @@ var exports$d = {},
 
 var _global$8 = typeof self !== "undefined" ? self : global;
 
-function dew$k() {
+function dew$e() {
   if (_dewExec$c) return exports$d;
   _dewExec$c = true;
 
   var Buffer = dew().Buffer;
 
-  var Transform = dew$2().Transform;
+  var Transform = _stream.Transform;
+  var StringDecoder = _string_decoder.StringDecoder;
 
-  var StringDecoder = dew$5().StringDecoder;
-
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function CipherBase(hashMode) {
     Transform.call(this || _global$8);
@@ -1394,19 +1390,19 @@ function dew$k() {
 
 var exports$e = {},
     _dewExec$d = false;
-function dew$l() {
+function dew$f() {
   if (_dewExec$d) return exports$e;
   _dewExec$d = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var MD5 = dew$a();
+  var MD5 = dew$4();
 
-  var RIPEMD160 = dew$b();
+  var RIPEMD160 = dew$5();
 
-  var sha = dew$j();
+  var sha = dew$d();
 
-  var Base = dew$k();
+  var Base = dew$e();
 
   function Hash(hash) {
     Base.call(this, 'digest');
@@ -1435,15 +1431,15 @@ function dew$l() {
 
 var exports$f = {},
     _dewExec$e = false;
-function dew$m() {
+function dew$g() {
   if (_dewExec$e) return exports$f;
   _dewExec$e = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var Buffer = dew().Buffer;
 
-  var Base = dew$k();
+  var Base = dew$e();
 
   var ZEROS = Buffer.alloc(128);
   var blocksize = 64;
@@ -1493,11 +1489,11 @@ function dew$m() {
 
 var exports$g = {},
     _dewExec$f = false;
-function dew$n() {
+function dew$h() {
   if (_dewExec$f) return exports$g;
   _dewExec$f = true;
 
-  var MD5 = dew$a();
+  var MD5 = dew$4();
 
   exports$g = function (buffer) {
     return new MD5().update(buffer).digest();
@@ -1508,23 +1504,23 @@ function dew$n() {
 
 var exports$h = {},
     _dewExec$g = false;
-function dew$o() {
+function dew$i() {
   if (_dewExec$g) return exports$h;
   _dewExec$g = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Legacy = dew$m();
+  var Legacy = dew$g();
 
-  var Base = dew$k();
+  var Base = dew$e();
 
   var Buffer = dew().Buffer;
 
-  var md5 = dew$n();
+  var md5 = dew$h();
 
-  var RIPEMD160 = dew$b();
+  var RIPEMD160 = dew$5();
 
-  var sha = dew$j();
+  var sha = dew$d();
 
   var ZEROS = Buffer.alloc(128);
 
@@ -1589,28 +1585,26 @@ function dew$o() {
   return exports$h;
 }
 
-function dew$p () {
+function dew$j () {
   return exports$i;
 }
 var exports$i = {"sha224WithRSAEncryption":{"sign":"rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"RSA-SHA224":{"sign":"ecdsa/rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"sha256WithRSAEncryption":{"sign":"rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"RSA-SHA256":{"sign":"ecdsa/rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"sha384WithRSAEncryption":{"sign":"rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"RSA-SHA384":{"sign":"ecdsa/rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"sha512WithRSAEncryption":{"sign":"rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA512":{"sign":"ecdsa/rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA1":{"sign":"rsa","hash":"sha1","id":"3021300906052b0e03021a05000414"},"ecdsa-with-SHA1":{"sign":"ecdsa","hash":"sha1","id":""},"sha256":{"sign":"ecdsa","hash":"sha256","id":""},"sha224":{"sign":"ecdsa","hash":"sha224","id":""},"sha384":{"sign":"ecdsa","hash":"sha384","id":""},"sha512":{"sign":"ecdsa","hash":"sha512","id":""},"DSA-SHA":{"sign":"dsa","hash":"sha1","id":""},"DSA-SHA1":{"sign":"dsa","hash":"sha1","id":""},"DSA":{"sign":"dsa","hash":"sha1","id":""},"DSA-WITH-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-WITH-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-WITH-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-WITH-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-RIPEMD160":{"sign":"dsa","hash":"rmd160","id":""},"ripemd160WithRSA":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}};
 
 var exports$j = {},
     _dewExec$h = false;
-function dew$q() {
+function dew$k() {
   if (_dewExec$h) return exports$j;
   _dewExec$h = true;
-  exports$j = dew$p();
+  exports$j = dew$j();
   return exports$j;
 }
 
 var exports$k = {},
     _dewExec$i = false;
-function dew$r() {
+function dew$l() {
   if (_dewExec$i) return exports$k;
   _dewExec$i = true;
-
-  var Buffer = dew$4().Buffer;
-
+  var Buffer = _buffer.Buffer;
   var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
 
   function checkBuffer(buf, name) {
@@ -1646,12 +1640,10 @@ function dew$r() {
 
 var exports$l = {},
     _dewExec$j = false;
-function dew$s() {
+function dew$m() {
   if (_dewExec$j) return exports$l;
   _dewExec$j = true;
-
-  var process = dew$1();
-
+  var process = _process;
   var defaultEncoding;
   /* istanbul ignore next */
 
@@ -1668,9 +1660,26 @@ function dew$s() {
 
 var exports$m = {},
     _dewExec$k = false;
-function dew$t() {
+
+var _global$9 = typeof self !== "undefined" ? self : global;
+
+function dew$n() {
   if (_dewExec$k) return exports$m;
   _dewExec$k = true;
+
+  var md5 = dew$h();
+
+  var rmd160 = dew$5();
+
+  var sha = dew$d();
+
+  var checkParameters = dew$l();
+
+  var defaultEncoding = dew$m();
+
+  var Buffer = dew().Buffer;
+
+  var ZEROS = Buffer.alloc(128);
   var sizes = {
     md5: 16,
     sha1: 20,
@@ -1682,19 +1691,58 @@ function dew$t() {
     ripemd160: 20
   };
 
-  var createHmac = dew$o();
+  function Hmac(alg, key, saltLen) {
+    var hash = getDigest(alg);
+    var blocksize = alg === 'sha512' || alg === 'sha384' ? 128 : 64;
 
-  var checkParameters = dew$r();
+    if (key.length > blocksize) {
+      key = hash(key);
+    } else if (key.length < blocksize) {
+      key = Buffer.concat([key, ZEROS], blocksize);
+    }
 
-  var defaultEncoding = dew$s();
+    var ipad = Buffer.allocUnsafe(blocksize + sizes[alg]);
+    var opad = Buffer.allocUnsafe(blocksize + sizes[alg]);
 
-  var Buffer = dew().Buffer;
+    for (var i = 0; i < blocksize; i++) {
+      ipad[i] = key[i] ^ 0x36;
+      opad[i] = key[i] ^ 0x5C;
+    }
+
+    var ipad1 = Buffer.allocUnsafe(blocksize + saltLen + 4);
+    ipad.copy(ipad1, 0, 0, blocksize);
+    (this || _global$9).ipad1 = ipad1;
+    (this || _global$9).ipad2 = ipad;
+    (this || _global$9).opad = opad;
+    (this || _global$9).alg = alg;
+    (this || _global$9).blocksize = blocksize;
+    (this || _global$9).hash = hash;
+    (this || _global$9).size = sizes[alg];
+  }
+
+  Hmac.prototype.run = function (data, ipad) {
+    data.copy(ipad, (this || _global$9).blocksize);
+    var h = this.hash(ipad);
+    h.copy((this || _global$9).opad, (this || _global$9).blocksize);
+    return this.hash((this || _global$9).opad);
+  };
+
+  function getDigest(alg) {
+    function shaFunc(data) {
+      return sha(alg).update(data).digest();
+    }
+
+    if (alg === 'rmd160' || alg === 'ripemd160') return rmd160;
+    if (alg === 'md5') return md5;
+    return shaFunc;
+  }
 
   function pbkdf2(password, salt, iterations, keylen, digest) {
     checkParameters(password, salt, iterations, keylen);
     if (!Buffer.isBuffer(password)) password = Buffer.from(password, defaultEncoding);
     if (!Buffer.isBuffer(salt)) salt = Buffer.from(salt, defaultEncoding);
     digest = digest || 'sha1';
+    var hmac = new Hmac(digest, password, salt.length);
     var DK = Buffer.allocUnsafe(keylen);
     var block1 = Buffer.allocUnsafe(salt.length + 4);
     salt.copy(block1, 0, 0, salt.length);
@@ -1704,11 +1752,11 @@ function dew$t() {
 
     for (var i = 1; i <= l; i++) {
       block1.writeUInt32BE(i, salt.length);
-      var T = createHmac(digest, password).update(block1).digest();
+      var T = hmac.run(block1, hmac.ipad1);
       var U = T;
 
       for (var j = 1; j < iterations; j++) {
-        U = createHmac(digest, password).update(U).digest();
+        U = hmac.run(U, hmac.ipad2);
 
         for (var k = 0; k < hLen; k++) T[k] ^= U[k];
       }
@@ -1727,24 +1775,23 @@ function dew$t() {
 var exports$n = {},
     _dewExec$l = false;
 
-var _global$9 = typeof self !== "undefined" ? self : global;
+var _global$a = typeof self !== "undefined" ? self : global;
 
-function dew$u() {
+function dew$o() {
   if (_dewExec$l) return exports$n;
   _dewExec$l = true;
+  var process = _process;
 
-  var process = dew$1();
+  var checkParameters = dew$l();
 
-  var checkParameters = dew$r();
+  var defaultEncoding = dew$m();
 
-  var defaultEncoding = dew$s();
-
-  var sync = dew$t();
+  var sync = dew$n();
 
   var Buffer = dew().Buffer;
 
   var ZERO_BUF;
-  var subtle = _global$9.crypto && _global$9.crypto.subtle;
+  var subtle = _global$a.crypto && _global$a.crypto.subtle;
   var toBrowser = {
     'sha': 'SHA-1',
     'sha-1': 'SHA-1',
@@ -1759,7 +1806,7 @@ function dew$u() {
   var checks = [];
 
   function checkNative(algo) {
-    if (_global$9.process && !_global$9.process.browser) {
+    if (_global$a.process && !_global$a.process.browser) {
       return Promise.resolve(false);
     }
 
@@ -1819,7 +1866,7 @@ function dew$u() {
     digest = digest || 'sha1';
     var algo = toBrowser[digest.toLowerCase()];
 
-    if (!algo || typeof _global$9.Promise !== 'function') {
+    if (!algo || typeof _global$a.Promise !== 'function') {
       return process.nextTick(function () {
         var out;
 
@@ -1848,17 +1895,17 @@ function dew$u() {
 
 var exports$o = {},
     _dewExec$m = false;
-function dew$v() {
+function dew$p() {
   if (_dewExec$m) return exports$o;
   _dewExec$m = true;
-  exports$o.pbkdf2 = dew$u();
-  exports$o.pbkdf2Sync = dew$t();
+  exports$o.pbkdf2 = dew$o();
+  exports$o.pbkdf2Sync = dew$n();
   return exports$o;
 }
 
 var exports$p = {},
     _dewExec$n = false;
-function dew$w() {
+function dew$q() {
   if (_dewExec$n) return exports$p;
   _dewExec$n = true;
 
@@ -2080,7 +2127,7 @@ function dew$w() {
 
 var exports$q = {},
     _dewExec$o = false;
-function dew$x() {
+function dew$r() {
   if (_dewExec$o) return exports$q;
   _dewExec$o = true;
   exports$q = assert;
@@ -2098,11 +2145,11 @@ function dew$x() {
 
 var exports$r = {},
     _dewExec$p = false;
-function dew$y() {
+function dew$s() {
   if (_dewExec$p) return exports$r;
   _dewExec$p = true;
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   function Cipher(options) {
     this.options = options;
@@ -2125,7 +2172,7 @@ function dew$y() {
     if (this.type === 'decrypt') return this._updateDecrypt(data);else return this._updateEncrypt(data);
   };
 
-  Cipher.prototype._buffer = function _buffer(data, off) {
+  Cipher.prototype._buffer = function _buffer$$1(data, off) {
     // Append data to buffer
     var min = Math.min(this.buffer.length - this.bufferOff, data.length - off);
 
@@ -2228,15 +2275,15 @@ function dew$y() {
 
 var exports$s = {},
     _dewExec$q = false;
-function dew$z() {
+function dew$t() {
   if (_dewExec$q) return exports$s;
   _dewExec$q = true;
 
-  var assert = dew$x();
+  var assert = dew$r();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var des = dew$C();
+  var des = dew$w();
 
   var utils = des.utils;
   var Cipher = des.Cipher;
@@ -2359,13 +2406,13 @@ function dew$z() {
 
 var exports$t = {},
     _dewExec$r = false;
-function dew$A() {
+function dew$u() {
   if (_dewExec$r) return exports$t;
   _dewExec$r = true;
 
-  var assert = dew$x();
+  var assert = dew$r();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var proto = {};
 
@@ -2430,15 +2477,15 @@ function dew$A() {
 
 var exports$u = {},
     _dewExec$s = false;
-function dew$B() {
+function dew$v() {
   if (_dewExec$s) return exports$u;
   _dewExec$s = true;
 
-  var assert = dew$x();
+  var assert = dew$r();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var des = dew$C();
+  var des = dew$w();
 
   var Cipher = des.Cipher;
   var DES = des.DES;
@@ -2504,31 +2551,31 @@ function dew$B() {
 
 var exports$v = {},
     _dewExec$t = false;
-function dew$C() {
+function dew$w() {
   if (_dewExec$t) return exports$v;
   _dewExec$t = true;
-  exports$v.utils = dew$w();
-  exports$v.Cipher = dew$y();
-  exports$v.DES = dew$z();
-  exports$v.CBC = dew$A();
-  exports$v.EDE = dew$B();
+  exports$v.utils = dew$q();
+  exports$v.Cipher = dew$s();
+  exports$v.DES = dew$t();
+  exports$v.CBC = dew$u();
+  exports$v.EDE = dew$v();
   return exports$v;
 }
 
 var exports$w = {},
     _dewExec$u = false;
 
-var _global$a = typeof self !== "undefined" ? self : global;
+var _global$b = typeof self !== "undefined" ? self : global;
 
-function dew$D() {
+function dew$x() {
   if (_dewExec$u) return exports$w;
   _dewExec$u = true;
 
-  var CipherBase = dew$k();
+  var CipherBase = dew$e();
 
-  var des = dew$C();
+  var des = dew$w();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var Buffer = dew().Buffer;
 
@@ -2546,7 +2593,7 @@ function dew$D() {
   inherits(DES, CipherBase);
 
   function DES(opts) {
-    CipherBase.call(this || _global$a);
+    CipherBase.call(this || _global$b);
     var modeName = opts.mode.toLowerCase();
     var mode = modes[modeName];
     var type;
@@ -2573,7 +2620,7 @@ function dew$D() {
       iv = Buffer.from(iv);
     }
 
-    (this || _global$a)._des = mode.create({
+    (this || _global$b)._des = mode.create({
       key: key,
       iv: iv,
       type: type
@@ -2581,11 +2628,11 @@ function dew$D() {
   }
 
   DES.prototype._update = function (data) {
-    return Buffer.from((this || _global$a)._des.update(data));
+    return Buffer.from((this || _global$b)._des.update(data));
   };
 
   DES.prototype._final = function () {
-    return Buffer.from((this || _global$a)._des.final());
+    return Buffer.from((this || _global$b)._des.final());
   };
 
   return exports$w;
@@ -2593,7 +2640,7 @@ function dew$D() {
 
 var exports$x = {},
     _dewExec$v = false;
-function dew$E() {
+function dew$y() {
   if (_dewExec$v) return exports$x;
   _dewExec$v = true;
 
@@ -2610,11 +2657,10 @@ function dew$E() {
 
 var exports$y = {},
     _dewExec$w = false;
-function dew$F() {
+function dew$z() {
   if (_dewExec$w) return exports$y;
   _dewExec$w = true;
-
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
   exports$y = function xor(a, b) {
     var length = Math.min(a.length, b.length);
@@ -2632,11 +2678,11 @@ function dew$F() {
 
 var exports$z = {},
     _dewExec$x = false;
-function dew$G() {
+function dew$A() {
   if (_dewExec$x) return exports$z;
   _dewExec$x = true;
 
-  var xor = dew$F();
+  var xor = dew$z();
 
   exports$z.encrypt = function (self, block) {
     var data = xor(block, self._prev);
@@ -2658,13 +2704,13 @@ function dew$G() {
 
 var exports$A = {},
     _dewExec$y = false;
-function dew$H() {
+function dew$B() {
   if (_dewExec$y) return exports$A;
   _dewExec$y = true;
 
   var Buffer = dew().Buffer;
 
-  var xor = dew$F();
+  var xor = dew$z();
 
   function encryptStart(self, data, decrypt) {
     var len = data.length;
@@ -2702,7 +2748,7 @@ function dew$H() {
 
 var exports$B = {},
     _dewExec$z = false;
-function dew$I() {
+function dew$C() {
   if (_dewExec$z) return exports$B;
   _dewExec$z = true;
 
@@ -2733,7 +2779,7 @@ function dew$I() {
 
 var exports$C = {},
     _dewExec$A = false;
-function dew$J() {
+function dew$D() {
   if (_dewExec$A) return exports$C;
   _dewExec$A = true;
 
@@ -2787,13 +2833,12 @@ function dew$J() {
 
 var exports$D = {},
     _dewExec$B = false;
-function dew$K() {
+function dew$E() {
   if (_dewExec$B) return exports$D;
   _dewExec$B = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
-
-  var xor = dew$F();
+  var xor = dew$z();
 
   function getBlock(self) {
     self._prev = self._cipher.encryptBlock(self._prev);
@@ -2816,7 +2861,7 @@ function dew$K() {
 
 var exports$E = {},
     _dewExec$C = false;
-function dew$L() {
+function dew$F() {
   if (_dewExec$C) return exports$E;
   _dewExec$C = true;
 
@@ -2843,15 +2888,15 @@ function dew$L() {
 
 var exports$F = {},
     _dewExec$D = false;
-function dew$M() {
+function dew$G() {
   if (_dewExec$D) return exports$F;
   _dewExec$D = true;
 
-  var xor = dew$F();
+  var xor = dew$z();
 
   var Buffer = dew().Buffer;
 
-  var incr32 = dew$L();
+  var incr32 = dew$F();
 
   function getBlock(self) {
     var out = self._cipher.encryptBlockRaw(self._prev);
@@ -2889,28 +2934,28 @@ function dew$M() {
   return exports$F;
 }
 
-function dew$N () {
+function dew$H () {
   return exports$G;
 }
 var exports$G = {"aes-128-ecb":{"cipher":"AES","key":128,"iv":0,"mode":"ECB","type":"block"},"aes-192-ecb":{"cipher":"AES","key":192,"iv":0,"mode":"ECB","type":"block"},"aes-256-ecb":{"cipher":"AES","key":256,"iv":0,"mode":"ECB","type":"block"},"aes-128-cbc":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes-192-cbc":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes-256-cbc":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes128":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes192":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes256":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes-128-cfb":{"cipher":"AES","key":128,"iv":16,"mode":"CFB","type":"stream"},"aes-192-cfb":{"cipher":"AES","key":192,"iv":16,"mode":"CFB","type":"stream"},"aes-256-cfb":{"cipher":"AES","key":256,"iv":16,"mode":"CFB","type":"stream"},"aes-128-cfb8":{"cipher":"AES","key":128,"iv":16,"mode":"CFB8","type":"stream"},"aes-192-cfb8":{"cipher":"AES","key":192,"iv":16,"mode":"CFB8","type":"stream"},"aes-256-cfb8":{"cipher":"AES","key":256,"iv":16,"mode":"CFB8","type":"stream"},"aes-128-cfb1":{"cipher":"AES","key":128,"iv":16,"mode":"CFB1","type":"stream"},"aes-192-cfb1":{"cipher":"AES","key":192,"iv":16,"mode":"CFB1","type":"stream"},"aes-256-cfb1":{"cipher":"AES","key":256,"iv":16,"mode":"CFB1","type":"stream"},"aes-128-ofb":{"cipher":"AES","key":128,"iv":16,"mode":"OFB","type":"stream"},"aes-192-ofb":{"cipher":"AES","key":192,"iv":16,"mode":"OFB","type":"stream"},"aes-256-ofb":{"cipher":"AES","key":256,"iv":16,"mode":"OFB","type":"stream"},"aes-128-ctr":{"cipher":"AES","key":128,"iv":16,"mode":"CTR","type":"stream"},"aes-192-ctr":{"cipher":"AES","key":192,"iv":16,"mode":"CTR","type":"stream"},"aes-256-ctr":{"cipher":"AES","key":256,"iv":16,"mode":"CTR","type":"stream"},"aes-128-gcm":{"cipher":"AES","key":128,"iv":12,"mode":"GCM","type":"auth"},"aes-192-gcm":{"cipher":"AES","key":192,"iv":12,"mode":"GCM","type":"auth"},"aes-256-gcm":{"cipher":"AES","key":256,"iv":12,"mode":"GCM","type":"auth"}};
 
 var exports$H = {},
     _dewExec$E = false;
-function dew$O() {
+function dew$I() {
   if (_dewExec$E) return exports$H;
   _dewExec$E = true;
   var modeModules = {
-    ECB: dew$E(),
-    CBC: dew$G(),
-    CFB: dew$H(),
-    CFB8: dew$I(),
-    CFB1: dew$J(),
-    OFB: dew$K(),
-    CTR: dew$M(),
-    GCM: dew$M()
+    ECB: dew$y(),
+    CBC: dew$A(),
+    CFB: dew$B(),
+    CFB8: dew$C(),
+    CFB1: dew$D(),
+    OFB: dew$E(),
+    CTR: dew$G(),
+    GCM: dew$G()
   };
 
-  var modes = dew$N();
+  var modes = dew$H();
 
   for (var key in modes) {
     modes[key].module = modeModules[modes[key].mode];
@@ -2923,9 +2968,9 @@ function dew$O() {
 var exports$I = {},
     _dewExec$F = false;
 
-var _global$b = typeof self !== "undefined" ? self : global;
+var _global$c = typeof self !== "undefined" ? self : global;
 
-function dew$P() {
+function dew$J() {
   if (_dewExec$F) return exports$I;
   _dewExec$F = true;
 
@@ -3050,7 +3095,7 @@ function dew$P() {
   }();
 
   function AES(key) {
-    (this || _global$b)._key = asUInt32Array(key);
+    (this || _global$c)._key = asUInt32Array(key);
 
     this._reset();
   }
@@ -3061,7 +3106,7 @@ function dew$P() {
   AES.prototype.keySize = AES.keySize;
 
   AES.prototype._reset = function () {
-    var keyWords = (this || _global$b)._key;
+    var keyWords = (this || _global$c)._key;
     var keySize = keyWords.length;
     var nRounds = keySize + 6;
     var ksRows = (nRounds + 1) * 4;
@@ -3098,14 +3143,14 @@ function dew$P() {
       }
     }
 
-    (this || _global$b)._nRounds = nRounds;
-    (this || _global$b)._keySchedule = keySchedule;
-    (this || _global$b)._invKeySchedule = invKeySchedule;
+    (this || _global$c)._nRounds = nRounds;
+    (this || _global$c)._keySchedule = keySchedule;
+    (this || _global$c)._invKeySchedule = invKeySchedule;
   };
 
   AES.prototype.encryptBlockRaw = function (M) {
     M = asUInt32Array(M);
-    return cryptBlock(M, (this || _global$b)._keySchedule, G.SUB_MIX, G.SBOX, (this || _global$b)._nRounds);
+    return cryptBlock(M, (this || _global$c)._keySchedule, G.SUB_MIX, G.SBOX, (this || _global$c)._nRounds);
   };
 
   AES.prototype.encryptBlock = function (M) {
@@ -3124,7 +3169,7 @@ function dew$P() {
     var m1 = M[1];
     M[1] = M[3];
     M[3] = m1;
-    var out = cryptBlock(M, (this || _global$b)._invKeySchedule, G.INV_SUB_MIX, G.INV_SBOX, (this || _global$b)._nRounds);
+    var out = cryptBlock(M, (this || _global$c)._invKeySchedule, G.INV_SUB_MIX, G.INV_SBOX, (this || _global$c)._nRounds);
     var buf = Buffer.allocUnsafe(16);
     buf.writeUInt32BE(out[0], 0);
     buf.writeUInt32BE(out[3], 4);
@@ -3134,9 +3179,9 @@ function dew$P() {
   };
 
   AES.prototype.scrub = function () {
-    scrubVec((this || _global$b)._keySchedule);
-    scrubVec((this || _global$b)._invKeySchedule);
-    scrubVec((this || _global$b)._key);
+    scrubVec((this || _global$c)._keySchedule);
+    scrubVec((this || _global$c)._invKeySchedule);
+    scrubVec((this || _global$c)._key);
   };
 
   exports$I.AES = AES;
@@ -3146,9 +3191,9 @@ function dew$P() {
 var exports$J = {},
     _dewExec$G = false;
 
-var _global$c = typeof self !== "undefined" ? self : global;
+var _global$d = typeof self !== "undefined" ? self : global;
 
-function dew$Q() {
+function dew$K() {
   if (_dewExec$G) return exports$J;
   _dewExec$G = true;
 
@@ -3170,9 +3215,9 @@ function dew$Q() {
   }
 
   function GHASH(key) {
-    (this || _global$c).h = key;
-    (this || _global$c).state = Buffer.alloc(16, 0);
-    (this || _global$c).cache = Buffer.allocUnsafe(0);
+    (this || _global$d).h = key;
+    (this || _global$d).state = Buffer.alloc(16, 0);
+    (this || _global$d).cache = Buffer.allocUnsafe(0);
   } // from http://bitwiseshiftleft.github.io/sjcl/doc/symbols/src/core_gcm.js.html
   // by Juho Vähä-Herttua
 
@@ -3181,20 +3226,20 @@ function dew$Q() {
     var i = -1;
 
     while (++i < block.length) {
-      (this || _global$c).state[i] ^= block[i];
+      (this || _global$d).state[i] ^= block[i];
     }
 
     this._multiply();
   };
 
   GHASH.prototype._multiply = function () {
-    var Vi = toArray((this || _global$c).h);
+    var Vi = toArray((this || _global$d).h);
     var Zi = [0, 0, 0, 0];
     var j, xi, lsbVi;
     var i = -1;
 
     while (++i < 128) {
-      xi = ((this || _global$c).state[~~(i / 8)] & 1 << 7 - i % 8) !== 0;
+      xi = ((this || _global$d).state[~~(i / 8)] & 1 << 7 - i % 8) !== 0;
 
       if (xi) {
         // Z_i+1 = Z_i ^ V_i
@@ -3218,27 +3263,27 @@ function dew$Q() {
       }
     }
 
-    (this || _global$c).state = fromArray(Zi);
+    (this || _global$d).state = fromArray(Zi);
   };
 
   GHASH.prototype.update = function (buf) {
-    (this || _global$c).cache = Buffer.concat([(this || _global$c).cache, buf]);
+    (this || _global$d).cache = Buffer.concat([(this || _global$d).cache, buf]);
     var chunk;
 
-    while ((this || _global$c).cache.length >= 16) {
-      chunk = (this || _global$c).cache.slice(0, 16);
-      (this || _global$c).cache = (this || _global$c).cache.slice(16);
+    while ((this || _global$d).cache.length >= 16) {
+      chunk = (this || _global$d).cache.slice(0, 16);
+      (this || _global$d).cache = (this || _global$d).cache.slice(16);
       this.ghash(chunk);
     }
   };
 
   GHASH.prototype.final = function (abl, bl) {
-    if ((this || _global$c).cache.length) {
-      this.ghash(Buffer.concat([(this || _global$c).cache, ZEROES], 16));
+    if ((this || _global$d).cache.length) {
+      this.ghash(Buffer.concat([(this || _global$d).cache, ZEROES], 16));
     }
 
     this.ghash(fromArray([0, abl, 0, bl]));
-    return (this || _global$c).state;
+    return (this || _global$d).state;
   };
 
   exports$J = GHASH;
@@ -3248,25 +3293,25 @@ function dew$Q() {
 var exports$K = {},
     _dewExec$H = false;
 
-var _global$d = typeof self !== "undefined" ? self : global;
+var _global$e = typeof self !== "undefined" ? self : global;
 
-function dew$R() {
+function dew$L() {
   if (_dewExec$H) return exports$K;
   _dewExec$H = true;
 
-  var aes = dew$P();
+  var aes = dew$J();
 
   var Buffer = dew().Buffer;
 
-  var Transform = dew$k();
+  var Transform = dew$e();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var GHASH = dew$Q();
+  var GHASH = dew$K();
 
-  var xor = dew$F();
+  var xor = dew$z();
 
-  var incr32 = dew$L();
+  var incr32 = dew$F();
 
   function xorTest(a, b) {
     var out = 0;
@@ -3308,77 +3353,77 @@ function dew$R() {
   }
 
   function StreamCipher(mode, key, iv, decrypt) {
-    Transform.call(this || _global$d);
+    Transform.call(this || _global$e);
     var h = Buffer.alloc(4, 0);
-    (this || _global$d)._cipher = new aes.AES(key);
+    (this || _global$e)._cipher = new aes.AES(key);
 
-    var ck = (this || _global$d)._cipher.encryptBlock(h);
+    var ck = (this || _global$e)._cipher.encryptBlock(h);
 
-    (this || _global$d)._ghash = new GHASH(ck);
-    iv = calcIv(this || _global$d, iv, ck);
-    (this || _global$d)._prev = Buffer.from(iv);
-    (this || _global$d)._cache = Buffer.allocUnsafe(0);
-    (this || _global$d)._secCache = Buffer.allocUnsafe(0);
-    (this || _global$d)._decrypt = decrypt;
-    (this || _global$d)._alen = 0;
-    (this || _global$d)._len = 0;
-    (this || _global$d)._mode = mode;
-    (this || _global$d)._authTag = null;
-    (this || _global$d)._called = false;
+    (this || _global$e)._ghash = new GHASH(ck);
+    iv = calcIv(this || _global$e, iv, ck);
+    (this || _global$e)._prev = Buffer.from(iv);
+    (this || _global$e)._cache = Buffer.allocUnsafe(0);
+    (this || _global$e)._secCache = Buffer.allocUnsafe(0);
+    (this || _global$e)._decrypt = decrypt;
+    (this || _global$e)._alen = 0;
+    (this || _global$e)._len = 0;
+    (this || _global$e)._mode = mode;
+    (this || _global$e)._authTag = null;
+    (this || _global$e)._called = false;
   }
 
   inherits(StreamCipher, Transform);
 
   StreamCipher.prototype._update = function (chunk) {
-    if (!(this || _global$d)._called && (this || _global$d)._alen) {
-      var rump = 16 - (this || _global$d)._alen % 16;
+    if (!(this || _global$e)._called && (this || _global$e)._alen) {
+      var rump = 16 - (this || _global$e)._alen % 16;
 
       if (rump < 16) {
         rump = Buffer.alloc(rump, 0);
 
-        (this || _global$d)._ghash.update(rump);
+        (this || _global$e)._ghash.update(rump);
       }
     }
 
-    (this || _global$d)._called = true;
+    (this || _global$e)._called = true;
 
-    var out = (this || _global$d)._mode.encrypt(this || _global$d, chunk);
+    var out = (this || _global$e)._mode.encrypt(this || _global$e, chunk);
 
-    if ((this || _global$d)._decrypt) {
-      (this || _global$d)._ghash.update(chunk);
+    if ((this || _global$e)._decrypt) {
+      (this || _global$e)._ghash.update(chunk);
     } else {
-      (this || _global$d)._ghash.update(out);
+      (this || _global$e)._ghash.update(out);
     }
 
-    (this || _global$d)._len += chunk.length;
+    (this || _global$e)._len += chunk.length;
     return out;
   };
 
   StreamCipher.prototype._final = function () {
-    if ((this || _global$d)._decrypt && !(this || _global$d)._authTag) throw new Error('Unsupported state or unable to authenticate data');
-    var tag = xor((this || _global$d)._ghash.final((this || _global$d)._alen * 8, (this || _global$d)._len * 8), (this || _global$d)._cipher.encryptBlock((this || _global$d)._finID));
-    if ((this || _global$d)._decrypt && xorTest(tag, (this || _global$d)._authTag)) throw new Error('Unsupported state or unable to authenticate data');
-    (this || _global$d)._authTag = tag;
+    if ((this || _global$e)._decrypt && !(this || _global$e)._authTag) throw new Error('Unsupported state or unable to authenticate data');
+    var tag = xor((this || _global$e)._ghash.final((this || _global$e)._alen * 8, (this || _global$e)._len * 8), (this || _global$e)._cipher.encryptBlock((this || _global$e)._finID));
+    if ((this || _global$e)._decrypt && xorTest(tag, (this || _global$e)._authTag)) throw new Error('Unsupported state or unable to authenticate data');
+    (this || _global$e)._authTag = tag;
 
-    (this || _global$d)._cipher.scrub();
+    (this || _global$e)._cipher.scrub();
   };
 
   StreamCipher.prototype.getAuthTag = function getAuthTag() {
-    if ((this || _global$d)._decrypt || !Buffer.isBuffer((this || _global$d)._authTag)) throw new Error('Attempting to get auth tag in unsupported state');
-    return (this || _global$d)._authTag;
+    if ((this || _global$e)._decrypt || !Buffer.isBuffer((this || _global$e)._authTag)) throw new Error('Attempting to get auth tag in unsupported state');
+    return (this || _global$e)._authTag;
   };
 
   StreamCipher.prototype.setAuthTag = function setAuthTag(tag) {
-    if (!(this || _global$d)._decrypt) throw new Error('Attempting to set auth tag in unsupported state');
-    (this || _global$d)._authTag = tag;
+    if (!(this || _global$e)._decrypt) throw new Error('Attempting to set auth tag in unsupported state');
+    (this || _global$e)._authTag = tag;
   };
 
   StreamCipher.prototype.setAAD = function setAAD(buf) {
-    if ((this || _global$d)._called) throw new Error('Attempting to set AAD in unsupported state');
+    if ((this || _global$e)._called) throw new Error('Attempting to set AAD in unsupported state');
 
-    (this || _global$d)._ghash.update(buf);
+    (this || _global$e)._ghash.update(buf);
 
-    (this || _global$d)._alen += buf.length;
+    (this || _global$e)._alen += buf.length;
   };
 
   exports$K = StreamCipher;
@@ -3388,38 +3433,38 @@ function dew$R() {
 var exports$L = {},
     _dewExec$I = false;
 
-var _global$e = typeof self !== "undefined" ? self : global;
+var _global$f = typeof self !== "undefined" ? self : global;
 
-function dew$S() {
+function dew$M() {
   if (_dewExec$I) return exports$L;
   _dewExec$I = true;
 
-  var aes = dew$P();
+  var aes = dew$J();
 
   var Buffer = dew().Buffer;
 
-  var Transform = dew$k();
+  var Transform = dew$e();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function StreamCipher(mode, key, iv, decrypt) {
-    Transform.call(this || _global$e);
-    (this || _global$e)._cipher = new aes.AES(key);
-    (this || _global$e)._prev = Buffer.from(iv);
-    (this || _global$e)._cache = Buffer.allocUnsafe(0);
-    (this || _global$e)._secCache = Buffer.allocUnsafe(0);
-    (this || _global$e)._decrypt = decrypt;
-    (this || _global$e)._mode = mode;
+    Transform.call(this || _global$f);
+    (this || _global$f)._cipher = new aes.AES(key);
+    (this || _global$f)._prev = Buffer.from(iv);
+    (this || _global$f)._cache = Buffer.allocUnsafe(0);
+    (this || _global$f)._secCache = Buffer.allocUnsafe(0);
+    (this || _global$f)._decrypt = decrypt;
+    (this || _global$f)._mode = mode;
   }
 
   inherits(StreamCipher, Transform);
 
   StreamCipher.prototype._update = function (chunk) {
-    return (this || _global$e)._mode.encrypt(this || _global$e, chunk, (this || _global$e)._decrypt);
+    return (this || _global$f)._mode.encrypt(this || _global$f, chunk, (this || _global$f)._decrypt);
   };
 
   StreamCipher.prototype._final = function () {
-    (this || _global$e)._cipher.scrub();
+    (this || _global$f)._cipher.scrub();
   };
 
   exports$L = StreamCipher;
@@ -3428,13 +3473,13 @@ function dew$S() {
 
 var exports$M = {},
     _dewExec$J = false;
-function dew$T() {
+function dew$N() {
   if (_dewExec$J) return exports$M;
   _dewExec$J = true;
 
   var Buffer = dew().Buffer;
 
-  var MD5 = dew$a();
+  var MD5 = dew$4();
   /* eslint-disable camelcase */
 
 
@@ -3488,48 +3533,48 @@ function dew$T() {
 var exports$N = {},
     _dewExec$K = false;
 
-var _global$f = typeof self !== "undefined" ? self : global;
+var _global$g = typeof self !== "undefined" ? self : global;
 
-function dew$U() {
+function dew$O() {
   if (_dewExec$K) return exports$N;
   _dewExec$K = true;
 
-  var MODES = dew$O();
+  var MODES = dew$I();
 
-  var AuthCipher = dew$R();
+  var AuthCipher = dew$L();
 
   var Buffer = dew().Buffer;
 
-  var StreamCipher = dew$S();
+  var StreamCipher = dew$M();
 
-  var Transform = dew$k();
+  var Transform = dew$e();
 
-  var aes = dew$P();
+  var aes = dew$J();
 
-  var ebtk = dew$T();
+  var ebtk = dew$N();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function Cipher(mode, key, iv) {
-    Transform.call(this || _global$f);
-    (this || _global$f)._cache = new Splitter();
-    (this || _global$f)._cipher = new aes.AES(key);
-    (this || _global$f)._prev = Buffer.from(iv);
-    (this || _global$f)._mode = mode;
-    (this || _global$f)._autopadding = true;
+    Transform.call(this || _global$g);
+    (this || _global$g)._cache = new Splitter();
+    (this || _global$g)._cipher = new aes.AES(key);
+    (this || _global$g)._prev = Buffer.from(iv);
+    (this || _global$g)._mode = mode;
+    (this || _global$g)._autopadding = true;
   }
 
   inherits(Cipher, Transform);
 
   Cipher.prototype._update = function (data) {
-    (this || _global$f)._cache.add(data);
+    (this || _global$g)._cache.add(data);
 
     var chunk;
     var thing;
     var out = [];
 
-    while (chunk = (this || _global$f)._cache.get()) {
-      thing = (this || _global$f)._mode.encrypt(this || _global$f, chunk);
+    while (chunk = (this || _global$g)._cache.get()) {
+      thing = (this || _global$g)._mode.encrypt(this || _global$g, chunk);
       out.push(thing);
     }
 
@@ -3539,41 +3584,41 @@ function dew$U() {
   var PADDING = Buffer.alloc(16, 0x10);
 
   Cipher.prototype._final = function () {
-    var chunk = (this || _global$f)._cache.flush();
+    var chunk = (this || _global$g)._cache.flush();
 
-    if ((this || _global$f)._autopadding) {
-      chunk = (this || _global$f)._mode.encrypt(this || _global$f, chunk);
+    if ((this || _global$g)._autopadding) {
+      chunk = (this || _global$g)._mode.encrypt(this || _global$g, chunk);
 
-      (this || _global$f)._cipher.scrub();
+      (this || _global$g)._cipher.scrub();
 
       return chunk;
     }
 
     if (!chunk.equals(PADDING)) {
-      (this || _global$f)._cipher.scrub();
+      (this || _global$g)._cipher.scrub();
 
       throw new Error('data not multiple of block length');
     }
   };
 
   Cipher.prototype.setAutoPadding = function (setTo) {
-    (this || _global$f)._autopadding = !!setTo;
-    return this || _global$f;
+    (this || _global$g)._autopadding = !!setTo;
+    return this || _global$g;
   };
 
   function Splitter() {
-    (this || _global$f).cache = Buffer.allocUnsafe(0);
+    (this || _global$g).cache = Buffer.allocUnsafe(0);
   }
 
   Splitter.prototype.add = function (data) {
-    (this || _global$f).cache = Buffer.concat([(this || _global$f).cache, data]);
+    (this || _global$g).cache = Buffer.concat([(this || _global$g).cache, data]);
   };
 
   Splitter.prototype.get = function () {
-    if ((this || _global$f).cache.length > 15) {
-      var out = (this || _global$f).cache.slice(0, 16);
+    if ((this || _global$g).cache.length > 15) {
+      var out = (this || _global$g).cache.slice(0, 16);
 
-      (this || _global$f).cache = (this || _global$f).cache.slice(16);
+      (this || _global$g).cache = (this || _global$g).cache.slice(16);
       return out;
     }
 
@@ -3581,7 +3626,7 @@ function dew$U() {
   };
 
   Splitter.prototype.flush = function () {
-    var len = 16 - (this || _global$f).cache.length;
+    var len = 16 - (this || _global$g).cache.length;
     var padBuff = Buffer.allocUnsafe(len);
     var i = -1;
 
@@ -3589,7 +3634,7 @@ function dew$U() {
       padBuff.writeUInt8(len, i);
     }
 
-    return Buffer.concat([(this || _global$f).cache, padBuff]);
+    return Buffer.concat([(this || _global$g).cache, padBuff]);
   };
 
   function createCipheriv(suite, password, iv) {
@@ -3624,49 +3669,49 @@ function dew$U() {
 var exports$O = {},
     _dewExec$L = false;
 
-var _global$g = typeof self !== "undefined" ? self : global;
+var _global$h = typeof self !== "undefined" ? self : global;
 
-function dew$V() {
+function dew$P() {
   if (_dewExec$L) return exports$O;
   _dewExec$L = true;
 
-  var AuthCipher = dew$R();
+  var AuthCipher = dew$L();
 
   var Buffer = dew().Buffer;
 
-  var MODES = dew$O();
+  var MODES = dew$I();
 
-  var StreamCipher = dew$S();
+  var StreamCipher = dew$M();
 
-  var Transform = dew$k();
+  var Transform = dew$e();
 
-  var aes = dew$P();
+  var aes = dew$J();
 
-  var ebtk = dew$T();
+  var ebtk = dew$N();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function Decipher(mode, key, iv) {
-    Transform.call(this || _global$g);
-    (this || _global$g)._cache = new Splitter();
-    (this || _global$g)._last = void 0;
-    (this || _global$g)._cipher = new aes.AES(key);
-    (this || _global$g)._prev = Buffer.from(iv);
-    (this || _global$g)._mode = mode;
-    (this || _global$g)._autopadding = true;
+    Transform.call(this || _global$h);
+    (this || _global$h)._cache = new Splitter();
+    (this || _global$h)._last = void 0;
+    (this || _global$h)._cipher = new aes.AES(key);
+    (this || _global$h)._prev = Buffer.from(iv);
+    (this || _global$h)._mode = mode;
+    (this || _global$h)._autopadding = true;
   }
 
   inherits(Decipher, Transform);
 
   Decipher.prototype._update = function (data) {
-    (this || _global$g)._cache.add(data);
+    (this || _global$h)._cache.add(data);
 
     var chunk;
     var thing;
     var out = [];
 
-    while (chunk = (this || _global$g)._cache.get((this || _global$g)._autopadding)) {
-      thing = (this || _global$g)._mode.decrypt(this || _global$g, chunk);
+    while (chunk = (this || _global$h)._cache.get((this || _global$h)._autopadding)) {
+      thing = (this || _global$h)._mode.decrypt(this || _global$h, chunk);
       out.push(thing);
     }
 
@@ -3674,41 +3719,41 @@ function dew$V() {
   };
 
   Decipher.prototype._final = function () {
-    var chunk = (this || _global$g)._cache.flush();
+    var chunk = (this || _global$h)._cache.flush();
 
-    if ((this || _global$g)._autopadding) {
-      return unpad((this || _global$g)._mode.decrypt(this || _global$g, chunk));
+    if ((this || _global$h)._autopadding) {
+      return unpad((this || _global$h)._mode.decrypt(this || _global$h, chunk));
     } else if (chunk) {
       throw new Error('data not multiple of block length');
     }
   };
 
   Decipher.prototype.setAutoPadding = function (setTo) {
-    (this || _global$g)._autopadding = !!setTo;
-    return this || _global$g;
+    (this || _global$h)._autopadding = !!setTo;
+    return this || _global$h;
   };
 
   function Splitter() {
-    (this || _global$g).cache = Buffer.allocUnsafe(0);
+    (this || _global$h).cache = Buffer.allocUnsafe(0);
   }
 
   Splitter.prototype.add = function (data) {
-    (this || _global$g).cache = Buffer.concat([(this || _global$g).cache, data]);
+    (this || _global$h).cache = Buffer.concat([(this || _global$h).cache, data]);
   };
 
   Splitter.prototype.get = function (autoPadding) {
     var out;
 
     if (autoPadding) {
-      if ((this || _global$g).cache.length > 16) {
-        out = (this || _global$g).cache.slice(0, 16);
-        (this || _global$g).cache = (this || _global$g).cache.slice(16);
+      if ((this || _global$h).cache.length > 16) {
+        out = (this || _global$h).cache.slice(0, 16);
+        (this || _global$h).cache = (this || _global$h).cache.slice(16);
         return out;
       }
     } else {
-      if ((this || _global$g).cache.length >= 16) {
-        out = (this || _global$g).cache.slice(0, 16);
-        (this || _global$g).cache = (this || _global$g).cache.slice(16);
+      if ((this || _global$h).cache.length >= 16) {
+        out = (this || _global$h).cache.slice(0, 16);
+        (this || _global$h).cache = (this || _global$h).cache.slice(16);
         return out;
       }
     }
@@ -3717,7 +3762,7 @@ function dew$V() {
   };
 
   Splitter.prototype.flush = function () {
-    if ((this || _global$g).cache.length) return (this || _global$g).cache;
+    if ((this || _global$h).cache.length) return (this || _global$h).cache;
   };
 
   function unpad(last) {
@@ -3770,15 +3815,15 @@ function dew$V() {
 
 var exports$P = {},
     _dewExec$M = false;
-function dew$W() {
+function dew$Q() {
   if (_dewExec$M) return exports$P;
   _dewExec$M = true;
 
-  var ciphers = dew$U();
+  var ciphers = dew$O();
 
-  var deciphers = dew$V();
+  var deciphers = dew$P();
 
-  var modes = dew$N();
+  var modes = dew$H();
 
   function getCiphers() {
     return Object.keys(modes);
@@ -3794,7 +3839,7 @@ function dew$W() {
 
 var exports$Q = {},
     _dewExec$N = false;
-function dew$X() {
+function dew$R() {
   if (_dewExec$N) return exports$Q;
   _dewExec$N = true;
   exports$Q['des-ecb'] = {
@@ -3826,19 +3871,19 @@ function dew$X() {
 
 var exports$R = {},
     _dewExec$O = false;
-function dew$Y() {
+function dew$S() {
   if (_dewExec$O) return exports$R;
   _dewExec$O = true;
 
-  var DES = dew$D();
+  var DES = dew$x();
 
-  var aes = dew$W();
+  var aes = dew$Q();
 
-  var aesModes = dew$O();
+  var aesModes = dew$I();
 
-  var desModes = dew$X();
+  var desModes = dew$R();
 
-  var ebtk = dew$T();
+  var ebtk = dew$N();
 
   function createCipher(suite, password) {
     suite = suite.toLowerCase();
@@ -3917,9 +3962,9 @@ var module$2 = {
   exports: exports$S
 };
 
-var _global$h = typeof self !== "undefined" ? self : global;
+var _global$i = typeof self !== "undefined" ? self : global;
 
-function dew$Z() {
+function dew$T() {
   if (_dewExec$P) return module$2.exports;
   _dewExec$P = true;
 
@@ -3947,11 +3992,11 @@ function dew$Z() {
         return number;
       }
 
-      (this || _global$h).negative = 0;
-      (this || _global$h).words = null;
-      (this || _global$h).length = 0; // Reduction context
+      (this || _global$i).negative = 0;
+      (this || _global$i).words = null;
+      (this || _global$i).length = 0; // Reduction context
 
-      (this || _global$h).red = null;
+      (this || _global$i).red = null;
 
       if (number !== null) {
         if (base === 'le' || base === 'be') {
@@ -3974,7 +4019,7 @@ function dew$Z() {
     var Buffer;
 
     try {
-      Buffer = dew$6().Buffer;
+      Buffer = _crypto.Buffer;
     } catch (e) {}
 
     BN.isBN = function isBN(num) {
@@ -4023,7 +4068,7 @@ function dew$Z() {
       }
 
       if (number[0] === '-') {
-        (this || _global$h).negative = 1;
+        (this || _global$i).negative = 1;
       }
 
       this.strip();
@@ -4034,21 +4079,21 @@ function dew$Z() {
 
     BN.prototype._initNumber = function _initNumber(number, base, endian) {
       if (number < 0) {
-        (this || _global$h).negative = 1;
+        (this || _global$i).negative = 1;
         number = -number;
       }
 
       if (number < 0x4000000) {
-        (this || _global$h).words = [number & 0x3ffffff];
-        (this || _global$h).length = 1;
+        (this || _global$i).words = [number & 0x3ffffff];
+        (this || _global$i).length = 1;
       } else if (number < 0x10000000000000) {
-        (this || _global$h).words = [number & 0x3ffffff, number / 0x4000000 & 0x3ffffff];
-        (this || _global$h).length = 2;
+        (this || _global$i).words = [number & 0x3ffffff, number / 0x4000000 & 0x3ffffff];
+        (this || _global$i).length = 2;
       } else {
         assert(number < 0x20000000000000); // 2 ^ 53 (unsafe)
 
-        (this || _global$h).words = [number & 0x3ffffff, number / 0x4000000 & 0x3ffffff, 1];
-        (this || _global$h).length = 3;
+        (this || _global$i).words = [number & 0x3ffffff, number / 0x4000000 & 0x3ffffff, 1];
+        (this || _global$i).length = 3;
       }
 
       if (endian !== 'le') return; // Reverse the bytes
@@ -4061,16 +4106,16 @@ function dew$Z() {
       assert(typeof number.length === 'number');
 
       if (number.length <= 0) {
-        (this || _global$h).words = [0];
-        (this || _global$h).length = 1;
-        return this || _global$h;
+        (this || _global$i).words = [0];
+        (this || _global$i).length = 1;
+        return this || _global$i;
       }
 
-      (this || _global$h).length = Math.ceil(number.length / 3);
-      (this || _global$h).words = new Array((this || _global$h).length);
+      (this || _global$i).length = Math.ceil(number.length / 3);
+      (this || _global$i).words = new Array((this || _global$i).length);
 
-      for (var i = 0; i < (this || _global$h).length; i++) {
-        (this || _global$h).words[i] = 0;
+      for (var i = 0; i < (this || _global$i).length; i++) {
+        (this || _global$i).words[i] = 0;
       }
 
       var j, w;
@@ -4079,8 +4124,8 @@ function dew$Z() {
       if (endian === 'be') {
         for (i = number.length - 1, j = 0; i >= 0; i -= 3) {
           w = number[i] | number[i - 1] << 8 | number[i - 2] << 16;
-          (this || _global$h).words[j] |= w << off & 0x3ffffff;
-          (this || _global$h).words[j + 1] = w >>> 26 - off & 0x3ffffff;
+          (this || _global$i).words[j] |= w << off & 0x3ffffff;
+          (this || _global$i).words[j + 1] = w >>> 26 - off & 0x3ffffff;
           off += 24;
 
           if (off >= 26) {
@@ -4091,8 +4136,8 @@ function dew$Z() {
       } else if (endian === 'le') {
         for (i = 0, j = 0; i < number.length; i += 3) {
           w = number[i] | number[i + 1] << 8 | number[i + 2] << 16;
-          (this || _global$h).words[j] |= w << off & 0x3ffffff;
-          (this || _global$h).words[j + 1] = w >>> 26 - off & 0x3ffffff;
+          (this || _global$i).words[j] |= w << off & 0x3ffffff;
+          (this || _global$i).words[j + 1] = w >>> 26 - off & 0x3ffffff;
           off += 24;
 
           if (off >= 26) {
@@ -4127,11 +4172,11 @@ function dew$Z() {
 
     BN.prototype._parseHex = function _parseHex(number, start) {
       // Create possibly bigger array to ensure that it fits the number
-      (this || _global$h).length = Math.ceil((number.length - start) / 6);
-      (this || _global$h).words = new Array((this || _global$h).length);
+      (this || _global$i).length = Math.ceil((number.length - start) / 6);
+      (this || _global$i).words = new Array((this || _global$i).length);
 
-      for (var i = 0; i < (this || _global$h).length; i++) {
-        (this || _global$h).words[i] = 0;
+      for (var i = 0; i < (this || _global$i).length; i++) {
+        (this || _global$i).words[i] = 0;
       }
 
       var j, w; // Scan 24-bit chunks and add them to the number
@@ -4140,9 +4185,9 @@ function dew$Z() {
 
       for (i = number.length - 6, j = 0; i >= start; i -= 6) {
         w = parseHex(number, i, i + 6);
-        (this || _global$h).words[j] |= w << off & 0x3ffffff; // NOTE: `0x3fffff` is intentional here, 26bits max shift + 24bit hex limb
+        (this || _global$i).words[j] |= w << off & 0x3ffffff; // NOTE: `0x3fffff` is intentional here, 26bits max shift + 24bit hex limb
 
-        (this || _global$h).words[j + 1] |= w >>> 26 - off & 0x3fffff;
+        (this || _global$i).words[j + 1] |= w >>> 26 - off & 0x3fffff;
         off += 24;
 
         if (off >= 26) {
@@ -4153,8 +4198,8 @@ function dew$Z() {
 
       if (i + 6 !== start) {
         w = parseHex(number, start, i + 6);
-        (this || _global$h).words[j] |= w << off & 0x3ffffff;
-        (this || _global$h).words[j + 1] |= w >>> 26 - off & 0x3fffff;
+        (this || _global$i).words[j] |= w << off & 0x3ffffff;
+        (this || _global$i).words[j + 1] |= w >>> 26 - off & 0x3fffff;
       }
 
       this.strip();
@@ -4182,8 +4227,8 @@ function dew$Z() {
 
     BN.prototype._parseBase = function _parseBase(number, base, start) {
       // Initialize as zero
-      (this || _global$h).words = [0];
-      (this || _global$h).length = 1; // Find length of limb in base
+      (this || _global$i).words = [0];
+      (this || _global$i).length = 1; // Find length of limb in base
 
       for (var limbLen = 0, limbPow = 1; limbPow <= 0x3ffffff; limbPow *= base) {
         limbLen++;
@@ -4200,8 +4245,8 @@ function dew$Z() {
         word = parseBase(number, i, i + limbLen, base);
         this.imuln(limbPow);
 
-        if ((this || _global$h).words[0] + word < 0x4000000) {
-          (this || _global$h).words[0] += word;
+        if ((this || _global$i).words[0] + word < 0x4000000) {
+          (this || _global$i).words[0] += word;
         } else {
           this._iaddn(word);
         }
@@ -4217,8 +4262,8 @@ function dew$Z() {
 
         this.imuln(pow);
 
-        if ((this || _global$h).words[0] + word < 0x4000000) {
-          (this || _global$h).words[0] += word;
+        if ((this || _global$i).words[0] + word < 0x4000000) {
+          (this || _global$i).words[0] += word;
         } else {
           this._iaddn(word);
         }
@@ -4226,15 +4271,15 @@ function dew$Z() {
     };
 
     BN.prototype.copy = function copy(dest) {
-      dest.words = new Array((this || _global$h).length);
+      dest.words = new Array((this || _global$i).length);
 
-      for (var i = 0; i < (this || _global$h).length; i++) {
-        dest.words[i] = (this || _global$h).words[i];
+      for (var i = 0; i < (this || _global$i).length; i++) {
+        dest.words[i] = (this || _global$i).words[i];
       }
 
-      dest.length = (this || _global$h).length;
-      dest.negative = (this || _global$h).negative;
-      dest.red = (this || _global$h).red;
+      dest.length = (this || _global$i).length;
+      dest.negative = (this || _global$i).negative;
+      dest.red = (this || _global$i).red;
     };
 
     BN.prototype.clone = function clone() {
@@ -4244,17 +4289,17 @@ function dew$Z() {
     };
 
     BN.prototype._expand = function _expand(size) {
-      while ((this || _global$h).length < size) {
-        (this || _global$h).words[(this || _global$h).length++] = 0;
+      while ((this || _global$i).length < size) {
+        (this || _global$i).words[(this || _global$i).length++] = 0;
       }
 
-      return this || _global$h;
+      return this || _global$i;
     }; // Remove leading `0` from `this`
 
 
     BN.prototype.strip = function strip() {
-      while ((this || _global$h).length > 1 && (this || _global$h).words[(this || _global$h).length - 1] === 0) {
-        (this || _global$h).length--;
+      while ((this || _global$i).length > 1 && (this || _global$i).words[(this || _global$i).length - 1] === 0) {
+        (this || _global$i).length--;
       }
 
       return this._normSign();
@@ -4262,15 +4307,15 @@ function dew$Z() {
 
     BN.prototype._normSign = function _normSign() {
       // -0 = 0
-      if ((this || _global$h).length === 1 && (this || _global$h).words[0] === 0) {
-        (this || _global$h).negative = 0;
+      if ((this || _global$i).length === 1 && (this || _global$i).words[0] === 0) {
+        (this || _global$i).negative = 0;
       }
 
-      return this || _global$h;
+      return this || _global$i;
     };
 
     BN.prototype.inspect = function inspect() {
-      return ((this || _global$h).red ? '<BN-R: ' : '<BN: ') + this.toString(16) + '>';
+      return ((this || _global$i).red ? '<BN-R: ' : '<BN: ') + this.toString(16) + '>';
     };
     /*
      var zeros = [];
@@ -4314,12 +4359,12 @@ function dew$Z() {
         var off = 0;
         var carry = 0;
 
-        for (var i = 0; i < (this || _global$h).length; i++) {
-          var w = (this || _global$h).words[i];
+        for (var i = 0; i < (this || _global$i).length; i++) {
+          var w = (this || _global$i).words[i];
           var word = ((w << off | carry) & 0xffffff).toString(16);
           carry = w >>> 24 - off & 0xffffff;
 
-          if (carry !== 0 || i !== (this || _global$h).length - 1) {
+          if (carry !== 0 || i !== (this || _global$i).length - 1) {
             out = zeros[6 - word.length] + word + out;
           } else {
             out = word + out;
@@ -4341,7 +4386,7 @@ function dew$Z() {
           out = '0' + out;
         }
 
-        if ((this || _global$h).negative !== 0) {
+        if ((this || _global$i).negative !== 0) {
           out = '-' + out;
         }
 
@@ -4376,7 +4421,7 @@ function dew$Z() {
           out = '0' + out;
         }
 
-        if ((this || _global$h).negative !== 0) {
+        if ((this || _global$i).negative !== 0) {
           out = '-' + out;
         }
 
@@ -4387,18 +4432,18 @@ function dew$Z() {
     };
 
     BN.prototype.toNumber = function toNumber() {
-      var ret = (this || _global$h).words[0];
+      var ret = (this || _global$i).words[0];
 
-      if ((this || _global$h).length === 2) {
-        ret += (this || _global$h).words[1] * 0x4000000;
-      } else if ((this || _global$h).length === 3 && (this || _global$h).words[2] === 0x01) {
+      if ((this || _global$i).length === 2) {
+        ret += (this || _global$i).words[1] * 0x4000000;
+      } else if ((this || _global$i).length === 3 && (this || _global$i).words[2] === 0x01) {
         // NOTE: at this stage it is known that the top bit is set
-        ret += 0x10000000000000 + (this || _global$h).words[1] * 0x4000000;
-      } else if ((this || _global$h).length > 2) {
+        ret += 0x10000000000000 + (this || _global$i).words[1] * 0x4000000;
+      } else if ((this || _global$i).length > 2) {
         assert(false, 'Number can only safely store up to 53 bits');
       }
 
-      return (this || _global$h).negative !== 0 ? -ret : ret;
+      return (this || _global$i).negative !== 0 ? -ret : ret;
     };
 
     BN.prototype.toJSON = function toJSON() {
@@ -4519,11 +4564,11 @@ function dew$Z() {
 
 
     BN.prototype.bitLength = function bitLength() {
-      var w = (this || _global$h).words[(this || _global$h).length - 1];
+      var w = (this || _global$i).words[(this || _global$i).length - 1];
 
       var hi = this._countBits(w);
 
-      return ((this || _global$h).length - 1) * 26 + hi;
+      return ((this || _global$i).length - 1) * 26 + hi;
     };
 
     function toBitArray(num) {
@@ -4543,8 +4588,8 @@ function dew$Z() {
       if (this.isZero()) return 0;
       var r = 0;
 
-      for (var i = 0; i < (this || _global$h).length; i++) {
-        var b = this._zeroBits((this || _global$h).words[i]);
+      for (var i = 0; i < (this || _global$i).length; i++) {
+        var b = this._zeroBits((this || _global$i).words[i]);
 
         r += b;
         if (b !== 26) break;
@@ -4558,7 +4603,7 @@ function dew$Z() {
     };
 
     BN.prototype.toTwos = function toTwos(width) {
-      if ((this || _global$h).negative !== 0) {
+      if ((this || _global$i).negative !== 0) {
         return this.abs().inotn(width).iaddn(1);
       }
 
@@ -4574,7 +4619,7 @@ function dew$Z() {
     };
 
     BN.prototype.isNeg = function isNeg() {
-      return (this || _global$h).negative !== 0;
+      return (this || _global$i).negative !== 0;
     }; // Return negative clone of `this`
 
 
@@ -4584,39 +4629,39 @@ function dew$Z() {
 
     BN.prototype.ineg = function ineg() {
       if (!this.isZero()) {
-        (this || _global$h).negative ^= 1;
+        (this || _global$i).negative ^= 1;
       }
 
-      return this || _global$h;
+      return this || _global$i;
     }; // Or `num` with `this` in-place
 
 
     BN.prototype.iuor = function iuor(num) {
-      while ((this || _global$h).length < num.length) {
-        (this || _global$h).words[(this || _global$h).length++] = 0;
+      while ((this || _global$i).length < num.length) {
+        (this || _global$i).words[(this || _global$i).length++] = 0;
       }
 
       for (var i = 0; i < num.length; i++) {
-        (this || _global$h).words[i] = (this || _global$h).words[i] | num.words[i];
+        (this || _global$i).words[i] = (this || _global$i).words[i] | num.words[i];
       }
 
       return this.strip();
     };
 
     BN.prototype.ior = function ior(num) {
-      assert(((this || _global$h).negative | num.negative) === 0);
+      assert(((this || _global$i).negative | num.negative) === 0);
       return this.iuor(num);
     }; // Or `num` with `this`
 
 
     BN.prototype.or = function or(num) {
-      if ((this || _global$h).length > num.length) return this.clone().ior(num);
-      return num.clone().ior(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().ior(num);
+      return num.clone().ior(this || _global$i);
     };
 
     BN.prototype.uor = function uor(num) {
-      if ((this || _global$h).length > num.length) return this.clone().iuor(num);
-      return num.clone().iuor(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().iuor(num);
+      return num.clone().iuor(this || _global$i);
     }; // And `num` with `this` in-place
 
 
@@ -4624,34 +4669,34 @@ function dew$Z() {
       // b = min-length(num, this)
       var b;
 
-      if ((this || _global$h).length > num.length) {
+      if ((this || _global$i).length > num.length) {
         b = num;
       } else {
-        b = this || _global$h;
+        b = this || _global$i;
       }
 
       for (var i = 0; i < b.length; i++) {
-        (this || _global$h).words[i] = (this || _global$h).words[i] & num.words[i];
+        (this || _global$i).words[i] = (this || _global$i).words[i] & num.words[i];
       }
 
-      (this || _global$h).length = b.length;
+      (this || _global$i).length = b.length;
       return this.strip();
     };
 
     BN.prototype.iand = function iand(num) {
-      assert(((this || _global$h).negative | num.negative) === 0);
+      assert(((this || _global$i).negative | num.negative) === 0);
       return this.iuand(num);
     }; // And `num` with `this`
 
 
     BN.prototype.and = function and(num) {
-      if ((this || _global$h).length > num.length) return this.clone().iand(num);
-      return num.clone().iand(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().iand(num);
+      return num.clone().iand(this || _global$i);
     };
 
     BN.prototype.uand = function uand(num) {
-      if ((this || _global$h).length > num.length) return this.clone().iuand(num);
-      return num.clone().iuand(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().iuand(num);
+      return num.clone().iuand(this || _global$i);
     }; // Xor `num` with `this` in-place
 
 
@@ -4660,42 +4705,42 @@ function dew$Z() {
       var a;
       var b;
 
-      if ((this || _global$h).length > num.length) {
-        a = this || _global$h;
+      if ((this || _global$i).length > num.length) {
+        a = this || _global$i;
         b = num;
       } else {
         a = num;
-        b = this || _global$h;
+        b = this || _global$i;
       }
 
       for (var i = 0; i < b.length; i++) {
-        (this || _global$h).words[i] = a.words[i] ^ b.words[i];
+        (this || _global$i).words[i] = a.words[i] ^ b.words[i];
       }
 
-      if ((this || _global$h) !== a) {
+      if ((this || _global$i) !== a) {
         for (; i < a.length; i++) {
-          (this || _global$h).words[i] = a.words[i];
+          (this || _global$i).words[i] = a.words[i];
         }
       }
 
-      (this || _global$h).length = a.length;
+      (this || _global$i).length = a.length;
       return this.strip();
     };
 
     BN.prototype.ixor = function ixor(num) {
-      assert(((this || _global$h).negative | num.negative) === 0);
+      assert(((this || _global$i).negative | num.negative) === 0);
       return this.iuxor(num);
     }; // Xor `num` with `this`
 
 
     BN.prototype.xor = function xor(num) {
-      if ((this || _global$h).length > num.length) return this.clone().ixor(num);
-      return num.clone().ixor(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().ixor(num);
+      return num.clone().ixor(this || _global$i);
     };
 
     BN.prototype.uxor = function uxor(num) {
-      if ((this || _global$h).length > num.length) return this.clone().iuxor(num);
-      return num.clone().iuxor(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().iuxor(num);
+      return num.clone().iuxor(this || _global$i);
     }; // Not ``this`` with ``width`` bitwidth
 
 
@@ -4712,12 +4757,12 @@ function dew$Z() {
 
 
       for (var i = 0; i < bytesNeeded; i++) {
-        (this || _global$h).words[i] = ~(this || _global$h).words[i] & 0x3ffffff;
+        (this || _global$i).words[i] = ~(this || _global$i).words[i] & 0x3ffffff;
       } // Handle the residue
 
 
       if (bitsLeft > 0) {
-        (this || _global$h).words[i] = ~(this || _global$h).words[i] & 0x3ffffff >> 26 - bitsLeft;
+        (this || _global$i).words[i] = ~(this || _global$i).words[i] & 0x3ffffff >> 26 - bitsLeft;
       } // And remove leading zeroes
 
 
@@ -4737,9 +4782,9 @@ function dew$Z() {
       this._expand(off + 1);
 
       if (val) {
-        (this || _global$h).words[off] = (this || _global$h).words[off] | 1 << wbit;
+        (this || _global$i).words[off] = (this || _global$i).words[off] | 1 << wbit;
       } else {
-        (this || _global$h).words[off] = (this || _global$h).words[off] & ~(1 << wbit);
+        (this || _global$i).words[off] = (this || _global$i).words[off] & ~(1 << wbit);
       }
 
       return this.strip();
@@ -4749,12 +4794,12 @@ function dew$Z() {
     BN.prototype.iadd = function iadd(num) {
       var r; // negative + positive
 
-      if ((this || _global$h).negative !== 0 && num.negative === 0) {
-        (this || _global$h).negative = 0;
+      if ((this || _global$i).negative !== 0 && num.negative === 0) {
+        (this || _global$i).negative = 0;
         r = this.isub(num);
-        (this || _global$h).negative ^= 1;
+        (this || _global$i).negative ^= 1;
         return this._normSign(); // positive + negative
-      } else if ((this || _global$h).negative === 0 && num.negative !== 0) {
+      } else if ((this || _global$i).negative === 0 && num.negative !== 0) {
         num.negative = 0;
         r = this.isub(num);
         num.negative = 1;
@@ -4764,60 +4809,60 @@ function dew$Z() {
 
       var a, b;
 
-      if ((this || _global$h).length > num.length) {
-        a = this || _global$h;
+      if ((this || _global$i).length > num.length) {
+        a = this || _global$i;
         b = num;
       } else {
         a = num;
-        b = this || _global$h;
+        b = this || _global$i;
       }
 
       var carry = 0;
 
       for (var i = 0; i < b.length; i++) {
         r = (a.words[i] | 0) + (b.words[i] | 0) + carry;
-        (this || _global$h).words[i] = r & 0x3ffffff;
+        (this || _global$i).words[i] = r & 0x3ffffff;
         carry = r >>> 26;
       }
 
       for (; carry !== 0 && i < a.length; i++) {
         r = (a.words[i] | 0) + carry;
-        (this || _global$h).words[i] = r & 0x3ffffff;
+        (this || _global$i).words[i] = r & 0x3ffffff;
         carry = r >>> 26;
       }
 
-      (this || _global$h).length = a.length;
+      (this || _global$i).length = a.length;
 
       if (carry !== 0) {
-        (this || _global$h).words[(this || _global$h).length] = carry;
-        (this || _global$h).length++; // Copy the rest of the words
-      } else if (a !== (this || _global$h)) {
+        (this || _global$i).words[(this || _global$i).length] = carry;
+        (this || _global$i).length++; // Copy the rest of the words
+      } else if (a !== (this || _global$i)) {
         for (; i < a.length; i++) {
-          (this || _global$h).words[i] = a.words[i];
+          (this || _global$i).words[i] = a.words[i];
         }
       }
 
-      return this || _global$h;
+      return this || _global$i;
     }; // Add `num` to `this`
 
 
     BN.prototype.add = function add(num) {
       var res;
 
-      if (num.negative !== 0 && (this || _global$h).negative === 0) {
+      if (num.negative !== 0 && (this || _global$i).negative === 0) {
         num.negative = 0;
         res = this.sub(num);
         num.negative ^= 1;
         return res;
-      } else if (num.negative === 0 && (this || _global$h).negative !== 0) {
-        (this || _global$h).negative = 0;
-        res = num.sub(this || _global$h);
-        (this || _global$h).negative = 1;
+      } else if (num.negative === 0 && (this || _global$i).negative !== 0) {
+        (this || _global$i).negative = 0;
+        res = num.sub(this || _global$i);
+        (this || _global$i).negative = 1;
         return res;
       }
 
-      if ((this || _global$h).length > num.length) return this.clone().iadd(num);
-      return num.clone().iadd(this || _global$h);
+      if ((this || _global$i).length > num.length) return this.clone().iadd(num);
+      return num.clone().iadd(this || _global$i);
     }; // Subtract `num` from `this` in-place
 
 
@@ -4828,10 +4873,10 @@ function dew$Z() {
         var r = this.iadd(num);
         num.negative = 1;
         return r._normSign(); // -this - num = -(this + num)
-      } else if ((this || _global$h).negative !== 0) {
-        (this || _global$h).negative = 0;
+      } else if ((this || _global$i).negative !== 0) {
+        (this || _global$i).negative = 0;
         this.iadd(num);
-        (this || _global$h).negative = 1;
+        (this || _global$i).negative = 1;
         return this._normSign();
       } // At this point both numbers are positive
 
@@ -4839,21 +4884,21 @@ function dew$Z() {
       var cmp = this.cmp(num); // Optimization - zeroify
 
       if (cmp === 0) {
-        (this || _global$h).negative = 0;
-        (this || _global$h).length = 1;
-        (this || _global$h).words[0] = 0;
-        return this || _global$h;
+        (this || _global$i).negative = 0;
+        (this || _global$i).length = 1;
+        (this || _global$i).words[0] = 0;
+        return this || _global$i;
       } // a > b
 
 
       var a, b;
 
       if (cmp > 0) {
-        a = this || _global$h;
+        a = this || _global$i;
         b = num;
       } else {
         a = num;
-        b = this || _global$h;
+        b = this || _global$i;
       }
 
       var carry = 0;
@@ -4861,26 +4906,26 @@ function dew$Z() {
       for (var i = 0; i < b.length; i++) {
         r = (a.words[i] | 0) - (b.words[i] | 0) + carry;
         carry = r >> 26;
-        (this || _global$h).words[i] = r & 0x3ffffff;
+        (this || _global$i).words[i] = r & 0x3ffffff;
       }
 
       for (; carry !== 0 && i < a.length; i++) {
         r = (a.words[i] | 0) + carry;
         carry = r >> 26;
-        (this || _global$h).words[i] = r & 0x3ffffff;
+        (this || _global$i).words[i] = r & 0x3ffffff;
       } // Copy rest of the words
 
 
-      if (carry === 0 && i < a.length && a !== (this || _global$h)) {
+      if (carry === 0 && i < a.length && a !== (this || _global$i)) {
         for (; i < a.length; i++) {
-          (this || _global$h).words[i] = a.words[i];
+          (this || _global$i).words[i] = a.words[i];
         }
       }
 
-      (this || _global$h).length = Math.max((this || _global$h).length, i);
+      (this || _global$i).length = Math.max((this || _global$i).length, i);
 
-      if (a !== (this || _global$h)) {
-        (this || _global$h).negative = 1;
+      if (a !== (this || _global$i)) {
+        (this || _global$i).negative = 1;
       }
 
       return this.strip();
@@ -5583,16 +5628,16 @@ function dew$Z() {
 
     BN.prototype.mulTo = function mulTo(num, out) {
       var res;
-      var len = (this || _global$h).length + num.length;
+      var len = (this || _global$i).length + num.length;
 
-      if ((this || _global$h).length === 10 && num.length === 10) {
-        res = comb10MulTo(this || _global$h, num, out);
+      if ((this || _global$i).length === 10 && num.length === 10) {
+        res = comb10MulTo(this || _global$i, num, out);
       } else if (len < 63) {
-        res = smallMulTo(this || _global$h, num, out);
+        res = smallMulTo(this || _global$i, num, out);
       } else if (len < 1024) {
-        res = bigMulTo(this || _global$h, num, out);
+        res = bigMulTo(this || _global$i, num, out);
       } else {
-        res = jumboMulTo(this || _global$h, num, out);
+        res = jumboMulTo(this || _global$i, num, out);
       }
 
       return res;
@@ -5601,8 +5646,8 @@ function dew$Z() {
 
 
     function FFTM(x, y) {
-      (this || _global$h).x = x;
-      (this || _global$h).y = y;
+      (this || _global$i).x = x;
+      (this || _global$i).y = y;
     }
 
     FFTM.prototype.makeRBT = function makeRBT(N) {
@@ -5783,20 +5828,20 @@ function dew$Z() {
 
     BN.prototype.mul = function mul(num) {
       var out = new BN(null);
-      out.words = new Array((this || _global$h).length + num.length);
+      out.words = new Array((this || _global$i).length + num.length);
       return this.mulTo(num, out);
     }; // Multiply employing FFT
 
 
     BN.prototype.mulf = function mulf(num) {
       var out = new BN(null);
-      out.words = new Array((this || _global$h).length + num.length);
-      return jumboMulTo(this || _global$h, num, out);
+      out.words = new Array((this || _global$i).length + num.length);
+      return jumboMulTo(this || _global$i, num, out);
     }; // In-place Multiplication
 
 
     BN.prototype.imul = function imul(num) {
-      return this.clone().mulTo(num, this || _global$h);
+      return this.clone().mulTo(num, this || _global$i);
     };
 
     BN.prototype.imuln = function imuln(num) {
@@ -5805,22 +5850,22 @@ function dew$Z() {
 
       var carry = 0;
 
-      for (var i = 0; i < (this || _global$h).length; i++) {
-        var w = ((this || _global$h).words[i] | 0) * num;
+      for (var i = 0; i < (this || _global$i).length; i++) {
+        var w = ((this || _global$i).words[i] | 0) * num;
         var lo = (w & 0x3ffffff) + (carry & 0x3ffffff);
         carry >>= 26;
         carry += w / 0x4000000 | 0; // NOTE: lo is 27bit maximum
 
         carry += lo >>> 26;
-        (this || _global$h).words[i] = lo & 0x3ffffff;
+        (this || _global$i).words[i] = lo & 0x3ffffff;
       }
 
       if (carry !== 0) {
-        (this || _global$h).words[i] = carry;
-        (this || _global$h).length++;
+        (this || _global$i).words[i] = carry;
+        (this || _global$i).length++;
       }
 
-      return this || _global$h;
+      return this || _global$i;
     };
 
     BN.prototype.muln = function muln(num) {
@@ -5829,7 +5874,7 @@ function dew$Z() {
 
 
     BN.prototype.sqr = function sqr() {
-      return this.mul(this || _global$h);
+      return this.mul(this || _global$i);
     }; // `this` * `this` in-place
 
 
@@ -5842,7 +5887,7 @@ function dew$Z() {
       var w = toBitArray(num);
       if (w.length === 0) return new BN(1); // Skip leading zeroes
 
-      var res = this || _global$h;
+      var res = this || _global$i;
 
       for (var i = 0; i < w.length; i++, res = res.sqr()) {
         if (w[i] !== 0) break;
@@ -5869,29 +5914,29 @@ function dew$Z() {
       if (r !== 0) {
         var carry = 0;
 
-        for (i = 0; i < (this || _global$h).length; i++) {
-          var newCarry = (this || _global$h).words[i] & carryMask;
-          var c = ((this || _global$h).words[i] | 0) - newCarry << r;
-          (this || _global$h).words[i] = c | carry;
+        for (i = 0; i < (this || _global$i).length; i++) {
+          var newCarry = (this || _global$i).words[i] & carryMask;
+          var c = ((this || _global$i).words[i] | 0) - newCarry << r;
+          (this || _global$i).words[i] = c | carry;
           carry = newCarry >>> 26 - r;
         }
 
         if (carry) {
-          (this || _global$h).words[i] = carry;
-          (this || _global$h).length++;
+          (this || _global$i).words[i] = carry;
+          (this || _global$i).length++;
         }
       }
 
       if (s !== 0) {
-        for (i = (this || _global$h).length - 1; i >= 0; i--) {
-          (this || _global$h).words[i + s] = (this || _global$h).words[i];
+        for (i = (this || _global$i).length - 1; i >= 0; i--) {
+          (this || _global$i).words[i + s] = (this || _global$i).words[i];
         }
 
         for (i = 0; i < s; i++) {
-          (this || _global$h).words[i] = 0;
+          (this || _global$i).words[i] = 0;
         }
 
-        (this || _global$h).length += s;
+        (this || _global$i).length += s;
       }
 
       return this.strip();
@@ -5899,7 +5944,7 @@ function dew$Z() {
 
     BN.prototype.ishln = function ishln(bits) {
       // TODO(indutny): implement me
-      assert((this || _global$h).negative === 0);
+      assert((this || _global$i).negative === 0);
       return this.iushln(bits);
     }; // Shift-right in-place
     // NOTE: `hint` is a lowest bit before trailing zeroes
@@ -5917,7 +5962,7 @@ function dew$Z() {
       }
 
       var r = bits % 26;
-      var s = Math.min((bits - r) / 26, (this || _global$h).length);
+      var s = Math.min((bits - r) / 26, (this || _global$i).length);
       var mask = 0x3ffffff ^ 0x3ffffff >>> r << r;
       var maskedWords = extended;
       h -= s;
@@ -5925,28 +5970,28 @@ function dew$Z() {
 
       if (maskedWords) {
         for (var i = 0; i < s; i++) {
-          maskedWords.words[i] = (this || _global$h).words[i];
+          maskedWords.words[i] = (this || _global$i).words[i];
         }
 
         maskedWords.length = s;
       }
 
-      if (s === 0) ; else if ((this || _global$h).length > s) {
-        (this || _global$h).length -= s;
+      if (s === 0) ; else if ((this || _global$i).length > s) {
+        (this || _global$i).length -= s;
 
-        for (i = 0; i < (this || _global$h).length; i++) {
-          (this || _global$h).words[i] = (this || _global$h).words[i + s];
+        for (i = 0; i < (this || _global$i).length; i++) {
+          (this || _global$i).words[i] = (this || _global$i).words[i + s];
         }
       } else {
-        (this || _global$h).words[0] = 0;
-        (this || _global$h).length = 1;
+        (this || _global$i).words[0] = 0;
+        (this || _global$i).length = 1;
       }
 
       var carry = 0;
 
-      for (i = (this || _global$h).length - 1; i >= 0 && (carry !== 0 || i >= h); i--) {
-        var word = (this || _global$h).words[i] | 0;
-        (this || _global$h).words[i] = carry << 26 - r | word >>> r;
+      for (i = (this || _global$i).length - 1; i >= 0 && (carry !== 0 || i >= h); i--) {
+        var word = (this || _global$i).words[i] | 0;
+        (this || _global$i).words[i] = carry << 26 - r | word >>> r;
         carry = word & mask;
       } // Push carried bits as a mask
 
@@ -5955,9 +6000,9 @@ function dew$Z() {
         maskedWords.words[maskedWords.length++] = carry;
       }
 
-      if ((this || _global$h).length === 0) {
-        (this || _global$h).words[0] = 0;
-        (this || _global$h).length = 1;
+      if ((this || _global$i).length === 0) {
+        (this || _global$i).words[0] = 0;
+        (this || _global$i).length = 1;
       }
 
       return this.strip();
@@ -5965,7 +6010,7 @@ function dew$Z() {
 
     BN.prototype.ishrn = function ishrn(bits, hint, extended) {
       // TODO(indutny): implement me
-      assert((this || _global$h).negative === 0);
+      assert((this || _global$i).negative === 0);
       return this.iushrn(bits, hint, extended);
     }; // Shift-left
 
@@ -5994,9 +6039,9 @@ function dew$Z() {
       var s = (bit - r) / 26;
       var q = 1 << r; // Fast case: bit is much higher than all existing words
 
-      if ((this || _global$h).length <= s) return false; // Check bit and return
+      if ((this || _global$i).length <= s) return false; // Check bit and return
 
-      var w = (this || _global$h).words[s];
+      var w = (this || _global$i).words[s];
       return !!(w & q);
     }; // Return only lowers bits of number (in-place)
 
@@ -6005,21 +6050,21 @@ function dew$Z() {
       assert(typeof bits === 'number' && bits >= 0);
       var r = bits % 26;
       var s = (bits - r) / 26;
-      assert((this || _global$h).negative === 0, 'imaskn works only with positive numbers');
+      assert((this || _global$i).negative === 0, 'imaskn works only with positive numbers');
 
-      if ((this || _global$h).length <= s) {
-        return this || _global$h;
+      if ((this || _global$i).length <= s) {
+        return this || _global$i;
       }
 
       if (r !== 0) {
         s++;
       }
 
-      (this || _global$h).length = Math.min(s, (this || _global$h).length);
+      (this || _global$i).length = Math.min(s, (this || _global$i).length);
 
       if (r !== 0) {
         var mask = 0x3ffffff ^ 0x3ffffff >>> r << r;
-        (this || _global$h).words[(this || _global$h).length - 1] &= mask;
+        (this || _global$i).words[(this || _global$i).length - 1] &= mask;
       }
 
       return this.strip();
@@ -6036,17 +6081,17 @@ function dew$Z() {
       assert(num < 0x4000000);
       if (num < 0) return this.isubn(-num); // Possible sign change
 
-      if ((this || _global$h).negative !== 0) {
-        if ((this || _global$h).length === 1 && ((this || _global$h).words[0] | 0) < num) {
-          (this || _global$h).words[0] = num - ((this || _global$h).words[0] | 0);
-          (this || _global$h).negative = 0;
-          return this || _global$h;
+      if ((this || _global$i).negative !== 0) {
+        if ((this || _global$i).length === 1 && ((this || _global$i).words[0] | 0) < num) {
+          (this || _global$i).words[0] = num - ((this || _global$i).words[0] | 0);
+          (this || _global$i).negative = 0;
+          return this || _global$i;
         }
 
-        (this || _global$h).negative = 0;
+        (this || _global$i).negative = 0;
         this.isubn(num);
-        (this || _global$h).negative = 1;
-        return this || _global$h;
+        (this || _global$i).negative = 1;
+        return this || _global$i;
       } // Add without checks
 
 
@@ -6054,20 +6099,20 @@ function dew$Z() {
     };
 
     BN.prototype._iaddn = function _iaddn(num) {
-      (this || _global$h).words[0] += num; // Carry
+      (this || _global$i).words[0] += num; // Carry
 
-      for (var i = 0; i < (this || _global$h).length && (this || _global$h).words[i] >= 0x4000000; i++) {
-        (this || _global$h).words[i] -= 0x4000000;
+      for (var i = 0; i < (this || _global$i).length && (this || _global$i).words[i] >= 0x4000000; i++) {
+        (this || _global$i).words[i] -= 0x4000000;
 
-        if (i === (this || _global$h).length - 1) {
-          (this || _global$h).words[i + 1] = 1;
+        if (i === (this || _global$i).length - 1) {
+          (this || _global$i).words[i + 1] = 1;
         } else {
-          (this || _global$h).words[i + 1]++;
+          (this || _global$i).words[i + 1]++;
         }
       }
 
-      (this || _global$h).length = Math.max((this || _global$h).length, i + 1);
-      return this || _global$h;
+      (this || _global$i).length = Math.max((this || _global$i).length, i + 1);
+      return this || _global$i;
     }; // Subtract plain number `num` from `this`
 
 
@@ -6076,23 +6121,23 @@ function dew$Z() {
       assert(num < 0x4000000);
       if (num < 0) return this.iaddn(-num);
 
-      if ((this || _global$h).negative !== 0) {
-        (this || _global$h).negative = 0;
+      if ((this || _global$i).negative !== 0) {
+        (this || _global$i).negative = 0;
         this.iaddn(num);
-        (this || _global$h).negative = 1;
-        return this || _global$h;
+        (this || _global$i).negative = 1;
+        return this || _global$i;
       }
 
-      (this || _global$h).words[0] -= num;
+      (this || _global$i).words[0] -= num;
 
-      if ((this || _global$h).length === 1 && (this || _global$h).words[0] < 0) {
-        (this || _global$h).words[0] = -(this || _global$h).words[0];
-        (this || _global$h).negative = 1;
+      if ((this || _global$i).length === 1 && (this || _global$i).words[0] < 0) {
+        (this || _global$i).words[0] = -(this || _global$i).words[0];
+        (this || _global$i).negative = 1;
       } else {
         // Carry
-        for (var i = 0; i < (this || _global$h).length && (this || _global$h).words[i] < 0; i++) {
-          (this || _global$h).words[i] += 0x4000000;
-          (this || _global$h).words[i + 1] -= 1;
+        for (var i = 0; i < (this || _global$i).length && (this || _global$i).words[i] < 0; i++) {
+          (this || _global$i).words[i] += 0x4000000;
+          (this || _global$i).words[i + 1] -= 1;
         }
       }
 
@@ -6108,8 +6153,8 @@ function dew$Z() {
     };
 
     BN.prototype.iabs = function iabs() {
-      (this || _global$h).negative = 0;
-      return this || _global$h;
+      (this || _global$i).negative = 0;
+      return this || _global$i;
     };
 
     BN.prototype.abs = function abs() {
@@ -6126,17 +6171,17 @@ function dew$Z() {
       var carry = 0;
 
       for (i = 0; i < num.length; i++) {
-        w = ((this || _global$h).words[i + shift] | 0) + carry;
+        w = ((this || _global$i).words[i + shift] | 0) + carry;
         var right = (num.words[i] | 0) * mul;
         w -= right & 0x3ffffff;
         carry = (w >> 26) - (right / 0x4000000 | 0);
-        (this || _global$h).words[i + shift] = w & 0x3ffffff;
+        (this || _global$i).words[i + shift] = w & 0x3ffffff;
       }
 
-      for (; i < (this || _global$h).length - shift; i++) {
-        w = ((this || _global$h).words[i + shift] | 0) + carry;
+      for (; i < (this || _global$i).length - shift; i++) {
+        w = ((this || _global$i).words[i + shift] | 0) + carry;
         carry = w >> 26;
-        (this || _global$h).words[i + shift] = w & 0x3ffffff;
+        (this || _global$i).words[i + shift] = w & 0x3ffffff;
       }
 
       if (carry === 0) return this.strip(); // Subtraction overflow
@@ -6144,18 +6189,18 @@ function dew$Z() {
       assert(carry === -1);
       carry = 0;
 
-      for (i = 0; i < (this || _global$h).length; i++) {
-        w = -((this || _global$h).words[i] | 0) + carry;
+      for (i = 0; i < (this || _global$i).length; i++) {
+        w = -((this || _global$i).words[i] | 0) + carry;
         carry = w >> 26;
-        (this || _global$h).words[i] = w & 0x3ffffff;
+        (this || _global$i).words[i] = w & 0x3ffffff;
       }
 
-      (this || _global$h).negative = 1;
+      (this || _global$i).negative = 1;
       return this.strip();
     };
 
     BN.prototype._wordDiv = function _wordDiv(num, mode) {
-      var shift = (this || _global$h).length - num.length;
+      var shift = (this || _global$i).length - num.length;
       var a = this.clone();
       var b = num; // Normalize
 
@@ -6251,7 +6296,7 @@ function dew$Z() {
 
       var div, mod, res;
 
-      if ((this || _global$h).negative !== 0 && num.negative === 0) {
+      if ((this || _global$i).negative !== 0 && num.negative === 0) {
         res = this.neg().divmod(num, mode);
 
         if (mode !== 'mod') {
@@ -6272,7 +6317,7 @@ function dew$Z() {
         };
       }
 
-      if ((this || _global$h).negative === 0 && num.negative !== 0) {
+      if ((this || _global$i).negative === 0 && num.negative !== 0) {
         res = this.divmod(num.neg(), mode);
 
         if (mode !== 'mod') {
@@ -6285,7 +6330,7 @@ function dew$Z() {
         };
       }
 
-      if (((this || _global$h).negative & num.negative) !== 0) {
+      if (((this || _global$i).negative & num.negative) !== 0) {
         res = this.neg().divmod(num.neg(), mode);
 
         if (mode !== 'div') {
@@ -6304,10 +6349,10 @@ function dew$Z() {
       // Strip both numbers to approximate shift value
 
 
-      if (num.length > (this || _global$h).length || this.cmp(num) < 0) {
+      if (num.length > (this || _global$i).length || this.cmp(num) < 0) {
         return {
           div: new BN(0),
-          mod: this || _global$h
+          mod: this || _global$i
         };
       } // Very short reduction
 
@@ -6370,8 +6415,8 @@ function dew$Z() {
       var p = (1 << 26) % num;
       var acc = 0;
 
-      for (var i = (this || _global$h).length - 1; i >= 0; i--) {
-        acc = (p * acc + ((this || _global$h).words[i] | 0)) % num;
+      for (var i = (this || _global$i).length - 1; i >= 0; i--) {
+        acc = (p * acc + ((this || _global$i).words[i] | 0)) % num;
       }
 
       return acc;
@@ -6382,9 +6427,9 @@ function dew$Z() {
       assert(num <= 0x3ffffff);
       var carry = 0;
 
-      for (var i = (this || _global$h).length - 1; i >= 0; i--) {
-        var w = ((this || _global$h).words[i] | 0) + carry * 0x4000000;
-        (this || _global$h).words[i] = w / num | 0;
+      for (var i = (this || _global$i).length - 1; i >= 0; i--) {
+        var w = ((this || _global$i).words[i] | 0) + carry * 0x4000000;
+        (this || _global$i).words[i] = w / num | 0;
         carry = w % num;
       }
 
@@ -6398,7 +6443,7 @@ function dew$Z() {
     BN.prototype.egcd = function egcd(p) {
       assert(p.negative === 0);
       assert(!p.isZero());
-      var x = this || _global$h;
+      var x = this || _global$i;
       var y = p.clone();
 
       if (x.negative !== 0) {
@@ -6481,7 +6526,7 @@ function dew$Z() {
     BN.prototype._invmp = function _invmp(p) {
       assert(p.negative === 0);
       assert(!p.isZero());
-      var a = this || _global$h;
+      var a = this || _global$i;
       var b = p.clone();
 
       if (a.negative !== 0) {
@@ -6592,16 +6637,16 @@ function dew$Z() {
     };
 
     BN.prototype.isEven = function isEven() {
-      return ((this || _global$h).words[0] & 1) === 0;
+      return ((this || _global$i).words[0] & 1) === 0;
     };
 
     BN.prototype.isOdd = function isOdd() {
-      return ((this || _global$h).words[0] & 1) === 1;
+      return ((this || _global$i).words[0] & 1) === 1;
     }; // And first word and num
 
 
     BN.prototype.andln = function andln(num) {
-      return (this || _global$h).words[0] & num;
+      return (this || _global$i).words[0] & num;
     }; // Increment at the bit position in-line
 
 
@@ -6611,44 +6656,44 @@ function dew$Z() {
       var s = (bit - r) / 26;
       var q = 1 << r; // Fast case: bit is much higher than all existing words
 
-      if ((this || _global$h).length <= s) {
+      if ((this || _global$i).length <= s) {
         this._expand(s + 1);
 
-        (this || _global$h).words[s] |= q;
-        return this || _global$h;
+        (this || _global$i).words[s] |= q;
+        return this || _global$i;
       } // Add bit and propagate, if needed
 
 
       var carry = q;
 
-      for (var i = s; carry !== 0 && i < (this || _global$h).length; i++) {
-        var w = (this || _global$h).words[i] | 0;
+      for (var i = s; carry !== 0 && i < (this || _global$i).length; i++) {
+        var w = (this || _global$i).words[i] | 0;
         w += carry;
         carry = w >>> 26;
         w &= 0x3ffffff;
-        (this || _global$h).words[i] = w;
+        (this || _global$i).words[i] = w;
       }
 
       if (carry !== 0) {
-        (this || _global$h).words[i] = carry;
-        (this || _global$h).length++;
+        (this || _global$i).words[i] = carry;
+        (this || _global$i).length++;
       }
 
-      return this || _global$h;
+      return this || _global$i;
     };
 
     BN.prototype.isZero = function isZero() {
-      return (this || _global$h).length === 1 && (this || _global$h).words[0] === 0;
+      return (this || _global$i).length === 1 && (this || _global$i).words[0] === 0;
     };
 
     BN.prototype.cmpn = function cmpn(num) {
       var negative = num < 0;
-      if ((this || _global$h).negative !== 0 && !negative) return -1;
-      if ((this || _global$h).negative === 0 && negative) return 1;
+      if ((this || _global$i).negative !== 0 && !negative) return -1;
+      if ((this || _global$i).negative === 0 && negative) return 1;
       this.strip();
       var res;
 
-      if ((this || _global$h).length > 1) {
+      if ((this || _global$i).length > 1) {
         res = 1;
       } else {
         if (negative) {
@@ -6656,11 +6701,11 @@ function dew$Z() {
         }
 
         assert(num <= 0x3ffffff, 'Number is too big');
-        var w = (this || _global$h).words[0] | 0;
+        var w = (this || _global$i).words[0] | 0;
         res = w === num ? 0 : w < num ? -1 : 1;
       }
 
-      if ((this || _global$h).negative !== 0) return -res | 0;
+      if ((this || _global$i).negative !== 0) return -res | 0;
       return res;
     }; // Compare two numbers and return:
     // 1 - if `this` > `num`
@@ -6669,22 +6714,22 @@ function dew$Z() {
 
 
     BN.prototype.cmp = function cmp(num) {
-      if ((this || _global$h).negative !== 0 && num.negative === 0) return -1;
-      if ((this || _global$h).negative === 0 && num.negative !== 0) return 1;
+      if ((this || _global$i).negative !== 0 && num.negative === 0) return -1;
+      if ((this || _global$i).negative === 0 && num.negative !== 0) return 1;
       var res = this.ucmp(num);
-      if ((this || _global$h).negative !== 0) return -res | 0;
+      if ((this || _global$i).negative !== 0) return -res | 0;
       return res;
     }; // Unsigned comparison
 
 
     BN.prototype.ucmp = function ucmp(num) {
       // At this point both numbers have the same sign
-      if ((this || _global$h).length > num.length) return 1;
-      if ((this || _global$h).length < num.length) return -1;
+      if ((this || _global$i).length > num.length) return 1;
+      if ((this || _global$i).length < num.length) return -1;
       var res = 0;
 
-      for (var i = (this || _global$h).length - 1; i >= 0; i--) {
-        var a = (this || _global$h).words[i] | 0;
+      for (var i = (this || _global$i).length - 1; i >= 0; i--) {
+        var a = (this || _global$i).words[i] | 0;
         var b = num.words[i] | 0;
         if (a === b) continue;
 
@@ -6749,115 +6794,115 @@ function dew$Z() {
     };
 
     BN.prototype.toRed = function toRed(ctx) {
-      assert(!(this || _global$h).red, 'Already a number in reduction context');
-      assert((this || _global$h).negative === 0, 'red works only with positives');
-      return ctx.convertTo(this || _global$h)._forceRed(ctx);
+      assert(!(this || _global$i).red, 'Already a number in reduction context');
+      assert((this || _global$i).negative === 0, 'red works only with positives');
+      return ctx.convertTo(this || _global$i)._forceRed(ctx);
     };
 
     BN.prototype.fromRed = function fromRed() {
-      assert((this || _global$h).red, 'fromRed works only with numbers in reduction context');
-      return (this || _global$h).red.convertFrom(this || _global$h);
+      assert((this || _global$i).red, 'fromRed works only with numbers in reduction context');
+      return (this || _global$i).red.convertFrom(this || _global$i);
     };
 
     BN.prototype._forceRed = function _forceRed(ctx) {
-      (this || _global$h).red = ctx;
-      return this || _global$h;
+      (this || _global$i).red = ctx;
+      return this || _global$i;
     };
 
     BN.prototype.forceRed = function forceRed(ctx) {
-      assert(!(this || _global$h).red, 'Already a number in reduction context');
+      assert(!(this || _global$i).red, 'Already a number in reduction context');
       return this._forceRed(ctx);
     };
 
     BN.prototype.redAdd = function redAdd(num) {
-      assert((this || _global$h).red, 'redAdd works only with red numbers');
-      return (this || _global$h).red.add(this || _global$h, num);
+      assert((this || _global$i).red, 'redAdd works only with red numbers');
+      return (this || _global$i).red.add(this || _global$i, num);
     };
 
     BN.prototype.redIAdd = function redIAdd(num) {
-      assert((this || _global$h).red, 'redIAdd works only with red numbers');
-      return (this || _global$h).red.iadd(this || _global$h, num);
+      assert((this || _global$i).red, 'redIAdd works only with red numbers');
+      return (this || _global$i).red.iadd(this || _global$i, num);
     };
 
     BN.prototype.redSub = function redSub(num) {
-      assert((this || _global$h).red, 'redSub works only with red numbers');
-      return (this || _global$h).red.sub(this || _global$h, num);
+      assert((this || _global$i).red, 'redSub works only with red numbers');
+      return (this || _global$i).red.sub(this || _global$i, num);
     };
 
     BN.prototype.redISub = function redISub(num) {
-      assert((this || _global$h).red, 'redISub works only with red numbers');
-      return (this || _global$h).red.isub(this || _global$h, num);
+      assert((this || _global$i).red, 'redISub works only with red numbers');
+      return (this || _global$i).red.isub(this || _global$i, num);
     };
 
     BN.prototype.redShl = function redShl(num) {
-      assert((this || _global$h).red, 'redShl works only with red numbers');
-      return (this || _global$h).red.shl(this || _global$h, num);
+      assert((this || _global$i).red, 'redShl works only with red numbers');
+      return (this || _global$i).red.shl(this || _global$i, num);
     };
 
     BN.prototype.redMul = function redMul(num) {
-      assert((this || _global$h).red, 'redMul works only with red numbers');
+      assert((this || _global$i).red, 'redMul works only with red numbers');
 
-      (this || _global$h).red._verify2(this || _global$h, num);
+      (this || _global$i).red._verify2(this || _global$i, num);
 
-      return (this || _global$h).red.mul(this || _global$h, num);
+      return (this || _global$i).red.mul(this || _global$i, num);
     };
 
     BN.prototype.redIMul = function redIMul(num) {
-      assert((this || _global$h).red, 'redMul works only with red numbers');
+      assert((this || _global$i).red, 'redMul works only with red numbers');
 
-      (this || _global$h).red._verify2(this || _global$h, num);
+      (this || _global$i).red._verify2(this || _global$i, num);
 
-      return (this || _global$h).red.imul(this || _global$h, num);
+      return (this || _global$i).red.imul(this || _global$i, num);
     };
 
     BN.prototype.redSqr = function redSqr() {
-      assert((this || _global$h).red, 'redSqr works only with red numbers');
+      assert((this || _global$i).red, 'redSqr works only with red numbers');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.sqr(this || _global$h);
+      return (this || _global$i).red.sqr(this || _global$i);
     };
 
     BN.prototype.redISqr = function redISqr() {
-      assert((this || _global$h).red, 'redISqr works only with red numbers');
+      assert((this || _global$i).red, 'redISqr works only with red numbers');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.isqr(this || _global$h);
+      return (this || _global$i).red.isqr(this || _global$i);
     }; // Square root over p
 
 
     BN.prototype.redSqrt = function redSqrt() {
-      assert((this || _global$h).red, 'redSqrt works only with red numbers');
+      assert((this || _global$i).red, 'redSqrt works only with red numbers');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.sqrt(this || _global$h);
+      return (this || _global$i).red.sqrt(this || _global$i);
     };
 
     BN.prototype.redInvm = function redInvm() {
-      assert((this || _global$h).red, 'redInvm works only with red numbers');
+      assert((this || _global$i).red, 'redInvm works only with red numbers');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.invm(this || _global$h);
+      return (this || _global$i).red.invm(this || _global$i);
     }; // Return negative clone of `this` % `red modulo`
 
 
     BN.prototype.redNeg = function redNeg() {
-      assert((this || _global$h).red, 'redNeg works only with red numbers');
+      assert((this || _global$i).red, 'redNeg works only with red numbers');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.neg(this || _global$h);
+      return (this || _global$i).red.neg(this || _global$i);
     };
 
     BN.prototype.redPow = function redPow(num) {
-      assert((this || _global$h).red && !num.red, 'redPow(normalNum)');
+      assert((this || _global$i).red && !num.red, 'redPow(normalNum)');
 
-      (this || _global$h).red._verify1(this || _global$h);
+      (this || _global$i).red._verify1(this || _global$i);
 
-      return (this || _global$h).red.pow(this || _global$h, num);
+      return (this || _global$i).red.pow(this || _global$i, num);
     }; // Prime numbers with efficient reduction
 
 
@@ -6870,16 +6915,16 @@ function dew$Z() {
 
     function MPrime(name, p) {
       // P = 2 ^ N - K
-      (this || _global$h).name = name;
-      (this || _global$h).p = new BN(p, 16);
-      (this || _global$h).n = (this || _global$h).p.bitLength();
-      (this || _global$h).k = new BN(1).iushln((this || _global$h).n).isub((this || _global$h).p);
-      (this || _global$h).tmp = this._tmp();
+      (this || _global$i).name = name;
+      (this || _global$i).p = new BN(p, 16);
+      (this || _global$i).n = (this || _global$i).p.bitLength();
+      (this || _global$i).k = new BN(1).iushln((this || _global$i).n).isub((this || _global$i).p);
+      (this || _global$i).tmp = this._tmp();
     }
 
     MPrime.prototype._tmp = function _tmp() {
       var tmp = new BN(null);
-      tmp.words = new Array(Math.ceil((this || _global$h).n / 13));
+      tmp.words = new Array(Math.ceil((this || _global$i).n / 13));
       return tmp;
     };
 
@@ -6890,19 +6935,19 @@ function dew$Z() {
       var rlen;
 
       do {
-        this.split(r, (this || _global$h).tmp);
+        this.split(r, (this || _global$i).tmp);
         r = this.imulK(r);
-        r = r.iadd((this || _global$h).tmp);
+        r = r.iadd((this || _global$i).tmp);
         rlen = r.bitLength();
-      } while (rlen > (this || _global$h).n);
+      } while (rlen > (this || _global$i).n);
 
-      var cmp = rlen < (this || _global$h).n ? -1 : r.ucmp((this || _global$h).p);
+      var cmp = rlen < (this || _global$i).n ? -1 : r.ucmp((this || _global$i).p);
 
       if (cmp === 0) {
         r.words[0] = 0;
         r.length = 1;
       } else if (cmp > 0) {
-        r.isub((this || _global$h).p);
+        r.isub((this || _global$i).p);
       } else {
         r.strip();
       }
@@ -6911,15 +6956,15 @@ function dew$Z() {
     };
 
     MPrime.prototype.split = function split(input, out) {
-      input.iushrn((this || _global$h).n, 0, out);
+      input.iushrn((this || _global$i).n, 0, out);
     };
 
     MPrime.prototype.imulK = function imulK(num) {
-      return num.imul((this || _global$h).k);
+      return num.imul((this || _global$i).k);
     };
 
     function K256() {
-      MPrime.call(this || _global$h, 'k256', 'ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe fffffc2f');
+      MPrime.call(this || _global$i, 'k256', 'ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe fffffc2f');
     }
 
     inherits(K256, MPrime);
@@ -6989,20 +7034,20 @@ function dew$Z() {
     };
 
     function P224() {
-      MPrime.call(this || _global$h, 'p224', 'ffffffff ffffffff ffffffff ffffffff 00000000 00000000 00000001');
+      MPrime.call(this || _global$i, 'p224', 'ffffffff ffffffff ffffffff ffffffff 00000000 00000000 00000001');
     }
 
     inherits(P224, MPrime);
 
     function P192() {
-      MPrime.call(this || _global$h, 'p192', 'ffffffff ffffffff ffffffff fffffffe ffffffff ffffffff');
+      MPrime.call(this || _global$i, 'p192', 'ffffffff ffffffff ffffffff fffffffe ffffffff ffffffff');
     }
 
     inherits(P192, MPrime);
 
     function P25519() {
       // 2 ^ 255 - 19
-      MPrime.call(this || _global$h, '25519', '7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed');
+      MPrime.call(this || _global$i, '25519', '7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed');
     }
 
     inherits(P25519, MPrime);
@@ -7055,12 +7100,12 @@ function dew$Z() {
       if (typeof m === 'string') {
         var prime = BN._prime(m);
 
-        (this || _global$h).m = prime.p;
-        (this || _global$h).prime = prime;
+        (this || _global$i).m = prime.p;
+        (this || _global$i).prime = prime;
       } else {
         assert(m.gtn(1), 'modulus must be greater than 1');
-        (this || _global$h).m = m;
-        (this || _global$h).prime = null;
+        (this || _global$i).m = m;
+        (this || _global$i).prime = null;
       }
     }
 
@@ -7075,8 +7120,8 @@ function dew$Z() {
     };
 
     Red.prototype.imod = function imod(a) {
-      if ((this || _global$h).prime) return (this || _global$h).prime.ireduce(a)._forceRed(this || _global$h);
-      return a.umod((this || _global$h).m)._forceRed(this || _global$h);
+      if ((this || _global$i).prime) return (this || _global$i).prime.ireduce(a)._forceRed(this || _global$i);
+      return a.umod((this || _global$i).m)._forceRed(this || _global$i);
     };
 
     Red.prototype.neg = function neg(a) {
@@ -7084,7 +7129,7 @@ function dew$Z() {
         return a.clone();
       }
 
-      return (this || _global$h).m.sub(a)._forceRed(this || _global$h);
+      return (this || _global$i).m.sub(a)._forceRed(this || _global$i);
     };
 
     Red.prototype.add = function add(a, b) {
@@ -7092,11 +7137,11 @@ function dew$Z() {
 
       var res = a.add(b);
 
-      if (res.cmp((this || _global$h).m) >= 0) {
-        res.isub((this || _global$h).m);
+      if (res.cmp((this || _global$i).m) >= 0) {
+        res.isub((this || _global$i).m);
       }
 
-      return res._forceRed(this || _global$h);
+      return res._forceRed(this || _global$i);
     };
 
     Red.prototype.iadd = function iadd(a, b) {
@@ -7104,8 +7149,8 @@ function dew$Z() {
 
       var res = a.iadd(b);
 
-      if (res.cmp((this || _global$h).m) >= 0) {
-        res.isub((this || _global$h).m);
+      if (res.cmp((this || _global$i).m) >= 0) {
+        res.isub((this || _global$i).m);
       }
 
       return res;
@@ -7117,10 +7162,10 @@ function dew$Z() {
       var res = a.sub(b);
 
       if (res.cmpn(0) < 0) {
-        res.iadd((this || _global$h).m);
+        res.iadd((this || _global$i).m);
       }
 
-      return res._forceRed(this || _global$h);
+      return res._forceRed(this || _global$i);
     };
 
     Red.prototype.isub = function isub(a, b) {
@@ -7129,7 +7174,7 @@ function dew$Z() {
       var res = a.isub(b);
 
       if (res.cmpn(0) < 0) {
-        res.iadd((this || _global$h).m);
+        res.iadd((this || _global$i).m);
       }
 
       return res;
@@ -7164,12 +7209,12 @@ function dew$Z() {
     Red.prototype.sqrt = function sqrt(a) {
       if (a.isZero()) return a.clone();
 
-      var mod3 = (this || _global$h).m.andln(3);
+      var mod3 = (this || _global$i).m.andln(3);
 
       assert(mod3 % 2 === 1); // Fast case
 
       if (mod3 === 3) {
-        var pow = (this || _global$h).m.add(new BN(1)).iushrn(2);
+        var pow = (this || _global$i).m.add(new BN(1)).iushrn(2);
 
         return this.pow(a, pow);
       } // Tonelli-Shanks algorithm (Totally unoptimized and slow)
@@ -7177,7 +7222,7 @@ function dew$Z() {
       // Find Q and S, that Q * 2 ^ S = (P - 1)
 
 
-      var q = (this || _global$h).m.subn(1);
+      var q = (this || _global$i).m.subn(1);
 
       var s = 0;
 
@@ -7187,15 +7232,15 @@ function dew$Z() {
       }
 
       assert(!q.isZero());
-      var one = new BN(1).toRed(this || _global$h);
+      var one = new BN(1).toRed(this || _global$i);
       var nOne = one.redNeg(); // Find quadratic non-residue
       // NOTE: Max is such because of generalized Riemann hypothesis.
 
-      var lpow = (this || _global$h).m.subn(1).iushrn(1);
+      var lpow = (this || _global$i).m.subn(1).iushrn(1);
 
-      var z = (this || _global$h).m.bitLength();
+      var z = (this || _global$i).m.bitLength();
 
-      z = new BN(2 * z * z).toRed(this || _global$h);
+      z = new BN(2 * z * z).toRed(this || _global$i);
 
       while (this.pow(z, lpow).cmp(nOne) !== 0) {
         z.redIAdd(nOne);
@@ -7225,7 +7270,7 @@ function dew$Z() {
     };
 
     Red.prototype.invm = function invm(a) {
-      var inv = a._invmp((this || _global$h).m);
+      var inv = a._invmp((this || _global$i).m);
 
       if (inv.negative !== 0) {
         inv.negative = 0;
@@ -7236,11 +7281,11 @@ function dew$Z() {
     };
 
     Red.prototype.pow = function pow(a, num) {
-      if (num.isZero()) return new BN(1).toRed(this || _global$h);
+      if (num.isZero()) return new BN(1).toRed(this || _global$i);
       if (num.cmpn(1) === 0) return a.clone();
       var windowSize = 4;
       var wnd = new Array(1 << windowSize);
-      wnd[0] = new BN(1).toRed(this || _global$h);
+      wnd[0] = new BN(1).toRed(this || _global$i);
       wnd[1] = a;
 
       for (var i = 2; i < wnd.length; i++) {
@@ -7287,7 +7332,7 @@ function dew$Z() {
     };
 
     Red.prototype.convertTo = function convertTo(num) {
-      var r = num.umod((this || _global$h).m);
+      var r = num.umod((this || _global$i).m);
       return r === num ? r.clone() : r;
     };
 
@@ -7305,29 +7350,29 @@ function dew$Z() {
     };
 
     function Mont(m) {
-      Red.call(this || _global$h, m);
-      (this || _global$h).shift = (this || _global$h).m.bitLength();
+      Red.call(this || _global$i, m);
+      (this || _global$i).shift = (this || _global$i).m.bitLength();
 
-      if ((this || _global$h).shift % 26 !== 0) {
-        (this || _global$h).shift += 26 - (this || _global$h).shift % 26;
+      if ((this || _global$i).shift % 26 !== 0) {
+        (this || _global$i).shift += 26 - (this || _global$i).shift % 26;
       }
 
-      (this || _global$h).r = new BN(1).iushln((this || _global$h).shift);
-      (this || _global$h).r2 = this.imod((this || _global$h).r.sqr());
-      (this || _global$h).rinv = (this || _global$h).r._invmp((this || _global$h).m);
-      (this || _global$h).minv = (this || _global$h).rinv.mul((this || _global$h).r).isubn(1).div((this || _global$h).m);
-      (this || _global$h).minv = (this || _global$h).minv.umod((this || _global$h).r);
-      (this || _global$h).minv = (this || _global$h).r.sub((this || _global$h).minv);
+      (this || _global$i).r = new BN(1).iushln((this || _global$i).shift);
+      (this || _global$i).r2 = this.imod((this || _global$i).r.sqr());
+      (this || _global$i).rinv = (this || _global$i).r._invmp((this || _global$i).m);
+      (this || _global$i).minv = (this || _global$i).rinv.mul((this || _global$i).r).isubn(1).div((this || _global$i).m);
+      (this || _global$i).minv = (this || _global$i).minv.umod((this || _global$i).r);
+      (this || _global$i).minv = (this || _global$i).r.sub((this || _global$i).minv);
     }
 
     inherits(Mont, Red);
 
     Mont.prototype.convertTo = function convertTo(num) {
-      return this.imod(num.ushln((this || _global$h).shift));
+      return this.imod(num.ushln((this || _global$i).shift));
     };
 
     Mont.prototype.convertFrom = function convertFrom(num) {
-      var r = this.imod(num.mul((this || _global$h).rinv));
+      var r = this.imod(num.mul((this || _global$i).rinv));
       r.red = null;
       return r;
     };
@@ -7340,39 +7385,39 @@ function dew$Z() {
       }
 
       var t = a.imul(b);
-      var c = t.maskn((this || _global$h).shift).mul((this || _global$h).minv).imaskn((this || _global$h).shift).mul((this || _global$h).m);
-      var u = t.isub(c).iushrn((this || _global$h).shift);
+      var c = t.maskn((this || _global$i).shift).mul((this || _global$i).minv).imaskn((this || _global$i).shift).mul((this || _global$i).m);
+      var u = t.isub(c).iushrn((this || _global$i).shift);
       var res = u;
 
-      if (u.cmp((this || _global$h).m) >= 0) {
-        res = u.isub((this || _global$h).m);
+      if (u.cmp((this || _global$i).m) >= 0) {
+        res = u.isub((this || _global$i).m);
       } else if (u.cmpn(0) < 0) {
-        res = u.iadd((this || _global$h).m);
+        res = u.iadd((this || _global$i).m);
       }
 
-      return res._forceRed(this || _global$h);
+      return res._forceRed(this || _global$i);
     };
 
     Mont.prototype.mul = function mul(a, b) {
-      if (a.isZero() || b.isZero()) return new BN(0)._forceRed(this || _global$h);
+      if (a.isZero() || b.isZero()) return new BN(0)._forceRed(this || _global$i);
       var t = a.mul(b);
-      var c = t.maskn((this || _global$h).shift).mul((this || _global$h).minv).imaskn((this || _global$h).shift).mul((this || _global$h).m);
-      var u = t.isub(c).iushrn((this || _global$h).shift);
+      var c = t.maskn((this || _global$i).shift).mul((this || _global$i).minv).imaskn((this || _global$i).shift).mul((this || _global$i).m);
+      var u = t.isub(c).iushrn((this || _global$i).shift);
       var res = u;
 
-      if (u.cmp((this || _global$h).m) >= 0) {
-        res = u.isub((this || _global$h).m);
+      if (u.cmp((this || _global$i).m) >= 0) {
+        res = u.isub((this || _global$i).m);
       } else if (u.cmpn(0) < 0) {
-        res = u.iadd((this || _global$h).m);
+        res = u.iadd((this || _global$i).m);
       }
 
-      return res._forceRed(this || _global$h);
+      return res._forceRed(this || _global$i);
     };
 
     Mont.prototype.invm = function invm(a) {
       // (AR)^-1 * R^2 = (A^-1 * R^-1) * R^2 = A^-1 * R
-      var res = this.imod(a._invmp((this || _global$h).m).mul((this || _global$h).r2));
-      return res._forceRed(this || _global$h);
+      var res = this.imod(a._invmp((this || _global$i).m).mul((this || _global$i).r2));
+      return res._forceRed(this || _global$i);
     };
   })(module$2, exports$S);
 
@@ -7382,9 +7427,9 @@ function dew$Z() {
 var exports$T = {},
     _dewExec$Q = false;
 
-var _global$i = typeof self !== "undefined" ? self : global;
+var _global$j = typeof self !== "undefined" ? self : global;
 
-function dew$_() {
+function dew$U() {
   if (_dewExec$Q) return exports$T;
   _dewExec$Q = true;
   var r;
@@ -7395,7 +7440,7 @@ function dew$_() {
   };
 
   function Rand(rand) {
-    (this || _global$i).rand = rand;
+    (this || _global$j).rand = rand;
   }
 
   exports$T.Rand = Rand;
@@ -7406,10 +7451,10 @@ function dew$_() {
 
 
   Rand.prototype._rand = function _rand(n) {
-    if ((this || _global$i).rand.getBytes) return (this || _global$i).rand.getBytes(n);
+    if ((this || _global$j).rand.getBytes) return (this || _global$j).rand.getBytes(n);
     var res = new Uint8Array(n);
 
-    for (var i = 0; i < res.length; i++) res[i] = (this || _global$i).rand.getByte();
+    for (var i = 0; i < res.length; i++) res[i] = (this || _global$j).rand.getByte();
 
     return res;
   };
@@ -7439,8 +7484,7 @@ function dew$_() {
   } else {
     // Node.js or Web worker with no crypto support
     try {
-      var crypto = dew$6();
-
+      var crypto = _crypto;
       if (typeof crypto.randomBytes !== 'function') throw new Error('Not supported');
 
       Rand.prototype._rand = function _rand(n) {
@@ -7455,18 +7499,18 @@ function dew$_() {
 var exports$U = {},
     _dewExec$R = false;
 
-var _global$j = typeof self !== "undefined" ? self : global;
+var _global$k = typeof self !== "undefined" ? self : global;
 
-function dew$10() {
+function dew$V() {
   if (_dewExec$R) return exports$U;
   _dewExec$R = true;
 
-  var bn = dew$Z();
+  var bn = dew$T();
 
-  var brorand = dew$_();
+  var brorand = dew$U();
 
   function MillerRabin(rand) {
-    (this || _global$j).rand = rand || new brorand.Rand();
+    (this || _global$k).rand = rand || new brorand.Rand();
   }
 
   exports$U = MillerRabin;
@@ -7480,7 +7524,7 @@ function dew$10() {
     var min_bytes = Math.ceil(len / 8); // Generage random bytes until a number less than n is found.
     // This ensures that 0..n-1 have an equal probability of being selected.
 
-    do var a = new bn((this || _global$j).rand.generate(min_bytes)); while (a.cmp(n) >= 0);
+    do var a = new bn((this || _global$k).rand.generate(min_bytes)); while (a.cmp(n) >= 0);
 
     return a;
   };
@@ -7565,21 +7609,21 @@ function dew$10() {
 
 var exports$V = {},
     _dewExec$S = false;
-function dew$11() {
+function dew$W() {
   if (_dewExec$S) return exports$V;
   _dewExec$S = true;
 
-  var randomBytes = dew$8();
+  var randomBytes = dew$2();
 
   exports$V = findPrime;
   findPrime.simpleSieve = simpleSieve;
   findPrime.fermatTest = fermatTest;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
   var TWENTYFOUR = new BN(24);
 
-  var MillerRabin = dew$10();
+  var MillerRabin = dew$V();
 
   var millerRabin = new MillerRabin();
   var ONE = new BN(1);
@@ -7682,7 +7726,7 @@ function dew$11() {
   return exports$V;
 }
 
-function dew$12 () {
+function dew$X () {
   return exports$W;
 }
 var exports$W = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}};
@@ -7690,17 +7734,16 @@ var exports$W = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4
 var exports$X = {},
     _dewExec$T = false;
 
-var _global$k = typeof self !== "undefined" ? self : global;
+var _global$l = typeof self !== "undefined" ? self : global;
 
-function dew$13() {
+function dew$Y() {
   if (_dewExec$T) return exports$X;
   _dewExec$T = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var BN = dew$T();
 
-  var BN = dew$Z();
-
-  var MillerRabin = dew$10();
+  var MillerRabin = dew$V();
 
   var millerRabin = new MillerRabin();
   var TWENTYFOUR = new BN(24);
@@ -7709,9 +7752,9 @@ function dew$13() {
   var THREE = new BN(3);
   var SEVEN = new BN(7);
 
-  var primes = dew$11();
+  var primes = dew$W();
 
-  var randomBytes = dew$8();
+  var randomBytes = dew$2();
 
   exports$X = DH;
 
@@ -7722,8 +7765,8 @@ function dew$13() {
       pub = new Buffer(pub, enc);
     }
 
-    (this || _global$k)._pub = new BN(pub);
-    return this || _global$k;
+    (this || _global$l)._pub = new BN(pub);
+    return this || _global$l;
   }
 
   function setPrivateKey(priv, enc) {
@@ -7733,8 +7776,8 @@ function dew$13() {
       priv = new Buffer(priv, enc);
     }
 
-    (this || _global$k)._priv = new BN(priv);
-    return this || _global$k;
+    (this || _global$l)._priv = new BN(priv);
+    return this || _global$l;
   }
 
   var primeCache = {};
@@ -7803,45 +7846,45 @@ function dew$13() {
 
   function DH(prime, generator, malleable) {
     this.setGenerator(generator);
-    (this || _global$k).__prime = new BN(prime);
-    (this || _global$k)._prime = BN.mont((this || _global$k).__prime);
-    (this || _global$k)._primeLen = prime.length;
-    (this || _global$k)._pub = undefined;
-    (this || _global$k)._priv = undefined;
-    (this || _global$k)._primeCode = undefined;
+    (this || _global$l).__prime = new BN(prime);
+    (this || _global$l)._prime = BN.mont((this || _global$l).__prime);
+    (this || _global$l)._primeLen = prime.length;
+    (this || _global$l)._pub = undefined;
+    (this || _global$l)._priv = undefined;
+    (this || _global$l)._primeCode = undefined;
 
     if (malleable) {
-      (this || _global$k).setPublicKey = setPublicKey;
-      (this || _global$k).setPrivateKey = setPrivateKey;
+      (this || _global$l).setPublicKey = setPublicKey;
+      (this || _global$l).setPrivateKey = setPrivateKey;
     } else {
-      (this || _global$k)._primeCode = 8;
+      (this || _global$l)._primeCode = 8;
     }
   }
 
   Object.defineProperty(DH.prototype, 'verifyError', {
     enumerable: true,
     get: function () {
-      if (typeof (this || _global$k)._primeCode !== 'number') {
-        (this || _global$k)._primeCode = checkPrime((this || _global$k).__prime, (this || _global$k).__gen);
+      if (typeof (this || _global$l)._primeCode !== 'number') {
+        (this || _global$l)._primeCode = checkPrime((this || _global$l).__prime, (this || _global$l).__gen);
       }
 
-      return (this || _global$k)._primeCode;
+      return (this || _global$l)._primeCode;
     }
   });
 
   DH.prototype.generateKeys = function () {
-    if (!(this || _global$k)._priv) {
-      (this || _global$k)._priv = new BN(randomBytes((this || _global$k)._primeLen));
+    if (!(this || _global$l)._priv) {
+      (this || _global$l)._priv = new BN(randomBytes((this || _global$l)._primeLen));
     }
 
-    (this || _global$k)._pub = (this || _global$k)._gen.toRed((this || _global$k)._prime).redPow((this || _global$k)._priv).fromRed();
+    (this || _global$l)._pub = (this || _global$l)._gen.toRed((this || _global$l)._prime).redPow((this || _global$l)._priv).fromRed();
     return this.getPublicKey();
   };
 
   DH.prototype.computeSecret = function (other) {
     other = new BN(other);
-    other = other.toRed((this || _global$k)._prime);
-    var secret = other.redPow((this || _global$k)._priv).fromRed();
+    other = other.toRed((this || _global$l)._prime);
+    var secret = other.redPow((this || _global$l)._priv).fromRed();
     var out = new Buffer(secret.toArray());
     var prime = this.getPrime();
 
@@ -7855,19 +7898,19 @@ function dew$13() {
   };
 
   DH.prototype.getPublicKey = function getPublicKey(enc) {
-    return formatReturnValue((this || _global$k)._pub, enc);
+    return formatReturnValue((this || _global$l)._pub, enc);
   };
 
   DH.prototype.getPrivateKey = function getPrivateKey(enc) {
-    return formatReturnValue((this || _global$k)._priv, enc);
+    return formatReturnValue((this || _global$l)._priv, enc);
   };
 
   DH.prototype.getPrime = function (enc) {
-    return formatReturnValue((this || _global$k).__prime, enc);
+    return formatReturnValue((this || _global$l).__prime, enc);
   };
 
   DH.prototype.getGenerator = function (enc) {
-    return formatReturnValue((this || _global$k)._gen, enc);
+    return formatReturnValue((this || _global$l)._gen, enc);
   };
 
   DH.prototype.setGenerator = function (gen, enc) {
@@ -7877,9 +7920,9 @@ function dew$13() {
       gen = new Buffer(gen, enc);
     }
 
-    (this || _global$k).__gen = gen;
-    (this || _global$k)._gen = new BN(gen);
-    return this || _global$k;
+    (this || _global$l).__gen = gen;
+    (this || _global$l)._gen = new BN(gen);
+    return this || _global$l;
   };
 
   function formatReturnValue(bn, enc) {
@@ -7897,17 +7940,16 @@ function dew$13() {
 
 var exports$Y = {},
     _dewExec$U = false;
-function dew$14() {
+function dew$Z() {
   if (_dewExec$U) return exports$Y;
   _dewExec$U = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var generatePrime = dew$W();
 
-  var generatePrime = dew$11();
+  var primes = dew$X();
 
-  var primes = dew$12();
-
-  var DH = dew$13();
+  var DH = dew$Y();
 
   function getDiffieHellman(mod) {
     var prime = new Buffer(primes[mod].prime, 'hex');
@@ -7952,15 +7994,14 @@ function dew$14() {
 
 var exports$Z = {},
     _dewExec$V = false;
-function dew$15() {
+function dew$_() {
   if (_dewExec$V) return exports$Z;
   _dewExec$V = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var bn = dew$T();
 
-  var bn = dew$Z();
-
-  var randomBytes = dew$8();
+  var randomBytes = dew$2();
 
   exports$Z = crt;
 
@@ -8009,14 +8050,14 @@ function dew$15() {
   return exports$Z;
 }
 
-function dew$16 () {
+function dew$10 () {
   return exports$_;
 }
-var exports$_ = {"name":"elliptic","version":"6.4.1","description":"EC cryptography","main":"lib/elliptic.js","files":["lib"],"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","unit":"istanbul test _mocha --reporter=spec test/index.js","test":"npm run lint && npm run unit","version":"grunt dist && git add dist/"},"repository":{"type":"git","url":"git@github.com:indutny/elliptic"},"keywords":["EC","Elliptic","curve","Cryptography"],"author":"Fedor Indutny <fedor@indutny.com>","license":"MIT","bugs":{"url":"https://github.com/indutny/elliptic/issues"},"homepage":"https://github.com/indutny/elliptic","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"}};
+var exports$_ = {"name":"elliptic","version":"6.4.1","description":"EC cryptography","main":"lib/elliptic.js","files":["lib"],"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","unit":"istanbul test _mocha --reporter=spec test/index.js","test":"npm run lint && npm run unit","version":"grunt dist && git add dist/"},"repository":{"type":"git","url":"git@github.com:indutny/elliptic"},"keywords":["EC","Elliptic","curve","Cryptography"],"author":"Fedor Indutny <fedor@indutny.com>","license":"MIT","bugs":{"url":"https://github.com/indutny/elliptic/issues"},"homepage":"https://github.com/indutny/elliptic","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"peerDependencies":{"jspm-node-builtins":"npm:@jspm/node-builtins@0.1.1"}};
 
 var exports$10 = {},
     _dewExec$W = false;
-function dew$17() {
+function dew$11() {
   if (_dewExec$W) return exports$10;
   _dewExec$W = true;
   var utils = exports$10;
@@ -8076,16 +8117,16 @@ function dew$17() {
 
 var exports$11 = {},
     _dewExec$X = false;
-function dew$18() {
+function dew$12() {
   if (_dewExec$X) return exports$11;
   _dewExec$X = true;
   var utils = exports$11;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var minAssert = dew$x();
+  var minAssert = dew$r();
 
-  var minUtils = dew$17();
+  var minUtils = dew$11();
 
   utils.assert = minAssert;
   utils.toArray = minUtils.toArray;
@@ -8194,13 +8235,13 @@ function dew$18() {
 
 var exports$12 = {},
     _dewExec$Y = false;
-function dew$19() {
+function dew$13() {
   if (_dewExec$Y) return exports$12;
   _dewExec$Y = true;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var getNAF = utils.getNAF;
@@ -8550,17 +8591,17 @@ function dew$19() {
 
 var exports$13 = {},
     _dewExec$Z = false;
-function dew$1a() {
+function dew$14() {
   if (_dewExec$Z) return exports$13;
   _dewExec$Z = true;
 
-  var curve = dew$1d();
+  var curve = dew$17();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var Base = curve.base;
   var assert = elliptic.utils.assert;
@@ -9393,19 +9434,19 @@ function dew$1a() {
 
 var exports$14 = {},
     _dewExec$_ = false;
-function dew$1b() {
+function dew$15() {
   if (_dewExec$_) return exports$14;
   _dewExec$_ = true;
 
-  var curve = dew$1d();
+  var curve = dew$17();
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var Base = curve.base;
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
 
@@ -9580,17 +9621,17 @@ function dew$1b() {
 
 var exports$15 = {},
     _dewExec$10 = false;
-function dew$1c() {
+function dew$16() {
   if (_dewExec$10) return exports$15;
   _dewExec$10 = true;
 
-  var curve = dew$1d();
+  var curve = dew$17();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var Base = curve.base;
   var assert = elliptic.utils.assert;
@@ -9963,26 +10004,26 @@ function dew$1c() {
 
 var exports$16 = {},
     _dewExec$11 = false;
-function dew$1d() {
+function dew$17() {
   if (_dewExec$11) return exports$16;
   _dewExec$11 = true;
   var curve = exports$16;
-  curve.base = dew$19();
-  curve.short = dew$1a();
-  curve.mont = dew$1b();
-  curve.edwards = dew$1c();
+  curve.base = dew$13();
+  curve.short = dew$14();
+  curve.mont = dew$15();
+  curve.edwards = dew$16();
   return exports$16;
 }
 
 var exports$17 = {},
     _dewExec$12 = false;
-function dew$1e() {
+function dew$18() {
   if (_dewExec$12) return exports$17;
   _dewExec$12 = true;
 
-  var assert = dew$x();
+  var assert = dew$r();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   exports$17.inherits = inherits;
 
@@ -10236,13 +10277,13 @@ function dew$1e() {
 
 var exports$18 = {},
     _dewExec$13 = false;
-function dew$1f() {
+function dew$19() {
   if (_dewExec$13) return exports$18;
   _dewExec$13 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   function BlockHash() {
     this.pending = null;
@@ -10328,11 +10369,11 @@ function dew$1f() {
 
 var exports$19 = {},
     _dewExec$14 = false;
-function dew$1g() {
+function dew$1a() {
   if (_dewExec$14) return exports$19;
   _dewExec$14 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
   var rotr32 = utils.rotr32;
 
@@ -10390,15 +10431,15 @@ function dew$1g() {
 
 var exports$1a = {},
     _dewExec$15 = false;
-function dew$1h() {
+function dew$1b() {
   if (_dewExec$15) return exports$1a;
   _dewExec$15 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var common = dew$1f();
+  var common = dew$19();
 
-  var shaCommon = dew$1g();
+  var shaCommon = dew$1a();
 
   var rotl32 = utils.rotl32;
   var sum32 = utils.sum32;
@@ -10460,17 +10501,17 @@ function dew$1h() {
 
 var exports$1b = {},
     _dewExec$16 = false;
-function dew$1i() {
+function dew$1c() {
   if (_dewExec$16) return exports$1b;
   _dewExec$16 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var common = dew$1f();
+  var common = dew$19();
 
-  var shaCommon = dew$1g();
+  var shaCommon = dew$1a();
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   var sum32 = utils.sum32;
   var sum32_4 = utils.sum32_4;
@@ -10548,13 +10589,13 @@ function dew$1i() {
 
 var exports$1c = {},
     _dewExec$17 = false;
-function dew$1j() {
+function dew$1d() {
   if (_dewExec$17) return exports$1c;
   _dewExec$17 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var SHA256 = dew$1i();
+  var SHA256 = dew$1c();
 
   function SHA224() {
     if (!(this instanceof SHA224)) return new SHA224();
@@ -10579,15 +10620,15 @@ function dew$1j() {
 
 var exports$1d = {},
     _dewExec$18 = false;
-function dew$1k() {
+function dew$1e() {
   if (_dewExec$18) return exports$1d;
   _dewExec$18 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var common = dew$1f();
+  var common = dew$19();
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   var rotr64_hi = utils.rotr64_hi;
   var rotr64_lo = utils.rotr64_lo;
@@ -10823,13 +10864,13 @@ function dew$1k() {
 
 var exports$1e = {},
     _dewExec$19 = false;
-function dew$1l() {
+function dew$1f() {
   if (_dewExec$19) return exports$1e;
   _dewExec$19 = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var SHA512 = dew$1k();
+  var SHA512 = dew$1e();
 
   function SHA384() {
     if (!(this instanceof SHA384)) return new SHA384();
@@ -10853,26 +10894,26 @@ function dew$1l() {
 
 var exports$1f = {},
     _dewExec$1a = false;
-function dew$1m() {
+function dew$1g() {
   if (_dewExec$1a) return exports$1f;
   _dewExec$1a = true;
-  exports$1f.sha1 = dew$1h();
-  exports$1f.sha224 = dew$1j();
-  exports$1f.sha256 = dew$1i();
-  exports$1f.sha384 = dew$1l();
-  exports$1f.sha512 = dew$1k();
+  exports$1f.sha1 = dew$1b();
+  exports$1f.sha224 = dew$1d();
+  exports$1f.sha256 = dew$1c();
+  exports$1f.sha384 = dew$1f();
+  exports$1f.sha512 = dew$1e();
   return exports$1f;
 }
 
 var exports$1g = {},
     _dewExec$1b = false;
-function dew$1n() {
+function dew$1h() {
   if (_dewExec$1b) return exports$1g;
   _dewExec$1b = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var common = dew$1f();
+  var common = dew$19();
 
   var rotl32 = utils.rotl32;
   var sum32 = utils.sum32;
@@ -10954,13 +10995,13 @@ function dew$1n() {
 
 var exports$1h = {},
     _dewExec$1c = false;
-function dew$1o() {
+function dew$1i() {
   if (_dewExec$1c) return exports$1h;
   _dewExec$1c = true;
 
-  var utils = dew$1e();
+  var utils = dew$18();
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   function Hmac(hash, key, enc) {
     if (!(this instanceof Hmac)) return new Hmac(hash, key, enc);
@@ -11006,15 +11047,15 @@ function dew$1o() {
 
 var exports$1i = {},
     _dewExec$1d = false;
-function dew$1p() {
+function dew$1j() {
   if (_dewExec$1d) return exports$1i;
   _dewExec$1d = true;
   var hash = exports$1i;
-  hash.utils = dew$1e();
-  hash.common = dew$1f();
-  hash.sha = dew$1m();
-  hash.ripemd = dew$1n();
-  hash.hmac = dew$1o(); // Proxy hash functions to the main object
+  hash.utils = dew$18();
+  hash.common = dew$19();
+  hash.sha = dew$1g();
+  hash.ripemd = dew$1h();
+  hash.hmac = dew$1i(); // Proxy hash functions to the main object
 
   hash.sha1 = hash.sha.sha1;
   hash.sha256 = hash.sha.sha256;
@@ -11027,7 +11068,7 @@ function dew$1p() {
 
 var exports$1j = {},
     _dewExec$1e = false;
-function dew$1q() {
+function dew$1k() {
   if (_dewExec$1e) return exports$1j;
   _dewExec$1e = true;
   exports$1j = {
@@ -11045,14 +11086,14 @@ function dew$1q() {
 
 var exports$1k = {},
     _dewExec$1f = false;
-function dew$1r() {
+function dew$1l() {
   if (_dewExec$1f) return exports$1k;
   _dewExec$1f = true;
   var curves = exports$1k;
 
-  var hash = dew$1p();
+  var hash = dew$1j();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var assert = elliptic.utils.assert;
 
@@ -11166,7 +11207,7 @@ function dew$1r() {
   var pre;
 
   try {
-    pre = dew$1q();
+    pre = dew$1k();
   } catch (e) {
     pre = undefined;
   }
@@ -11198,15 +11239,15 @@ function dew$1r() {
 
 var exports$1l = {},
     _dewExec$1g = false;
-function dew$1s() {
+function dew$1m() {
   if (_dewExec$1g) return exports$1l;
   _dewExec$1g = true;
 
-  var hash = dew$1p();
+  var hash = dew$1j();
 
-  var utils = dew$17();
+  var utils = dew$11();
 
-  var assert = dew$x();
+  var assert = dew$r();
 
   function HmacDRBG(options) {
     if (!(this instanceof HmacDRBG)) return new HmacDRBG(options);
@@ -11312,13 +11353,13 @@ function dew$1s() {
 
 var exports$1m = {},
     _dewExec$1h = false;
-function dew$1t() {
+function dew$1n() {
   if (_dewExec$1h) return exports$1m;
   _dewExec$1h = true;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11434,13 +11475,13 @@ function dew$1t() {
 
 var exports$1n = {},
     _dewExec$1i = false;
-function dew$1u() {
+function dew$1o() {
   if (_dewExec$1i) return exports$1n;
   _dewExec$1i = true;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11589,22 +11630,22 @@ function dew$1u() {
 
 var exports$1o = {},
     _dewExec$1j = false;
-function dew$1v() {
+function dew$1p() {
   if (_dewExec$1j) return exports$1o;
   _dewExec$1j = true;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var HmacDRBG = dew$1s();
+  var HmacDRBG = dew$1m();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
 
-  var KeyPair = dew$1t();
+  var KeyPair = dew$1n();
 
-  var Signature = dew$1u();
+  var Signature = dew$1o();
 
   function EC(options) {
     if (!(this instanceof EC)) return new EC(options); // Shortcut `elliptic.ec(curve-name)`
@@ -11798,11 +11839,11 @@ function dew$1v() {
 
 var exports$1p = {},
     _dewExec$1k = false;
-function dew$1w() {
+function dew$1q() {
   if (_dewExec$1k) return exports$1p;
   _dewExec$1k = true;
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11893,13 +11934,13 @@ function dew$1w() {
 
 var exports$1q = {},
     _dewExec$1l = false;
-function dew$1x() {
+function dew$1r() {
   if (_dewExec$1l) return exports$1q;
   _dewExec$1l = true;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11959,21 +12000,21 @@ function dew$1x() {
 
 var exports$1r = {},
     _dewExec$1m = false;
-function dew$1y() {
+function dew$1s() {
   if (_dewExec$1m) return exports$1r;
   _dewExec$1m = true;
 
-  var hash = dew$1p();
+  var hash = dew$1j();
 
-  var elliptic = dew$1z();
+  var elliptic = dew$1t();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
   var parseBytes = utils.parseBytes;
 
-  var KeyPair = dew$1w();
+  var KeyPair = dew$1q();
 
-  var Signature = dew$1x();
+  var Signature = dew$1r();
 
   function EDDSA(curve) {
     assert(curve === 'ed25519', 'only tested with ed25519 so far');
@@ -12088,33 +12129,33 @@ function dew$1y() {
 
 var exports$1s = {},
     _dewExec$1n = false;
-function dew$1z() {
+function dew$1t() {
   if (_dewExec$1n) return exports$1s;
   _dewExec$1n = true;
   var elliptic = exports$1s;
-  elliptic.version = dew$16().version;
-  elliptic.utils = dew$18();
-  elliptic.rand = dew$_();
-  elliptic.curve = dew$1d();
-  elliptic.curves = dew$1r(); // Protocols
+  elliptic.version = dew$10().version;
+  elliptic.utils = dew$12();
+  elliptic.rand = dew$U();
+  elliptic.curve = dew$17();
+  elliptic.curves = dew$1l(); // Protocols
 
-  elliptic.ec = dew$1v();
-  elliptic.eddsa = dew$1y();
+  elliptic.ec = dew$1p();
+  elliptic.eddsa = dew$1s();
   return exports$1s;
 }
 
 var exports$1t = {},
     _dewExec$1o = false;
 
-var _global$l = typeof self !== "undefined" ? self : global;
+var _global$m = typeof self !== "undefined" ? self : global;
 
-function dew$1A() {
+function dew$1u() {
   if (_dewExec$1o) return exports$1t;
   _dewExec$1o = true;
 
-  var asn1 = dew$1N();
+  var asn1 = dew$1H();
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   var api = exports$1t;
 
@@ -12123,17 +12164,17 @@ function dew$1A() {
   };
 
   function Entity(name, body) {
-    (this || _global$l).name = name;
-    (this || _global$l).body = body;
-    (this || _global$l).decoders = {};
-    (this || _global$l).encoders = {};
+    (this || _global$m).name = name;
+    (this || _global$m).body = body;
+    (this || _global$m).decoders = {};
+    (this || _global$m).encoders = {};
   }
 
   Entity.prototype._createNamed = function createNamed(base) {
     var named;
 
     try {
-      named = dew$7().runInThisContext('(function ' + (this || _global$l).name + '(entity) {\n' + '  this._initNamed(entity);\n' + '})');
+      named = _vm.runInThisContext('(function ' + (this || _global$m).name + '(entity) {\n' + '  this._initNamed(entity);\n' + '})');
     } catch (e) {
       named = function (entity) {
         this._initNamed(entity);
@@ -12143,17 +12184,17 @@ function dew$1A() {
     inherits(named, base);
 
     named.prototype._initNamed = function initnamed(entity) {
-      base.call(this || _global$l, entity);
+      base.call(this || _global$m, entity);
     };
 
-    return new named(this || _global$l);
+    return new named(this || _global$m);
   };
 
   Entity.prototype._getDecoder = function _getDecoder(enc) {
     enc = enc || 'der'; // Lazily create decoder
 
-    if (!(this || _global$l).decoders.hasOwnProperty(enc)) (this || _global$l).decoders[enc] = this._createNamed(asn1.decoders[enc]);
-    return (this || _global$l).decoders[enc];
+    if (!(this || _global$m).decoders.hasOwnProperty(enc)) (this || _global$m).decoders[enc] = this._createNamed(asn1.decoders[enc]);
+    return (this || _global$m).decoders[enc];
   };
 
   Entity.prototype.decode = function decode(data, enc, options) {
@@ -12163,8 +12204,8 @@ function dew$1A() {
   Entity.prototype._getEncoder = function _getEncoder(enc) {
     enc = enc || 'der'; // Lazily create encoder
 
-    if (!(this || _global$l).encoders.hasOwnProperty(enc)) (this || _global$l).encoders[enc] = this._createNamed(asn1.encoders[enc]);
-    return (this || _global$l).encoders[enc];
+    if (!(this || _global$m).encoders.hasOwnProperty(enc)) (this || _global$m).encoders[enc] = this._createNamed(asn1.encoders[enc]);
+    return (this || _global$m).encoders[enc];
   };
 
   Entity.prototype.encode = function encode(data, enc,
@@ -12179,16 +12220,16 @@ function dew$1A() {
 var exports$1u = {},
     _dewExec$1p = false;
 
-var _global$m = typeof self !== "undefined" ? self : global;
+var _global$n = typeof self !== "undefined" ? self : global;
 
-function dew$1B() {
+function dew$1v() {
   if (_dewExec$1p) return exports$1u;
   _dewExec$1p = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
   function Reporter(options) {
-    (this || _global$m)._reporterState = {
+    (this || _global$n)._reporterState = {
       obj: null,
       path: [],
       options: options || {},
@@ -12203,7 +12244,7 @@ function dew$1B() {
   };
 
   Reporter.prototype.save = function save() {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     return {
       obj: state.obj,
       pathLen: state.path.length
@@ -12211,39 +12252,39 @@ function dew$1B() {
   };
 
   Reporter.prototype.restore = function restore(data) {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     state.obj = data.obj;
     state.path = state.path.slice(0, data.pathLen);
   };
 
   Reporter.prototype.enterKey = function enterKey(key) {
-    return (this || _global$m)._reporterState.path.push(key);
+    return (this || _global$n)._reporterState.path.push(key);
   };
 
   Reporter.prototype.exitKey = function exitKey(index) {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     state.path = state.path.slice(0, index - 1);
   };
 
   Reporter.prototype.leaveKey = function leaveKey(index, key, value) {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     this.exitKey(index);
     if (state.obj !== null) state.obj[key] = value;
   };
 
   Reporter.prototype.path = function path() {
-    return (this || _global$m)._reporterState.path.join('/');
+    return (this || _global$n)._reporterState.path.join('/');
   };
 
   Reporter.prototype.enterObject = function enterObject() {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     var prev = state.obj;
     state.obj = {};
     return prev;
   };
 
   Reporter.prototype.leaveObject = function leaveObject(prev) {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     var now = state.obj;
     state.obj = prev;
     return now;
@@ -12251,7 +12292,7 @@ function dew$1B() {
 
   Reporter.prototype.error = function error(msg) {
     var err;
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     var inherited = msg instanceof ReporterError;
 
     if (inherited) {
@@ -12268,7 +12309,7 @@ function dew$1B() {
   };
 
   Reporter.prototype.wrapResult = function wrapResult(result) {
-    var state = (this || _global$m)._reporterState;
+    var state = (this || _global$n)._reporterState;
     if (!state.options.partial) return result;
     return {
       result: this.isError(result) ? null : result,
@@ -12277,25 +12318,25 @@ function dew$1B() {
   };
 
   function ReporterError(path, msg) {
-    (this || _global$m).path = path;
+    (this || _global$n).path = path;
     this.rethrow(msg);
   }
   inherits(ReporterError, Error);
 
   ReporterError.prototype.rethrow = function rethrow(msg) {
-    (this || _global$m).message = msg + ' at: ' + ((this || _global$m).path || '(shallow)');
-    if (Error.captureStackTrace) Error.captureStackTrace(this || _global$m, ReporterError);
+    (this || _global$n).message = msg + ' at: ' + ((this || _global$n).path || '(shallow)');
+    if (Error.captureStackTrace) Error.captureStackTrace(this || _global$n, ReporterError);
 
-    if (!(this || _global$m).stack) {
+    if (!(this || _global$n).stack) {
       try {
         // IE only adds stack when thrown
-        throw new Error((this || _global$m).message);
+        throw new Error((this || _global$n).message);
       } catch (e) {
-        (this || _global$m).stack = e.stack;
+        (this || _global$n).stack = e.stack;
       }
     }
 
-    return this || _global$m;
+    return this || _global$n;
   };
 
   return exports$1u;
@@ -12304,29 +12345,29 @@ function dew$1B() {
 var exports$1v = {},
     _dewExec$1q = false;
 
-var _global$n = typeof self !== "undefined" ? self : global;
+var _global$o = typeof self !== "undefined" ? self : global;
 
-function dew$1C() {
+function dew$1w() {
   if (_dewExec$1q) return exports$1v;
   _dewExec$1q = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Reporter = dew$1E().Reporter;
+  var Reporter = dew$1y().Reporter;
 
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
   function DecoderBuffer(base, options) {
-    Reporter.call(this || _global$n, options);
+    Reporter.call(this || _global$o, options);
 
     if (!Buffer.isBuffer(base)) {
       this.error('Input not Buffer');
       return;
     }
 
-    (this || _global$n).base = base;
-    (this || _global$n).offset = 0;
-    (this || _global$n).length = base.length;
+    (this || _global$o).base = base;
+    (this || _global$o).offset = 0;
+    (this || _global$o).length = base.length;
   }
 
   inherits(DecoderBuffer, Reporter);
@@ -12334,62 +12375,62 @@ function dew$1C() {
 
   DecoderBuffer.prototype.save = function save() {
     return {
-      offset: (this || _global$n).offset,
-      reporter: Reporter.prototype.save.call(this || _global$n)
+      offset: (this || _global$o).offset,
+      reporter: Reporter.prototype.save.call(this || _global$o)
     };
   };
 
   DecoderBuffer.prototype.restore = function restore(save) {
     // Return skipped data
-    var res = new DecoderBuffer((this || _global$n).base);
+    var res = new DecoderBuffer((this || _global$o).base);
     res.offset = save.offset;
-    res.length = (this || _global$n).offset;
-    (this || _global$n).offset = save.offset;
-    Reporter.prototype.restore.call(this || _global$n, save.reporter);
+    res.length = (this || _global$o).offset;
+    (this || _global$o).offset = save.offset;
+    Reporter.prototype.restore.call(this || _global$o, save.reporter);
     return res;
   };
 
   DecoderBuffer.prototype.isEmpty = function isEmpty() {
-    return (this || _global$n).offset === (this || _global$n).length;
+    return (this || _global$o).offset === (this || _global$o).length;
   };
 
   DecoderBuffer.prototype.readUInt8 = function readUInt8(fail) {
-    if ((this || _global$n).offset + 1 <= (this || _global$n).length) return (this || _global$n).base.readUInt8((this || _global$n).offset++, true);else return this.error(fail || 'DecoderBuffer overrun');
+    if ((this || _global$o).offset + 1 <= (this || _global$o).length) return (this || _global$o).base.readUInt8((this || _global$o).offset++, true);else return this.error(fail || 'DecoderBuffer overrun');
   };
 
   DecoderBuffer.prototype.skip = function skip(bytes, fail) {
-    if (!((this || _global$n).offset + bytes <= (this || _global$n).length)) return this.error(fail || 'DecoderBuffer overrun');
-    var res = new DecoderBuffer((this || _global$n).base); // Share reporter state
+    if (!((this || _global$o).offset + bytes <= (this || _global$o).length)) return this.error(fail || 'DecoderBuffer overrun');
+    var res = new DecoderBuffer((this || _global$o).base); // Share reporter state
 
-    res._reporterState = (this || _global$n)._reporterState;
-    res.offset = (this || _global$n).offset;
-    res.length = (this || _global$n).offset + bytes;
-    (this || _global$n).offset += bytes;
+    res._reporterState = (this || _global$o)._reporterState;
+    res.offset = (this || _global$o).offset;
+    res.length = (this || _global$o).offset + bytes;
+    (this || _global$o).offset += bytes;
     return res;
   };
 
   DecoderBuffer.prototype.raw = function raw(save) {
-    return (this || _global$n).base.slice(save ? save.offset : (this || _global$n).offset, (this || _global$n).length);
+    return (this || _global$o).base.slice(save ? save.offset : (this || _global$o).offset, (this || _global$o).length);
   };
 
   function EncoderBuffer(value, reporter) {
     if (Array.isArray(value)) {
-      (this || _global$n).length = 0;
-      (this || _global$n).value = value.map(function (item) {
+      (this || _global$o).length = 0;
+      (this || _global$o).value = value.map(function (item) {
         if (!(item instanceof EncoderBuffer)) item = new EncoderBuffer(item, reporter);
-        (this || _global$n).length += item.length;
+        (this || _global$o).length += item.length;
         return item;
-      }, this || _global$n);
+      }, this || _global$o);
     } else if (typeof value === 'number') {
       if (!(0 <= value && value <= 0xff)) return reporter.error('non-byte EncoderBuffer value');
-      (this || _global$n).value = value;
-      (this || _global$n).length = 1;
+      (this || _global$o).value = value;
+      (this || _global$o).length = 1;
     } else if (typeof value === 'string') {
-      (this || _global$n).value = value;
-      (this || _global$n).length = Buffer.byteLength(value);
+      (this || _global$o).value = value;
+      (this || _global$o).length = Buffer.byteLength(value);
     } else if (Buffer.isBuffer(value)) {
-      (this || _global$n).value = value;
-      (this || _global$n).length = value.length;
+      (this || _global$o).value = value;
+      (this || _global$o).length = value.length;
     } else {
       return reporter.error('Unsupported type: ' + typeof value);
     }
@@ -12398,18 +12439,18 @@ function dew$1C() {
   exports$1v.EncoderBuffer = EncoderBuffer;
 
   EncoderBuffer.prototype.join = function join(out, offset) {
-    if (!out) out = new Buffer((this || _global$n).length);
+    if (!out) out = new Buffer((this || _global$o).length);
     if (!offset) offset = 0;
-    if ((this || _global$n).length === 0) return out;
+    if ((this || _global$o).length === 0) return out;
 
-    if (Array.isArray((this || _global$n).value)) {
-      (this || _global$n).value.forEach(function (item) {
+    if (Array.isArray((this || _global$o).value)) {
+      (this || _global$o).value.forEach(function (item) {
         item.join(out, offset);
         offset += item.length;
       });
     } else {
-      if (typeof (this || _global$n).value === 'number') out[offset] = (this || _global$n).value;else if (typeof (this || _global$n).value === 'string') out.write((this || _global$n).value, offset);else if (Buffer.isBuffer((this || _global$n).value)) (this || _global$n).value.copy(out, offset);
-      offset += (this || _global$n).length;
+      if (typeof (this || _global$o).value === 'number') out[offset] = (this || _global$o).value;else if (typeof (this || _global$o).value === 'string') out.write((this || _global$o).value, offset);else if (Buffer.isBuffer((this || _global$o).value)) (this || _global$o).value.copy(out, offset);
+      offset += (this || _global$o).length;
     }
 
     return out;
@@ -12421,19 +12462,19 @@ function dew$1C() {
 var exports$1w = {},
     _dewExec$1r = false;
 
-var _global$o = typeof self !== "undefined" ? self : global;
+var _global$p = typeof self !== "undefined" ? self : global;
 
-function dew$1D() {
+function dew$1x() {
   if (_dewExec$1r) return exports$1w;
   _dewExec$1r = true;
 
-  var Reporter = dew$1E().Reporter;
+  var Reporter = dew$1y().Reporter;
 
-  var EncoderBuffer = dew$1E().EncoderBuffer;
+  var EncoderBuffer = dew$1y().EncoderBuffer;
 
-  var DecoderBuffer = dew$1E().DecoderBuffer;
+  var DecoderBuffer = dew$1y().DecoderBuffer;
 
-  var assert = dew$x(); // Supported tags
+  var assert = dew$r(); // Supported tags
 
 
   var tags = ['seq', 'seqof', 'set', 'setof', 'objid', 'bool', 'gentime', 'utctime', 'null_', 'enum', 'int', 'objDesc', 'bitstr', 'bmpstr', 'charstr', 'genstr', 'graphstr', 'ia5str', 'iso646str', 'numstr', 'octstr', 'printstr', 't61str', 'unistr', 'utf8str', 'videostr']; // Public methods list
@@ -12444,7 +12485,7 @@ function dew$1D() {
 
   function Node(enc, parent) {
     var state = {};
-    (this || _global$o)._baseState = state;
+    (this || _global$p)._baseState = state;
     state.enc = enc;
     state.parent = parent || null;
     state.children = null; // State
@@ -12475,55 +12516,55 @@ function dew$1D() {
   var stateProps = ['enc', 'parent', 'children', 'tag', 'args', 'reverseArgs', 'choice', 'optional', 'any', 'obj', 'use', 'alteredUse', 'key', 'default', 'explicit', 'implicit', 'contains'];
 
   Node.prototype.clone = function clone() {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     var cstate = {};
     stateProps.forEach(function (prop) {
       cstate[prop] = state[prop];
     });
-    var res = new (this || _global$o).constructor(cstate.parent);
+    var res = new (this || _global$p).constructor(cstate.parent);
     res._baseState = cstate;
     return res;
   };
 
   Node.prototype._wrap = function wrap() {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     methods.forEach(function (method) {
-      (this || _global$o)[method] = function _wrappedMethod() {
-        var clone = new (this || _global$o).constructor(this || _global$o);
+      (this || _global$p)[method] = function _wrappedMethod() {
+        var clone = new (this || _global$p).constructor(this || _global$p);
         state.children.push(clone);
         return clone[method].apply(clone, arguments);
       };
-    }, this || _global$o);
+    }, this || _global$p);
   };
 
   Node.prototype._init = function init(body) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.parent === null);
-    body.call(this || _global$o); // Filter children
+    body.call(this || _global$p); // Filter children
 
     state.children = state.children.filter(function (child) {
-      return child._baseState.parent === (this || _global$o);
-    }, this || _global$o);
+      return child._baseState.parent === (this || _global$p);
+    }, this || _global$p);
     assert.equal(state.children.length, 1, 'Root node can have only one child');
   };
 
   Node.prototype._useArgs = function useArgs(args) {
-    var state = (this || _global$o)._baseState; // Filter children and args
+    var state = (this || _global$p)._baseState; // Filter children and args
 
     var children = args.filter(function (arg) {
-      return arg instanceof (this || _global$o).constructor;
-    }, this || _global$o);
+      return arg instanceof (this || _global$p).constructor;
+    }, this || _global$p);
     args = args.filter(function (arg) {
-      return !(arg instanceof (this || _global$o).constructor);
-    }, this || _global$o);
+      return !(arg instanceof (this || _global$p).constructor);
+    }, this || _global$p);
 
     if (children.length !== 0) {
       assert(state.children === null);
       state.children = children; // Replace parent to maintain backward link
 
       children.forEach(function (child) {
-        child._baseState.parent = this || _global$o;
-      }, this || _global$o);
+        child._baseState.parent = this || _global$p;
+      }, this || _global$p);
     }
 
     if (args.length !== 0) {
@@ -12547,7 +12588,7 @@ function dew$1D() {
 
   overrided.forEach(function (method) {
     Node.prototype[method] = function _overrided() {
-      var state = (this || _global$o)._baseState;
+      var state = (this || _global$p)._baseState;
       throw new Error(method + ' not implemented for encoding: ' + state.enc);
     };
   }); //
@@ -12556,76 +12597,76 @@ function dew$1D() {
 
   tags.forEach(function (tag) {
     Node.prototype[tag] = function _tagMethod() {
-      var state = (this || _global$o)._baseState;
+      var state = (this || _global$p)._baseState;
       var args = Array.prototype.slice.call(arguments);
       assert(state.tag === null);
       state.tag = tag;
 
       this._useArgs(args);
 
-      return this || _global$o;
+      return this || _global$p;
     };
   });
 
   Node.prototype.use = function use(item) {
     assert(item);
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.use === null);
     state.use = item;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.optional = function optional() {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     state.optional = true;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.def = function def(val) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state['default'] === null);
     state['default'] = val;
     state.optional = true;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.explicit = function explicit(num) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.explicit === null && state.implicit === null);
     state.explicit = num;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.implicit = function implicit(num) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.explicit === null && state.implicit === null);
     state.implicit = num;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.obj = function obj() {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     var args = Array.prototype.slice.call(arguments);
     state.obj = true;
     if (args.length !== 0) this._useArgs(args);
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.key = function key(newKey) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.key === null);
     state.key = newKey;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.any = function any() {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     state.any = true;
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.choice = function choice(obj) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.choice === null);
     state.choice = obj;
 
@@ -12633,21 +12674,21 @@ function dew$1D() {
       return obj[key];
     }));
 
-    return this || _global$o;
+    return this || _global$p;
   };
 
   Node.prototype.contains = function contains(item) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     assert(state.use === null);
     state.contains = item;
-    return this || _global$o;
+    return this || _global$p;
   }; //
   // Decoding
   //
 
 
   Node.prototype._decode = function decode(input, options) {
-    var state = (this || _global$o)._baseState; // Decode root node
+    var state = (this || _global$p)._baseState; // Decode root node
 
     if (state.parent === null) return input.wrapResult(state.children[0]._decode(input, options));
     var result = state['default'];
@@ -12730,7 +12771,7 @@ function dew$1D() {
   };
 
   Node.prototype._decodeGeneric = function decodeGeneric(tag, input, options) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     if (tag === 'seq' || tag === 'set') return null;
     if (tag === 'seqof' || tag === 'setof') return this._decodeList(input, tag, state.args[0], options);else if (/str$/.test(tag)) return this._decodeStr(input, tag, options);else if (tag === 'objid' && state.args) return this._decodeObjid(input, state.args[0], state.args[1], options);else if (tag === 'objid') return this._decodeObjid(input, null, null, options);else if (tag === 'gentime' || tag === 'utctime') return this._decodeTime(input, tag, options);else if (tag === 'null_') return this._decodeNull(input, options);else if (tag === 'bool') return this._decodeBool(input, options);else if (tag === 'objDesc') return this._decodeStr(input, tag, options);else if (tag === 'int' || tag === 'enum') return this._decodeInt(input, state.args && state.args[0], options);
 
@@ -12742,7 +12783,7 @@ function dew$1D() {
   };
 
   Node.prototype._getUse = function _getUse(entity, obj) {
-    var state = (this || _global$o)._baseState; // Create altered use decoder if implicit is set
+    var state = (this || _global$p)._baseState; // Create altered use decoder if implicit is set
 
     state.useDecoder = this._use(entity, obj);
     assert(state.useDecoder._baseState.parent === null);
@@ -12757,7 +12798,7 @@ function dew$1D() {
   };
 
   Node.prototype._decodeChoice = function decodeChoice(input, options) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     var result = null;
     var match = false;
     Object.keys(state.choice).some(function (key) {
@@ -12779,7 +12820,7 @@ function dew$1D() {
       }
 
       return true;
-    }, this || _global$o);
+    }, this || _global$p);
     if (!match) return input.error('Choice not matched');
     return result;
   }; //
@@ -12788,11 +12829,11 @@ function dew$1D() {
 
 
   Node.prototype._createEncoderBuffer = function createEncoderBuffer(data) {
-    return new EncoderBuffer(data, (this || _global$o).reporter);
+    return new EncoderBuffer(data, (this || _global$p).reporter);
   };
 
   Node.prototype._encode = function encode(data, reporter, parent) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     if (state['default'] !== null && state['default'] === data) return;
 
     var result = this._encodeValue(data, reporter, parent);
@@ -12803,12 +12844,12 @@ function dew$1D() {
   };
 
   Node.prototype._encodeValue = function encode(data, reporter, parent) {
-    var state = (this || _global$o)._baseState; // Decode root node
+    var state = (this || _global$p)._baseState; // Decode root node
 
     if (state.parent === null) return state.children[0]._encode(data, reporter || new Reporter());
     var result = null; // Set reporter to share it with a child class
 
-    (this || _global$o).reporter = reporter; // Check if data is there
+    (this || _global$p).reporter = reporter; // Check if data is there
 
     if (state.optional && data === undefined) {
       if (state['default'] !== null) data = state['default'];else return;
@@ -12837,7 +12878,7 @@ function dew$1D() {
 
         reporter.leaveKey(prevKey);
         return res;
-      }, this || _global$o).filter(function (child) {
+      }, this || _global$p).filter(function (child) {
         return child;
       });
       content = this._createEncoderBuffer(content);
@@ -12849,7 +12890,7 @@ function dew$1D() {
         var child = this.clone();
         child._baseState.implicit = null;
         content = this._createEncoderBuffer(data.map(function (item) {
-          var state = (this || _global$o)._baseState;
+          var state = (this || _global$p)._baseState;
           return this._getUse(state.args[0], data)._encode(item, reporter);
         }, child));
       } else if (state.use !== null) {
@@ -12880,7 +12921,7 @@ function dew$1D() {
   };
 
   Node.prototype._encodeChoice = function encodeChoice(data, reporter) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     var node = state.choice[data.type];
 
     if (!node) {
@@ -12891,7 +12932,7 @@ function dew$1D() {
   };
 
   Node.prototype._encodePrimitive = function encodePrimitive(tag, data) {
-    var state = (this || _global$o)._baseState;
+    var state = (this || _global$p)._baseState;
     if (/str$/.test(tag)) return this._encodeStr(data, tag);else if (tag === 'objid' && state.args) return this._encodeObjid(data, state.reverseArgs[0], state.args[1]);else if (tag === 'objid') return this._encodeObjid(data, null, null);else if (tag === 'gentime' || tag === 'utctime') return this._encodeTime(data, tag);else if (tag === 'null_') return this._encodeNull();else if (tag === 'int' || tag === 'enum') return this._encodeInt(data, state.args && state.reverseArgs[0]);else if (tag === 'bool') return this._encodeBool(data);else if (tag === 'objDesc') return this._encodeStr(data, tag);else throw new Error('Unsupported tag: ' + tag);
   };
 
@@ -12908,24 +12949,24 @@ function dew$1D() {
 
 var exports$1x = {},
     _dewExec$1s = false;
-function dew$1E() {
+function dew$1y() {
   if (_dewExec$1s) return exports$1x;
   _dewExec$1s = true;
   var base = exports$1x;
-  base.Reporter = dew$1B().Reporter;
-  base.DecoderBuffer = dew$1C().DecoderBuffer;
-  base.EncoderBuffer = dew$1C().EncoderBuffer;
-  base.Node = dew$1D();
+  base.Reporter = dew$1v().Reporter;
+  base.DecoderBuffer = dew$1w().DecoderBuffer;
+  base.EncoderBuffer = dew$1w().EncoderBuffer;
+  base.Node = dew$1x();
   return exports$1x;
 }
 
 var exports$1y = {},
     _dewExec$1t = false;
-function dew$1F() {
+function dew$1z() {
   if (_dewExec$1t) return exports$1y;
   _dewExec$1t = true;
 
-  var constants = dew$1G();
+  var constants = dew$1A();
 
   exports$1y.tagClass = {
     0: 'universal',
@@ -12971,7 +13012,7 @@ function dew$1F() {
 
 var exports$1z = {},
     _dewExec$1u = false;
-function dew$1G() {
+function dew$1A() {
   if (_dewExec$1u) return exports$1z;
   _dewExec$1u = true;
   var constants = exports$1z; // Helper
@@ -12987,22 +13028,22 @@ function dew$1G() {
     return res;
   };
 
-  constants.der = dew$1F();
+  constants.der = dew$1z();
   return exports$1z;
 }
 
 var exports$1A = {},
     _dewExec$1v = false;
 
-var _global$p = typeof self !== "undefined" ? self : global;
+var _global$q = typeof self !== "undefined" ? self : global;
 
-function dew$1H() {
+function dew$1B() {
   if (_dewExec$1v) return exports$1A;
   _dewExec$1v = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var asn1 = dew$1N();
+  var asn1 = dew$1H();
 
   var base = asn1.base;
   var bignum = asn1.bignum; // Import DER constants
@@ -13010,24 +13051,24 @@ function dew$1H() {
   var der = asn1.constants.der;
 
   function DERDecoder(entity) {
-    (this || _global$p).enc = 'der';
-    (this || _global$p).name = entity.name;
-    (this || _global$p).entity = entity; // Construct base tree
+    (this || _global$q).enc = 'der';
+    (this || _global$q).name = entity.name;
+    (this || _global$q).entity = entity; // Construct base tree
 
-    (this || _global$p).tree = new DERNode();
+    (this || _global$q).tree = new DERNode();
 
-    (this || _global$p).tree._init(entity.body);
+    (this || _global$q).tree._init(entity.body);
   }
   exports$1A = DERDecoder;
 
   DERDecoder.prototype.decode = function decode(data, options) {
     if (!(data instanceof base.DecoderBuffer)) data = new base.DecoderBuffer(data, options);
-    return (this || _global$p).tree._decode(data, options);
+    return (this || _global$q).tree._decode(data, options);
   }; // Tree methods
 
 
   function DERNode(parent) {
-    base.Node.call(this || _global$p, 'der', parent);
+    base.Node.call(this || _global$q, 'der', parent);
   }
 
   inherits(DERNode, base.Node);
@@ -13056,7 +13097,7 @@ function dew$1H() {
 
     var state = buffer.save();
 
-    var res = this._skipUntilEnd(buffer, 'Failed to skip indefinite length body: "' + (this || _global$p).tag + '"');
+    var res = this._skipUntilEnd(buffer, 'Failed to skip indefinite length body: "' + (this || _global$q).tag + '"');
 
     if (buffer.isError(res)) return res;
     len = buffer.offset - state.offset;
@@ -13277,21 +13318,21 @@ function dew$1H() {
 var exports$1B = {},
     _dewExec$1w = false;
 
-var _global$q = typeof self !== "undefined" ? self : global;
+var _global$r = typeof self !== "undefined" ? self : global;
 
-function dew$1I() {
+function dew$1C() {
   if (_dewExec$1w) return exports$1B;
   _dewExec$1w = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
-  var DERDecoder = dew$1H();
+  var DERDecoder = dew$1B();
 
   function PEMDecoder(entity) {
-    DERDecoder.call(this || _global$q, entity);
-    (this || _global$q).enc = 'pem';
+    DERDecoder.call(this || _global$r, entity);
+    (this || _global$r).enc = 'pem';
   }
   inherits(PEMDecoder, DERDecoder);
   exports$1B = PEMDecoder;
@@ -13323,7 +13364,7 @@ function dew$1I() {
 
     base64.replace(/[^a-z0-9\+\/=]+/gi, '');
     var input = new Buffer(base64, 'base64');
-    return DERDecoder.prototype.decode.call(this || _global$q, input, options);
+    return DERDecoder.prototype.decode.call(this || _global$r, input, options);
   };
 
   return exports$1B;
@@ -13331,58 +13372,58 @@ function dew$1I() {
 
 var exports$1C = {},
     _dewExec$1x = false;
-function dew$1J() {
+function dew$1D() {
   if (_dewExec$1x) return exports$1C;
   _dewExec$1x = true;
   var decoders = exports$1C;
-  decoders.der = dew$1H();
-  decoders.pem = dew$1I();
+  decoders.der = dew$1B();
+  decoders.pem = dew$1C();
   return exports$1C;
 }
 
 var exports$1D = {},
     _dewExec$1y = false;
 
-var _global$r = typeof self !== "undefined" ? self : global;
+var _global$s = typeof self !== "undefined" ? self : global;
 
-function dew$1K() {
+function dew$1E() {
   if (_dewExec$1y) return exports$1D;
   _dewExec$1y = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
-  var asn1 = dew$1N();
+  var asn1 = dew$1H();
 
   var base = asn1.base; // Import DER constants
 
   var der = asn1.constants.der;
 
   function DEREncoder(entity) {
-    (this || _global$r).enc = 'der';
-    (this || _global$r).name = entity.name;
-    (this || _global$r).entity = entity; // Construct base tree
+    (this || _global$s).enc = 'der';
+    (this || _global$s).name = entity.name;
+    (this || _global$s).entity = entity; // Construct base tree
 
-    (this || _global$r).tree = new DERNode();
+    (this || _global$s).tree = new DERNode();
 
-    (this || _global$r).tree._init(entity.body);
+    (this || _global$s).tree._init(entity.body);
   }
   exports$1D = DEREncoder;
 
   DEREncoder.prototype.encode = function encode(data, reporter) {
-    return (this || _global$r).tree._encode(data, reporter).join();
+    return (this || _global$s).tree._encode(data, reporter).join();
   }; // Tree methods
 
 
   function DERNode(parent) {
-    base.Node.call(this || _global$r, 'der', parent);
+    base.Node.call(this || _global$s, 'der', parent);
   }
 
   inherits(DERNode, base.Node);
 
   DERNode.prototype._encodeComposite = function encodeComposite(tag, primitive, cls, content) {
-    var encodedTag = encodeTag(tag, primitive, cls, (this || _global$r).reporter); // Short form
+    var encodedTag = encodeTag(tag, primitive, cls, (this || _global$s).reporter); // Short form
 
     if (content.length < 0x80) {
       var header = new Buffer(2);
@@ -13419,13 +13460,13 @@ function dew$1K() {
       return this._createEncoderBuffer(buf);
     } else if (tag === 'numstr') {
       if (!this._isNumstr(str)) {
-        return (this || _global$r).reporter.error('Encoding of string type: numstr supports ' + 'only digits and space');
+        return (this || _global$s).reporter.error('Encoding of string type: numstr supports ' + 'only digits and space');
       }
 
       return this._createEncoderBuffer(str);
     } else if (tag === 'printstr') {
       if (!this._isPrintstr(str)) {
-        return (this || _global$r).reporter.error('Encoding of string type: printstr supports ' + 'only latin upper and lower case letters, ' + 'digits, space, apostrophe, left and rigth ' + 'parenthesis, plus sign, comma, hyphen, ' + 'dot, slash, colon, equal sign, ' + 'question mark');
+        return (this || _global$s).reporter.error('Encoding of string type: printstr supports ' + 'only latin upper and lower case letters, ' + 'digits, space, apostrophe, left and rigth ' + 'parenthesis, plus sign, comma, hyphen, ' + 'dot, slash, colon, equal sign, ' + 'question mark');
       }
 
       return this._createEncoderBuffer(str);
@@ -13434,14 +13475,14 @@ function dew$1K() {
     } else if (tag === 'objDesc') {
       return this._createEncoderBuffer(str);
     } else {
-      return (this || _global$r).reporter.error('Encoding of string type: ' + tag + ' unsupported');
+      return (this || _global$s).reporter.error('Encoding of string type: ' + tag + ' unsupported');
     }
   };
 
   DERNode.prototype._encodeObjid = function encodeObjid(id, values, relative) {
     if (typeof id === 'string') {
-      if (!values) return (this || _global$r).reporter.error('string objid given, but no values map found');
-      if (!values.hasOwnProperty(id)) return (this || _global$r).reporter.error('objid not found in values map');
+      if (!values) return (this || _global$s).reporter.error('string objid given, but no values map found');
+      if (!values.hasOwnProperty(id)) return (this || _global$s).reporter.error('objid not found in values map');
       id = values[id].split(/[\s\.]+/g);
 
       for (var i = 0; i < id.length; i++) id[i] |= 0;
@@ -13452,11 +13493,11 @@ function dew$1K() {
     }
 
     if (!Array.isArray(id)) {
-      return (this || _global$r).reporter.error('objid() should be either array or string, ' + 'got: ' + JSON.stringify(id));
+      return (this || _global$s).reporter.error('objid() should be either array or string, ' + 'got: ' + JSON.stringify(id));
     }
 
     if (!relative) {
-      if (id[1] >= 40) return (this || _global$r).reporter.error('Second objid identifier OOB');
+      if (id[1] >= 40) return (this || _global$s).reporter.error('Second objid identifier OOB');
       id.splice(0, 2, id[0] * 40 + id[1]);
     } // Count number of octets
 
@@ -13495,7 +13536,7 @@ function dew$1K() {
     } else if (tag === 'utctime') {
       str = [two(date.getFullYear() % 100), two(date.getUTCMonth() + 1), two(date.getUTCDate()), two(date.getUTCHours()), two(date.getUTCMinutes()), two(date.getUTCSeconds()), 'Z'].join('');
     } else {
-      (this || _global$r).reporter.error('Encoding ' + tag + ' time is not supported yet');
+      (this || _global$s).reporter.error('Encoding ' + tag + ' time is not supported yet');
     }
 
     return this._encodeStr(str, 'octstr');
@@ -13507,10 +13548,10 @@ function dew$1K() {
 
   DERNode.prototype._encodeInt = function encodeInt(num, values) {
     if (typeof num === 'string') {
-      if (!values) return (this || _global$r).reporter.error('String int or enum given, but no values map');
+      if (!values) return (this || _global$s).reporter.error('String int or enum given, but no values map');
 
       if (!values.hasOwnProperty(num)) {
-        return (this || _global$r).reporter.error('Values map doesn\'t contain: ' + JSON.stringify(num));
+        return (this || _global$s).reporter.error('Values map doesn\'t contain: ' + JSON.stringify(num));
       }
 
       num = values[num];
@@ -13566,7 +13607,7 @@ function dew$1K() {
   };
 
   DERNode.prototype._skipDefault = function skipDefault(dataBuffer, reporter, parent) {
-    var state = (this || _global$r)._baseState;
+    var state = (this || _global$s)._baseState;
     var i;
     if (state['default'] === null) return false;
     var data = dataBuffer.join();
@@ -13595,25 +13636,25 @@ function dew$1K() {
 var exports$1E = {},
     _dewExec$1z = false;
 
-var _global$s = typeof self !== "undefined" ? self : global;
+var _global$t = typeof self !== "undefined" ? self : global;
 
-function dew$1L() {
+function dew$1F() {
   if (_dewExec$1z) return exports$1E;
   _dewExec$1z = true;
 
-  var inherits = dew$3();
+  var inherits = dew$1();
 
-  var DEREncoder = dew$1K();
+  var DEREncoder = dew$1E();
 
   function PEMEncoder(entity) {
-    DEREncoder.call(this || _global$s, entity);
-    (this || _global$s).enc = 'pem';
+    DEREncoder.call(this || _global$t, entity);
+    (this || _global$t).enc = 'pem';
   }
   inherits(PEMEncoder, DEREncoder);
   exports$1E = PEMEncoder;
 
   PEMEncoder.prototype.encode = function encode(data, options) {
-    var buf = DEREncoder.prototype.encode.call(this || _global$s, data);
+    var buf = DEREncoder.prototype.encode.call(this || _global$t, data);
     var p = buf.toString('base64');
     var out = ['-----BEGIN ' + options.label + '-----'];
 
@@ -13628,37 +13669,37 @@ function dew$1L() {
 
 var exports$1F = {},
     _dewExec$1A = false;
-function dew$1M() {
+function dew$1G() {
   if (_dewExec$1A) return exports$1F;
   _dewExec$1A = true;
   var encoders = exports$1F;
-  encoders.der = dew$1K();
-  encoders.pem = dew$1L();
+  encoders.der = dew$1E();
+  encoders.pem = dew$1F();
   return exports$1F;
 }
 
 var exports$1G = {},
     _dewExec$1B = false;
-function dew$1N() {
+function dew$1H() {
   if (_dewExec$1B) return exports$1G;
   _dewExec$1B = true;
   var asn1 = exports$1G;
-  asn1.bignum = dew$Z();
-  asn1.define = dew$1A().define;
-  asn1.base = dew$1E();
-  asn1.constants = dew$1G();
-  asn1.decoders = dew$1J();
-  asn1.encoders = dew$1M();
+  asn1.bignum = dew$T();
+  asn1.define = dew$1u().define;
+  asn1.base = dew$1y();
+  asn1.constants = dew$1A();
+  asn1.decoders = dew$1D();
+  asn1.encoders = dew$1G();
   return exports$1G;
 }
 
 var exports$1H = {},
     _dewExec$1C = false;
-function dew$1O() {
+function dew$1I() {
   if (_dewExec$1C) return exports$1H;
   _dewExec$1C = true;
 
-  var asn = dew$1N();
+  var asn = dew$1H();
 
   var Time = asn.define('Time', function () {
     this.choice({
@@ -13704,13 +13745,13 @@ function dew$1O() {
 
 var exports$1I = {},
     _dewExec$1D = false;
-function dew$1P() {
+function dew$1J() {
   if (_dewExec$1D) return exports$1I;
   _dewExec$1D = true;
 
-  var asn1 = dew$1N();
+  var asn1 = dew$1H();
 
-  exports$1I.certificate = dew$1O();
+  exports$1I.certificate = dew$1I();
   var RSAPrivateKey = asn1.define('RSAPrivateKey', function () {
     this.seq().obj(this.key('version').int(), this.key('modulus').int(), this.key('publicExponent').int(), this.key('privateExponent').int(), this.key('prime1').int(), this.key('prime2').int(), this.key('exponent1').int(), this.key('exponent2').int(), this.key('coefficient').int());
   });
@@ -13756,27 +13797,25 @@ function dew$1P() {
   return exports$1I;
 }
 
-function dew$1Q () {
+function dew$1K () {
   return exports$1J;
 }
 var exports$1J = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2":"aes-128-cbc","2.16.840.1.101.3.4.1.3":"aes-128-ofb","2.16.840.1.101.3.4.1.4":"aes-128-cfb","2.16.840.1.101.3.4.1.21":"aes-192-ecb","2.16.840.1.101.3.4.1.22":"aes-192-cbc","2.16.840.1.101.3.4.1.23":"aes-192-ofb","2.16.840.1.101.3.4.1.24":"aes-192-cfb","2.16.840.1.101.3.4.1.41":"aes-256-ecb","2.16.840.1.101.3.4.1.42":"aes-256-cbc","2.16.840.1.101.3.4.1.43":"aes-256-ofb","2.16.840.1.101.3.4.1.44":"aes-256-cfb"};
 
 var exports$1K = {},
     _dewExec$1E = false;
-function dew$1R() {
+function dew$1L() {
   if (_dewExec$1E) return exports$1K;
   _dewExec$1E = true;
-
-  var Buffer = dew$4().Buffer;
-
+  var Buffer = _buffer.Buffer;
   // adapted from https://github.com/apatil/pemstrip
   var findProc = /Proc-Type: 4,ENCRYPTED[\n\r]+DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)[\n\r]+([0-9A-z\n\r\+\/\=]+)[\n\r]+/m;
   var startRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----/m;
   var fullRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----([0-9A-z\n\r\+\/\=]+)-----END \1-----$/m;
 
-  var evp = dew$T();
+  var evp = dew$N();
 
-  var ciphers = dew$W();
+  var ciphers = dew$Q();
 
   exports$1K = function (okey, password) {
     var key = okey.toString();
@@ -13810,21 +13849,20 @@ function dew$1R() {
 
 var exports$1L = {},
     _dewExec$1F = false;
-function dew$1S() {
+function dew$1M() {
   if (_dewExec$1F) return exports$1L;
   _dewExec$1F = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var asn1 = dew$1J();
 
-  var asn1 = dew$1P();
+  var aesid = dew$1K();
 
-  var aesid = dew$1Q();
+  var fixProc = dew$1L();
 
-  var fixProc = dew$1R();
+  var ciphers = dew$Q();
 
-  var ciphers = dew$W();
-
-  var compat = dew$v();
+  var compat = dew$p();
 
   exports$1L = parseKeys;
 
@@ -13957,31 +13995,30 @@ function dew$1S() {
   return exports$1L;
 }
 
-function dew$1T () {
+function dew$1N () {
   return exports$1M;
 }
 var exports$1M = {"1.3.132.0.10":"secp256k1","1.3.132.0.33":"p224","1.2.840.10045.3.1.1":"p192","1.2.840.10045.3.1.7":"p256","1.3.132.0.34":"p384","1.3.132.0.35":"p521"};
 
 var exports$1N = {},
     _dewExec$1G = false;
-function dew$1U() {
+function dew$1O() {
   if (_dewExec$1G) return exports$1N;
   _dewExec$1G = true;
-
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
   // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-  var createHmac = dew$o();
+  var createHmac = dew$i();
 
-  var crt = dew$15();
+  var crt = dew$_();
 
-  var EC = dew$1z().ec;
+  var EC = dew$1t().ec;
 
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var parseKeys = dew$1S();
+  var parseKeys = dew$1M();
 
-  var curves = dew$1T();
+  var curves = dew$1N();
 
   function sign(hash, key, hashType, signType, tag) {
     var priv = parseKeys(key);
@@ -14136,20 +14173,19 @@ function dew$1U() {
 
 var exports$1O = {},
     _dewExec$1H = false;
-function dew$1V() {
+function dew$1P() {
   if (_dewExec$1H) return exports$1O;
   _dewExec$1H = true;
-
-  var Buffer = dew$4().Buffer;
+  var Buffer = _buffer.Buffer;
 
   // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-  var BN = dew$Z();
+  var BN = dew$T();
 
-  var EC = dew$1z().ec;
+  var EC = dew$1t().ec;
 
-  var parseKeys = dew$1S();
+  var parseKeys = dew$1M();
 
-  var curves = dew$1T();
+  var curves = dew$1N();
 
   function verify(sig, hash, key, signType, tag) {
     var pub = parseKeys(key);
@@ -14233,25 +14269,24 @@ function dew$1V() {
 var exports$1P = {},
     _dewExec$1I = false;
 
-var _global$t = typeof self !== "undefined" ? self : global;
+var _global$u = typeof self !== "undefined" ? self : global;
 
-function dew$1W() {
+function dew$1Q() {
   if (_dewExec$1I) return exports$1P;
   _dewExec$1I = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var createHash = dew$f();
 
-  var createHash = dew$l();
+  var stream = _stream;
 
-  var stream = dew$2();
+  var inherits = dew$1();
 
-  var inherits = dew$3();
+  var sign = dew$1O();
 
-  var sign = dew$1U();
+  var verify = dew$1P();
 
-  var verify = dew$1V();
-
-  var algorithms = dew$p();
+  var algorithms = dew$j();
 
   Object.keys(algorithms).forEach(function (key) {
     algorithms[key].id = new Buffer(algorithms[key].id, 'hex');
@@ -14259,19 +14294,19 @@ function dew$1W() {
   });
 
   function Sign(algorithm) {
-    stream.Writable.call(this || _global$t);
+    stream.Writable.call(this || _global$u);
     var data = algorithms[algorithm];
     if (!data) throw new Error('Unknown message digest');
-    (this || _global$t)._hashType = data.hash;
-    (this || _global$t)._hash = createHash(data.hash);
-    (this || _global$t)._tag = data.id;
-    (this || _global$t)._signType = data.sign;
+    (this || _global$u)._hashType = data.hash;
+    (this || _global$u)._hash = createHash(data.hash);
+    (this || _global$u)._tag = data.id;
+    (this || _global$u)._signType = data.sign;
   }
 
   inherits(Sign, stream.Writable);
 
   Sign.prototype._write = function _write(data, _, done) {
-    (this || _global$t)._hash.update(data);
+    (this || _global$u)._hash.update(data);
 
     done();
   };
@@ -14279,33 +14314,33 @@ function dew$1W() {
   Sign.prototype.update = function update(data, enc) {
     if (typeof data === 'string') data = new Buffer(data, enc);
 
-    (this || _global$t)._hash.update(data);
+    (this || _global$u)._hash.update(data);
 
-    return this || _global$t;
+    return this || _global$u;
   };
 
   Sign.prototype.sign = function signMethod(key, enc) {
     this.end();
 
-    var hash = (this || _global$t)._hash.digest();
+    var hash = (this || _global$u)._hash.digest();
 
-    var sig = sign(hash, key, (this || _global$t)._hashType, (this || _global$t)._signType, (this || _global$t)._tag);
+    var sig = sign(hash, key, (this || _global$u)._hashType, (this || _global$u)._signType, (this || _global$u)._tag);
     return enc ? sig.toString(enc) : sig;
   };
 
   function Verify(algorithm) {
-    stream.Writable.call(this || _global$t);
+    stream.Writable.call(this || _global$u);
     var data = algorithms[algorithm];
     if (!data) throw new Error('Unknown message digest');
-    (this || _global$t)._hash = createHash(data.hash);
-    (this || _global$t)._tag = data.id;
-    (this || _global$t)._signType = data.sign;
+    (this || _global$u)._hash = createHash(data.hash);
+    (this || _global$u)._tag = data.id;
+    (this || _global$u)._signType = data.sign;
   }
 
   inherits(Verify, stream.Writable);
 
   Verify.prototype._write = function _write(data, _, done) {
-    (this || _global$t)._hash.update(data);
+    (this || _global$u)._hash.update(data);
 
     done();
   };
@@ -14313,18 +14348,18 @@ function dew$1W() {
   Verify.prototype.update = function update(data, enc) {
     if (typeof data === 'string') data = new Buffer(data, enc);
 
-    (this || _global$t)._hash.update(data);
+    (this || _global$u)._hash.update(data);
 
-    return this || _global$t;
+    return this || _global$u;
   };
 
   Verify.prototype.verify = function verifyMethod(key, sig, enc) {
     if (typeof sig === 'string') sig = new Buffer(sig, enc);
     this.end();
 
-    var hash = (this || _global$t)._hash.digest();
+    var hash = (this || _global$u)._hash.digest();
 
-    return verify(sig, hash, key, (this || _global$t)._signType, (this || _global$t)._tag);
+    return verify(sig, hash, key, (this || _global$u)._signType, (this || _global$u)._tag);
   };
 
   function createSign(algorithm) {
@@ -14347,17 +14382,16 @@ function dew$1W() {
 var exports$1Q = {},
     _dewExec$1J = false;
 
-var _global$u = typeof self !== "undefined" ? self : global;
+var _global$v = typeof self !== "undefined" ? self : global;
 
-function dew$1X() {
+function dew$1R() {
   if (_dewExec$1J) return exports$1Q;
   _dewExec$1J = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var elliptic = dew$1t();
 
-  var elliptic = dew$1z();
-
-  var BN = dew$Z();
+  var BN = dew$T();
 
   exports$1Q = function createECDH(curve) {
     return new ECDH(curve);
@@ -14400,21 +14434,21 @@ function dew$1X() {
   aliases.p521 = aliases.secp521r1;
 
   function ECDH(curve) {
-    (this || _global$u).curveType = aliases[curve];
+    (this || _global$v).curveType = aliases[curve];
 
-    if (!(this || _global$u).curveType) {
-      (this || _global$u).curveType = {
+    if (!(this || _global$v).curveType) {
+      (this || _global$v).curveType = {
         name: curve
       };
     }
 
-    (this || _global$u).curve = new elliptic.ec((this || _global$u).curveType.name); // eslint-disable-line new-cap
+    (this || _global$v).curve = new elliptic.ec((this || _global$v).curveType.name); // eslint-disable-line new-cap
 
-    (this || _global$u).keys = void 0;
+    (this || _global$v).keys = void 0;
   }
 
   ECDH.prototype.generateKeys = function (enc, format) {
-    (this || _global$u).keys = (this || _global$u).curve.genKeyPair();
+    (this || _global$v).keys = (this || _global$v).curve.genKeyPair();
     return this.getPublicKey(enc, format);
   };
 
@@ -14425,14 +14459,14 @@ function dew$1X() {
       other = new Buffer(other, inenc);
     }
 
-    var otherPub = (this || _global$u).curve.keyFromPublic(other).getPublic();
+    var otherPub = (this || _global$v).curve.keyFromPublic(other).getPublic();
 
-    var out = otherPub.mul((this || _global$u).keys.getPrivate()).getX();
-    return formatReturnValue(out, enc, (this || _global$u).curveType.byteLength);
+    var out = otherPub.mul((this || _global$v).keys.getPrivate()).getX();
+    return formatReturnValue(out, enc, (this || _global$v).curveType.byteLength);
   };
 
   ECDH.prototype.getPublicKey = function (enc, format) {
-    var key = (this || _global$u).keys.getPublic(format === 'compressed', true);
+    var key = (this || _global$v).keys.getPublic(format === 'compressed', true);
 
     if (format === 'hybrid') {
       if (key[key.length - 1] % 2) {
@@ -14446,7 +14480,7 @@ function dew$1X() {
   };
 
   ECDH.prototype.getPrivateKey = function (enc) {
-    return formatReturnValue((this || _global$u).keys.getPrivate(), enc);
+    return formatReturnValue((this || _global$v).keys.getPrivate(), enc);
   };
 
   ECDH.prototype.setPublicKey = function (pub, enc) {
@@ -14456,9 +14490,9 @@ function dew$1X() {
       pub = new Buffer(pub, enc);
     }
 
-    (this || _global$u).keys._importPublic(pub);
+    (this || _global$v).keys._importPublic(pub);
 
-    return this || _global$u;
+    return this || _global$v;
   };
 
   ECDH.prototype.setPrivateKey = function (priv, enc) {
@@ -14471,11 +14505,11 @@ function dew$1X() {
     var _priv = new BN(priv);
 
     _priv = _priv.toString(16);
-    (this || _global$u).keys = (this || _global$u).curve.genKeyPair();
+    (this || _global$v).keys = (this || _global$v).curve.genKeyPair();
 
-    (this || _global$u).keys._importPrivate(_priv);
+    (this || _global$v).keys._importPrivate(_priv);
 
-    return this || _global$u;
+    return this || _global$v;
   };
 
   function formatReturnValue(bn, enc, len) {
@@ -14503,13 +14537,12 @@ function dew$1X() {
 
 var exports$1R = {},
     _dewExec$1K = false;
-function dew$1Y() {
+function dew$1S() {
   if (_dewExec$1K) return exports$1R;
   _dewExec$1K = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
-
-  var createHash = dew$l();
+  var createHash = dew$f();
 
   exports$1R = function (seed, len) {
     var t = new Buffer('');
@@ -14535,7 +14568,7 @@ function dew$1Y() {
 
 var exports$1S = {},
     _dewExec$1L = false;
-function dew$1Z() {
+function dew$1T() {
   if (_dewExec$1L) return exports$1S;
   _dewExec$1L = true;
 
@@ -14555,13 +14588,12 @@ function dew$1Z() {
 
 var exports$1T = {},
     _dewExec$1M = false;
-function dew$1_() {
+function dew$1U() {
   if (_dewExec$1M) return exports$1T;
   _dewExec$1M = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
-
-  var bn = dew$Z();
+  var bn = dew$T();
 
   function withPublic(paddedMsg, key) {
     return new Buffer(paddedMsg.toRed(bn.mont(key.modulus)).redPow(new bn(key.publicExponent)).fromRed().toArray());
@@ -14573,27 +14605,26 @@ function dew$1_() {
 
 var exports$1U = {},
     _dewExec$1N = false;
-function dew$20() {
+function dew$1V() {
   if (_dewExec$1N) return exports$1U;
   _dewExec$1N = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var parseKeys = dew$1M();
 
-  var parseKeys = dew$1S();
+  var randomBytes = dew$2();
 
-  var randomBytes = dew$8();
+  var createHash = dew$f();
 
-  var createHash = dew$l();
+  var mgf = dew$1S();
 
-  var mgf = dew$1Y();
+  var xor = dew$1T();
 
-  var xor = dew$1Z();
+  var bn = dew$T();
 
-  var bn = dew$Z();
+  var withPublic = dew$1U();
 
-  var withPublic = dew$1_();
-
-  var crt = dew$15();
+  var crt = dew$_();
 
   exports$1U = function publicEncrypt(public_key, msg, reverse) {
     var padding;
@@ -14698,25 +14729,24 @@ function dew$20() {
 
 var exports$1V = {},
     _dewExec$1O = false;
-function dew$21() {
+function dew$1W() {
   if (_dewExec$1O) return exports$1V;
   _dewExec$1O = true;
+  var Buffer = _buffer.Buffer;
 
-  var Buffer = dew$4().Buffer;
+  var parseKeys = dew$1M();
 
-  var parseKeys = dew$1S();
+  var mgf = dew$1S();
 
-  var mgf = dew$1Y();
+  var xor = dew$1T();
 
-  var xor = dew$1Z();
+  var bn = dew$T();
 
-  var bn = dew$Z();
+  var crt = dew$_();
 
-  var crt = dew$15();
+  var createHash = dew$f();
 
-  var createHash = dew$l();
-
-  var withPublic = dew$1_();
+  var withPublic = dew$1U();
 
   exports$1V = function privateDecrypt(private_key, enc, reverse) {
     var padding;
@@ -14847,11 +14877,11 @@ function dew$21() {
 
 var exports$1W = {},
     _dewExec$1P = false;
-function dew$22() {
+function dew$1X() {
   if (_dewExec$1P) return exports$1W;
   _dewExec$1P = true;
-  exports$1W.publicEncrypt = dew$20();
-  exports$1W.privateDecrypt = dew$21();
+  exports$1W.publicEncrypt = dew$1V();
+  exports$1W.privateDecrypt = dew$1W();
 
   exports$1W.privateEncrypt = function privateEncrypt(key, buf) {
     return exports$1W.publicEncrypt(key, buf, true);
@@ -14867,13 +14897,12 @@ function dew$22() {
 var exports$1X = {},
     _dewExec$1Q = false;
 
-var _global$v = typeof self !== "undefined" ? self : global;
+var _global$w = typeof self !== "undefined" ? self : global;
 
-function dew$23() {
+function dew$1Y() {
   if (_dewExec$1Q) return exports$1X;
   _dewExec$1Q = true;
-
-  var process = dew$1();
+  var process = _process;
 
   function oldBrowser() {
     throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11');
@@ -14881,11 +14910,11 @@ function dew$23() {
 
   var safeBuffer = dew();
 
-  var randombytes = dew$8();
+  var randombytes = dew$2();
 
   var Buffer = safeBuffer.Buffer;
   var kBufferMaxLength = safeBuffer.kMaxLength;
-  var crypto = _global$v.crypto || _global$v.msCrypto;
+  var crypto = _global$w.crypto || _global$w.msCrypto;
   var kMaxUint32 = Math.pow(2, 32) - 1;
 
   function assertOffset(offset, length) {
@@ -14927,7 +14956,7 @@ function dew$23() {
   }
 
   function randomFill(buf, offset, size, cb) {
-    if (!Buffer.isBuffer(buf) && !(buf instanceof _global$v.Uint8Array)) {
+    if (!Buffer.isBuffer(buf) && !(buf instanceof _global$w.Uint8Array)) {
       throw new TypeError('"buf" argument must be a Buffer or Uint8Array');
     }
 
@@ -14985,7 +15014,7 @@ function dew$23() {
       offset = 0;
     }
 
-    if (!Buffer.isBuffer(buf) && !(buf instanceof _global$v.Uint8Array)) {
+    if (!Buffer.isBuffer(buf) && !(buf instanceof _global$w.Uint8Array)) {
       throw new TypeError('"buf" argument must be a Buffer or Uint8Array');
     }
 
@@ -15000,14 +15029,14 @@ function dew$23() {
 
 var exports$1Y = {},
     _dewExec$1R = false;
-function dew$24() {
+function dew$1Z() {
   if (_dewExec$1R) return exports$1Y;
   _dewExec$1R = true;
-  exports$1Y.randomBytes = exports$1Y.rng = exports$1Y.pseudoRandomBytes = exports$1Y.prng = dew$8();
-  exports$1Y.createHash = exports$1Y.Hash = dew$l();
-  exports$1Y.createHmac = exports$1Y.Hmac = dew$o();
+  exports$1Y.randomBytes = exports$1Y.rng = exports$1Y.pseudoRandomBytes = exports$1Y.prng = dew$2();
+  exports$1Y.createHash = exports$1Y.Hash = dew$f();
+  exports$1Y.createHmac = exports$1Y.Hmac = dew$i();
 
-  var algos = dew$q();
+  var algos = dew$k();
 
   var algoKeys = Object.keys(algos);
   var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(algoKeys);
@@ -15016,12 +15045,12 @@ function dew$24() {
     return hashes;
   };
 
-  var p = dew$v();
+  var p = dew$p();
 
   exports$1Y.pbkdf2 = p.pbkdf2;
   exports$1Y.pbkdf2Sync = p.pbkdf2Sync;
 
-  var aes = dew$Y();
+  var aes = dew$S();
 
   exports$1Y.Cipher = aes.Cipher;
   exports$1Y.createCipher = aes.createCipher;
@@ -15034,7 +15063,7 @@ function dew$24() {
   exports$1Y.getCiphers = aes.getCiphers;
   exports$1Y.listCiphers = aes.listCiphers;
 
-  var dh = dew$14();
+  var dh = dew$Z();
 
   exports$1Y.DiffieHellmanGroup = dh.DiffieHellmanGroup;
   exports$1Y.createDiffieHellmanGroup = dh.createDiffieHellmanGroup;
@@ -15042,15 +15071,15 @@ function dew$24() {
   exports$1Y.createDiffieHellman = dh.createDiffieHellman;
   exports$1Y.DiffieHellman = dh.DiffieHellman;
 
-  var sign = dew$1W();
+  var sign = dew$1Q();
 
   exports$1Y.createSign = sign.createSign;
   exports$1Y.Sign = sign.Sign;
   exports$1Y.createVerify = sign.createVerify;
   exports$1Y.Verify = sign.Verify;
-  exports$1Y.createECDH = dew$1X();
+  exports$1Y.createECDH = dew$1R();
 
-  var publicEncrypt = dew$22();
+  var publicEncrypt = dew$1X();
 
   exports$1Y.publicEncrypt = publicEncrypt.publicEncrypt;
   exports$1Y.privateEncrypt = publicEncrypt.privateEncrypt;
@@ -15068,7 +15097,7 @@ function dew$24() {
   //   }
   // })
 
-  var rf = dew$23();
+  var rf = dew$1Y();
 
   exports$1Y.randomFill = rf.randomFill;
   exports$1Y.randomFillSync = rf.randomFillSync;
@@ -15097,7 +15126,7 @@ function dew$24() {
   return exports$1Y;
 }
 
-const exports$1Z = dew$24();
+const exports$1Z = dew$1Z();
 const Cipher = exports$1Z.Cipher, Cipheriv = exports$1Z.Cipheriv, Decipher = exports$1Z.Decipher, Decipheriv = exports$1Z.Decipheriv, DiffieHellman = exports$1Z.DiffieHellman, DiffieHellmanGroup = exports$1Z.DiffieHellmanGroup, Hash = exports$1Z.Hash, Hmac = exports$1Z.Hmac, Sign = exports$1Z.Sign, Verify = exports$1Z.Verify, constants = exports$1Z.constants, createCipher = exports$1Z.createCipher, createCipheriv = exports$1Z.createCipheriv, createCredentials = exports$1Z.createCredentials, createDecipher = exports$1Z.createDecipher, createDecipheriv = exports$1Z.createDecipheriv, createDiffieHellman = exports$1Z.createDiffieHellman, createDiffieHellmanGroup = exports$1Z.createDiffieHellmanGroup, createECDH = exports$1Z.createECDH, createHash = exports$1Z.createHash, createHmac = exports$1Z.createHmac, createSign = exports$1Z.createSign, createVerify = exports$1Z.createVerify, getCiphers = exports$1Z.getCiphers, getDiffieHellman = exports$1Z.getDiffieHellman, getHashes = exports$1Z.getHashes, listCiphers = exports$1Z.listCiphers, pbkdf2 = exports$1Z.pbkdf2, pbkdf2Sync = exports$1Z.pbkdf2Sync, privateDecrypt = exports$1Z.privateDecrypt, privateEncrypt = exports$1Z.privateEncrypt, prng = exports$1Z.prng, pseudoRandomBytes = exports$1Z.pseudoRandomBytes, publicDecrypt = exports$1Z.publicDecrypt, publicEncrypt = exports$1Z.publicEncrypt, randomBytes = exports$1Z.randomBytes, randomFill = exports$1Z.randomFill, randomFillSync = exports$1Z.randomFillSync, rng = exports$1Z.rng;
 
 export default exports$1Z;

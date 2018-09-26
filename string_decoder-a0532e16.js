@@ -1,14 +1,13 @@
-import { a as dew } from './chunk-00324d2c.js';
+import _buffer from './buffer.js';
 
 var exports$1 = {},
     _dewExec = false;
-function dew$1() {
+function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
 
   /* eslint-disable node/no-deprecated-api */
-  var buffer = dew();
-
+  var buffer = _buffer;
   var Buffer = buffer.Buffer; // alternative to using Object.keys for old browsers
 
   function copyProps(src, dst) {
@@ -81,12 +80,12 @@ function dew$1() {
 
 var exports$2 = {},
     _dewExec$1 = false;
-function dew$2() {
+function dew$1() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
 
   /*<replacement>*/
-  var Buffer = dew$1().Buffer;
+  var Buffer = dew().Buffer;
   /*</replacement>*/
 
 
@@ -406,4 +405,7 @@ function dew$2() {
   return exports$2;
 }
 
-export { dew$1 as a, dew$2 as b };
+const exports$3 = dew$1();
+const StringDecoder = exports$3.StringDecoder;
+
+export { dew as a, exports$3 as b, StringDecoder as c };

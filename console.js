@@ -1,12 +1,12 @@
-import { a as dew } from './chunk-ea1c6f37.js';
-import './chunk-00324d2c.js';
+import _util from './util.js';
+import _assert from './assert.js';
+import './chunk-30274fbf.js';
 import './chunk-1a62783c.js';
-import './chunk-8a9a6273.js';
-import { a as dew$1 } from './chunk-a21cc191.js';
+import './process.js';
 
 var exports$1 = {},
     _dewExec = false;
-function dew$2() {
+function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
   exports$1 = now;
@@ -23,16 +23,15 @@ var exports$2 = {},
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$3() {
+function dew$1() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
 
   /*global window, global*/
-  var util = dew();
+  var util = _util;
+  var assert = _assert;
 
-  var assert = dew$1();
-
-  var now = dew$2();
+  var now = dew();
 
   var slice = Array.prototype.slice;
   var console;
@@ -110,7 +109,7 @@ function dew$3() {
   return exports$2;
 }
 
-const exports$3 = dew$3();
+const exports$3 = dew$1();
 const assert = exports$3.assert, clear = exports$3.clear, context = exports$3.context, count = exports$3.count, countReset = exports$3.countReset, debug = exports$3.debug, dir = exports$3.dir, dirxml = exports$3.dirxml, error = exports$3.error, group = exports$3.group, groupCollapsed = exports$3.groupCollapsed, groupEnd = exports$3.groupEnd, info = exports$3.info, log = exports$3.log, memory = exports$3.memory, profile = exports$3.profile, profileEnd = exports$3.profileEnd, table = exports$3.table, time = exports$3.time, timeEnd = exports$3.timeEnd, timeStamp = exports$3.timeStamp, trace = exports$3.trace, warn = exports$3.warn;
 
 export default exports$3;

@@ -1,15 +1,14 @@
-import { a as dew } from './chunk-8a9a6273.js';
+import _process from './process.js';
 
 var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$1() {
+function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
-
-  var process = dew();
+  var process = _process;
 
   (function (global, undefined) {
 
@@ -220,7 +219,7 @@ var exports$2 = {},
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$2() {
+function dew$1() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
   var scope = typeof _global$1 !== "undefined" && _global$1 || typeof self !== "undefined" && self || window;
@@ -274,7 +273,7 @@ function dew$2() {
   }; // setimmediate attaches itself to the global object
 
 
-  dew$1(); // On some exotic environments, it's not clear which object `setimmediate` was
+  dew(); // On some exotic environments, it's not clear which object `setimmediate` was
   // able to install onto.  Search each possibility in the same order as the
   // `setimmediate` library.
 
@@ -284,7 +283,7 @@ function dew$2() {
   return exports$2;
 }
 
-const exports$3 = dew$2();
+const exports$3 = dew$1();
 const _unrefActive = exports$3._unrefActive, active = exports$3.active, clearImmediate = exports$3.clearImmediate, clearInterval$1 = exports$3.clearInterval, clearTimeout$1 = exports$3.clearTimeout, enroll = exports$3.enroll, setImmediate$1 = exports$3.setImmediate, setInterval$1 = exports$3.setInterval, setTimeout$1 = exports$3.setTimeout, unenroll = exports$3.unenroll;
 
 export default exports$3;

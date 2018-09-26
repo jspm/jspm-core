@@ -1,17 +1,15 @@
-import { a as dew } from './chunk-8a9a6273.js';
-import { a as dew$1 } from './chunk-00324d2c.js';
-import empty from './@empty.js';
-import { a as dew$2, b as dew$5 } from './chunk-0d8b1bfc.js';
-import { a as dew$3 } from './chunk-1a62783c.js';
-import { a as dew$4 } from './chunk-9a292033.js';
+import _process from './process.js';
+import _events from './events.js';
+import _buffer from './buffer.js';
+import { a as dew, b as _string_decoder } from './string_decoder-a0532e16.js';
+import { a as dew$1 } from './chunk-1a62783c.js';
 
 var exports$1 = {},
     _dewExec = false;
-function dew$6() {
+function dew$2() {
   if (_dewExec) return exports$1;
   _dewExec = true;
-
-  var process = dew();
+  var process = _process;
 
   if (!process.version || process.version.indexOf('v0.') === 0 || process.version.indexOf('v1.') === 0 && process.version.indexOf('v1.8.') !== 0) {
     exports$1 = {
@@ -68,7 +66,7 @@ function dew$6() {
 
 var exports$2 = {},
     _dewExec$1 = false;
-function dew$7() {
+function dew$3() {
   if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
   var toString = {}.toString;
@@ -82,20 +80,19 @@ function dew$7() {
 
 var exports$3 = {},
     _dewExec$2 = false;
-function dew$8() {
+function dew$4() {
   if (_dewExec$2) return exports$3;
   _dewExec$2 = true;
-  exports$3 = dew$p();
+  exports$3 = _events.EventEmitter;
   return exports$3;
 }
 
 var exports$4 = {},
     _dewExec$3 = false;
-function dew$9() {
+function dew$5() {
   if (_dewExec$3) return exports$4;
   _dewExec$3 = true;
-
-  var Buffer = dew$1().Buffer;
+  var Buffer = _buffer.Buffer;
 
   // Copyright Joyent, Inc. and other Node contributors.
   //
@@ -216,13 +213,11 @@ function dew$9() {
   return exports$4;
 }
 
-function dew$a () {
-  return empty;
-}
+var _crypto = Object.freeze(Object.create(null));
 
 var exports$5 = {},
     _dewExec$4 = false;
-function dew$b() {
+function dew$6() {
   if (_dewExec$4) return exports$5;
   _dewExec$4 = true;
 
@@ -232,9 +227,9 @@ function dew$b() {
     }
   }
 
-  var Buffer = dew$2().Buffer;
+  var Buffer = dew().Buffer;
 
-  var util = dew$a();
+  var util = _crypto;
 
   function copyBuffer(src, target, offset) {
     src.copy(target, offset);
@@ -327,12 +322,12 @@ function dew$b() {
 
 var exports$6 = {},
     _dewExec$5 = false;
-function dew$c() {
+function dew$7() {
   if (_dewExec$5) return exports$6;
   _dewExec$5 = true;
 
   /*<replacement>*/
-  var pna = dew$6();
+  var pna = dew$2();
   /*</replacement>*/
   // undocumented cb() API, needed for core, not for public API
 
@@ -412,7 +407,7 @@ var exports$7 = {},
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$d() {
+function dew$8() {
   if (_dewExec$6) return exports$7;
   _dewExec$6 = true;
 
@@ -493,14 +488,13 @@ var exports$8 = {},
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$e() {
+function dew$9() {
   if (_dewExec$7) return exports$8;
   _dewExec$7 = true;
-
-  var process = dew();
+  var process = _process;
 
   /*<replacement>*/
-  var pna = dew$6();
+  var pna = dew$2();
   /*</replacement>*/
 
 
@@ -534,27 +528,27 @@ function dew$e() {
   Writable.WritableState = WritableState;
   /*<replacement>*/
 
-  var util = dew$9();
+  var util = dew$5();
 
-  util.inherits = dew$3();
+  util.inherits = dew$1();
   /*</replacement>*/
 
   /*<replacement>*/
 
   var internalUtil = {
-    deprecate: dew$d()
+    deprecate: dew$8()
   };
   /*</replacement>*/
 
   /*<replacement>*/
 
-  var Stream = dew$8();
+  var Stream = dew$4();
   /*</replacement>*/
 
   /*<replacement>*/
 
 
-  var Buffer = dew$2().Buffer;
+  var Buffer = dew().Buffer;
 
   var OurUint8Array = _global$1.Uint8Array || function () {};
 
@@ -568,14 +562,14 @@ function dew$e() {
   /*</replacement>*/
 
 
-  var destroyImpl = dew$c();
+  var destroyImpl = dew$7();
 
   util.inherits(Writable, Stream);
 
   function nop() {}
 
   function WritableState(options, stream) {
-    Duplex = Duplex || dew$f();
+    Duplex = Duplex || dew$a();
     options = options || {}; // Duplex streams are both readable and writable, but share
     // the same options object.
     // However, some cases require setting options to different
@@ -702,7 +696,7 @@ function dew$e() {
   }
 
   function Writable(options) {
-    Duplex = Duplex || dew$f(); // Writable ctor is applied to Duplexes, too.
+    Duplex = Duplex || dew$a(); // Writable ctor is applied to Duplexes, too.
     // `realHasInstance` is necessary because using plain `instanceof`
     // would return false, as no `_writableState` property is attached.
     // Trying to use the custom `instanceof` for Writable here will also break the
@@ -1148,12 +1142,12 @@ function dew$e() {
 
 var exports$9 = {},
     _dewExec$8 = false;
-function dew$f() {
+function dew$a() {
   if (_dewExec$8) return exports$9;
   _dewExec$8 = true;
 
   /*<replacement>*/
-  var pna = dew$6();
+  var pna = dew$2();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -1174,14 +1168,14 @@ function dew$f() {
   exports$9 = Duplex;
   /*<replacement>*/
 
-  var util = dew$9();
+  var util = dew$5();
 
-  util.inherits = dew$3();
+  util.inherits = dew$1();
   /*</replacement>*/
 
-  var Readable = dew$g();
+  var Readable = dew$b();
 
-  var Writable = dew$e();
+  var Writable = dew$9();
 
   util.inherits(Duplex, Readable);
   {
@@ -1264,21 +1258,20 @@ var exports$a = {},
 
 var _global$2 = typeof self !== "undefined" ? self : global;
 
-function dew$g() {
+function dew$b() {
   if (_dewExec$9) return exports$a;
   _dewExec$9 = true;
-
-  var process = dew();
+  var process = _process;
 
   /*<replacement>*/
-  var pna = dew$6();
+  var pna = dew$2();
   /*</replacement>*/
 
 
   exports$a = Readable;
   /*<replacement>*/
 
-  var isArray = dew$7();
+  var isArray = dew$3();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -1290,7 +1283,7 @@ function dew$g() {
   Readable.ReadableState = ReadableState;
   /*<replacement>*/
 
-  var EE = dew$4().EventEmitter;
+  var EE = _events.EventEmitter;
 
   var EElistenerCount = function (emitter, type) {
     return emitter.listeners(type).length;
@@ -1300,13 +1293,13 @@ function dew$g() {
   /*<replacement>*/
 
 
-  var Stream = dew$8();
+  var Stream = dew$4();
   /*</replacement>*/
 
   /*<replacement>*/
 
 
-  var Buffer = dew$2().Buffer;
+  var Buffer = dew().Buffer;
 
   var OurUint8Array = _global$2.Uint8Array || function () {};
 
@@ -1322,15 +1315,14 @@ function dew$g() {
   /*<replacement>*/
 
 
-  var util = dew$9();
+  var util = dew$5();
 
-  util.inherits = dew$3();
+  util.inherits = dew$1();
   /*</replacement>*/
 
   /*<replacement>*/
 
-  var debugUtil = dew$a();
-
+  var debugUtil = _crypto;
   var debug = void 0;
 
   if (debugUtil && debugUtil.debuglog) {
@@ -1341,9 +1333,9 @@ function dew$g() {
   /*</replacement>*/
 
 
-  var BufferList = dew$b();
+  var BufferList = dew$6();
 
-  var destroyImpl = dew$c();
+  var destroyImpl = dew$7();
 
   var StringDecoder;
   util.inherits(Readable, Stream);
@@ -1361,7 +1353,7 @@ function dew$g() {
   }
 
   function ReadableState(options, stream) {
-    Duplex = Duplex || dew$f();
+    Duplex = Duplex || dew$a();
     options = options || {}; // Duplex streams are both readable and writable, but share
     // the same options object.
     // However, some cases require setting options to different
@@ -1417,14 +1409,14 @@ function dew$g() {
     this.encoding = null;
 
     if (options.encoding) {
-      if (!StringDecoder) StringDecoder = dew$5().StringDecoder;
+      if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
       this.decoder = new StringDecoder(options.encoding);
       this.encoding = options.encoding;
     }
   }
 
   function Readable(options) {
-    Duplex = Duplex || dew$f();
+    Duplex = Duplex || dew$a();
     if (!(this instanceof Readable)) return new Readable(options);
     this._readableState = new ReadableState(options, this); // legacy
 
@@ -1577,7 +1569,7 @@ function dew$g() {
 
 
   Readable.prototype.setEncoding = function (enc) {
-    if (!StringDecoder) StringDecoder = dew$5().StringDecoder;
+    if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
     this._readableState.decoder = new StringDecoder(enc);
     this._readableState.encoding = enc;
     return this;
@@ -2294,18 +2286,18 @@ function dew$g() {
 
 var exports$b = {},
     _dewExec$a = false;
-function dew$h() {
+function dew$c() {
   if (_dewExec$a) return exports$b;
   _dewExec$a = true;
   exports$b = Transform;
 
-  var Duplex = dew$f();
+  var Duplex = dew$a();
   /*<replacement>*/
 
 
-  var util = dew$9();
+  var util = dew$5();
 
-  util.inherits = dew$3();
+  util.inherits = dew$1();
   /*</replacement>*/
 
   util.inherits(Transform, Duplex);
@@ -2445,18 +2437,18 @@ function dew$h() {
 
 var exports$c = {},
     _dewExec$b = false;
-function dew$i() {
+function dew$d() {
   if (_dewExec$b) return exports$c;
   _dewExec$b = true;
   exports$c = PassThrough;
 
-  var Transform = dew$h();
+  var Transform = dew$c();
   /*<replacement>*/
 
 
-  var util = dew$9();
+  var util = dew$5();
 
-  util.inherits = dew$3();
+  util.inherits = dew$1();
   /*</replacement>*/
 
   util.inherits(PassThrough, Transform);
@@ -2475,209 +2467,17 @@ function dew$i() {
 
 var exports$d = {},
     _dewExec$c = false;
-function dew$j() {
+function dew$e() {
   if (_dewExec$c) return exports$d;
   _dewExec$c = true;
-  exports$d = exports$d = dew$g();
+  exports$d = exports$d = dew$b();
   exports$d.Stream = exports$d;
   exports$d.Readable = exports$d;
-  exports$d.Writable = dew$e();
-  exports$d.Duplex = dew$f();
-  exports$d.Transform = dew$h();
-  exports$d.PassThrough = dew$i();
+  exports$d.Writable = dew$9();
+  exports$d.Duplex = dew$a();
+  exports$d.Transform = dew$c();
+  exports$d.PassThrough = dew$d();
   return exports$d;
 }
 
-var exports$e = {},
-    _dewExec$d = false;
-function dew$k() {
-  if (_dewExec$d) return exports$e;
-  _dewExec$d = true;
-  exports$e = dew$e();
-  return exports$e;
-}
-
-var exports$f = {},
-    _dewExec$e = false;
-function dew$l() {
-  if (_dewExec$e) return exports$f;
-  _dewExec$e = true;
-  exports$f = dew$f();
-  return exports$f;
-}
-
-var exports$g = {},
-    _dewExec$f = false;
-function dew$m() {
-  if (_dewExec$f) return exports$g;
-  _dewExec$f = true;
-
-  var process = dew();
-
-  var Stream = dew$p();
-
-  if (process.env.READABLE_STREAM === 'disable' && Stream) {
-    exports$g = Stream;
-    exports$g = exports$g = Stream.Readable;
-    exports$g.Readable = Stream.Readable;
-    exports$g.Writable = Stream.Writable;
-    exports$g.Duplex = Stream.Duplex;
-    exports$g.Transform = Stream.Transform;
-    exports$g.PassThrough = Stream.PassThrough;
-    exports$g.Stream = Stream;
-  } else {
-    exports$g = exports$g = dew$g();
-    exports$g.Stream = Stream || exports$g;
-    exports$g.Readable = exports$g;
-    exports$g.Writable = dew$e();
-    exports$g.Duplex = dew$f();
-    exports$g.Transform = dew$h();
-    exports$g.PassThrough = dew$i();
-  }
-
-  return exports$g;
-}
-
-var exports$h = {},
-    _dewExec$g = false;
-function dew$n() {
-  if (_dewExec$g) return exports$h;
-  _dewExec$g = true;
-  exports$h = dew$m().Transform;
-  return exports$h;
-}
-
-var exports$i = {},
-    _dewExec$h = false;
-function dew$o() {
-  if (_dewExec$h) return exports$i;
-  _dewExec$h = true;
-  exports$i = dew$m().PassThrough;
-  return exports$i;
-}
-
-var exports$j = {},
-    _dewExec$i = false;
-
-var _global$3 = typeof self !== "undefined" ? self : global;
-
-function dew$p() {
-  if (_dewExec$i) return exports$j;
-  _dewExec$i = true;
-  // Copyright Joyent, Inc. and other Node contributors.
-  //
-  // Permission is hereby granted, free of charge, to any person obtaining a
-  // copy of this software and associated documentation files (the
-  // "Software"), to deal in the Software without restriction, including
-  // without limitation the rights to use, copy, modify, merge, publish,
-  // distribute, sublicense, and/or sell copies of the Software, and to permit
-  // persons to whom the Software is furnished to do so, subject to the
-  // following conditions:
-  //
-  // The above copyright notice and this permission notice shall be included
-  // in all copies or substantial portions of the Software.
-  //
-  // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-  // OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-  // NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-  // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-  // USE OR OTHER DEALINGS IN THE SOFTWARE.
-  exports$j = Stream;
-
-  var EE = dew$4().EventEmitter;
-
-  var inherits = dew$3();
-
-  inherits(Stream, EE);
-  Stream.Readable = dew$j();
-  Stream.Writable = dew$k();
-  Stream.Duplex = dew$l();
-  Stream.Transform = dew$n();
-  Stream.PassThrough = dew$o(); // Backwards-compat with node 0.4.x
-
-  Stream.Stream = Stream; // old-style streams.  Note that the pipe method (the only relevant
-  // part of this class) is overridden in the Readable class.
-
-  function Stream() {
-    EE.call(this || _global$3);
-  }
-
-  Stream.prototype.pipe = function (dest, options) {
-    var source = this || _global$3;
-
-    function ondata(chunk) {
-      if (dest.writable) {
-        if (false === dest.write(chunk) && source.pause) {
-          source.pause();
-        }
-      }
-    }
-
-    source.on('data', ondata);
-
-    function ondrain() {
-      if (source.readable && source.resume) {
-        source.resume();
-      }
-    }
-
-    dest.on('drain', ondrain); // If the 'end' option is not supplied, dest.end() will be called when
-    // source gets the 'end' or 'close' events.  Only dest.end() once.
-
-    if (!dest._isStdio && (!options || options.end !== false)) {
-      source.on('end', onend);
-      source.on('close', onclose);
-    }
-
-    var didOnEnd = false;
-
-    function onend() {
-      if (didOnEnd) return;
-      didOnEnd = true;
-      dest.end();
-    }
-
-    function onclose() {
-      if (didOnEnd) return;
-      didOnEnd = true;
-      if (typeof dest.destroy === 'function') dest.destroy();
-    } // don't leave dangling pipes when there are errors.
-
-
-    function onerror(er) {
-      cleanup();
-
-      if (EE.listenerCount(this || _global$3, 'error') === 0) {
-        throw er; // Unhandled stream error in pipe.
-      }
-    }
-
-    source.on('error', onerror);
-    dest.on('error', onerror); // remove all the event listeners that were added.
-
-    function cleanup() {
-      source.removeListener('data', ondata);
-      dest.removeListener('drain', ondrain);
-      source.removeListener('end', onend);
-      source.removeListener('close', onclose);
-      source.removeListener('error', onerror);
-      dest.removeListener('error', onerror);
-      source.removeListener('end', cleanup);
-      source.removeListener('close', cleanup);
-      dest.removeListener('close', cleanup);
-    }
-
-    source.on('end', cleanup);
-    source.on('close', cleanup);
-    dest.on('close', cleanup);
-    dest.emit('pipe', source); // Allow for unix-like usage: A.pipe(B).pipe(C)
-
-    return dest;
-  };
-
-  return exports$j;
-}
-
-export { dew$p as a, dew$a as b, dew$j as c };
+export { _crypto as a, dew$9 as b, dew$a as c, dew$e as d };
