@@ -1,6 +1,6 @@
 {
   "name": "@jspm/node-builtins",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Browserify Node builtins for jspm",
   "author": "Guy Bedford",
   "license": "MIT",
