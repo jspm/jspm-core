@@ -1,5 +1,7 @@
 {
   "packages": {
+    "@empty": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
+    "@empty.dew": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.dew.js",
     "assert": {
       "path": "jspm_packages/npm/assert@1.4.1",
       "main": "assert.js"
@@ -8,6 +10,8 @@
       "path": "jspm_packages/npm/buffer@5.2.1",
       "main": "index.js"
     },
+    "child_process": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
+    "cluster": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "console": {
       "path": "jspm_packages/npm/console-browserify@1.1.0",
       "main": "index.js"
@@ -20,14 +24,20 @@
       "path": "jspm_packages/npm/crypto-browserify@3.12.0",
       "main": "index.js"
     },
+    "dgram": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
+    "dns": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "domain": {
       "path": "jspm_packages/npm/domain-browser@1.2.0",
       "main": "source/index.js"
     },
+    "domain/index.dew.js": "../../jspm_packages/npm/domain-browser@1.2.0/source/index.dew.js",
+    "domain/source/index.dew.js": "../../../jspm_packages/npm/domain-browser@1.2.0/source/index.dew.js",
+    "domain/source/index.js": "../../../jspm_packages/npm/domain-browser@1.2.0/source/index.js",
     "events": {
       "path": "jspm_packages/npm/events@3.0.0",
       "main": "events.js"
     },
+    "fs": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "http": {
       "path": "jspm_packages/npm/stream-http@2.8.3",
       "main": "index.js"
@@ -36,10 +46,15 @@
       "path": "jspm_packages/npm/https-browserify@1.0.0",
       "main": "index.js"
     },
+    "module": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
+    "net": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "os": {
       "path": "jspm_packages/npm/os-browserify@0.3.0",
       "main": "browser.js"
     },
+    "os/index.dew.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.dew.js",
+    "os/main.dew.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.dew.js",
+    "os/main.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.js",
     "path": {
       "path": "jspm_packages/npm/path-browserify@0.0.0",
       "main": "index.js"
@@ -48,6 +63,8 @@
       "path": "jspm_packages/npm/process@0.11.10",
       "main": "browser.js"
     },
+    "process/index.dew.js": "../../jspm_packages/npm/process@0.11.10/browser.dew.js",
+    "process/index.js": "../../jspm_packages/npm/process@0.11.10/browser.js",
     "punycode": {
       "path": "jspm_packages/npm/punycode@2.1.1",
       "main": "punycode.js"
@@ -60,6 +77,17 @@
       "path": "jspm_packages/npm/readable-stream@2.3.6",
       "main": "readable-browser.js"
     },
+    "readable-stream/duplex.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/duplex-browser.dew.js",
+    "readable-stream/duplex.js": "../../jspm_packages/npm/readable-stream@2.3.6/duplex-browser.js",
+    "readable-stream/index.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.dew.js",
+    "readable-stream/lib/internal/streams/stream.dew.js": "../../../../../jspm_packages/npm/readable-stream@2.3.6/lib/internal/streams/stream-browser.dew.js",
+    "readable-stream/lib/internal/streams/stream.js": "../../../../../jspm_packages/npm/readable-stream@2.3.6/lib/internal/streams/stream-browser.js",
+    "readable-stream/readable.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.dew.js",
+    "readable-stream/readable.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.js",
+    "readable-stream/writable.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/writable-browser.dew.js",
+    "readable-stream/writable.js": "../../jspm_packages/npm/readable-stream@2.3.6/writable-browser.js",
+    "readline": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
+    "repl": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "stream": {
       "path": "jspm_packages/npm/stream-browserify@2.0.1",
       "main": "index.js"
@@ -68,10 +96,12 @@
       "path": "jspm_packages/npm/string_decoder@1.1.1",
       "main": "lib/string_decoder.js"
     },
+    "sys": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/sys.js",
     "timers": {
       "path": "jspm_packages/npm/timers-browserify@2.0.10",
       "main": "main.js"
     },
+    "tls": "../jspm_packages/npm/@jspm/node-builtins@0.1.2/@empty.js",
     "tty": {
       "path": "jspm_packages/npm/tty-browserify@0.0.1",
       "main": "index.js"
@@ -84,6 +114,8 @@
       "path": "jspm_packages/npm/util@0.11.0",
       "main": "util.js"
     },
+    "util/support/isBuffer.dew.js": "../../../jspm_packages/npm/util@0.11.0/support/isBufferBrowser.dew.js",
+    "util/support/isBuffer.js": "../../../jspm_packages/npm/util@0.11.0/support/isBufferBrowser.js",
     "vm": {
       "path": "jspm_packages/npm/vm-browserify@1.1.0",
       "main": "index.js"
@@ -91,39 +123,7 @@
     "zlib": {
       "path": "jspm_packages/npm/browserify-zlib@0.2.0",
       "main": "lib/index.js"
-    },
-    "@empty.dew": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.dew.js",
-    "@empty": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "child_process": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "cluster": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "dgram": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "dns": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "fs": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "module": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "net": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "readline": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "repl": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "sys": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/sys.js",
-    "tls": "../jspm_packages/npm/@jspm/node-builtins@0.1.1/@empty.js",
-    "domain/source/index.js": "../../../jspm_packages/npm/domain-browser@1.2.0/source/index.js",
-    "domain/index.dew.js": "../../jspm_packages/npm/domain-browser@1.2.0/source/index.dew.js",
-    "domain/source/index.dew.js": "../../../jspm_packages/npm/domain-browser@1.2.0/source/index.dew.js",
-    "os/main.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.js",
-    "os/index.dew.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.dew.js",
-    "os/main.dew.js": "../../jspm_packages/npm/os-browserify@0.3.0/browser.dew.js",
-    "process/index.js": "../../jspm_packages/npm/process@0.11.10/browser.js",
-    "process/index.dew.js": "../../jspm_packages/npm/process@0.11.10/browser.dew.js",
-    "readable-stream/readable.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.js",
-    "readable-stream/index.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.dew.js",
-    "readable-stream/readable.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/readable-browser.dew.js",
-    "readable-stream/writable.js": "../../jspm_packages/npm/readable-stream@2.3.6/writable-browser.js",
-    "readable-stream/writable.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/writable-browser.dew.js",
-    "readable-stream/duplex.js": "../../jspm_packages/npm/readable-stream@2.3.6/duplex-browser.js",
-    "readable-stream/duplex.dew.js": "../../jspm_packages/npm/readable-stream@2.3.6/duplex-browser.dew.js",
-    "readable-stream/lib/internal/streams/stream.js": "../../../../../jspm_packages/npm/readable-stream@2.3.6/lib/internal/streams/stream-browser.js",
-    "readable-stream/lib/internal/streams/stream.dew.js": "../../../../../jspm_packages/npm/readable-stream@2.3.6/lib/internal/streams/stream-browser.dew.js",
-    "util/support/isBuffer.js": "../../../jspm_packages/npm/util@0.11.0/support/isBufferBrowser.js",
-    "util/support/isBuffer.dew.js": "../../../jspm_packages/npm/util@0.11.0/support/isBufferBrowser.dew.js"
+    }
   },
   "scopes": {
     "jspm_packages/npm/asn1.js@4.10.1": {
@@ -173,7 +173,7 @@
           "path": ".",
           "main": "lib/bn.js"
         },
-        "buffer": "../../@jspm/node-builtins@0.1.1/@empty.js"
+        "buffer": "../../@jspm/node-builtins@0.1.2/@empty.js"
       }
     },
     "jspm_packages/npm/brorand@1.1.0": {
@@ -182,7 +182,7 @@
           "path": ".",
           "main": "index.js"
         },
-        "crypto": "../../@jspm/node-builtins@0.1.1/@empty.js"
+        "crypto": "../../@jspm/node-builtins@0.1.2/@empty.js"
       }
     },
     "jspm_packages/npm/browserify-aes@1.2.0": {
@@ -549,7 +549,7 @@
         },
         "create-hmac/index.dew.js": "../../../create-hmac@1.1.7/browser.dew.js",
         "create-hmac/index.js": "../../../create-hmac@1.1.7/browser.js",
-        "crypto": "../../@jspm/node-builtins@0.1.1/@empty.js",
+        "crypto": "../../@jspm/node-builtins@0.1.2/@empty.js",
         "crypto-browserify": {
           "path": ".",
           "main": "index.js"
@@ -1075,7 +1075,7 @@
           "path": "../safe-buffer@5.1.2",
           "main": "index.js"
         },
-        "util": "../../@jspm/node-builtins@0.1.1/@empty.js",
+        "util": "../../@jspm/node-builtins@0.1.2/@empty.js",
         "util-deprecate": {
           "path": "../util-deprecate@1.0.2",
           "main": "browser.js"
@@ -1283,4 +1283,4 @@
       }
     }
   }
-}
+}
