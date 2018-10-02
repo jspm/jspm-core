@@ -9,6 +9,7 @@
     "events": "npm:events@3.0.0",
     "http": "npm:stream-http@2.8.3",
     "https": "npm:https-browserify@1.0.0",
+    "jspm-node-builtins": "npm:@jspm/node-builtins@0.1.2",
     "os": "npm:os-browserify@0.3.0",
     "path": "npm:path-browserify@0.0.0",
     "process": "npm:process@0.11.10",

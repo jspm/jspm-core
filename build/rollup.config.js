@@ -1,4 +1,4 @@
-const jspmPlugin = require('../../rollup-plugin-jspm');
+import jspmPlugin from 'rollup-plugin-jspm';
 
 export default {
   experimentalCodeSplitting: true,

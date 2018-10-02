@@ -10,6 +10,7 @@
     "events": "^3.0.0",
     "http": "stream-http@^2.7.2",
     "https": "https-browserify@^1.0.0",
+    "jspm-node-builtins": "@jspm/node-builtins@0.1.2",
     "os": "os-browserify@~0.3.0",
     "path": "path-browserify@^0.0.0",
     "process": "~0.11.10",

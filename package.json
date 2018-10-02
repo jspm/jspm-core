@@ -4,6 +4,11 @@
   "description": "Browserify Node builtins for jspm",
   "author": "Guy Bedford",
   "license": "MIT",
-  "files": ["*.js"],
-  "mode": "esm"
+  "files": [
+    "*.js"
+  ],
+  "mode": "esm",
+  "devDependencies": {
+    "rollup-plugin-jspm": "git+ssh://git@github.com/jspm/rollup-plugin-jspm.git"
+  }
 }
