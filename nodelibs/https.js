@@ -1,12 +1,12 @@
-import _http from './http.js';
-import _url from './url.js';
-import './chunk-1a62783c.js';
-import './chunk-fddb501f.js';
 import './process.js';
-import './events.js';
 import './buffer.js';
-import './string_decoder-a0532e16.js';
+import './chunk-cf607276.js';
+import './chunk-d1aba760.js';
+import './events.js';
+import './chunk-accbcc29.js';
 import './querystring.js';
+import _url from './url.js';
+import _http from './http.js';
 
 var exports$1 = {},
     _dewExec = false;

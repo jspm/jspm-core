@@ -1,11 +1,11 @@
-import { a as dew, b as _string_decoder } from './string_decoder-a0532e16.js';
 import _process from './process.js';
-import _stream from './stream.js';
-import { a as dew$1 } from './chunk-1a62783c.js';
 import _buffer from './buffer.js';
-import { a as _crypto } from './chunk-fddb501f.js';
-import _vm from './vm.js';
+import { a as dew$1 } from './chunk-cf607276.js';
+import { a as dew, b as exports$3 } from './chunk-d1aba760.js';
 import './events.js';
+import { d as _crypto } from './chunk-accbcc29.js';
+import _stream from './stream.js';
+import _vm from './vm.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -168,10 +168,10 @@ function dew$3() {
   return exports$2;
 }
 
-var exports$3 = {},
+var exports$3$1 = {},
     _dewExec$2 = false;
 function dew$4() {
-  if (_dewExec$2) return exports$3;
+  if (_dewExec$2) return exports$3$1;
   _dewExec$2 = true;
   var Buffer = _buffer.Buffer;
 
@@ -320,8 +320,8 @@ function dew$4() {
     return rotl(a + (c ^ (b | ~d)) + m + k | 0, s) + b | 0;
   }
 
-  exports$3 = MD5;
-  return exports$3;
+  exports$3$1 = MD5;
+  return exports$3$1;
 }
 
 var exports$4 = {},
@@ -1274,7 +1274,7 @@ function dew$e() {
   var Buffer = dew().Buffer;
 
   var Transform = _stream.Transform;
-  var StringDecoder = _string_decoder.StringDecoder;
+  var StringDecoder = exports$3.StringDecoder;
 
   var inherits = dew$1();
 

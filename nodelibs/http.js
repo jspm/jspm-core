@@ -1,11 +1,11 @@
-import { a as dew } from './chunk-1a62783c.js';
-import { d as dew$1 } from './chunk-fddb501f.js';
 import _process from './process.js';
 import _buffer from './buffer.js';
-import _url from './url.js';
+import { a as dew } from './chunk-cf607276.js';
+import './chunk-d1aba760.js';
 import './events.js';
-import './string_decoder-a0532e16.js';
+import { a as dew$e } from './chunk-accbcc29.js';
 import './querystring.js';
+import _url from './url.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -104,7 +104,7 @@ function dew$3() {
 
   var inherits = dew();
 
-  var stream = dew$1();
+  var stream = dew$e();
 
   var rStates = exports$2.readyStates = {
     UNSENT: 0,
@@ -403,7 +403,7 @@ function dew$5() {
 
   var response = dew$3();
 
-  var stream = dew$1();
+  var stream = dew$e();
 
   var toArrayBuffer = dew$4();
 

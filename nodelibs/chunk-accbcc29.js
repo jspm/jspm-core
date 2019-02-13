@@ -1,8 +1,8 @@
 import _process from './process.js';
-import _events from './events.js';
 import _buffer from './buffer.js';
-import { a as dew, b as _string_decoder } from './string_decoder-a0532e16.js';
-import { a as dew$1 } from './chunk-1a62783c.js';
+import { a as dew } from './chunk-cf607276.js';
+import { a as dew$1, b as exports$3 } from './chunk-d1aba760.js';
+import _events from './events.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -78,13 +78,13 @@ function dew$3() {
   return exports$2;
 }
 
-var exports$3 = {},
+var exports$3$1 = {},
     _dewExec$2 = false;
 function dew$4() {
-  if (_dewExec$2) return exports$3;
+  if (_dewExec$2) return exports$3$1;
   _dewExec$2 = true;
-  exports$3 = _events.EventEmitter;
-  return exports$3;
+  exports$3$1 = _events.EventEmitter;
+  return exports$3$1;
 }
 
 var exports$4 = {},
@@ -227,7 +227,7 @@ function dew$6() {
     }
   }
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1().Buffer;
 
   var util = _crypto;
 
@@ -530,7 +530,7 @@ function dew$9() {
 
   var util = dew$5();
 
-  util.inherits = dew$1();
+  util.inherits = dew();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -548,7 +548,7 @@ function dew$9() {
   /*<replacement>*/
 
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1().Buffer;
 
   var OurUint8Array = _global$1.Uint8Array || function () {};
 
@@ -1170,7 +1170,7 @@ function dew$a() {
 
   var util = dew$5();
 
-  util.inherits = dew$1();
+  util.inherits = dew();
   /*</replacement>*/
 
   var Readable = dew$b();
@@ -1299,7 +1299,7 @@ function dew$b() {
   /*<replacement>*/
 
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1().Buffer;
 
   var OurUint8Array = _global$2.Uint8Array || function () {};
 
@@ -1317,7 +1317,7 @@ function dew$b() {
 
   var util = dew$5();
 
-  util.inherits = dew$1();
+  util.inherits = dew();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -1409,7 +1409,7 @@ function dew$b() {
     this.encoding = null;
 
     if (options.encoding) {
-      if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
+      if (!StringDecoder) StringDecoder = exports$3.StringDecoder;
       this.decoder = new StringDecoder(options.encoding);
       this.encoding = options.encoding;
     }
@@ -1569,7 +1569,7 @@ function dew$b() {
 
 
   Readable.prototype.setEncoding = function (enc) {
-    if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
+    if (!StringDecoder) StringDecoder = exports$3.StringDecoder;
     this._readableState.decoder = new StringDecoder(enc);
     this._readableState.encoding = enc;
     return this;
@@ -2297,7 +2297,7 @@ function dew$c() {
 
   var util = dew$5();
 
-  util.inherits = dew$1();
+  util.inherits = dew();
   /*</replacement>*/
 
   util.inherits(Transform, Duplex);
@@ -2448,7 +2448,7 @@ function dew$d() {
 
   var util = dew$5();
 
-  util.inherits = dew$1();
+  util.inherits = dew();
   /*</replacement>*/
 
   util.inherits(PassThrough, Transform);
@@ -2480,4 +2480,4 @@ function dew$e() {
   return exports$d;
 }
 
-export { _crypto as a, dew$9 as b, dew$a as c, dew$e as d };
+export { dew$e as a, dew$9 as b, dew$a as c, _crypto as d };
