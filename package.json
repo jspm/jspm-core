@@ -13,8 +13,8 @@
     "build": "jspm run clean && rollup -c || rollup -c"
   },
   "devDependencies": {
-    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@~0.2.0",
-    "@jspm/node-builtins": "^1.0.0",
+    "@jspm/core": "^1.0.0",
+    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@master",
     "node-assert": "assert@^1.4.1",
     "node-buffer": "buffer@^5.0.8",
     "node-console": "console-browserify@^1.1.0",
@@ -49,6 +49,17 @@
     "_stream_writable": "readable-stream/writable.js"
   },
   "overrides": {
+    "github:@jspm/jspm-resolve@master": {
+      "namedExports": {
+        "resolve.js": [
+          "applyMap",
+          "sync",
+          "utils",
+          "builtins",
+          "cjsResolve"
+        ]
+      }
+    },
     "github:@jspm/rollup-plugin-jspm@master": {
       "registry": "npm"
     },
@@ -687,4 +698,3 @@
     }
   }
 }
-

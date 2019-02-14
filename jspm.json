@@ -1,7 +1,7 @@
 {
   "resolve": {
-    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@0.2.0",
-    "@jspm/node-builtins": "npm:@jspm/node-builtins@1.0.0",
+    "@jspm/core": "npm:@jspm/core@1.0.0",
+    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@master",
     "node-assert": "npm:assert@1.4.1",
     "node-buffer": "npm:buffer@5.2.1",
     "node-console": "npm:console-browserify@1.1.0",
@@ -29,8 +29,8 @@
     "rollup-plugin-jspm": "github:@jspm/rollup-plugin-jspm@master"
   },
   "dependencies": {
-    "github:@jspm/jspm-resolve@0.2.0": {
-      "source": "https://github.com/jspm/jspm-resolve/archive/ec2605fb3a6d2ad8624a9b0d73aa47849d112872.tar.gz"
+    "github:@jspm/jspm-resolve@master": {
+      "source": "https://github.com/jspm/jspm-resolve/archive/master.tar.gz"
     },
     "github:@jspm/resolve@0.2.0": {
       "source": "git+ssh://git@github.com/jspm/jspm-resolve#ec2605fb3a6d2ad8624a9b0d73aa47849d112872"
@@ -41,14 +41,14 @@
         "@jspm/resolve": "github:@jspm/resolve@0.2.0"
       }
     },
-    "npm:@jspm/node-builtins@1.0.0": {
-      "source": "https://registry.npmjs.org/@jspm/node-builtins/-/node-builtins-1.0.0.tgz#sha512-8PKHItKtw5NMxq0bplGQs74MV9Fo6WcvD2WSk1fvfDjhkshu2v5obK00DznrEoKzIF5TI4oswKE7CCa9uHA6dg=="
+    "npm:@jspm/core@1.0.0": {
+      "source": "https://registry.npmjs.org/@jspm/core/-/core-1.0.0.tgz#sha512-yY6cxFChFIAe3dR7hwG8c32yxkgTRNt+gm8Qm58dHqve+l0waQLX+UzvVSap2N+QzZsJMG64zdBd64FfZb7nJQ=="
     },
     "npm:@types/estree@0.0.39": {
       "source": "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz#sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw=="
     },
-    "npm:@types/node@11.9.1": {
-      "source": "https://registry.npmjs.org/@types/node/-/node-11.9.1.tgz#sha512-XJHvu7fvycZ7ORTyThXiKCtld+R4Y1GGerYRrVSf/GhaNahRBIf/Nx+7Xh3AvI5nudOVt/L671CxHGkJt1/+hQ=="
+    "npm:@types/node@11.9.3": {
+      "source": "https://registry.npmjs.org/@types/node/-/node-11.9.3.tgz#sha512-DMiqG51GwES/c4ScBY0u5bDlH44+oY8AeYHjY1SGCWidD7h08o1dfHue/TGK7REmif2KiJzaUskO+Q0eaeZ2fQ=="
     },
     "npm:acorn@6.1.0": {
       "source": "https://registry.npmjs.org/acorn/-/acorn-6.1.0.tgz#sha512-MW/FjM+IvU9CgBzjO3UIPCE2pyEwUsoFl+VGdczOPEdxfGFjuKny/gN54mOuX7Qxmb9Rg9MCn2oKiSUeW+pjrw=="
@@ -79,48 +79,48 @@
     "npm:browserify-aes@1.2.0": {
       "source": "https://registry.npmjs.org/browserify-aes/-/browserify-aes-1.2.0.tgz#sha512-+7CHXqGuspUn/Sl5aO7Ea0xWGAtETPXNSAjHo48JfLdPWcMng33Xe4znFvQweqc/uzk5zSOI3H52CYnjCfb5hA==",
       "resolve": {
-        "cipher-base": "npm:cipher-base@1.0.4",
         "create-hash": "npm:create-hash@1.2.0",
+        "evp_bytestokey": "npm:evp_bytestokey@1.0.3",
         "inherits": "npm:inherits@2.0.3",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
         "buffer-xor": "npm:buffer-xor@1.0.3",
-        "evp_bytestokey": "npm:evp_bytestokey@1.0.3"
+        "cipher-base": "npm:cipher-base@1.0.4",
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:browserify-cipher@1.0.1": {
       "source": "https://registry.npmjs.org/browserify-cipher/-/browserify-cipher-1.0.1.tgz#sha512-sPhkz0ARKbf4rRQt2hTpAHqn47X3llLkUGn+xEJzLjwY8LRs2p0v7ljvI5EyoRO/mexrNunNECisZs+gw2zz1w==",
       "resolve": {
-        "browserify-aes": "npm:browserify-aes@1.2.0",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.3",
-        "browserify-des": "npm:browserify-des@1.0.2"
+        "browserify-des": "npm:browserify-des@1.0.2",
+        "browserify-aes": "npm:browserify-aes@1.2.0"
       }
     },
     "npm:browserify-des@1.0.2": {
       "source": "https://registry.npmjs.org/browserify-des/-/browserify-des-1.0.2.tgz#sha512-BioO1xf3hFwz4kc6iBhI3ieDFompMhrMlnDFC4/0/vd5MokpuAc3R+LYbwTA9A5Yc9pq9UYPqffKpW2ObuwX5A==",
       "resolve": {
-        "cipher-base": "npm:cipher-base@1.0.4",
         "inherits": "npm:inherits@2.0.3",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
-        "des.js": "npm:des.js@1.0.0"
+        "des.js": "npm:des.js@1.0.0",
+        "cipher-base": "npm:cipher-base@1.0.4",
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:browserify-rsa@4.0.1": {
       "source": "https://registry.npmjs.org/browserify-rsa/-/browserify-rsa-4.0.1.tgz#21e0abfaf6f2029cf2fafb133567a701d4135524",
       "resolve": {
-        "randombytes": "npm:randombytes@2.0.6",
-        "bn.js": "npm:bn.js@4.11.8"
+        "bn.js": "npm:bn.js@4.11.8",
+        "randombytes": "npm:randombytes@2.0.6"
       }
     },
     "npm:browserify-sign@4.0.4": {
       "source": "https://registry.npmjs.org/browserify-sign/-/browserify-sign-4.0.4.tgz#aa4eb68e5d7b658baa6bf6a57e630cbd7a93d298",
       "resolve": {
-        "create-hash": "npm:create-hash@1.2.0",
         "create-hmac": "npm:create-hmac@1.1.7",
         "inherits": "npm:inherits@2.0.3",
-        "browserify-rsa": "npm:browserify-rsa@4.0.1",
         "bn.js": "npm:bn.js@4.11.8",
-        "parse-asn1": "npm:parse-asn1@5.1.3",
-        "elliptic": "npm:elliptic@6.4.1"
+        "parse-asn1": "npm:parse-asn1@5.1.4",
+        "elliptic": "npm:elliptic@6.4.1",
+        "browserify-rsa": "npm:browserify-rsa@4.0.1",
+        "create-hash": "npm:create-hash@1.2.0"
       }
     },
     "npm:browserify-zlib@0.2.0": {
@@ -135,8 +135,8 @@
     "npm:buffer@5.2.1": {
       "source": "https://registry.npmjs.org/buffer/-/buffer-5.2.1.tgz#sha512-c+Ko0loDaFfuPWiL02ls9Xd3GO3cPVmUobQ6t3rXNUk304u6hGq+8N/kFi+QEIKhzK3uwolVhLzszmfLmMLnqg==",
       "resolve": {
-        "base64-js": "npm:base64-js@1.3.0",
-        "ieee754": "npm:ieee754@1.1.12"
+        "ieee754": "npm:ieee754@1.1.12",
+        "base64-js": "npm:base64-js@1.3.0"
       }
     },
     "npm:builtin-status-codes@3.0.0": {
@@ -164,17 +164,17 @@
     "npm:create-ecdh@4.0.3": {
       "source": "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.3.tgz#sha512-GbEHQPMOswGpKXM9kCWVrremUcBmjteUaQ01T9rkKCPDXfUHX0IoP9LpHYo2NPFampa4e+/pFDc3jQdxrxQLaw==",
       "resolve": {
-        "elliptic": "npm:elliptic@6.4.1",
-        "bn.js": "npm:bn.js@4.11.8"
+        "bn.js": "npm:bn.js@4.11.8",
+        "elliptic": "npm:elliptic@6.4.1"
       }
     },
     "npm:create-hash@1.2.0": {
       "source": "https://registry.npmjs.org/create-hash/-/create-hash-1.2.0.tgz#sha512-z00bCGNHDG8mHAkP7CtT1qVu+bFQUPjYq/4Iv3C3kWjTFV10zIjfSoeqXo9Asws8gwSHDGj/hl2u4OGIjapeCg==",
       "resolve": {
         "inherits": "npm:inherits@2.0.3",
+        "md5.js": "npm:md5.js@1.3.5",
         "cipher-base": "npm:cipher-base@1.0.4",
         "ripemd160": "npm:ripemd160@2.0.2",
-        "md5.js": "npm:md5.js@1.3.5",
         "sha.js": "npm:sha.js@2.4.11"
       }
     },
@@ -182,27 +182,27 @@
       "source": "https://registry.npmjs.org/create-hmac/-/create-hmac-1.1.7.tgz#sha512-MJG9liiZ+ogc4TzUwuvbER1JRdgvUFSB5+VR/g5h82fGaIRWMWddtKBHi7/sVhfjQZ6SehlyhvQYrcYkaUIpLg==",
       "resolve": {
         "inherits": "npm:inherits@2.0.3",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
+        "ripemd160": "npm:ripemd160@2.0.2",
+        "sha.js": "npm:sha.js@2.4.11",
         "cipher-base": "npm:cipher-base@1.0.4",
         "create-hash": "npm:create-hash@1.2.0",
-        "ripemd160": "npm:ripemd160@2.0.2",
-        "sha.js": "npm:sha.js@2.4.11"
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:crypto-browserify@3.12.0": {
       "source": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.12.0.tgz#sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==",
       "resolve": {
-        "inherits": "npm:inherits@2.0.3",
         "randombytes": "npm:randombytes@2.0.6",
-        "pbkdf2": "npm:pbkdf2@3.0.17",
-        "randomfill": "npm:randomfill@1.0.4",
+        "browserify-cipher": "npm:browserify-cipher@1.0.1",
         "create-hmac": "npm:create-hmac@1.1.7",
+        "browserify-sign": "npm:browserify-sign@4.0.4",
+        "pbkdf2": "npm:pbkdf2@3.0.17",
+        "create-ecdh": "npm:create-ecdh@4.0.3",
         "public-encrypt": "npm:public-encrypt@4.0.3",
         "diffie-hellman": "npm:diffie-hellman@5.0.3",
-        "create-ecdh": "npm:create-ecdh@4.0.3",
-        "browserify-sign": "npm:browserify-sign@4.0.4",
         "create-hash": "npm:create-hash@1.2.0",
-        "browserify-cipher": "npm:browserify-cipher@1.0.1"
+        "randomfill": "npm:randomfill@1.0.4",
+        "inherits": "npm:inherits@2.0.3"
       }
     },
     "npm:date-now@0.1.4": {
@@ -231,10 +231,10 @@
       "resolve": {
         "bn.js": "npm:bn.js@4.11.8",
         "inherits": "npm:inherits@2.0.3",
+        "hmac-drbg": "npm:hmac-drbg@1.0.1",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.1",
         "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1",
         "hash.js": "npm:hash.js@1.1.7",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.1",
-        "hmac-drbg": "npm:hmac-drbg@1.0.1",
         "brorand": "npm:brorand@1.1.0"
       }
     },
@@ -266,8 +266,8 @@
       "source": "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1",
       "resolve": {
         "hash.js": "npm:hash.js@1.1.7",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.1",
-        "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1"
+        "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.1"
       }
     },
     "npm:https-browserify@1.0.0": {
@@ -289,8 +289,8 @@
       "source": "https://registry.npmjs.org/md5.js/-/md5.js-1.3.5.tgz#sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==",
       "resolve": {
         "inherits": "npm:inherits@2.0.3",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
-        "hash-base": "npm:hash-base@3.0.4"
+        "hash-base": "npm:hash-base@3.0.4",
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:miller-rabin@4.0.1": {
@@ -312,15 +312,15 @@
     "npm:pako@1.0.8": {
       "source": "https://registry.npmjs.org/pako/-/pako-1.0.8.tgz#sha512-6i0HVbUfcKaTv+EG8ZTr75az7GFXcLYk9UyLEg7Notv/Ma+z/UG3TCoz6GiNeOrn1E/e63I0X/Hpw18jHOTUnA=="
     },
-    "npm:parse-asn1@5.1.3": {
-      "source": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-5.1.3.tgz#sha512-VrPoetlz7B/FqjBLD2f5wBVZvsZVLnRUrxVLfRYhGXCODa/NWE4p3Wp+6+aV3ZPL3KM7/OZmxDIwwijD7yuucg==",
+    "npm:parse-asn1@5.1.4": {
+      "source": "https://registry.npmjs.org/parse-asn1/-/parse-asn1-5.1.4.tgz#sha512-Qs5duJcuvNExRfFZ99HDD3z4mAi3r9Wl/FOjEOijlxwCZs7E7mW2vjTpgQ4J8LpTF8x5v+1Vn5UQFejmWT11aw==",
       "resolve": {
         "browserify-aes": "npm:browserify-aes@1.2.0",
         "create-hash": "npm:create-hash@1.2.0",
+        "evp_bytestokey": "npm:evp_bytestokey@1.0.3",
         "pbkdf2": "npm:pbkdf2@3.0.17",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
         "asn1.js": "npm:asn1.js@4.10.1",
-        "evp_bytestokey": "npm:evp_bytestokey@1.0.3"
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:path-browserify@0.0.0": {
@@ -330,10 +330,10 @@
       "source": "https://registry.npmjs.org/pbkdf2/-/pbkdf2-3.0.17.tgz#sha512-U/il5MsrZp7mGg3mSQfn742na2T+1/vHDCG5/iTI3X9MKUuYUZVLQhyRsg06mCgDBTd57TxzgZt7P+fYfjRLtA==",
       "resolve": {
         "create-hmac": "npm:create-hmac@1.1.7",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
         "ripemd160": "npm:ripemd160@2.0.2",
+        "sha.js": "npm:sha.js@2.4.11",
         "create-hash": "npm:create-hash@1.2.0",
-        "sha.js": "npm:sha.js@2.4.11"
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:process-nextick-args@2.0.0": {
@@ -345,12 +345,12 @@
     "npm:public-encrypt@4.0.3": {
       "source": "https://registry.npmjs.org/public-encrypt/-/public-encrypt-4.0.3.tgz#sha512-zVpa8oKZSz5bTMTFClc1fQOnyyEzpl5ozpi1B5YcvBrdohMjH2rfsBtyXcuNuwjsDIXmBYlF2N5FlJYhR29t8Q==",
       "resolve": {
-        "create-hash": "npm:create-hash@1.2.0",
         "randombytes": "npm:randombytes@2.0.6",
-        "safe-buffer": "npm:safe-buffer@5.1.2",
         "browserify-rsa": "npm:browserify-rsa@4.0.1",
-        "parse-asn1": "npm:parse-asn1@5.1.3",
-        "bn.js": "npm:bn.js@4.11.8"
+        "parse-asn1": "npm:parse-asn1@5.1.4",
+        "bn.js": "npm:bn.js@4.11.8",
+        "create-hash": "npm:create-hash@1.2.0",
+        "safe-buffer": "npm:safe-buffer@5.1.2"
       }
     },
     "npm:punycode@1.3.2": {
@@ -378,11 +378,11 @@
     "npm:readable-stream@2.3.6": {
       "source": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.6.tgz#sha512-tQtKA9WIAhBF3+VLAseyMqZeBjW0AHJoxOtYqSUZNJxauErmLbVm2FW1y+J/YA9dUrAC39ITejlZWhVIwawkKw==",
       "resolve": {
-        "inherits": "npm:inherits@2.0.3",
-        "string_decoder": "npm:string_decoder@1.1.1",
         "util-deprecate": "npm:util-deprecate@1.0.2",
-        "core-util-is": "npm:core-util-is@1.0.2",
         "process-nextick-args": "npm:process-nextick-args@2.0.0",
+        "core-util-is": "npm:core-util-is@1.0.2",
+        "string_decoder": "npm:string_decoder@1.1.1",
+        "inherits": "npm:inherits@2.0.3",
         "isarray": "npm:isarray@1.0.0",
         "safe-buffer": "npm:safe-buffer@5.1.2"
       }
@@ -399,7 +399,7 @@
       "resolve": {
         "@types/estree": "npm:@types/estree@0.0.39",
         "acorn": "npm:acorn@6.1.0",
-        "@types/node": "npm:@types/node@11.9.1"
+        "@types/node": "npm:@types/node@11.9.3"
       }
     },
     "npm:safe-buffer@5.1.2": {
@@ -418,18 +418,18 @@
     "npm:stream-browserify@2.0.2": {
       "source": "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz#sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==",
       "resolve": {
-        "inherits": "npm:inherits@2.0.3",
-        "readable-stream": "npm:readable-stream@2.3.6"
+        "readable-stream": "npm:readable-stream@2.3.6",
+        "inherits": "npm:inherits@2.0.3"
       }
     },
     "npm:stream-http@2.8.3": {
       "source": "https://registry.npmjs.org/stream-http/-/stream-http-2.8.3.tgz#sha512-+TSkfINHDo4J+ZobQLWiMouQYB+UVYFttRA94FpEzzJ7ZdqcL4uUUQ7WkdkI4DSozGmgBUE/a47L+38PenXhUw==",
       "resolve": {
-        "xtend": "npm:xtend@4.0.1",
-        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
-        "inherits": "npm:inherits@2.0.3",
         "readable-stream": "npm:readable-stream@2.3.6",
-        "builtin-status-codes": "npm:builtin-status-codes@3.0.0"
+        "builtin-status-codes": "npm:builtin-status-codes@3.0.0",
+        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
+        "xtend": "npm:xtend@4.0.1",
+        "inherits": "npm:inherits@2.0.3"
       }
     },
     "npm:string_decoder@1.1.1": {
@@ -459,8 +459,8 @@
     "npm:url@0.11.0": {
       "source": "https://registry.npmjs.org/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1",
       "resolve": {
-        "punycode": "npm:punycode@1.3.2",
-        "querystring": "npm:querystring@0.2.0"
+        "querystring": "npm:querystring@0.2.0",
+        "punycode": "npm:punycode@1.3.2"
       }
     },
     "npm:util-deprecate@1.0.2": {
