@@ -573,7 +573,7 @@
         ]
       }
     },
-    "npm:querystring@~0.2.0": {
+    "npm:querystring@0.2.0": {
       "namedExports": {
         "index.js": [
           "decode",

@@ -1,6 +1,6 @@
 {
   "resolve": {
-    "@jspm/core": "npm:@jspm/core@1.0.0",
+    "@jspm/core": "npm:@jspm/core@1.0.1",
     "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@master",
     "node-assert": "npm:assert@1.4.1",
     "node-buffer": "npm:buffer@5.2.1",
@@ -41,8 +41,8 @@
         "@jspm/resolve": "github:@jspm/resolve@0.2.0"
       }
     },
-    "npm:@jspm/core@1.0.0": {
-      "source": "https://registry.npmjs.org/@jspm/core/-/core-1.0.0.tgz#sha512-yY6cxFChFIAe3dR7hwG8c32yxkgTRNt+gm8Qm58dHqve+l0waQLX+UzvVSap2N+QzZsJMG64zdBd64FfZb7nJQ=="
+    "npm:@jspm/core@1.0.1": {
+      "source": "https://registry.npmjs.org/@jspm/core/-/core-1.0.1.tgz#sha512-n4q2X4mwwz984ocsFFunfEqKs5Bf36cvVzFbt5LxhLlyXelMBRRU11gL+eA0m/NlNTu5EX5G7onYNzK6uozbQQ=="
     },
     "npm:@types/estree@0.0.39": {
       "source": "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz#sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw=="
