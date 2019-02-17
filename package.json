@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "@jspm/core": "^1.0.0",
-    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@master",
     "node-assert": "assert@^1.4.1",
     "node-buffer": "buffer@^5.0.8",
     "node-console": "console-browserify@^1.1.0",
@@ -573,7 +572,7 @@
         ]
       }
     },
-    "npm:querystring@0.2.0": {
+    "npm:querystring@~0.2.0": {
       "namedExports": {
         "index.js": [
           "decode",

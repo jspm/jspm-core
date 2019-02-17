@@ -1,7 +1,6 @@
 {
   "resolve": {
     "@jspm/core": "npm:@jspm/core@1.0.1",
-    "@jspm/jspm-resolve": "github:@jspm/jspm-resolve@master",
     "node-assert": "npm:assert@1.4.1",
     "node-buffer": "npm:buffer@5.2.1",
     "node-console": "npm:console-browserify@1.1.0",
@@ -29,9 +28,6 @@
     "rollup-plugin-jspm": "github:@jspm/rollup-plugin-jspm@master"
   },
   "dependencies": {
-    "github:@jspm/jspm-resolve@master": {
-      "source": "https://github.com/jspm/jspm-resolve/archive/master.tar.gz"
-    },
     "github:@jspm/resolve@0.2.0": {
       "source": "git+ssh://git@github.com/jspm/jspm-resolve#ec2605fb3a6d2ad8624a9b0d73aa47849d112872"
     },
