@@ -10,7 +10,7 @@ function dew() {
   _dewExec = true;
   var process = _process;
 
-  (function (global, undefined) {
+  (function (global, undefined$1) {
 
     if (global.setImmediate) {
       return;
@@ -72,7 +72,7 @@ function dew() {
           break;
 
         default:
-          callback.apply(undefined, args);
+          callback.apply(undefined$1, args);
           break;
       }
     }
