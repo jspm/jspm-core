@@ -1,2 +1,2 @@
 import './buffer.js';
-export { c as StringDecoder, b as default } from './chunk-ed65735f.js';
+export { c as StringDecoder, b as default } from './chunk-931ab749.js';

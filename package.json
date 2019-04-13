@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "jspm core libraries",
   "author": "Guy Bedford",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "files": [
     "resolve.js",
     "nodelibs/*.js"
