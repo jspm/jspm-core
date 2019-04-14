@@ -1,13 +1,13 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
   // shim for using process in browser
-  var process = exports$1 = {}; // cached from whatever global is present so that test runners that stub it
+  var process = exports = {}; // cached from whatever global is present so that test runners that stub it
   // don't break things.  But we need to wrap it in a try catch in case it is
   // wrapped in strict mode code which doesn't define any globals.  It's inside a
   // function because try/catches deoptimize in certain engines.
@@ -215,11 +215,11 @@ function dew() {
     return 0;
   };
 
-  return exports$1;
+  return exports;
 }
 
-const exports$2 = dew();
-const addListener = exports$2.addListener, argv = exports$2.argv, binding = exports$2.binding, browser = exports$2.browser, chdir = exports$2.chdir, cwd = exports$2.cwd, emit = exports$2.emit, env = exports$2.env, listeners = exports$2.listeners, nextTick = exports$2.nextTick, off = exports$2.off, on = exports$2.on, once = exports$2.once, prependListener = exports$2.prependListener, prependOnceListener = exports$2.prependOnceListener, removeAllListeners = exports$2.removeAllListeners, removeListener = exports$2.removeListener, title = exports$2.title, umask = exports$2.umask, version = exports$2.version, versions = exports$2.versions;
+const exports$1 = dew();
+const addListener = exports$1.addListener, argv = exports$1.argv, binding = exports$1.binding, browser = exports$1.browser, chdir = exports$1.chdir, cwd = exports$1.cwd, emit = exports$1.emit, env = exports$1.env, listeners = exports$1.listeners, nextTick = exports$1.nextTick, off = exports$1.off, on = exports$1.on, once = exports$1.once, prependListener = exports$1.prependListener, prependOnceListener = exports$1.prependOnceListener, removeAllListeners = exports$1.removeAllListeners, removeListener = exports$1.removeListener, title = exports$1.title, umask = exports$1.umask, version = exports$1.version, versions = exports$1.versions;
 
-export default exports$2;
+export default exports$1;
 export { addListener, argv, binding, browser, chdir, cwd, emit, env, listeners, nextTick, off, on, once, prependListener, prependOnceListener, removeAllListeners, removeListener, title, umask, version, versions };

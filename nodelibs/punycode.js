@@ -1,7 +1,7 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
   /** Highest positive signed 32-bit float value */
@@ -468,12 +468,12 @@ function dew() {
     'toASCII': toASCII,
     'toUnicode': toUnicode
   };
-  exports$1 = punycode;
-  return exports$1;
+  exports = punycode;
+  return exports;
 }
 
-const exports$2 = dew();
-const decode = exports$2.decode, encode = exports$2.encode, toASCII = exports$2.toASCII, toUnicode = exports$2.toUnicode, ucs2 = exports$2.ucs2, version = exports$2.version;
+const exports$1 = dew();
+const decode = exports$1.decode, encode = exports$1.encode, toASCII = exports$1.toASCII, toUnicode = exports$1.toUnicode, ucs2 = exports$1.ucs2, version = exports$1.version;
 
-export default exports$2;
+export default exports$1;
 export { decode, encode, toASCII, toUnicode, ucs2, version };

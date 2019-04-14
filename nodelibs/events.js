@@ -1,7 +1,7 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
   var R = typeof Reflect === 'object' ? Reflect : null;
   var ReflectApply = R && typeof R.apply === 'function' ? R.apply : function ReflectApply(target, receiver, args) {
@@ -33,7 +33,7 @@ function dew() {
     EventEmitter.init.call(this);
   }
 
-  exports$1 = EventEmitter; // Backwards-compat with node 0.10.x
+  exports = EventEmitter; // Backwards-compat with node 0.10.x
 
   EventEmitter.EventEmitter = EventEmitter;
   EventEmitter.prototype._events = undefined;
@@ -399,11 +399,11 @@ function dew() {
     return ret;
   }
 
-  return exports$1;
+  return exports;
 }
 
-const exports$2 = dew();
-const EventEmitter = exports$2.EventEmitter, defaultMaxListeners = exports$2.defaultMaxListeners, init = exports$2.init, listenerCount = exports$2.listenerCount;
+const exports$1 = dew();
+const EventEmitter = exports$1.EventEmitter, defaultMaxListeners = exports$1.defaultMaxListeners, init = exports$1.init, listenerCount = exports$1.listenerCount;
 
-export default exports$2;
+export default exports$1;
 export { EventEmitter, defaultMaxListeners, init, listenerCount };

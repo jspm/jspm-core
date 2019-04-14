@@ -14,38 +14,30 @@
   },
   "devDependencies": {
     "@jspm/core": "^1.0.2",
-    "node-assert": "assert@^1.4.1",
-    "node-buffer": "buffer@^5.0.8",
-    "node-console": "console-browserify@^1.1.0",
-    "node-constants": "constants-browserify@^1.0.0",
-    "node-crypto": "crypto-browserify@^3.12.0",
-    "node-domain": "domain-browser@^1.1.7",
-    "node-events": "events@^3.0.0",
-    "node-http": "stream-http@^2.7.2",
-    "node-https": "https-browserify@^1.0.0",
-    "node-os": "os-browserify@~0.3.0",
-    "node-path": "path-browserify@^0.0.0",
-    "node-process": "process@~0.11.10",
-    "node-punycode": "punycode@^2.1.0",
-    "node-querystring": "querystring@~0.2.0",
-    "node-stream": "stream-browserify@^2.0.1",
-    "node-string_decoder": "string_decoder@^1.1.1",
-    "node-timers": "timers-browserify@^2.0.10",
-    "node-tty": "tty-browserify@^0.0.1",
-    "node-url": "url@~0.11.0",
-    "node-util": "util@~0.11.0",
-    "node-vm": "vm-browserify@^1.1.0",
-    "node-zlib": "browserify-zlib@~0.2.0",
-    "readable-stream": "^2.3.3",
+    "assert": "^1.4.1",
+    "buffer": "^5.0.8",
+    "console": "console-browserify@^1.1.0",
+    "constants": "constants-browserify@^1.0.0",
+    "crypto": "crypto-browserify@^3.12.0",
+    "domain": "domain-browser@^1.1.7",
+    "events": "^3.0.0",
+    "http": "stream-http@^2.7.2",
+    "https": "https-browserify@^1.0.0",
+    "os": "os-browserify@~0.3.0",
+    "path": "path-browserify@^0.0.0",
+    "process": "~0.11.10",
+    "punycode": "^2.1.0",
+    "querystring": "~0.2.0",
     "rollup": "^1.8.0",
-    "rollup-plugin-jspm": "github:jspm/rollup-plugin-jspm@master"
-  },
-  "map": {
-    "_stream_duplex": "readable-stream/duplex.js",
-    "_stream_passthrough": "readable-stream/passthrough.js",
-    "_stream_readable": "readable-stream/readable.js",
-    "_stream_transform": "readable-stream/transform.js",
-    "_stream_writable": "readable-stream/writable.js"
+    "rollup-plugin-jspm": "github:jspm/rollup-plugin-jspm@master",
+    "stream": "stream-browserify@^2.0.1",
+    "string_decoder": "^1.2.0",
+    "timers": "timers-browserify@^2.0.10",
+    "tty": "tty-browserify@^0.0.1",
+    "url": "~0.11.0",
+    "util": "~0.11.0",
+    "vm": "vm-browserify@^1.1.0",
+    "zlib": "browserify-zlib@~0.2.0"
   },
   "type": "module",
   "overrides": {
@@ -596,7 +588,7 @@
         ]
       }
     },
-    "npm:string_decoder@~1.1.1": {
+    "npm:string_decoder@^1.2.0": {
       "namedExports": {
         "lib/string_decoder.js": [
           "StringDecoder"

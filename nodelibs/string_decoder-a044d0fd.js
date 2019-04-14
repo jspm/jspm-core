@@ -1,9 +1,9 @@
 import _buffer from './buffer.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
   /* eslint-disable node/no-deprecated-api */
@@ -17,11 +17,11 @@ function dew() {
   }
 
   if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-    exports$1 = buffer;
+    exports = buffer;
   } else {
     // Copy properties from require('buffer')
-    copyProps(buffer, exports$1);
-    exports$1.Buffer = SafeBuffer;
+    copyProps(buffer, exports);
+    exports.Buffer = SafeBuffer;
   }
 
   function SafeBuffer(arg, encodingOrOffset, length) {
@@ -75,13 +75,13 @@ function dew() {
     return buffer.SlowBuffer(size);
   };
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$2;
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
 
   /*<replacement>*/
@@ -156,7 +156,7 @@ function dew$1() {
   // characters.
 
 
-  exports$2.StringDecoder = StringDecoder;
+  exports$1.StringDecoder = StringDecoder;
 
   function StringDecoder(encoding) {
     this.encoding = normalizeEncoding(encoding);
@@ -402,10 +402,10 @@ function dew$1() {
     return buf && buf.length ? this.write(buf) : '';
   }
 
-  return exports$2;
+  return exports$1;
 }
 
-const exports$3 = dew$1();
-const StringDecoder = exports$3.StringDecoder;
+const exports$2 = dew$1();
+const StringDecoder = exports$2.StringDecoder;
 
-export { dew as a, exports$3 as b, StringDecoder as c };
+export { dew as a, exports$2 as b, StringDecoder as c };

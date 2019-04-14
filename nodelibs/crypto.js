@@ -1,50 +1,61 @@
+import { b as dew$1Y } from './util-c86b84df.js';
 import _process from './process.js';
 import _buffer from './buffer.js';
-import { a as dew$1 } from './chunk-bdb48c3e.js';
-import { a as dew, b as exports$3 } from './chunk-931ab749.js';
+import { a as dew$1X, b as _string_decoder } from './string_decoder-a044d0fd.js';
 import './events.js';
-import { d as _crypto } from './chunk-70571ed9.js';
+import './chunk-147c6ebb.js';
 import _stream from './stream.js';
 import _vm from './vm.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$2() {
-  if (_dewExec) return exports$1;
+function dew() {
+  if (_dewExec) return exports;
   _dewExec = true;
   var process = _process;
+  // limit of Crypto.getRandomValues()
+  // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
+  var MAX_BYTES = 65536; // Node supports requesting up to this number of bytes
+  // https://github.com/nodejs/node/blob/master/lib/internal/crypto/random.js#L48
+
+  var MAX_UINT32 = 4294967295;
 
   function oldBrowser() {
     throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11');
   }
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var crypto = _global.crypto || _global.msCrypto;
 
   if (crypto && crypto.getRandomValues) {
-    exports$1 = randomBytes;
+    exports = randomBytes;
   } else {
-    exports$1 = oldBrowser;
+    exports = oldBrowser;
   }
 
   function randomBytes(size, cb) {
     // phantomjs needs to throw
-    if (size > 65536) throw new Error('requested too many random bytes'); // in case browserify  isn't using the Uint8Array version
-
-    var rawBytes = new _global.Uint8Array(size); // This will not work in older browsers.
-    // See https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
+    if (size > MAX_UINT32) throw new RangeError('requested too many random bytes');
+    var bytes = Buffer.allocUnsafe(size);
 
     if (size > 0) {
       // getRandomValues fails on IE if size == 0
-      crypto.getRandomValues(rawBytes);
-    } // XXX: phantomjs doesn't like a buffer being passed here
-
-
-    var bytes = Buffer.from(rawBytes.buffer);
+      if (size > MAX_BYTES) {
+        // this is the max bytes crypto.getRandomValues
+        // can do at once see https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
+        for (var generated = 0; generated < size; generated += MAX_BYTES) {
+          // buffer.slice automatically checks if the end is past the end of
+          // the buffer so we don't have to here
+          crypto.getRandomValues(bytes.slice(generated, generated + MAX_BYTES));
+        }
+      } else {
+        crypto.getRandomValues(bytes);
+      }
+    }
 
     if (typeof cb === 'function') {
       return process.nextTick(function () {
@@ -55,20 +66,20 @@ function dew$2() {
     return bytes;
   }
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
-function dew$3() {
-  if (_dewExec$1) return exports$2;
+function dew$1() {
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var Transform = _stream.Transform;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function throwIfNotStringOrBuffer(val, prefix) {
     if (!Buffer.isBuffer(val) && typeof val !== 'string') {
@@ -164,20 +175,21 @@ function dew$3() {
     throw new Error('_digest is not implemented');
   };
 
-  exports$2 = HashBase;
-  return exports$2;
+  exports$1 = HashBase;
+  return exports$1;
 }
 
-var exports$3$1 = {},
+var exports$2 = {},
     _dewExec$2 = false;
-function dew$4() {
-  if (_dewExec$2) return exports$3$1;
+function dew$2() {
+  if (_dewExec$2) return exports$2;
   _dewExec$2 = true;
-  var Buffer = _buffer.Buffer;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var HashBase = dew$3();
+  var HashBase = dew$1();
+
+  var Buffer = dew$1X().Buffer;
 
   var ARRAY16 = new Array(16);
 
@@ -292,7 +304,7 @@ function dew$4() {
     this._update(); // produce result
 
 
-    var buffer = new Buffer(16);
+    var buffer = Buffer.allocUnsafe(16);
     buffer.writeInt32LE(this._a, 0);
     buffer.writeInt32LE(this._b, 4);
     buffer.writeInt32LE(this._c, 8);
@@ -320,20 +332,20 @@ function dew$4() {
     return rotl(a + (c ^ (b | ~d)) + m + k | 0, s) + b | 0;
   }
 
-  exports$3$1 = MD5;
-  return exports$3$1;
+  exports$2 = MD5;
+  return exports$2;
 }
 
-var exports$4 = {},
+var exports$3 = {},
     _dewExec$3 = false;
-function dew$5() {
-  if (_dewExec$3) return exports$4;
+function dew$3() {
+  if (_dewExec$3) return exports$3;
   _dewExec$3 = true;
   var Buffer = _buffer.Buffer;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var HashBase = dew$3();
+  var HashBase = dew$1();
 
   var ARRAY16 = new Array(16);
   var zl = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8, 3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12, 1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2, 4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13];
@@ -468,20 +480,20 @@ function dew$5() {
     return rotl(a + (b ^ (c | ~d)) + m + k | 0, s) + e | 0;
   }
 
-  exports$4 = RIPEMD160;
-  return exports$4;
+  exports$3 = RIPEMD160;
+  return exports$3;
 }
 
-var exports$5 = {},
+var exports$4 = {},
     _dewExec$4 = false;
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$6() {
-  if (_dewExec$4) return exports$5;
+function dew$4() {
+  if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
 
-  var Buffer = dew().Buffer; // prototype class for hash functions
+  var Buffer = dew$1X().Buffer; // prototype class for hash functions
 
 
   function Hash(blockSize, finalSize) {
@@ -560,17 +572,17 @@ function dew$6() {
     throw new Error('_update must be implemented by subclass');
   };
 
-  exports$5 = Hash;
-  return exports$5;
+  exports$4 = Hash;
+  return exports$4;
 }
 
-var exports$6 = {},
+var exports$5 = {},
     _dewExec$5 = false;
 
 var _global$2 = typeof self !== "undefined" ? self : global;
 
-function dew$7() {
-  if (_dewExec$5) return exports$6;
+function dew$5() {
+  if (_dewExec$5) return exports$5;
   _dewExec$5 = true;
 
   /*
@@ -580,11 +592,11 @@ function dew$7() {
    * The difference between SHA-0 and SHA-1 is just a bitwise rotate left
    * operation was added.
    */
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0];
   var W = new Array(80);
@@ -659,17 +671,17 @@ function dew$7() {
     return H;
   };
 
-  exports$6 = Sha;
-  return exports$6;
+  exports$5 = Sha;
+  return exports$5;
 }
 
-var exports$7 = {},
+var exports$6 = {},
     _dewExec$6 = false;
 
 var _global$3 = typeof self !== "undefined" ? self : global;
 
-function dew$8() {
-  if (_dewExec$6) return exports$7;
+function dew$6() {
+  if (_dewExec$6) return exports$6;
   _dewExec$6 = true;
 
   /*
@@ -680,11 +692,11 @@ function dew$8() {
    * Distributed under the BSD License
    * See http://pajhome.org.uk/crypt/md5 for details.
    */
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0];
   var W = new Array(80);
@@ -763,17 +775,17 @@ function dew$8() {
     return H;
   };
 
-  exports$7 = Sha1;
-  return exports$7;
+  exports$6 = Sha1;
+  return exports$6;
 }
 
-var exports$8 = {},
+var exports$7 = {},
     _dewExec$7 = false;
 
 var _global$4 = typeof self !== "undefined" ? self : global;
 
-function dew$9() {
-  if (_dewExec$7) return exports$8;
+function dew$7() {
+  if (_dewExec$7) return exports$7;
   _dewExec$7 = true;
 
   /**
@@ -783,11 +795,11 @@ function dew$9() {
    * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
    *
    */
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var K = [0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5, 0x3956C25B, 0x59F111F1, 0x923F82A4, 0xAB1C5ED5, 0xD807AA98, 0x12835B01, 0x243185BE, 0x550C7DC3, 0x72BE5D74, 0x80DEB1FE, 0x9BDC06A7, 0xC19BF174, 0xE49B69C1, 0xEFBE4786, 0x0FC19DC6, 0x240CA1CC, 0x2DE92C6F, 0x4A7484AA, 0x5CB0A9DC, 0x76F988DA, 0x983E5152, 0xA831C66D, 0xB00327C8, 0xBF597FC7, 0xC6E00BF3, 0xD5A79147, 0x06CA6351, 0x14292967, 0x27B70A85, 0x2E1B2138, 0x4D2C6DFC, 0x53380D13, 0x650A7354, 0x766A0ABB, 0x81C2C92E, 0x92722C85, 0xA2BFE8A1, 0xA81A664B, 0xC24B8B70, 0xC76C51A3, 0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070, 0x19A4C116, 0x1E376C08, 0x2748774C, 0x34B0BCB5, 0x391C0CB3, 0x4ED8AA4A, 0x5B9CCA4F, 0x682E6FF3, 0x748F82EE, 0x78A5636F, 0x84C87814, 0x8CC70208, 0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2];
   var W = new Array(64);
@@ -888,17 +900,17 @@ function dew$9() {
     return H;
   };
 
-  exports$8 = Sha256;
-  return exports$8;
+  exports$7 = Sha256;
+  return exports$7;
 }
 
-var exports$9 = {},
+var exports$8 = {},
     _dewExec$8 = false;
 
 var _global$5 = typeof self !== "undefined" ? self : global;
 
-function dew$a() {
-  if (_dewExec$8) return exports$9;
+function dew$8() {
+  if (_dewExec$8) return exports$8;
   _dewExec$8 = true;
 
   /**
@@ -908,13 +920,13 @@ function dew$a() {
    * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
    *
    */
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Sha256 = dew$9();
+  var Sha256 = dew$7();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var W = new Array(64);
 
@@ -951,24 +963,24 @@ function dew$a() {
     return H;
   };
 
-  exports$9 = Sha224;
-  return exports$9;
+  exports$8 = Sha224;
+  return exports$8;
 }
 
-var exports$a = {},
+var exports$9 = {},
     _dewExec$9 = false;
 
 var _global$6 = typeof self !== "undefined" ? self : global;
 
-function dew$b() {
-  if (_dewExec$9) return exports$a;
+function dew$9() {
+  if (_dewExec$9) return exports$9;
   _dewExec$9 = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var K = [0x428a2f98, 0xd728ae22, 0x71374491, 0x23ef65cd, 0xb5c0fbcf, 0xec4d3b2f, 0xe9b5dba5, 0x8189dbbc, 0x3956c25b, 0xf348b538, 0x59f111f1, 0xb605d019, 0x923f82a4, 0xaf194f9b, 0xab1c5ed5, 0xda6d8118, 0xd807aa98, 0xa3030242, 0x12835b01, 0x45706fbe, 0x243185be, 0x4ee4b28c, 0x550c7dc3, 0xd5ffb4e2, 0x72be5d74, 0xf27b896f, 0x80deb1fe, 0x3b1696b1, 0x9bdc06a7, 0x25c71235, 0xc19bf174, 0xcf692694, 0xe49b69c1, 0x9ef14ad2, 0xefbe4786, 0x384f25e3, 0x0fc19dc6, 0x8b8cd5b5, 0x240ca1cc, 0x77ac9c65, 0x2de92c6f, 0x592b0275, 0x4a7484aa, 0x6ea6e483, 0x5cb0a9dc, 0xbd41fbd4, 0x76f988da, 0x831153b5, 0x983e5152, 0xee66dfab, 0xa831c66d, 0x2db43210, 0xb00327c8, 0x98fb213f, 0xbf597fc7, 0xbeef0ee4, 0xc6e00bf3, 0x3da88fc2, 0xd5a79147, 0x930aa725, 0x06ca6351, 0xe003826f, 0x14292967, 0x0a0e6e70, 0x27b70a85, 0x46d22ffc, 0x2e1b2138, 0x5c26c926, 0x4d2c6dfc, 0x5ac42aed, 0x53380d13, 0x9d95b3df, 0x650a7354, 0x8baf63de, 0x766a0abb, 0x3c77b2a8, 0x81c2c92e, 0x47edaee6, 0x92722c85, 0x1482353b, 0xa2bfe8a1, 0x4cf10364, 0xa81a664b, 0xbc423001, 0xc24b8b70, 0xd0f89791, 0xc76c51a3, 0x0654be30, 0xd192e819, 0xd6ef5218, 0xd6990624, 0x5565a910, 0xf40e3585, 0x5771202a, 0x106aa070, 0x32bbd1b8, 0x19a4c116, 0xb8d2d0c8, 0x1e376c08, 0x5141ab53, 0x2748774c, 0xdf8eeb99, 0x34b0bcb5, 0xe19b48a8, 0x391c0cb3, 0xc5c95a63, 0x4ed8aa4a, 0xe3418acb, 0x5b9cca4f, 0x7763e373, 0x682e6ff3, 0xd6b2b8a3, 0x748f82ee, 0x5defb2fc, 0x78a5636f, 0x43172f60, 0x84c87814, 0xa1f0ab72, 0x8cc70208, 0x1a6439ec, 0x90befffa, 0x23631e28, 0xa4506ceb, 0xde82bde9, 0xbef9a3f7, 0xb2c67915, 0xc67178f2, 0xe372532b, 0xca273ece, 0xea26619c, 0xd186b8c7, 0x21c0c207, 0xeada7dd6, 0xcde0eb1e, 0xf57d4f7f, 0xee6ed178, 0x06f067aa, 0x72176fba, 0x0a637dc5, 0xa2c898a6, 0x113f9804, 0xbef90dae, 0x1b710b35, 0x131c471b, 0x28db77f5, 0x23047d84, 0x32caab7b, 0x40c72493, 0x3c9ebe0a, 0x15c9bebc, 0x431d67c4, 0x9c100d4c, 0x4cc5d4be, 0xcb3e42b6, 0x597f299c, 0xfc657e2a, 0x5fcb6fab, 0x3ad6faec, 0x6c44198c, 0x4a475817];
   var W = new Array(160);
@@ -1165,26 +1177,26 @@ function dew$b() {
     return H;
   };
 
-  exports$a = Sha512;
-  return exports$a;
+  exports$9 = Sha512;
+  return exports$9;
 }
 
-var exports$b = {},
+var exports$a = {},
     _dewExec$a = false;
 
 var _global$7 = typeof self !== "undefined" ? self : global;
 
-function dew$c() {
-  if (_dewExec$a) return exports$b;
+function dew$a() {
+  if (_dewExec$a) return exports$a;
   _dewExec$a = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var SHA512 = dew$b();
+  var SHA512 = dew$9();
 
-  var Hash = dew$6();
+  var Hash = dew$4();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var W = new Array(160);
 
@@ -1233,50 +1245,50 @@ function dew$c() {
     return H;
   };
 
-  exports$b = Sha384;
-  return exports$b;
+  exports$a = Sha384;
+  return exports$a;
 }
 
-var exports$c = {},
+var exports$b = {},
     _dewExec$b = false;
-var module$1 = {
-  exports: exports$c
+var module = {
+  exports: exports$b
 };
-function dew$d() {
-  if (_dewExec$b) return module$1.exports;
+function dew$b() {
+  if (_dewExec$b) return module.exports;
   _dewExec$b = true;
 
-  var exports = module$1.exports = function SHA(algorithm) {
+  var exports = module.exports = function SHA(algorithm) {
     algorithm = algorithm.toLowerCase();
     var Algorithm = exports[algorithm];
     if (!Algorithm) throw new Error(algorithm + ' is not supported (we accept pull requests)');
     return new Algorithm();
   };
 
-  exports.sha = dew$7();
-  exports.sha1 = dew$8();
-  exports.sha224 = dew$a();
-  exports.sha256 = dew$9();
-  exports.sha384 = dew$c();
-  exports.sha512 = dew$b();
-  return module$1.exports;
+  exports.sha = dew$5();
+  exports.sha1 = dew$6();
+  exports.sha224 = dew$8();
+  exports.sha256 = dew$7();
+  exports.sha384 = dew$a();
+  exports.sha512 = dew$9();
+  return module.exports;
 }
 
-var exports$d = {},
+var exports$c = {},
     _dewExec$c = false;
 
 var _global$8 = typeof self !== "undefined" ? self : global;
 
-function dew$e() {
-  if (_dewExec$c) return exports$d;
+function dew$c() {
+  if (_dewExec$c) return exports$c;
   _dewExec$c = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var Transform = _stream.Transform;
-  var StringDecoder = exports$3.StringDecoder;
+  var StringDecoder = _string_decoder.StringDecoder;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function CipherBase(hashMode) {
     Transform.call(this || _global$8);
@@ -1384,25 +1396,25 @@ function dew$e() {
     return out;
   };
 
-  exports$d = CipherBase;
-  return exports$d;
+  exports$c = CipherBase;
+  return exports$c;
 }
 
-var exports$e = {},
+var exports$d = {},
     _dewExec$d = false;
-function dew$f() {
-  if (_dewExec$d) return exports$e;
+function dew$d() {
+  if (_dewExec$d) return exports$d;
   _dewExec$d = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var MD5 = dew$4();
+  var MD5 = dew$2();
 
-  var RIPEMD160 = dew$5();
+  var RIPEMD160 = dew$3();
 
-  var sha = dew$d();
+  var sha = dew$b();
 
-  var Base = dew$e();
+  var Base = dew$c();
 
   function Hash(hash) {
     Base.call(this, 'digest');
@@ -1419,27 +1431,27 @@ function dew$f() {
     return this._hash.digest();
   };
 
-  exports$e = function createHash(alg) {
+  exports$d = function createHash(alg) {
     alg = alg.toLowerCase();
     if (alg === 'md5') return new MD5();
     if (alg === 'rmd160' || alg === 'ripemd160') return new RIPEMD160();
     return new Hash(sha(alg));
   };
 
-  return exports$e;
+  return exports$d;
 }
 
-var exports$f = {},
+var exports$e = {},
     _dewExec$e = false;
-function dew$g() {
-  if (_dewExec$e) return exports$f;
+function dew$e() {
+  if (_dewExec$e) return exports$e;
   _dewExec$e = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var Base = dew$e();
+  var Base = dew$c();
 
   var ZEROS = Buffer.alloc(128);
   var blocksize = 64;
@@ -1483,44 +1495,44 @@ function dew$g() {
     return this._alg(Buffer.concat([this._opad, h]));
   };
 
-  exports$f = Hmac;
+  exports$e = Hmac;
+  return exports$e;
+}
+
+var exports$f = {},
+    _dewExec$f = false;
+function dew$f() {
+  if (_dewExec$f) return exports$f;
+  _dewExec$f = true;
+
+  var MD5 = dew$2();
+
+  exports$f = function (buffer) {
+    return new MD5().update(buffer).digest();
+  };
+
   return exports$f;
 }
 
 var exports$g = {},
-    _dewExec$f = false;
-function dew$h() {
-  if (_dewExec$f) return exports$g;
-  _dewExec$f = true;
-
-  var MD5 = dew$4();
-
-  exports$g = function (buffer) {
-    return new MD5().update(buffer).digest();
-  };
-
-  return exports$g;
-}
-
-var exports$h = {},
     _dewExec$g = false;
-function dew$i() {
-  if (_dewExec$g) return exports$h;
+function dew$g() {
+  if (_dewExec$g) return exports$g;
   _dewExec$g = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Legacy = dew$g();
+  var Legacy = dew$e();
 
-  var Base = dew$e();
+  var Base = dew$c();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var md5 = dew$h();
+  var md5 = dew$f();
 
-  var RIPEMD160 = dew$5();
+  var RIPEMD160 = dew$3();
 
-  var sha = dew$d();
+  var sha = dew$b();
 
   var ZEROS = Buffer.alloc(128);
 
@@ -1568,7 +1580,7 @@ function dew$i() {
     return hash.update(this._opad).update(h).digest();
   };
 
-  exports$h = function createHmac(alg, key) {
+  exports$g = function createHmac(alg, key) {
     alg = alg.toLowerCase();
 
     if (alg === 'rmd160' || alg === 'ripemd160') {
@@ -1582,27 +1594,27 @@ function dew$i() {
     return new Hmac(alg, key);
   };
 
+  return exports$g;
+}
+
+function dew$h () {
   return exports$h;
 }
+var exports$h = {"sha224WithRSAEncryption":{"sign":"rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"RSA-SHA224":{"sign":"ecdsa/rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"sha256WithRSAEncryption":{"sign":"rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"RSA-SHA256":{"sign":"ecdsa/rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"sha384WithRSAEncryption":{"sign":"rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"RSA-SHA384":{"sign":"ecdsa/rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"sha512WithRSAEncryption":{"sign":"rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA512":{"sign":"ecdsa/rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA1":{"sign":"rsa","hash":"sha1","id":"3021300906052b0e03021a05000414"},"ecdsa-with-SHA1":{"sign":"ecdsa","hash":"sha1","id":""},"sha256":{"sign":"ecdsa","hash":"sha256","id":""},"sha224":{"sign":"ecdsa","hash":"sha224","id":""},"sha384":{"sign":"ecdsa","hash":"sha384","id":""},"sha512":{"sign":"ecdsa","hash":"sha512","id":""},"DSA-SHA":{"sign":"dsa","hash":"sha1","id":""},"DSA-SHA1":{"sign":"dsa","hash":"sha1","id":""},"DSA":{"sign":"dsa","hash":"sha1","id":""},"DSA-WITH-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-WITH-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-WITH-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-WITH-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-RIPEMD160":{"sign":"dsa","hash":"rmd160","id":""},"ripemd160WithRSA":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}};
 
-function dew$j () {
+var exports$i = {},
+    _dewExec$h = false;
+function dew$i() {
+  if (_dewExec$h) return exports$i;
+  _dewExec$h = true;
+  exports$i = dew$h();
   return exports$i;
 }
-var exports$i = {"sha224WithRSAEncryption":{"sign":"rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"RSA-SHA224":{"sign":"ecdsa/rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"sha256WithRSAEncryption":{"sign":"rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"RSA-SHA256":{"sign":"ecdsa/rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"sha384WithRSAEncryption":{"sign":"rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"RSA-SHA384":{"sign":"ecdsa/rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"sha512WithRSAEncryption":{"sign":"rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA512":{"sign":"ecdsa/rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA1":{"sign":"rsa","hash":"sha1","id":"3021300906052b0e03021a05000414"},"ecdsa-with-SHA1":{"sign":"ecdsa","hash":"sha1","id":""},"sha256":{"sign":"ecdsa","hash":"sha256","id":""},"sha224":{"sign":"ecdsa","hash":"sha224","id":""},"sha384":{"sign":"ecdsa","hash":"sha384","id":""},"sha512":{"sign":"ecdsa","hash":"sha512","id":""},"DSA-SHA":{"sign":"dsa","hash":"sha1","id":""},"DSA-SHA1":{"sign":"dsa","hash":"sha1","id":""},"DSA":{"sign":"dsa","hash":"sha1","id":""},"DSA-WITH-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-WITH-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-WITH-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-WITH-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-RIPEMD160":{"sign":"dsa","hash":"rmd160","id":""},"ripemd160WithRSA":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}};
 
 var exports$j = {},
-    _dewExec$h = false;
-function dew$k() {
-  if (_dewExec$h) return exports$j;
-  _dewExec$h = true;
-  exports$j = dew$j();
-  return exports$j;
-}
-
-var exports$k = {},
     _dewExec$i = false;
-function dew$l() {
-  if (_dewExec$i) return exports$k;
+function dew$j() {
+  if (_dewExec$i) return exports$j;
   _dewExec$i = true;
   var Buffer = _buffer.Buffer;
   var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
@@ -1613,7 +1625,7 @@ function dew$l() {
     }
   }
 
-  exports$k = function (password, salt, iterations, keylen) {
+  exports$j = function (password, salt, iterations, keylen) {
     checkBuffer(password, 'Password');
     checkBuffer(salt, 'Salt');
 
@@ -1635,13 +1647,13 @@ function dew$l() {
     }
   };
 
-  return exports$k;
+  return exports$j;
 }
 
-var exports$l = {},
+var exports$k = {},
     _dewExec$j = false;
-function dew$m() {
-  if (_dewExec$j) return exports$l;
+function dew$k() {
+  if (_dewExec$j) return exports$k;
   _dewExec$j = true;
   var process = _process;
   var defaultEncoding;
@@ -1654,30 +1666,30 @@ function dew$m() {
     defaultEncoding = pVersionMajor >= 6 ? 'utf-8' : 'binary';
   }
 
-  exports$l = defaultEncoding;
-  return exports$l;
+  exports$k = defaultEncoding;
+  return exports$k;
 }
 
-var exports$m = {},
+var exports$l = {},
     _dewExec$k = false;
 
 var _global$9 = typeof self !== "undefined" ? self : global;
 
-function dew$n() {
-  if (_dewExec$k) return exports$m;
+function dew$l() {
+  if (_dewExec$k) return exports$l;
   _dewExec$k = true;
 
-  var md5 = dew$h();
+  var md5 = dew$f();
 
-  var rmd160 = dew$5();
+  var RIPEMD160 = dew$3();
 
-  var sha = dew$d();
+  var sha = dew$b();
 
-  var checkParameters = dew$l();
+  var checkParameters = dew$j();
 
-  var defaultEncoding = dew$m();
+  var defaultEncoding = dew$k();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var ZEROS = Buffer.alloc(128);
   var sizes = {
@@ -1732,7 +1744,11 @@ function dew$n() {
       return sha(alg).update(data).digest();
     }
 
-    if (alg === 'rmd160' || alg === 'ripemd160') return rmd160;
+    function rmd160Func(data) {
+      return new RIPEMD160().update(data).digest();
+    }
+
+    if (alg === 'rmd160' || alg === 'ripemd160') return rmd160Func;
     if (alg === 'md5') return md5;
     return shaFunc;
   }
@@ -1768,27 +1784,27 @@ function dew$n() {
     return DK;
   }
 
-  exports$m = pbkdf2;
-  return exports$m;
+  exports$l = pbkdf2;
+  return exports$l;
 }
 
-var exports$n = {},
+var exports$m = {},
     _dewExec$l = false;
 
 var _global$a = typeof self !== "undefined" ? self : global;
 
-function dew$o() {
-  if (_dewExec$l) return exports$n;
+function dew$m() {
+  if (_dewExec$l) return exports$m;
   _dewExec$l = true;
   var process = _process;
 
-  var checkParameters = dew$l();
+  var checkParameters = dew$j();
 
-  var defaultEncoding = dew$m();
+  var defaultEncoding = dew$k();
 
-  var sync = dew$n();
+  var sync = dew$l();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var ZERO_BUF;
   var subtle = _global$a.crypto && _global$a.crypto.subtle;
@@ -1857,7 +1873,7 @@ function dew$o() {
     });
   }
 
-  exports$n = function (password, salt, iterations, keylen, digest, callback) {
+  exports$m = function (password, salt, iterations, keylen, digest, callback) {
     if (typeof digest === 'function') {
       callback = digest;
       digest = undefined;
@@ -1890,38 +1906,38 @@ function dew$o() {
     }), callback);
   };
 
+  return exports$m;
+}
+
+var exports$n = {},
+    _dewExec$m = false;
+function dew$n() {
+  if (_dewExec$m) return exports$n;
+  _dewExec$m = true;
+  exports$n.pbkdf2 = dew$m();
+  exports$n.pbkdf2Sync = dew$l();
   return exports$n;
 }
 
 var exports$o = {},
-    _dewExec$m = false;
-function dew$p() {
-  if (_dewExec$m) return exports$o;
-  _dewExec$m = true;
-  exports$o.pbkdf2 = dew$o();
-  exports$o.pbkdf2Sync = dew$n();
-  return exports$o;
-}
-
-var exports$p = {},
     _dewExec$n = false;
-function dew$q() {
-  if (_dewExec$n) return exports$p;
+function dew$o() {
+  if (_dewExec$n) return exports$o;
   _dewExec$n = true;
 
-  exports$p.readUInt32BE = function readUInt32BE(bytes, off) {
+  exports$o.readUInt32BE = function readUInt32BE(bytes, off) {
     var res = bytes[0 + off] << 24 | bytes[1 + off] << 16 | bytes[2 + off] << 8 | bytes[3 + off];
     return res >>> 0;
   };
 
-  exports$p.writeUInt32BE = function writeUInt32BE(bytes, value, off) {
+  exports$o.writeUInt32BE = function writeUInt32BE(bytes, value, off) {
     bytes[0 + off] = value >>> 24;
     bytes[1 + off] = value >>> 16 & 0xff;
     bytes[2 + off] = value >>> 8 & 0xff;
     bytes[3 + off] = value & 0xff;
   };
 
-  exports$p.ip = function ip(inL, inR, out, off) {
+  exports$o.ip = function ip(inL, inR, out, off) {
     var outL = 0;
     var outR = 0;
 
@@ -1953,7 +1969,7 @@ function dew$q() {
     out[off + 1] = outR >>> 0;
   };
 
-  exports$p.rip = function rip(inL, inR, out, off) {
+  exports$o.rip = function rip(inL, inR, out, off) {
     var outL = 0;
     var outR = 0;
 
@@ -1979,7 +1995,7 @@ function dew$q() {
     out[off + 1] = outR >>> 0;
   };
 
-  exports$p.pc1 = function pc1(inL, inR, out, off) {
+  exports$o.pc1 = function pc1(inL, inR, out, off) {
     var outL = 0;
     var outR = 0; // 7, 15, 23, 31, 39, 47, 55, 63
     // 6, 14, 22, 30, 39, 47, 55, 63
@@ -2028,7 +2044,7 @@ function dew$q() {
     out[off + 1] = outR >>> 0;
   };
 
-  exports$p.r28shl = function r28shl(num, shift) {
+  exports$o.r28shl = function r28shl(num, shift) {
     return num << shift & 0xfffffff | num >>> 28 - shift;
   };
 
@@ -2036,7 +2052,7 @@ function dew$q() {
   14, 11, 17, 4, 27, 23, 25, 0, 13, 22, 7, 18, 5, 9, 16, 24, 2, 20, 12, 21, 1, 8, 15, 26, // inR => outR
   15, 4, 25, 19, 9, 1, 26, 16, 5, 11, 23, 8, 12, 7, 17, 0, 22, 3, 10, 14, 6, 20, 27, 24];
 
-  exports$p.pc2 = function pc2(inL, inR, out, off) {
+  exports$o.pc2 = function pc2(inL, inR, out, off) {
     var outL = 0;
     var outR = 0;
     var len = pc2table.length >>> 1;
@@ -2055,7 +2071,7 @@ function dew$q() {
     out[off + 1] = outR >>> 0;
   };
 
-  exports$p.expand = function expand(r, out, off) {
+  exports$o.expand = function expand(r, out, off) {
     var outL = 0;
     var outR = 0;
     outL = (r & 1) << 5 | r >>> 27;
@@ -2077,7 +2093,7 @@ function dew$q() {
 
   var sTable = [14, 0, 4, 15, 13, 7, 1, 4, 2, 14, 15, 2, 11, 13, 8, 1, 3, 10, 10, 6, 6, 12, 12, 11, 5, 9, 9, 5, 0, 3, 7, 8, 4, 15, 1, 12, 14, 8, 8, 2, 13, 4, 6, 9, 2, 1, 11, 7, 15, 5, 12, 11, 9, 3, 7, 14, 3, 10, 10, 0, 5, 6, 0, 13, 15, 3, 1, 13, 8, 4, 14, 7, 6, 15, 11, 2, 3, 8, 4, 14, 9, 12, 7, 0, 2, 1, 13, 10, 12, 6, 0, 9, 5, 11, 10, 5, 0, 13, 14, 8, 7, 10, 11, 1, 10, 3, 4, 15, 13, 4, 1, 2, 5, 11, 8, 6, 12, 7, 6, 12, 9, 0, 3, 5, 2, 14, 15, 9, 10, 13, 0, 7, 9, 0, 14, 9, 6, 3, 3, 4, 15, 6, 5, 10, 1, 2, 13, 8, 12, 5, 7, 14, 11, 12, 4, 11, 2, 15, 8, 1, 13, 1, 6, 10, 4, 13, 9, 0, 8, 6, 15, 9, 3, 8, 0, 7, 11, 4, 1, 15, 2, 14, 12, 3, 5, 11, 10, 5, 14, 2, 7, 12, 7, 13, 13, 8, 14, 11, 3, 5, 0, 6, 6, 15, 9, 0, 10, 3, 1, 4, 2, 7, 8, 2, 5, 12, 11, 1, 12, 10, 4, 14, 15, 9, 10, 3, 6, 15, 9, 0, 0, 6, 12, 10, 11, 1, 7, 13, 13, 8, 15, 9, 1, 4, 3, 5, 14, 11, 5, 12, 2, 7, 8, 2, 4, 14, 2, 14, 12, 11, 4, 2, 1, 12, 7, 4, 10, 7, 11, 13, 6, 1, 8, 5, 5, 0, 3, 15, 15, 10, 13, 3, 0, 9, 14, 8, 9, 6, 4, 11, 2, 8, 1, 12, 11, 7, 10, 1, 13, 14, 7, 2, 8, 13, 15, 6, 9, 15, 12, 0, 5, 9, 6, 10, 3, 4, 0, 5, 14, 3, 12, 10, 1, 15, 10, 4, 15, 2, 9, 7, 2, 12, 6, 9, 8, 5, 0, 6, 13, 1, 3, 13, 4, 14, 14, 0, 7, 11, 5, 3, 11, 8, 9, 4, 14, 3, 15, 2, 5, 12, 2, 9, 8, 5, 12, 15, 3, 10, 7, 11, 0, 14, 4, 1, 10, 7, 1, 6, 13, 0, 11, 8, 6, 13, 4, 13, 11, 0, 2, 11, 14, 7, 15, 4, 0, 9, 8, 1, 13, 10, 3, 14, 12, 3, 9, 5, 7, 12, 5, 2, 10, 15, 6, 8, 1, 6, 1, 6, 4, 11, 11, 13, 13, 8, 12, 1, 3, 4, 7, 10, 14, 7, 10, 9, 15, 5, 6, 0, 8, 15, 0, 14, 5, 2, 9, 3, 2, 12, 13, 1, 2, 15, 8, 13, 4, 8, 6, 10, 15, 3, 11, 7, 1, 4, 10, 12, 9, 5, 3, 6, 14, 11, 5, 0, 0, 14, 12, 9, 7, 2, 7, 2, 11, 1, 4, 14, 1, 7, 9, 4, 12, 10, 14, 8, 2, 13, 0, 15, 6, 12, 10, 9, 13, 0, 15, 3, 3, 5, 5, 6, 8, 11];
 
-  exports$p.substitute = function substitute(inL, inR) {
+  exports$o.substitute = function substitute(inL, inR) {
     var out = 0;
 
     for (var i = 0; i < 4; i++) {
@@ -2099,7 +2115,7 @@ function dew$q() {
 
   var permuteTable = [16, 25, 12, 11, 3, 20, 4, 15, 31, 17, 9, 6, 27, 14, 1, 22, 30, 24, 8, 18, 0, 5, 29, 23, 13, 19, 2, 26, 10, 21, 28, 7];
 
-  exports$p.permute = function permute(num) {
+  exports$o.permute = function permute(num) {
     var out = 0;
 
     for (var i = 0; i < permuteTable.length; i++) {
@@ -2110,7 +2126,7 @@ function dew$q() {
     return out >>> 0;
   };
 
-  exports$p.padSplit = function padSplit(num, size, group) {
+  exports$o.padSplit = function padSplit(num, size, group) {
     var str = num.toString(2);
 
     while (str.length < size) str = '0' + str;
@@ -2122,15 +2138,15 @@ function dew$q() {
     return out.join(' ');
   };
 
-  return exports$p;
+  return exports$o;
 }
 
-var exports$q = {},
+var exports$p = {},
     _dewExec$o = false;
-function dew$r() {
-  if (_dewExec$o) return exports$q;
+function dew$p() {
+  if (_dewExec$o) return exports$p;
   _dewExec$o = true;
-  exports$q = assert;
+  exports$p = assert;
 
   function assert(val, msg) {
     if (!val) throw new Error(msg || 'Assertion failed');
@@ -2140,16 +2156,16 @@ function dew$r() {
     if (l != r) throw new Error(msg || 'Assertion failed: ' + l + ' != ' + r);
   };
 
-  return exports$q;
+  return exports$p;
 }
 
-var exports$r = {},
+var exports$q = {},
     _dewExec$p = false;
-function dew$s() {
-  if (_dewExec$p) return exports$r;
+function dew$q() {
+  if (_dewExec$p) return exports$q;
   _dewExec$p = true;
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   function Cipher(options) {
     this.options = options;
@@ -2162,7 +2178,7 @@ function dew$s() {
     this.bufferOff = 0;
   }
 
-  exports$r = Cipher;
+  exports$q = Cipher;
 
   Cipher.prototype._init = function _init() {// Might be overrided
   };
@@ -2172,7 +2188,7 @@ function dew$s() {
     if (this.type === 'decrypt') return this._updateDecrypt(data);else return this._updateEncrypt(data);
   };
 
-  Cipher.prototype._buffer = function _buffer$$1(data, off) {
+  Cipher.prototype._buffer = function _buffer(data, off) {
     // Append data to buffer
     var min = Math.min(this.buffer.length - this.bufferOff, data.length - off);
 
@@ -2270,20 +2286,20 @@ function dew$s() {
     return this._unpad(out);
   };
 
-  return exports$r;
+  return exports$q;
 }
 
-var exports$s = {},
+var exports$r = {},
     _dewExec$q = false;
-function dew$t() {
-  if (_dewExec$q) return exports$s;
+function dew$r() {
+  if (_dewExec$q) return exports$r;
   _dewExec$q = true;
 
-  var assert = dew$r();
+  var assert = dew$p();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var des = dew$w();
+  var des = dew$u();
 
   var utils = des.utils;
   var Cipher = des.Cipher;
@@ -2301,7 +2317,7 @@ function dew$t() {
   }
 
   inherits(DES, Cipher);
-  exports$s = DES;
+  exports$r = DES;
 
   DES.create = function create(options) {
     return new DES(options);
@@ -2401,18 +2417,18 @@ function dew$t() {
     utils.rip(l, r, out, off);
   };
 
-  return exports$s;
+  return exports$r;
 }
 
-var exports$t = {},
+var exports$s = {},
     _dewExec$r = false;
-function dew$u() {
-  if (_dewExec$r) return exports$t;
+function dew$s() {
+  if (_dewExec$r) return exports$s;
   _dewExec$r = true;
 
-  var assert = dew$r();
+  var assert = dew$p();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var proto = {};
 
@@ -2445,7 +2461,7 @@ function dew$u() {
     return CBC;
   }
 
-  exports$t.instantiate = instantiate;
+  exports$s.instantiate = instantiate;
 
   proto._cbcInit = function _cbcInit() {
     var state = new CBCState(this.options.iv);
@@ -2472,20 +2488,20 @@ function dew$u() {
     }
   };
 
-  return exports$t;
+  return exports$s;
 }
 
-var exports$u = {},
+var exports$t = {},
     _dewExec$s = false;
-function dew$v() {
-  if (_dewExec$s) return exports$u;
+function dew$t() {
+  if (_dewExec$s) return exports$t;
   _dewExec$s = true;
 
-  var assert = dew$r();
+  var assert = dew$p();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var des = dew$w();
+  var des = dew$u();
 
   var Cipher = des.Cipher;
   var DES = des.DES;
@@ -2528,7 +2544,7 @@ function dew$v() {
   }
 
   inherits(EDE, Cipher);
-  exports$u = EDE;
+  exports$t = EDE;
 
   EDE.create = function create(options) {
     return new EDE(options);
@@ -2546,38 +2562,38 @@ function dew$v() {
 
   EDE.prototype._pad = DES.prototype._pad;
   EDE.prototype._unpad = DES.prototype._unpad;
+  return exports$t;
+}
+
+var exports$u = {},
+    _dewExec$t = false;
+function dew$u() {
+  if (_dewExec$t) return exports$u;
+  _dewExec$t = true;
+  exports$u.utils = dew$o();
+  exports$u.Cipher = dew$q();
+  exports$u.DES = dew$r();
+  exports$u.CBC = dew$s();
+  exports$u.EDE = dew$t();
   return exports$u;
 }
 
 var exports$v = {},
-    _dewExec$t = false;
-function dew$w() {
-  if (_dewExec$t) return exports$v;
-  _dewExec$t = true;
-  exports$v.utils = dew$q();
-  exports$v.Cipher = dew$s();
-  exports$v.DES = dew$t();
-  exports$v.CBC = dew$u();
-  exports$v.EDE = dew$v();
-  return exports$v;
-}
-
-var exports$w = {},
     _dewExec$u = false;
 
 var _global$b = typeof self !== "undefined" ? self : global;
 
-function dew$x() {
-  if (_dewExec$u) return exports$w;
+function dew$v() {
+  if (_dewExec$u) return exports$v;
   _dewExec$u = true;
 
-  var CipherBase = dew$e();
+  var CipherBase = dew$c();
 
-  var des = dew$w();
+  var des = dew$u();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var modes = {
     'des-ede3-cbc': des.CBC.instantiate(des.EDE),
@@ -2589,7 +2605,7 @@ function dew$x() {
   };
   modes.des = modes['des-cbc'];
   modes.des3 = modes['des-ede3-cbc'];
-  exports$w = DES;
+  exports$v = DES;
   inherits(DES, CipherBase);
 
   function DES(opts) {
@@ -2635,34 +2651,34 @@ function dew$x() {
     return Buffer.from((this || _global$b)._des.final());
   };
 
+  return exports$v;
+}
+
+var exports$w = {},
+    _dewExec$v = false;
+function dew$w() {
+  if (_dewExec$v) return exports$w;
+  _dewExec$v = true;
+
+  exports$w.encrypt = function (self, block) {
+    return self._cipher.encryptBlock(block);
+  };
+
+  exports$w.decrypt = function (self, block) {
+    return self._cipher.decryptBlock(block);
+  };
+
   return exports$w;
 }
 
 var exports$x = {},
-    _dewExec$v = false;
-function dew$y() {
-  if (_dewExec$v) return exports$x;
-  _dewExec$v = true;
-
-  exports$x.encrypt = function (self, block) {
-    return self._cipher.encryptBlock(block);
-  };
-
-  exports$x.decrypt = function (self, block) {
-    return self._cipher.decryptBlock(block);
-  };
-
-  return exports$x;
-}
-
-var exports$y = {},
     _dewExec$w = false;
-function dew$z() {
-  if (_dewExec$w) return exports$y;
+function dew$x() {
+  if (_dewExec$w) return exports$x;
   _dewExec$w = true;
   var Buffer = _buffer.Buffer;
 
-  exports$y = function xor(a, b) {
+  exports$x = function xor(a, b) {
     var length = Math.min(a.length, b.length);
     var buffer = new Buffer(length);
 
@@ -2673,24 +2689,24 @@ function dew$z() {
     return buffer;
   };
 
-  return exports$y;
+  return exports$x;
 }
 
-var exports$z = {},
+var exports$y = {},
     _dewExec$x = false;
-function dew$A() {
-  if (_dewExec$x) return exports$z;
+function dew$y() {
+  if (_dewExec$x) return exports$y;
   _dewExec$x = true;
 
-  var xor = dew$z();
+  var xor = dew$x();
 
-  exports$z.encrypt = function (self, block) {
+  exports$y.encrypt = function (self, block) {
     var data = xor(block, self._prev);
     self._prev = self._cipher.encryptBlock(data);
     return self._prev;
   };
 
-  exports$z.decrypt = function (self, block) {
+  exports$y.decrypt = function (self, block) {
     var pad = self._prev;
     self._prev = block;
 
@@ -2699,18 +2715,18 @@ function dew$A() {
     return xor(out, pad);
   };
 
-  return exports$z;
+  return exports$y;
 }
 
-var exports$A = {},
+var exports$z = {},
     _dewExec$y = false;
-function dew$B() {
-  if (_dewExec$y) return exports$A;
+function dew$z() {
+  if (_dewExec$y) return exports$z;
   _dewExec$y = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var xor = dew$z();
+  var xor = dew$x();
 
   function encryptStart(self, data, decrypt) {
     var len = data.length;
@@ -2720,7 +2736,7 @@ function dew$B() {
     return out;
   }
 
-  exports$A.encrypt = function (self, data, decrypt) {
+  exports$z.encrypt = function (self, data, decrypt) {
     var out = Buffer.allocUnsafe(0);
     var len;
 
@@ -2743,16 +2759,16 @@ function dew$B() {
     return out;
   };
 
-  return exports$A;
+  return exports$z;
 }
 
-var exports$B = {},
+var exports$A = {},
     _dewExec$z = false;
-function dew$C() {
-  if (_dewExec$z) return exports$B;
+function dew$A() {
+  if (_dewExec$z) return exports$A;
   _dewExec$z = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   function encryptByte(self, byteParam, decrypt) {
     var pad = self._cipher.encryptBlock(self._prev);
@@ -2762,7 +2778,7 @@ function dew$C() {
     return out;
   }
 
-  exports$B.encrypt = function (self, chunk, decrypt) {
+  exports$A.encrypt = function (self, chunk, decrypt) {
     var len = chunk.length;
     var out = Buffer.allocUnsafe(len);
     var i = -1;
@@ -2774,16 +2790,16 @@ function dew$C() {
     return out;
   };
 
-  return exports$B;
+  return exports$A;
 }
 
-var exports$C = {},
+var exports$B = {},
     _dewExec$A = false;
-function dew$D() {
-  if (_dewExec$A) return exports$C;
+function dew$B() {
+  if (_dewExec$A) return exports$B;
   _dewExec$A = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   function encryptByte(self, byteParam, decrypt) {
     var pad;
@@ -2816,7 +2832,7 @@ function dew$D() {
     return out;
   }
 
-  exports$C.encrypt = function (self, chunk, decrypt) {
+  exports$B.encrypt = function (self, chunk, decrypt) {
     var len = chunk.length;
     var out = Buffer.allocUnsafe(len);
     var i = -1;
@@ -2828,24 +2844,24 @@ function dew$D() {
     return out;
   };
 
-  return exports$C;
+  return exports$B;
 }
 
-var exports$D = {},
+var exports$C = {},
     _dewExec$B = false;
-function dew$E() {
-  if (_dewExec$B) return exports$D;
+function dew$C() {
+  if (_dewExec$B) return exports$C;
   _dewExec$B = true;
   var Buffer = _buffer.Buffer;
 
-  var xor = dew$z();
+  var xor = dew$x();
 
   function getBlock(self) {
     self._prev = self._cipher.encryptBlock(self._prev);
     return self._prev;
   }
 
-  exports$D.encrypt = function (self, chunk) {
+  exports$C.encrypt = function (self, chunk) {
     while (self._cache.length < chunk.length) {
       self._cache = Buffer.concat([self._cache, getBlock(self)]);
     }
@@ -2856,13 +2872,13 @@ function dew$E() {
     return xor(chunk, pad);
   };
 
-  return exports$D;
+  return exports$C;
 }
 
-var exports$E = {},
+var exports$D = {},
     _dewExec$C = false;
-function dew$F() {
-  if (_dewExec$C) return exports$E;
+function dew$D() {
+  if (_dewExec$C) return exports$D;
   _dewExec$C = true;
 
   function incr32(iv) {
@@ -2882,21 +2898,21 @@ function dew$F() {
     }
   }
 
-  exports$E = incr32;
-  return exports$E;
+  exports$D = incr32;
+  return exports$D;
 }
 
-var exports$F = {},
+var exports$E = {},
     _dewExec$D = false;
-function dew$G() {
-  if (_dewExec$D) return exports$F;
+function dew$E() {
+  if (_dewExec$D) return exports$E;
   _dewExec$D = true;
 
-  var xor = dew$z();
+  var xor = dew$x();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var incr32 = dew$F();
+  var incr32 = dew$D();
 
   function getBlock(self) {
     var out = self._cipher.encryptBlockRaw(self._prev);
@@ -2907,7 +2923,7 @@ function dew$G() {
 
   var blockSize = 16;
 
-  exports$F.encrypt = function (self, chunk) {
+  exports$E.encrypt = function (self, chunk) {
     var chunkNum = Math.ceil(chunk.length / blockSize);
     var start = self._cache.length;
     self._cache = Buffer.concat([self._cache, Buffer.allocUnsafe(chunkNum * blockSize)]);
@@ -2931,54 +2947,54 @@ function dew$G() {
     return xor(chunk, pad);
   };
 
+  return exports$E;
+}
+
+function dew$F () {
   return exports$F;
 }
+var exports$F = {"aes-128-ecb":{"cipher":"AES","key":128,"iv":0,"mode":"ECB","type":"block"},"aes-192-ecb":{"cipher":"AES","key":192,"iv":0,"mode":"ECB","type":"block"},"aes-256-ecb":{"cipher":"AES","key":256,"iv":0,"mode":"ECB","type":"block"},"aes-128-cbc":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes-192-cbc":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes-256-cbc":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes128":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes192":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes256":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes-128-cfb":{"cipher":"AES","key":128,"iv":16,"mode":"CFB","type":"stream"},"aes-192-cfb":{"cipher":"AES","key":192,"iv":16,"mode":"CFB","type":"stream"},"aes-256-cfb":{"cipher":"AES","key":256,"iv":16,"mode":"CFB","type":"stream"},"aes-128-cfb8":{"cipher":"AES","key":128,"iv":16,"mode":"CFB8","type":"stream"},"aes-192-cfb8":{"cipher":"AES","key":192,"iv":16,"mode":"CFB8","type":"stream"},"aes-256-cfb8":{"cipher":"AES","key":256,"iv":16,"mode":"CFB8","type":"stream"},"aes-128-cfb1":{"cipher":"AES","key":128,"iv":16,"mode":"CFB1","type":"stream"},"aes-192-cfb1":{"cipher":"AES","key":192,"iv":16,"mode":"CFB1","type":"stream"},"aes-256-cfb1":{"cipher":"AES","key":256,"iv":16,"mode":"CFB1","type":"stream"},"aes-128-ofb":{"cipher":"AES","key":128,"iv":16,"mode":"OFB","type":"stream"},"aes-192-ofb":{"cipher":"AES","key":192,"iv":16,"mode":"OFB","type":"stream"},"aes-256-ofb":{"cipher":"AES","key":256,"iv":16,"mode":"OFB","type":"stream"},"aes-128-ctr":{"cipher":"AES","key":128,"iv":16,"mode":"CTR","type":"stream"},"aes-192-ctr":{"cipher":"AES","key":192,"iv":16,"mode":"CTR","type":"stream"},"aes-256-ctr":{"cipher":"AES","key":256,"iv":16,"mode":"CTR","type":"stream"},"aes-128-gcm":{"cipher":"AES","key":128,"iv":12,"mode":"GCM","type":"auth"},"aes-192-gcm":{"cipher":"AES","key":192,"iv":12,"mode":"GCM","type":"auth"},"aes-256-gcm":{"cipher":"AES","key":256,"iv":12,"mode":"GCM","type":"auth"}};
 
-function dew$H () {
-  return exports$G;
-}
-var exports$G = {"aes-128-ecb":{"cipher":"AES","key":128,"iv":0,"mode":"ECB","type":"block"},"aes-192-ecb":{"cipher":"AES","key":192,"iv":0,"mode":"ECB","type":"block"},"aes-256-ecb":{"cipher":"AES","key":256,"iv":0,"mode":"ECB","type":"block"},"aes-128-cbc":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes-192-cbc":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes-256-cbc":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes128":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes192":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes256":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes-128-cfb":{"cipher":"AES","key":128,"iv":16,"mode":"CFB","type":"stream"},"aes-192-cfb":{"cipher":"AES","key":192,"iv":16,"mode":"CFB","type":"stream"},"aes-256-cfb":{"cipher":"AES","key":256,"iv":16,"mode":"CFB","type":"stream"},"aes-128-cfb8":{"cipher":"AES","key":128,"iv":16,"mode":"CFB8","type":"stream"},"aes-192-cfb8":{"cipher":"AES","key":192,"iv":16,"mode":"CFB8","type":"stream"},"aes-256-cfb8":{"cipher":"AES","key":256,"iv":16,"mode":"CFB8","type":"stream"},"aes-128-cfb1":{"cipher":"AES","key":128,"iv":16,"mode":"CFB1","type":"stream"},"aes-192-cfb1":{"cipher":"AES","key":192,"iv":16,"mode":"CFB1","type":"stream"},"aes-256-cfb1":{"cipher":"AES","key":256,"iv":16,"mode":"CFB1","type":"stream"},"aes-128-ofb":{"cipher":"AES","key":128,"iv":16,"mode":"OFB","type":"stream"},"aes-192-ofb":{"cipher":"AES","key":192,"iv":16,"mode":"OFB","type":"stream"},"aes-256-ofb":{"cipher":"AES","key":256,"iv":16,"mode":"OFB","type":"stream"},"aes-128-ctr":{"cipher":"AES","key":128,"iv":16,"mode":"CTR","type":"stream"},"aes-192-ctr":{"cipher":"AES","key":192,"iv":16,"mode":"CTR","type":"stream"},"aes-256-ctr":{"cipher":"AES","key":256,"iv":16,"mode":"CTR","type":"stream"},"aes-128-gcm":{"cipher":"AES","key":128,"iv":12,"mode":"GCM","type":"auth"},"aes-192-gcm":{"cipher":"AES","key":192,"iv":12,"mode":"GCM","type":"auth"},"aes-256-gcm":{"cipher":"AES","key":256,"iv":12,"mode":"GCM","type":"auth"}};
-
-var exports$H = {},
+var exports$G = {},
     _dewExec$E = false;
-function dew$I() {
-  if (_dewExec$E) return exports$H;
+function dew$G() {
+  if (_dewExec$E) return exports$G;
   _dewExec$E = true;
   var modeModules = {
-    ECB: dew$y(),
-    CBC: dew$A(),
-    CFB: dew$B(),
-    CFB8: dew$C(),
-    CFB1: dew$D(),
-    OFB: dew$E(),
-    CTR: dew$G(),
-    GCM: dew$G()
+    ECB: dew$w(),
+    CBC: dew$y(),
+    CFB: dew$z(),
+    CFB8: dew$A(),
+    CFB1: dew$B(),
+    OFB: dew$C(),
+    CTR: dew$E(),
+    GCM: dew$E()
   };
 
-  var modes = dew$H();
+  var modes = dew$F();
 
   for (var key in modes) {
     modes[key].module = modeModules[modes[key].mode];
   }
 
-  exports$H = modes;
-  return exports$H;
+  exports$G = modes;
+  return exports$G;
 }
 
-var exports$I = {},
+var exports$H = {},
     _dewExec$F = false;
 
 var _global$c = typeof self !== "undefined" ? self : global;
 
-function dew$J() {
-  if (_dewExec$F) return exports$I;
+function dew$H() {
+  if (_dewExec$F) return exports$H;
   _dewExec$F = true;
 
   // based on the aes implimentation in triple sec
   // https://github.com/keybase/triplesec
   // which is in turn based on the one from crypto-js
   // https://code.google.com/p/crypto-js/
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   function asUInt32Array(buf) {
     if (!Buffer.isBuffer(buf)) buf = Buffer.from(buf);
@@ -3184,20 +3200,20 @@ function dew$J() {
     scrubVec((this || _global$c)._key);
   };
 
-  exports$I.AES = AES;
-  return exports$I;
+  exports$H.AES = AES;
+  return exports$H;
 }
 
-var exports$J = {},
+var exports$I = {},
     _dewExec$G = false;
 
 var _global$d = typeof self !== "undefined" ? self : global;
 
-function dew$K() {
-  if (_dewExec$G) return exports$J;
+function dew$I() {
+  if (_dewExec$G) return exports$I;
   _dewExec$G = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
   var ZEROES = Buffer.alloc(16, 0);
 
@@ -3286,32 +3302,32 @@ function dew$K() {
     return (this || _global$d).state;
   };
 
-  exports$J = GHASH;
-  return exports$J;
+  exports$I = GHASH;
+  return exports$I;
 }
 
-var exports$K = {},
+var exports$J = {},
     _dewExec$H = false;
 
 var _global$e = typeof self !== "undefined" ? self : global;
 
-function dew$L() {
-  if (_dewExec$H) return exports$K;
+function dew$J() {
+  if (_dewExec$H) return exports$J;
   _dewExec$H = true;
 
-  var aes = dew$J();
+  var aes = dew$H();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var Transform = dew$e();
+  var Transform = dew$c();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var GHASH = dew$K();
+  var GHASH = dew$I();
 
-  var xor = dew$z();
+  var xor = dew$x();
 
-  var incr32 = dew$F();
+  var incr32 = dew$D();
 
   function xorTest(a, b) {
     var out = 0;
@@ -3426,26 +3442,26 @@ function dew$L() {
     (this || _global$e)._alen += buf.length;
   };
 
-  exports$K = StreamCipher;
-  return exports$K;
+  exports$J = StreamCipher;
+  return exports$J;
 }
 
-var exports$L = {},
+var exports$K = {},
     _dewExec$I = false;
 
 var _global$f = typeof self !== "undefined" ? self : global;
 
-function dew$M() {
-  if (_dewExec$I) return exports$L;
+function dew$K() {
+  if (_dewExec$I) return exports$K;
   _dewExec$I = true;
 
-  var aes = dew$J();
+  var aes = dew$H();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var Transform = dew$e();
+  var Transform = dew$c();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function StreamCipher(mode, key, iv, decrypt) {
     Transform.call(this || _global$f);
@@ -3467,19 +3483,19 @@ function dew$M() {
     (this || _global$f)._cipher.scrub();
   };
 
-  exports$L = StreamCipher;
-  return exports$L;
+  exports$K = StreamCipher;
+  return exports$K;
 }
 
-var exports$M = {},
+var exports$L = {},
     _dewExec$J = false;
-function dew$N() {
-  if (_dewExec$J) return exports$M;
+function dew$L() {
+  if (_dewExec$J) return exports$L;
   _dewExec$J = true;
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var MD5 = dew$4();
+  var MD5 = dew$2();
   /* eslint-disable camelcase */
 
 
@@ -3526,34 +3542,34 @@ function dew$N() {
     };
   }
 
-  exports$M = EVP_BytesToKey;
-  return exports$M;
+  exports$L = EVP_BytesToKey;
+  return exports$L;
 }
 
-var exports$N = {},
+var exports$M = {},
     _dewExec$K = false;
 
 var _global$g = typeof self !== "undefined" ? self : global;
 
-function dew$O() {
-  if (_dewExec$K) return exports$N;
+function dew$M() {
+  if (_dewExec$K) return exports$M;
   _dewExec$K = true;
 
-  var MODES = dew$I();
+  var MODES = dew$G();
 
-  var AuthCipher = dew$L();
+  var AuthCipher = dew$J();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var StreamCipher = dew$M();
+  var StreamCipher = dew$K();
 
-  var Transform = dew$e();
+  var Transform = dew$c();
 
-  var aes = dew$J();
+  var aes = dew$H();
 
-  var ebtk = dew$N();
+  var ebtk = dew$L();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function Cipher(mode, key, iv) {
     Transform.call(this || _global$g);
@@ -3661,35 +3677,35 @@ function dew$O() {
     return createCipheriv(suite, keys.key, keys.iv);
   }
 
-  exports$N.createCipheriv = createCipheriv;
-  exports$N.createCipher = createCipher;
-  return exports$N;
+  exports$M.createCipheriv = createCipheriv;
+  exports$M.createCipher = createCipher;
+  return exports$M;
 }
 
-var exports$O = {},
+var exports$N = {},
     _dewExec$L = false;
 
 var _global$h = typeof self !== "undefined" ? self : global;
 
-function dew$P() {
-  if (_dewExec$L) return exports$O;
+function dew$N() {
+  if (_dewExec$L) return exports$N;
   _dewExec$L = true;
 
-  var AuthCipher = dew$L();
+  var AuthCipher = dew$J();
 
-  var Buffer = dew().Buffer;
+  var Buffer = dew$1X().Buffer;
 
-  var MODES = dew$I();
+  var MODES = dew$G();
 
-  var StreamCipher = dew$M();
+  var StreamCipher = dew$K();
 
-  var Transform = dew$e();
+  var Transform = dew$c();
 
-  var aes = dew$J();
+  var aes = dew$H();
 
-  var ebtk = dew$N();
+  var ebtk = dew$L();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function Decipher(mode, key, iv) {
     Transform.call(this || _global$h);
@@ -3808,82 +3824,82 @@ function dew$P() {
     return createDecipheriv(suite, keys.key, keys.iv);
   }
 
-  exports$O.createDecipher = createDecipher;
-  exports$O.createDecipheriv = createDecipheriv;
-  return exports$O;
+  exports$N.createDecipher = createDecipher;
+  exports$N.createDecipheriv = createDecipheriv;
+  return exports$N;
 }
 
-var exports$P = {},
+var exports$O = {},
     _dewExec$M = false;
-function dew$Q() {
-  if (_dewExec$M) return exports$P;
+function dew$O() {
+  if (_dewExec$M) return exports$O;
   _dewExec$M = true;
 
-  var ciphers = dew$O();
+  var ciphers = dew$M();
 
-  var deciphers = dew$P();
+  var deciphers = dew$N();
 
-  var modes = dew$H();
+  var modes = dew$F();
 
   function getCiphers() {
     return Object.keys(modes);
   }
 
-  exports$P.createCipher = exports$P.Cipher = ciphers.createCipher;
-  exports$P.createCipheriv = exports$P.Cipheriv = ciphers.createCipheriv;
-  exports$P.createDecipher = exports$P.Decipher = deciphers.createDecipher;
-  exports$P.createDecipheriv = exports$P.Decipheriv = deciphers.createDecipheriv;
-  exports$P.listCiphers = exports$P.getCiphers = getCiphers;
+  exports$O.createCipher = exports$O.Cipher = ciphers.createCipher;
+  exports$O.createCipheriv = exports$O.Cipheriv = ciphers.createCipheriv;
+  exports$O.createDecipher = exports$O.Decipher = deciphers.createDecipher;
+  exports$O.createDecipheriv = exports$O.Decipheriv = deciphers.createDecipheriv;
+  exports$O.listCiphers = exports$O.getCiphers = getCiphers;
+  return exports$O;
+}
+
+var exports$P = {},
+    _dewExec$N = false;
+function dew$P() {
+  if (_dewExec$N) return exports$P;
+  _dewExec$N = true;
+  exports$P['des-ecb'] = {
+    key: 8,
+    iv: 0
+  };
+  exports$P['des-cbc'] = exports$P.des = {
+    key: 8,
+    iv: 8
+  };
+  exports$P['des-ede3-cbc'] = exports$P.des3 = {
+    key: 24,
+    iv: 8
+  };
+  exports$P['des-ede3'] = {
+    key: 24,
+    iv: 0
+  };
+  exports$P['des-ede-cbc'] = {
+    key: 16,
+    iv: 8
+  };
+  exports$P['des-ede'] = {
+    key: 16,
+    iv: 0
+  };
   return exports$P;
 }
 
 var exports$Q = {},
-    _dewExec$N = false;
-function dew$R() {
-  if (_dewExec$N) return exports$Q;
-  _dewExec$N = true;
-  exports$Q['des-ecb'] = {
-    key: 8,
-    iv: 0
-  };
-  exports$Q['des-cbc'] = exports$Q.des = {
-    key: 8,
-    iv: 8
-  };
-  exports$Q['des-ede3-cbc'] = exports$Q.des3 = {
-    key: 24,
-    iv: 8
-  };
-  exports$Q['des-ede3'] = {
-    key: 24,
-    iv: 0
-  };
-  exports$Q['des-ede-cbc'] = {
-    key: 16,
-    iv: 8
-  };
-  exports$Q['des-ede'] = {
-    key: 16,
-    iv: 0
-  };
-  return exports$Q;
-}
-
-var exports$R = {},
     _dewExec$O = false;
-function dew$S() {
-  if (_dewExec$O) return exports$R;
+function dew$Q() {
+  if (_dewExec$O) return exports$Q;
   _dewExec$O = true;
 
-  var DES = dew$x();
+  var DES = dew$v();
 
-  var aes = dew$Q();
+  var aes = dew$O();
 
-  var aesModes = dew$I();
+  var aesModes = dew$G();
 
-  var desModes = dew$R();
+  var desModes = dew$P();
 
-  var ebtk = dew$N();
+  var ebtk = dew$L();
 
   function createCipher(suite, password) {
     suite = suite.toLowerCase();
@@ -3948,24 +3964,24 @@ function dew$S() {
     return Object.keys(desModes).concat(aes.getCiphers());
   }
 
-  exports$R.createCipher = exports$R.Cipher = createCipher;
-  exports$R.createCipheriv = exports$R.Cipheriv = createCipheriv;
-  exports$R.createDecipher = exports$R.Decipher = createDecipher;
-  exports$R.createDecipheriv = exports$R.Decipheriv = createDecipheriv;
-  exports$R.listCiphers = exports$R.getCiphers = getCiphers;
-  return exports$R;
+  exports$Q.createCipher = exports$Q.Cipher = createCipher;
+  exports$Q.createCipheriv = exports$Q.Cipheriv = createCipheriv;
+  exports$Q.createDecipher = exports$Q.Decipher = createDecipher;
+  exports$Q.createDecipheriv = exports$Q.Decipheriv = createDecipheriv;
+  exports$Q.listCiphers = exports$Q.getCiphers = getCiphers;
+  return exports$Q;
 }
 
-var exports$S = {},
+var exports$R = {},
     _dewExec$P = false;
-var module$2 = {
-  exports: exports$S
+var module$1 = {
+  exports: exports$R
 };
 
 var _global$i = typeof self !== "undefined" ? self : global;
 
-function dew$T() {
-  if (_dewExec$P) return module$2.exports;
+function dew$R() {
+  if (_dewExec$P) return module$1.exports;
   _dewExec$P = true;
 
   (function (module, exports) {
@@ -4019,7 +4035,7 @@ function dew$T() {
     var Buffer;
 
     try {
-      Buffer = _crypto.Buffer;
+      Buffer = _buffer.Buffer;
     } catch (e) {}
 
     BN.isBN = function isBN(num) {
@@ -7419,22 +7435,22 @@ function dew$T() {
       var res = this.imod(a._invmp((this || _global$i).m).mul((this || _global$i).r2));
       return res._forceRed(this || _global$i);
     };
-  })(module$2, exports$S);
+  })(module$1, exports$R);
 
-  return module$2.exports;
+  return module$1.exports;
 }
 
-var exports$T = {},
+var exports$S = {},
     _dewExec$Q = false;
 
 var _global$j = typeof self !== "undefined" ? self : global;
 
-function dew$U() {
-  if (_dewExec$Q) return exports$T;
+function dew$S() {
+  if (_dewExec$Q) return exports$S;
   _dewExec$Q = true;
   var r;
 
-  exports$T = function rand(len) {
+  exports$S = function rand(len) {
     if (!r) r = new Rand(null);
     return r.generate(len);
   };
@@ -7443,7 +7459,7 @@ function dew$U() {
     (this || _global$j).rand = rand;
   }
 
-  exports$T.Rand = Rand;
+  exports$S.Rand = Rand;
 
   Rand.prototype.generate = function generate(len) {
     return this._rand(len);
@@ -7484,7 +7500,7 @@ function dew$U() {
   } else {
     // Node.js or Web worker with no crypto support
     try {
-      var crypto = _crypto;
+      var crypto = exports$1X;
       if (typeof crypto.randomBytes !== 'function') throw new Error('Not supported');
 
       Rand.prototype._rand = function _rand(n) {
@@ -7493,27 +7509,27 @@ function dew$U() {
     } catch (e) {}
   }
 
-  return exports$T;
+  return exports$S;
 }
 
-var exports$U = {},
+var exports$T = {},
     _dewExec$R = false;
 
 var _global$k = typeof self !== "undefined" ? self : global;
 
-function dew$V() {
-  if (_dewExec$R) return exports$U;
+function dew$T() {
+  if (_dewExec$R) return exports$T;
   _dewExec$R = true;
 
-  var bn = dew$T();
+  var bn = dew$R();
 
-  var brorand = dew$U();
+  var brorand = dew$S();
 
   function MillerRabin(rand) {
     (this || _global$k).rand = rand || new brorand.Rand();
   }
 
-  exports$U = MillerRabin;
+  exports$T = MillerRabin;
 
   MillerRabin.create = function create(rand) {
     return new MillerRabin(rand);
@@ -7604,26 +7620,26 @@ function dew$V() {
     return false;
   };
 
-  return exports$U;
+  return exports$T;
 }
 
-var exports$V = {},
+var exports$U = {},
     _dewExec$S = false;
-function dew$W() {
-  if (_dewExec$S) return exports$V;
+function dew$U() {
+  if (_dewExec$S) return exports$U;
   _dewExec$S = true;
 
-  var randomBytes = dew$2();
+  var randomBytes = dew();
 
-  exports$V = findPrime;
+  exports$U = findPrime;
   findPrime.simpleSieve = simpleSieve;
   findPrime.fermatTest = fermatTest;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
   var TWENTYFOUR = new BN(24);
 
-  var MillerRabin = dew$V();
+  var MillerRabin = dew$T();
 
   var millerRabin = new MillerRabin();
   var ONE = new BN(1);
@@ -7723,27 +7739,27 @@ function dew$W() {
     }
   }
 
+  return exports$U;
+}
+
+function dew$V () {
   return exports$V;
 }
+var exports$V = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}};
 
-function dew$X () {
-  return exports$W;
-}
-var exports$W = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}};
-
-var exports$X = {},
+var exports$W = {},
     _dewExec$T = false;
 
 var _global$l = typeof self !== "undefined" ? self : global;
 
-function dew$Y() {
-  if (_dewExec$T) return exports$X;
+function dew$W() {
+  if (_dewExec$T) return exports$W;
   _dewExec$T = true;
   var Buffer = _buffer.Buffer;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var MillerRabin = dew$V();
+  var MillerRabin = dew$T();
 
   var millerRabin = new MillerRabin();
   var TWENTYFOUR = new BN(24);
@@ -7752,11 +7768,11 @@ function dew$Y() {
   var THREE = new BN(3);
   var SEVEN = new BN(7);
 
-  var primes = dew$W();
+  var primes = dew$U();
 
-  var randomBytes = dew$2();
+  var randomBytes = dew();
 
-  exports$X = DH;
+  exports$W = DH;
 
   function setPublicKey(pub, enc) {
     enc = enc || 'utf8';
@@ -7935,21 +7951,21 @@ function dew$Y() {
     }
   }
 
-  return exports$X;
+  return exports$W;
 }
 
-var exports$Y = {},
+var exports$X = {},
     _dewExec$U = false;
-function dew$Z() {
-  if (_dewExec$U) return exports$Y;
+function dew$X() {
+  if (_dewExec$U) return exports$X;
   _dewExec$U = true;
   var Buffer = _buffer.Buffer;
 
-  var generatePrime = dew$W();
+  var generatePrime = dew$U();
 
-  var primes = dew$X();
+  var primes = dew$V();
 
-  var DH = dew$Y();
+  var DH = dew$W();
 
   function getDiffieHellman(mod) {
     var prime = new Buffer(primes[mod].prime, 'hex');
@@ -7987,23 +8003,23 @@ function dew$Z() {
     return new DH(prime, generator, true);
   }
 
-  exports$Y.DiffieHellmanGroup = exports$Y.createDiffieHellmanGroup = exports$Y.getDiffieHellman = getDiffieHellman;
-  exports$Y.createDiffieHellman = exports$Y.DiffieHellman = createDiffieHellman;
-  return exports$Y;
+  exports$X.DiffieHellmanGroup = exports$X.createDiffieHellmanGroup = exports$X.getDiffieHellman = getDiffieHellman;
+  exports$X.createDiffieHellman = exports$X.DiffieHellman = createDiffieHellman;
+  return exports$X;
 }
 
-var exports$Z = {},
+var exports$Y = {},
     _dewExec$V = false;
-function dew$_() {
-  if (_dewExec$V) return exports$Z;
+function dew$Y() {
+  if (_dewExec$V) return exports$Y;
   _dewExec$V = true;
   var Buffer = _buffer.Buffer;
 
-  var bn = dew$T();
+  var bn = dew$R();
 
-  var randomBytes = dew$2();
+  var randomBytes = dew();
 
-  exports$Z = crt;
+  exports$Y = crt;
 
   function blind(priv) {
     var r = getr(priv);
@@ -8047,20 +8063,20 @@ function dew$_() {
     return r;
   }
 
+  return exports$Y;
+}
+
+function dew$Z () {
   return exports$Z;
 }
+var exports$Z = {"name":"elliptic","version":"6.4.1","description":"EC cryptography","main":"lib/elliptic.js","files":["lib"],"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","unit":"istanbul test _mocha --reporter=spec test/index.js","test":"npm run lint && npm run unit","version":"grunt dist && git add dist/"},"repository":{"type":"git","url":"git@github.com:indutny/elliptic"},"keywords":["EC","Elliptic","curve","Cryptography"],"author":"Fedor Indutny <fedor@indutny.com>","license":"MIT","bugs":{"url":"https://github.com/indutny/elliptic/issues"},"homepage":"https://github.com/indutny/elliptic","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"peerDependencies":{"@jspm/core":"npm:jspm/core@^1.0.0"}};
 
-function dew$10 () {
-  return exports$_;
-}
-var exports$_ = {"name":"elliptic","version":"6.4.1","description":"EC cryptography","main":"lib/elliptic.js","files":["lib"],"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","unit":"istanbul test _mocha --reporter=spec test/index.js","test":"npm run lint && npm run unit","version":"grunt dist && git add dist/"},"repository":{"type":"git","url":"git@github.com:indutny/elliptic"},"keywords":["EC","Elliptic","curve","Cryptography"],"author":"Fedor Indutny <fedor@indutny.com>","license":"MIT","bugs":{"url":"https://github.com/indutny/elliptic/issues"},"homepage":"https://github.com/indutny/elliptic","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"peerDependencies":{"jspm-node-builtins":"npm:@jspm/node-builtins@0.1.2"}};
-
-var exports$10 = {},
+var exports$_ = {},
     _dewExec$W = false;
-function dew$11() {
-  if (_dewExec$W) return exports$10;
+function dew$_() {
+  if (_dewExec$W) return exports$_;
   _dewExec$W = true;
-  var utils = exports$10;
+  var utils = exports$_;
 
   function toArray(msg, enc) {
     if (Array.isArray(msg)) return msg.slice();
@@ -8112,21 +8128,21 @@ function dew$11() {
     if (enc === 'hex') return toHex(arr);else return arr;
   };
 
-  return exports$10;
+  return exports$_;
 }
 
-var exports$11 = {},
+var exports$$ = {},
     _dewExec$X = false;
-function dew$12() {
-  if (_dewExec$X) return exports$11;
+function dew$$() {
+  if (_dewExec$X) return exports$$;
   _dewExec$X = true;
-  var utils = exports$11;
+  var utils = exports$$;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var minAssert = dew$r();
+  var minAssert = dew$p();
 
-  var minUtils = dew$11();
+  var minUtils = dew$_();
 
   utils.assert = minAssert;
   utils.toArray = minUtils.toArray;
@@ -8230,18 +8246,18 @@ function dew$12() {
   }
 
   utils.intFromLE = intFromLE;
-  return exports$11;
+  return exports$$;
 }
 
-var exports$12 = {},
+var exports$10 = {},
     _dewExec$Y = false;
-function dew$13() {
-  if (_dewExec$Y) return exports$12;
+function dew$10() {
+  if (_dewExec$Y) return exports$10;
   _dewExec$Y = true;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var getNAF = utils.getNAF;
@@ -8276,7 +8292,7 @@ function dew$13() {
     }
   }
 
-  exports$12 = BaseCurve;
+  exports$10 = BaseCurve;
 
   BaseCurve.prototype.point = function point() {
     throw new Error('Not implemented');
@@ -8586,22 +8602,22 @@ function dew$13() {
     return r;
   };
 
-  return exports$12;
+  return exports$10;
 }
 
-var exports$13 = {},
+var exports$11 = {},
     _dewExec$Z = false;
-function dew$14() {
-  if (_dewExec$Z) return exports$13;
+function dew$11() {
+  if (_dewExec$Z) return exports$11;
   _dewExec$Z = true;
 
-  var curve = dew$17();
+  var curve = dew$14();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var Base = curve.base;
   var assert = elliptic.utils.assert;
@@ -8620,7 +8636,7 @@ function dew$14() {
   }
 
   inherits(ShortCurve, Base);
-  exports$13 = ShortCurve;
+  exports$11 = ShortCurve;
 
   ShortCurve.prototype._getEndomorphism = function _getEndomorphism(conf) {
     // No efficient endomorphism
@@ -9429,24 +9445,24 @@ function dew$14() {
     return this.z.cmpn(0) === 0;
   };
 
-  return exports$13;
+  return exports$11;
 }
 
-var exports$14 = {},
+var exports$12 = {},
     _dewExec$_ = false;
-function dew$15() {
-  if (_dewExec$_) return exports$14;
+function dew$12() {
+  if (_dewExec$_) return exports$12;
   _dewExec$_ = true;
 
-  var curve = dew$17();
+  var curve = dew$14();
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var Base = curve.base;
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
 
@@ -9460,7 +9476,7 @@ function dew$15() {
   }
 
   inherits(MontCurve, Base);
-  exports$14 = MontCurve;
+  exports$12 = MontCurve;
 
   MontCurve.prototype.validate = function validate(point) {
     var x = point.normalize().x;
@@ -9616,22 +9632,22 @@ function dew$15() {
     return this.x.fromRed();
   };
 
-  return exports$14;
+  return exports$12;
 }
 
-var exports$15 = {},
-    _dewExec$10 = false;
-function dew$16() {
-  if (_dewExec$10) return exports$15;
-  _dewExec$10 = true;
+var exports$13 = {},
+    _dewExec$$ = false;
+function dew$13() {
+  if (_dewExec$$) return exports$13;
+  _dewExec$$ = true;
 
-  var curve = dew$17();
+  var curve = dew$14();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var Base = curve.base;
   var assert = elliptic.utils.assert;
@@ -9653,7 +9669,7 @@ function dew$16() {
   }
 
   inherits(EdwardsCurve, Base);
-  exports$15 = EdwardsCurve;
+  exports$13 = EdwardsCurve;
 
   EdwardsCurve.prototype._mulA = function _mulA(num) {
     if (this.mOneA) return num.redNeg();else return this.a.redMul(num);
@@ -9999,33 +10015,45 @@ function dew$16() {
 
   Point.prototype.toP = Point.prototype.normalize;
   Point.prototype.mixedAdd = Point.prototype.add;
-  return exports$15;
+  return exports$13;
 }
 
-var exports$16 = {},
+var exports$14 = {},
+    _dewExec$10 = false;
+function dew$14() {
+  if (_dewExec$10) return exports$14;
+  _dewExec$10 = true;
+  var curve = exports$14;
+  curve.base = dew$10();
+  curve.short = dew$11();
+  curve.mont = dew$12();
+  curve.edwards = dew$13();
+  return exports$14;
+}
+
+var exports$15 = {},
     _dewExec$11 = false;
-function dew$17() {
-  if (_dewExec$11) return exports$16;
+function dew$15() {
+  if (_dewExec$11) return exports$15;
   _dewExec$11 = true;
-  var curve = exports$16;
-  curve.base = dew$13();
-  curve.short = dew$14();
-  curve.mont = dew$15();
-  curve.edwards = dew$16();
-  return exports$16;
-}
 
-var exports$17 = {},
-    _dewExec$12 = false;
-function dew$18() {
-  if (_dewExec$12) return exports$17;
-  _dewExec$12 = true;
+  var assert = dew$p();
 
-  var assert = dew$r();
+  var inherits = dew$1Y();
 
-  var inherits = dew$1();
+  exports$15.inherits = inherits;
 
-  exports$17.inherits = inherits;
+  function isSurrogatePair(msg, i) {
+    if ((msg.charCodeAt(i) & 0xFC00) !== 0xD800) {
+      return false;
+    }
+
+    if (i < 0 || i + 1 >= msg.length) {
+      return false;
+    }
+
+    return (msg.charCodeAt(i + 1) & 0xFC00) === 0xDC00;
+  }
 
   function toArray(msg, enc) {
     if (Array.isArray(msg)) return msg.slice();
@@ -10034,11 +10062,31 @@ function dew$18() {
 
     if (typeof msg === 'string') {
       if (!enc) {
+        // Inspired by stringToUtf8ByteArray() in closure-library by Google
+        // https://github.com/google/closure-library/blob/8598d87242af59aac233270742c8984e2b2bdbe0/closure/goog/crypt/crypt.js#L117-L143
+        // Apache License 2.0
+        // https://github.com/google/closure-library/blob/master/LICENSE
+        var p = 0;
+
         for (var i = 0; i < msg.length; i++) {
           var c = msg.charCodeAt(i);
-          var hi = c >> 8;
-          var lo = c & 0xff;
-          if (hi) res.push(hi, lo);else res.push(lo);
+
+          if (c < 128) {
+            res[p++] = c;
+          } else if (c < 2048) {
+            res[p++] = c >> 6 | 192;
+            res[p++] = c & 63 | 128;
+          } else if (isSurrogatePair(msg, i)) {
+            c = 0x10000 + ((c & 0x03FF) << 10) + (msg.charCodeAt(++i) & 0x03FF);
+            res[p++] = c >> 18 | 240;
+            res[p++] = c >> 12 & 63 | 128;
+            res[p++] = c >> 6 & 63 | 128;
+            res[p++] = c & 63 | 128;
+          } else {
+            res[p++] = c >> 12 | 224;
+            res[p++] = c >> 6 & 63 | 128;
+            res[p++] = c & 63 | 128;
+          }
         }
       } else if (enc === 'hex') {
         msg = msg.replace(/[^a-z0-9]+/ig, '');
@@ -10053,7 +10101,7 @@ function dew$18() {
     return res;
   }
 
-  exports$17.toArray = toArray;
+  exports$15.toArray = toArray;
 
   function toHex(msg) {
     var res = '';
@@ -10063,14 +10111,14 @@ function dew$18() {
     return res;
   }
 
-  exports$17.toHex = toHex;
+  exports$15.toHex = toHex;
 
   function htonl(w) {
     var res = w >>> 24 | w >>> 8 & 0xff00 | w << 8 & 0xff0000 | (w & 0xff) << 24;
     return res >>> 0;
   }
 
-  exports$17.htonl = htonl;
+  exports$15.htonl = htonl;
 
   function toHex32(msg, endian) {
     var res = '';
@@ -10084,19 +10132,19 @@ function dew$18() {
     return res;
   }
 
-  exports$17.toHex32 = toHex32;
+  exports$15.toHex32 = toHex32;
 
   function zero2(word) {
     if (word.length === 1) return '0' + word;else return word;
   }
 
-  exports$17.zero2 = zero2;
+  exports$15.zero2 = zero2;
 
   function zero8(word) {
     if (word.length === 7) return '0' + word;else if (word.length === 6) return '00' + word;else if (word.length === 5) return '000' + word;else if (word.length === 4) return '0000' + word;else if (word.length === 3) return '00000' + word;else if (word.length === 2) return '000000' + word;else if (word.length === 1) return '0000000' + word;else return word;
   }
 
-  exports$17.zero8 = zero8;
+  exports$15.zero8 = zero8;
 
   function join32(msg, start, end, endian) {
     var len = end - start;
@@ -10112,7 +10160,7 @@ function dew$18() {
     return res;
   }
 
-  exports$17.join32 = join32;
+  exports$15.join32 = join32;
 
   function split32(msg, endian) {
     var res = new Array(msg.length * 4);
@@ -10136,43 +10184,43 @@ function dew$18() {
     return res;
   }
 
-  exports$17.split32 = split32;
+  exports$15.split32 = split32;
 
   function rotr32(w, b) {
     return w >>> b | w << 32 - b;
   }
 
-  exports$17.rotr32 = rotr32;
+  exports$15.rotr32 = rotr32;
 
   function rotl32(w, b) {
     return w << b | w >>> 32 - b;
   }
 
-  exports$17.rotl32 = rotl32;
+  exports$15.rotl32 = rotl32;
 
   function sum32(a, b) {
     return a + b >>> 0;
   }
 
-  exports$17.sum32 = sum32;
+  exports$15.sum32 = sum32;
 
   function sum32_3(a, b, c) {
     return a + b + c >>> 0;
   }
 
-  exports$17.sum32_3 = sum32_3;
+  exports$15.sum32_3 = sum32_3;
 
   function sum32_4(a, b, c, d) {
     return a + b + c + d >>> 0;
   }
 
-  exports$17.sum32_4 = sum32_4;
+  exports$15.sum32_4 = sum32_4;
 
   function sum32_5(a, b, c, d, e) {
     return a + b + c + d + e >>> 0;
   }
 
-  exports$17.sum32_5 = sum32_5;
+  exports$15.sum32_5 = sum32_5;
 
   function sum64(buf, pos, ah, al) {
     var bh = buf[pos];
@@ -10183,7 +10231,7 @@ function dew$18() {
     buf[pos + 1] = lo;
   }
 
-  exports$17.sum64 = sum64;
+  exports$15.sum64 = sum64;
 
   function sum64_hi(ah, al, bh, bl) {
     var lo = al + bl >>> 0;
@@ -10191,14 +10239,14 @@ function dew$18() {
     return hi >>> 0;
   }
 
-  exports$17.sum64_hi = sum64_hi;
+  exports$15.sum64_hi = sum64_hi;
 
   function sum64_lo(ah, al, bh, bl) {
     var lo = al + bl;
     return lo >>> 0;
   }
 
-  exports$17.sum64_lo = sum64_lo;
+  exports$15.sum64_lo = sum64_lo;
 
   function sum64_4_hi(ah, al, bh, bl, ch, cl, dh, dl) {
     var carry = 0;
@@ -10213,14 +10261,14 @@ function dew$18() {
     return hi >>> 0;
   }
 
-  exports$17.sum64_4_hi = sum64_4_hi;
+  exports$15.sum64_4_hi = sum64_4_hi;
 
   function sum64_4_lo(ah, al, bh, bl, ch, cl, dh, dl) {
     var lo = al + bl + cl + dl;
     return lo >>> 0;
   }
 
-  exports$17.sum64_4_lo = sum64_4_lo;
+  exports$15.sum64_4_lo = sum64_4_lo;
 
   function sum64_5_hi(ah, al, bh, bl, ch, cl, dh, dl, eh, el) {
     var carry = 0;
@@ -10237,53 +10285,53 @@ function dew$18() {
     return hi >>> 0;
   }
 
-  exports$17.sum64_5_hi = sum64_5_hi;
+  exports$15.sum64_5_hi = sum64_5_hi;
 
   function sum64_5_lo(ah, al, bh, bl, ch, cl, dh, dl, eh, el) {
     var lo = al + bl + cl + dl + el;
     return lo >>> 0;
   }
 
-  exports$17.sum64_5_lo = sum64_5_lo;
+  exports$15.sum64_5_lo = sum64_5_lo;
 
   function rotr64_hi(ah, al, num) {
     var r = al << 32 - num | ah >>> num;
     return r >>> 0;
   }
 
-  exports$17.rotr64_hi = rotr64_hi;
+  exports$15.rotr64_hi = rotr64_hi;
 
   function rotr64_lo(ah, al, num) {
     var r = ah << 32 - num | al >>> num;
     return r >>> 0;
   }
 
-  exports$17.rotr64_lo = rotr64_lo;
+  exports$15.rotr64_lo = rotr64_lo;
 
   function shr64_hi(ah, al, num) {
     return ah >>> num;
   }
 
-  exports$17.shr64_hi = shr64_hi;
+  exports$15.shr64_hi = shr64_hi;
 
   function shr64_lo(ah, al, num) {
     var r = ah << 32 - num | al >>> num;
     return r >>> 0;
   }
 
-  exports$17.shr64_lo = shr64_lo;
-  return exports$17;
+  exports$15.shr64_lo = shr64_lo;
+  return exports$15;
 }
 
-var exports$18 = {},
-    _dewExec$13 = false;
-function dew$19() {
-  if (_dewExec$13) return exports$18;
-  _dewExec$13 = true;
+var exports$16 = {},
+    _dewExec$12 = false;
+function dew$16() {
+  if (_dewExec$12) return exports$16;
+  _dewExec$12 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   function BlockHash() {
     this.pending = null;
@@ -10297,7 +10345,7 @@ function dew$19() {
     this._delta32 = this.blockSize / 32;
   }
 
-  exports$18.BlockHash = BlockHash;
+  exports$16.BlockHash = BlockHash;
 
   BlockHash.prototype.update = function update(msg, enc) {
     // Convert message to array, pad it, and join into 32bit blocks
@@ -10364,16 +10412,16 @@ function dew$19() {
     return res;
   };
 
-  return exports$18;
+  return exports$16;
 }
 
-var exports$19 = {},
-    _dewExec$14 = false;
-function dew$1a() {
-  if (_dewExec$14) return exports$19;
-  _dewExec$14 = true;
+var exports$17 = {},
+    _dewExec$13 = false;
+function dew$17() {
+  if (_dewExec$13) return exports$17;
+  _dewExec$13 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
   var rotr32 = utils.rotr32;
 
@@ -10383,63 +10431,63 @@ function dew$1a() {
     if (s === 2) return maj32(x, y, z);
   }
 
-  exports$19.ft_1 = ft_1;
+  exports$17.ft_1 = ft_1;
 
   function ch32(x, y, z) {
     return x & y ^ ~x & z;
   }
 
-  exports$19.ch32 = ch32;
+  exports$17.ch32 = ch32;
 
   function maj32(x, y, z) {
     return x & y ^ x & z ^ y & z;
   }
 
-  exports$19.maj32 = maj32;
+  exports$17.maj32 = maj32;
 
   function p32(x, y, z) {
     return x ^ y ^ z;
   }
 
-  exports$19.p32 = p32;
+  exports$17.p32 = p32;
 
   function s0_256(x) {
     return rotr32(x, 2) ^ rotr32(x, 13) ^ rotr32(x, 22);
   }
 
-  exports$19.s0_256 = s0_256;
+  exports$17.s0_256 = s0_256;
 
   function s1_256(x) {
     return rotr32(x, 6) ^ rotr32(x, 11) ^ rotr32(x, 25);
   }
 
-  exports$19.s1_256 = s1_256;
+  exports$17.s1_256 = s1_256;
 
   function g0_256(x) {
     return rotr32(x, 7) ^ rotr32(x, 18) ^ x >>> 3;
   }
 
-  exports$19.g0_256 = g0_256;
+  exports$17.g0_256 = g0_256;
 
   function g1_256(x) {
     return rotr32(x, 17) ^ rotr32(x, 19) ^ x >>> 10;
   }
 
-  exports$19.g1_256 = g1_256;
-  return exports$19;
+  exports$17.g1_256 = g1_256;
+  return exports$17;
 }
 
-var exports$1a = {},
-    _dewExec$15 = false;
-function dew$1b() {
-  if (_dewExec$15) return exports$1a;
-  _dewExec$15 = true;
+var exports$18 = {},
+    _dewExec$14 = false;
+function dew$18() {
+  if (_dewExec$14) return exports$18;
+  _dewExec$14 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var common = dew$19();
+  var common = dew$16();
 
-  var shaCommon = dew$1a();
+  var shaCommon = dew$17();
 
   var rotl32 = utils.rotl32;
   var sum32 = utils.sum32;
@@ -10456,7 +10504,7 @@ function dew$1b() {
   }
 
   utils.inherits(SHA1, BlockHash);
-  exports$1a = SHA1;
+  exports$18 = SHA1;
   SHA1.blockSize = 512;
   SHA1.outSize = 160;
   SHA1.hmacStrength = 80;
@@ -10496,22 +10544,22 @@ function dew$1b() {
     if (enc === 'hex') return utils.toHex32(this.h, 'big');else return utils.split32(this.h, 'big');
   };
 
-  return exports$1a;
+  return exports$18;
 }
 
-var exports$1b = {},
-    _dewExec$16 = false;
-function dew$1c() {
-  if (_dewExec$16) return exports$1b;
-  _dewExec$16 = true;
+var exports$19 = {},
+    _dewExec$15 = false;
+function dew$19() {
+  if (_dewExec$15) return exports$19;
+  _dewExec$15 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var common = dew$19();
+  var common = dew$16();
 
-  var shaCommon = dew$1a();
+  var shaCommon = dew$17();
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   var sum32 = utils.sum32;
   var sum32_4 = utils.sum32_4;
@@ -10534,7 +10582,7 @@ function dew$1c() {
   }
 
   utils.inherits(SHA256, BlockHash);
-  exports$1b = SHA256;
+  exports$19 = SHA256;
   SHA256.blockSize = 512;
   SHA256.outSize = 256;
   SHA256.hmacStrength = 192;
@@ -10584,18 +10632,18 @@ function dew$1c() {
     if (enc === 'hex') return utils.toHex32(this.h, 'big');else return utils.split32(this.h, 'big');
   };
 
-  return exports$1b;
+  return exports$19;
 }
 
-var exports$1c = {},
-    _dewExec$17 = false;
-function dew$1d() {
-  if (_dewExec$17) return exports$1c;
-  _dewExec$17 = true;
+var exports$1a = {},
+    _dewExec$16 = false;
+function dew$1a() {
+  if (_dewExec$16) return exports$1a;
+  _dewExec$16 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var SHA256 = dew$1c();
+  var SHA256 = dew$19();
 
   function SHA224() {
     if (!(this instanceof SHA224)) return new SHA224();
@@ -10604,7 +10652,7 @@ function dew$1d() {
   }
 
   utils.inherits(SHA224, SHA256);
-  exports$1c = SHA224;
+  exports$1a = SHA224;
   SHA224.blockSize = 512;
   SHA224.outSize = 224;
   SHA224.hmacStrength = 192;
@@ -10615,20 +10663,20 @@ function dew$1d() {
     if (enc === 'hex') return utils.toHex32(this.h.slice(0, 7), 'big');else return utils.split32(this.h.slice(0, 7), 'big');
   };
 
-  return exports$1c;
+  return exports$1a;
 }
 
-var exports$1d = {},
-    _dewExec$18 = false;
-function dew$1e() {
-  if (_dewExec$18) return exports$1d;
-  _dewExec$18 = true;
+var exports$1b = {},
+    _dewExec$17 = false;
+function dew$1b() {
+  if (_dewExec$17) return exports$1b;
+  _dewExec$17 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var common = dew$19();
+  var common = dew$16();
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   var rotr64_hi = utils.rotr64_hi;
   var rotr64_lo = utils.rotr64_lo;
@@ -10653,7 +10701,7 @@ function dew$1e() {
   }
 
   utils.inherits(SHA512, BlockHash);
-  exports$1d = SHA512;
+  exports$1b = SHA512;
   SHA512.blockSize = 1024;
   SHA512.outSize = 512;
   SHA512.hmacStrength = 192;
@@ -10859,18 +10907,18 @@ function dew$1e() {
     return r;
   }
 
-  return exports$1d;
+  return exports$1b;
 }
 
-var exports$1e = {},
-    _dewExec$19 = false;
-function dew$1f() {
-  if (_dewExec$19) return exports$1e;
-  _dewExec$19 = true;
+var exports$1c = {},
+    _dewExec$18 = false;
+function dew$1c() {
+  if (_dewExec$18) return exports$1c;
+  _dewExec$18 = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var SHA512 = dew$1e();
+  var SHA512 = dew$1b();
 
   function SHA384() {
     if (!(this instanceof SHA384)) return new SHA384();
@@ -10879,7 +10927,7 @@ function dew$1f() {
   }
 
   utils.inherits(SHA384, SHA512);
-  exports$1e = SHA384;
+  exports$1c = SHA384;
   SHA384.blockSize = 1024;
   SHA384.outSize = 384;
   SHA384.hmacStrength = 192;
@@ -10889,31 +10937,31 @@ function dew$1f() {
     if (enc === 'hex') return utils.toHex32(this.h.slice(0, 12), 'big');else return utils.split32(this.h.slice(0, 12), 'big');
   };
 
-  return exports$1e;
+  return exports$1c;
 }
 
-var exports$1f = {},
+var exports$1d = {},
+    _dewExec$19 = false;
+function dew$1d() {
+  if (_dewExec$19) return exports$1d;
+  _dewExec$19 = true;
+  exports$1d.sha1 = dew$18();
+  exports$1d.sha224 = dew$1a();
+  exports$1d.sha256 = dew$19();
+  exports$1d.sha384 = dew$1c();
+  exports$1d.sha512 = dew$1b();
+  return exports$1d;
+}
+
+var exports$1e = {},
     _dewExec$1a = false;
-function dew$1g() {
-  if (_dewExec$1a) return exports$1f;
+function dew$1e() {
+  if (_dewExec$1a) return exports$1e;
   _dewExec$1a = true;
-  exports$1f.sha1 = dew$1b();
-  exports$1f.sha224 = dew$1d();
-  exports$1f.sha256 = dew$1c();
-  exports$1f.sha384 = dew$1f();
-  exports$1f.sha512 = dew$1e();
-  return exports$1f;
-}
 
-var exports$1g = {},
-    _dewExec$1b = false;
-function dew$1h() {
-  if (_dewExec$1b) return exports$1g;
-  _dewExec$1b = true;
+  var utils = dew$15();
 
-  var utils = dew$18();
-
-  var common = dew$19();
+  var common = dew$16();
 
   var rotl32 = utils.rotl32;
   var sum32 = utils.sum32;
@@ -10929,7 +10977,7 @@ function dew$1h() {
   }
 
   utils.inherits(RIPEMD160, BlockHash);
-  exports$1g.ripemd160 = RIPEMD160;
+  exports$1e.ripemd160 = RIPEMD160;
   RIPEMD160.blockSize = 512;
   RIPEMD160.outSize = 160;
   RIPEMD160.hmacStrength = 192;
@@ -10990,18 +11038,18 @@ function dew$1h() {
   var rh = [5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12, 6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2, 15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13, 8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14, 12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11];
   var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6];
   var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
-  return exports$1g;
+  return exports$1e;
 }
 
-var exports$1h = {},
-    _dewExec$1c = false;
-function dew$1i() {
-  if (_dewExec$1c) return exports$1h;
-  _dewExec$1c = true;
+var exports$1f = {},
+    _dewExec$1b = false;
+function dew$1f() {
+  if (_dewExec$1b) return exports$1f;
+  _dewExec$1b = true;
 
-  var utils = dew$18();
+  var utils = dew$15();
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   function Hmac(hash, key, enc) {
     if (!(this instanceof Hmac)) return new Hmac(hash, key, enc);
@@ -11014,7 +11062,7 @@ function dew$1i() {
     this._init(utils.toArray(key, enc));
   }
 
-  exports$1h = Hmac;
+  exports$1f = Hmac;
 
   Hmac.prototype._init = function init(key) {
     // Shorten key, if needed
@@ -11042,20 +11090,20 @@ function dew$1i() {
     return this.outer.digest(enc);
   };
 
-  return exports$1h;
+  return exports$1f;
 }
 
-var exports$1i = {},
-    _dewExec$1d = false;
-function dew$1j() {
-  if (_dewExec$1d) return exports$1i;
-  _dewExec$1d = true;
-  var hash = exports$1i;
-  hash.utils = dew$18();
-  hash.common = dew$19();
-  hash.sha = dew$1g();
-  hash.ripemd = dew$1h();
-  hash.hmac = dew$1i(); // Proxy hash functions to the main object
+var exports$1g = {},
+    _dewExec$1c = false;
+function dew$1g() {
+  if (_dewExec$1c) return exports$1g;
+  _dewExec$1c = true;
+  var hash = exports$1g;
+  hash.utils = dew$15();
+  hash.common = dew$16();
+  hash.sha = dew$1d();
+  hash.ripemd = dew$1e();
+  hash.hmac = dew$1f(); // Proxy hash functions to the main object
 
   hash.sha1 = hash.sha.sha1;
   hash.sha256 = hash.sha.sha256;
@@ -11063,15 +11111,15 @@ function dew$1j() {
   hash.sha384 = hash.sha.sha384;
   hash.sha512 = hash.sha.sha512;
   hash.ripemd160 = hash.ripemd.ripemd160;
-  return exports$1i;
+  return exports$1g;
 }
 
-var exports$1j = {},
-    _dewExec$1e = false;
-function dew$1k() {
-  if (_dewExec$1e) return exports$1j;
-  _dewExec$1e = true;
-  exports$1j = {
+var exports$1h = {},
+    _dewExec$1d = false;
+function dew$1h() {
+  if (_dewExec$1d) return exports$1h;
+  _dewExec$1d = true;
+  exports$1h = {
     doubles: {
       step: 4,
       points: [['e60fce93b59e9ec53011aabc21c23e97b2a31369b87a5ae9c44ee89e2a6dec0a', 'f7e3507399e595929db99f34f57937101296891e44d23f0be1f32cce69616821'], ['8282263212c609d9ea2a6e3e172de238d8c39cabd5ac1ca10646e23fd5f51508', '11f8a8098557dfe45e8256e830b60ace62d613ac2f7b17bed31b6eaff6e26caf'], ['175e159f728b865a72f99cc6c6fc846de0b93833fd2222ed73fce5b551e5b739', 'd3506e0d9e3c79eba4ef97a51ff71f5eacb5955add24345c6efa6ffee9fed695'], ['363d90d447b00c9c99ceac05b6262ee053441c7e55552ffe526bad8f83ff4640', '4e273adfc732221953b445397f3363145b9a89008199ecb62003c7f3bee9de9'], ['8b4b5f165df3c2be8c6244b5b745638843e4a781a15bcd1b69f79a55dffdf80c', '4aad0a6f68d308b4b3fbd7813ab0da04f9e336546162ee56b3eff0c65fd4fd36'], ['723cbaa6e5db996d6bf771c00bd548c7b700dbffa6c0e77bcb6115925232fcda', '96e867b5595cc498a921137488824d6e2660a0653779494801dc069d9eb39f5f'], ['eebfa4d493bebf98ba5feec812c2d3b50947961237a919839a533eca0e7dd7fa', '5d9a8ca3970ef0f269ee7edaf178089d9ae4cdc3a711f712ddfd4fdae1de8999'], ['100f44da696e71672791d0a09b7bde459f1215a29b3c03bfefd7835b39a48db0', 'cdd9e13192a00b772ec8f3300c090666b7ff4a18ff5195ac0fbd5cd62bc65a09'], ['e1031be262c7ed1b1dc9227a4a04c017a77f8d4464f3b3852c8acde6e534fd2d', '9d7061928940405e6bb6a4176597535af292dd419e1ced79a44f18f29456a00d'], ['feea6cae46d55b530ac2839f143bd7ec5cf8b266a41d6af52d5e688d9094696d', 'e57c6b6c97dce1bab06e4e12bf3ecd5c981c8957cc41442d3155debf18090088'], ['da67a91d91049cdcb367be4be6ffca3cfeed657d808583de33fa978bc1ec6cb1', '9bacaa35481642bc41f463f7ec9780e5dec7adc508f740a17e9ea8e27a68be1d'], ['53904faa0b334cdda6e000935ef22151ec08d0f7bb11069f57545ccc1a37b7c0', '5bc087d0bc80106d88c9eccac20d3c1c13999981e14434699dcb096b022771c8'], ['8e7bcd0bd35983a7719cca7764ca906779b53a043a9b8bcaeff959f43ad86047', '10b7770b2a3da4b3940310420ca9514579e88e2e47fd68b3ea10047e8460372a'], ['385eed34c1cdff21e6d0818689b81bde71a7f4f18397e6690a841e1599c43862', '283bebc3e8ea23f56701de19e9ebf4576b304eec2086dc8cc0458fe5542e5453'], ['6f9d9b803ecf191637c73a4413dfa180fddf84a5947fbc9c606ed86c3fac3a7', '7c80c68e603059ba69b8e2a30e45c4d47ea4dd2f5c281002d86890603a842160'], ['3322d401243c4e2582a2147c104d6ecbf774d163db0f5e5313b7e0e742d0e6bd', '56e70797e9664ef5bfb019bc4ddaf9b72805f63ea2873af624f3a2e96c28b2a0'], ['85672c7d2de0b7da2bd1770d89665868741b3f9af7643397721d74d28134ab83', '7c481b9b5b43b2eb6374049bfa62c2e5e77f17fcc5298f44c8e3094f790313a6'], ['948bf809b1988a46b06c9f1919413b10f9226c60f668832ffd959af60c82a0a', '53a562856dcb6646dc6b74c5d1c3418c6d4dff08c97cd2bed4cb7f88d8c8e589'], ['6260ce7f461801c34f067ce0f02873a8f1b0e44dfc69752accecd819f38fd8e8', 'bc2da82b6fa5b571a7f09049776a1ef7ecd292238051c198c1a84e95b2b4ae17'], ['e5037de0afc1d8d43d8348414bbf4103043ec8f575bfdc432953cc8d2037fa2d', '4571534baa94d3b5f9f98d09fb990bddbd5f5b03ec481f10e0e5dc841d755bda'], ['e06372b0f4a207adf5ea905e8f1771b4e7e8dbd1c6a6c5b725866a0ae4fce725', '7a908974bce18cfe12a27bb2ad5a488cd7484a7787104870b27034f94eee31dd'], ['213c7a715cd5d45358d0bbf9dc0ce02204b10bdde2a3f58540ad6908d0559754', '4b6dad0b5ae462507013ad06245ba190bb4850f5f36a7eeddff2c27534b458f2'], ['4e7c272a7af4b34e8dbb9352a5419a87e2838c70adc62cddf0cc3a3b08fbd53c', '17749c766c9d0b18e16fd09f6def681b530b9614bff7dd33e0b3941817dcaae6'], ['fea74e3dbe778b1b10f238ad61686aa5c76e3db2be43057632427e2840fb27b6', '6e0568db9b0b13297cf674deccb6af93126b596b973f7b77701d3db7f23cb96f'], ['76e64113f677cf0e10a2570d599968d31544e179b760432952c02a4417bdde39', 'c90ddf8dee4e95cf577066d70681f0d35e2a33d2b56d2032b4b1752d1901ac01'], ['c738c56b03b2abe1e8281baa743f8f9a8f7cc643df26cbee3ab150242bcbb891', '893fb578951ad2537f718f2eacbfbbbb82314eef7880cfe917e735d9699a84c3'], ['d895626548b65b81e264c7637c972877d1d72e5f3a925014372e9f6588f6c14b', 'febfaa38f2bc7eae728ec60818c340eb03428d632bb067e179363ed75d7d991f'], ['b8da94032a957518eb0f6433571e8761ceffc73693e84edd49150a564f676e03', '2804dfa44805a1e4d7c99cc9762808b092cc584d95ff3b511488e4e74efdf6e7'], ['e80fea14441fb33a7d8adab9475d7fab2019effb5156a792f1a11778e3c0df5d', 'eed1de7f638e00771e89768ca3ca94472d155e80af322ea9fcb4291b6ac9ec78'], ['a301697bdfcd704313ba48e51d567543f2a182031efd6915ddc07bbcc4e16070', '7370f91cfb67e4f5081809fa25d40f9b1735dbf7c0a11a130c0d1a041e177ea1'], ['90ad85b389d6b936463f9d0512678de208cc330b11307fffab7ac63e3fb04ed4', 'e507a3620a38261affdcbd9427222b839aefabe1582894d991d4d48cb6ef150'], ['8f68b9d2f63b5f339239c1ad981f162ee88c5678723ea3351b7b444c9ec4c0da', '662a9f2dba063986de1d90c2b6be215dbbea2cfe95510bfdf23cbf79501fff82'], ['e4f3fb0176af85d65ff99ff9198c36091f48e86503681e3e6686fd5053231e11', '1e63633ad0ef4f1c1661a6d0ea02b7286cc7e74ec951d1c9822c38576feb73bc'], ['8c00fa9b18ebf331eb961537a45a4266c7034f2f0d4e1d0716fb6eae20eae29e', 'efa47267fea521a1a9dc343a3736c974c2fadafa81e36c54e7d2a4c66702414b'], ['e7a26ce69dd4829f3e10cec0a9e98ed3143d084f308b92c0997fddfc60cb3e41', '2a758e300fa7984b471b006a1aafbb18d0a6b2c0420e83e20e8a9421cf2cfd51'], ['b6459e0ee3662ec8d23540c223bcbdc571cbcb967d79424f3cf29eb3de6b80ef', '67c876d06f3e06de1dadf16e5661db3c4b3ae6d48e35b2ff30bf0b61a71ba45'], ['d68a80c8280bb840793234aa118f06231d6f1fc67e73c5a5deda0f5b496943e8', 'db8ba9fff4b586d00c4b1f9177b0e28b5b0e7b8f7845295a294c84266b133120'], ['324aed7df65c804252dc0270907a30b09612aeb973449cea4095980fc28d3d5d', '648a365774b61f2ff130c0c35aec1f4f19213b0c7e332843967224af96ab7c84'], ['4df9c14919cde61f6d51dfdbe5fee5dceec4143ba8d1ca888e8bd373fd054c96', '35ec51092d8728050974c23a1d85d4b5d506cdc288490192ebac06cad10d5d'], ['9c3919a84a474870faed8a9c1cc66021523489054d7f0308cbfc99c8ac1f98cd', 'ddb84f0f4a4ddd57584f044bf260e641905326f76c64c8e6be7e5e03d4fc599d'], ['6057170b1dd12fdf8de05f281d8e06bb91e1493a8b91d4cc5a21382120a959e5', '9a1af0b26a6a4807add9a2daf71df262465152bc3ee24c65e899be932385a2a8'], ['a576df8e23a08411421439a4518da31880cef0fba7d4df12b1a6973eecb94266', '40a6bf20e76640b2c92b97afe58cd82c432e10a7f514d9f3ee8be11ae1b28ec8'], ['7778a78c28dec3e30a05fe9629de8c38bb30d1f5cf9a3a208f763889be58ad71', '34626d9ab5a5b22ff7098e12f2ff580087b38411ff24ac563b513fc1fd9f43ac'], ['928955ee637a84463729fd30e7afd2ed5f96274e5ad7e5cb09eda9c06d903ac', 'c25621003d3f42a827b78a13093a95eeac3d26efa8a8d83fc5180e935bcd091f'], ['85d0fef3ec6db109399064f3a0e3b2855645b4a907ad354527aae75163d82751', '1f03648413a38c0be29d496e582cf5663e8751e96877331582c237a24eb1f962'], ['ff2b0dce97eece97c1c9b6041798b85dfdfb6d8882da20308f5404824526087e', '493d13fef524ba188af4c4dc54d07936c7b7ed6fb90e2ceb2c951e01f0c29907'], ['827fbbe4b1e880ea9ed2b2e6301b212b57f1ee148cd6dd28780e5e2cf856e241', 'c60f9c923c727b0b71bef2c67d1d12687ff7a63186903166d605b68baec293ec'], ['eaa649f21f51bdbae7be4ae34ce6e5217a58fdce7f47f9aa7f3b58fa2120e2b3', 'be3279ed5bbbb03ac69a80f89879aa5a01a6b965f13f7e59d47a5305ba5ad93d'], ['e4a42d43c5cf169d9391df6decf42ee541b6d8f0c9a137401e23632dda34d24f', '4d9f92e716d1c73526fc99ccfb8ad34ce886eedfa8d8e4f13a7f7131deba9414'], ['1ec80fef360cbdd954160fadab352b6b92b53576a88fea4947173b9d4300bf19', 'aeefe93756b5340d2f3a4958a7abbf5e0146e77f6295a07b671cdc1cc107cefd'], ['146a778c04670c2f91b00af4680dfa8bce3490717d58ba889ddb5928366642be', 'b318e0ec3354028add669827f9d4b2870aaa971d2f7e5ed1d0b297483d83efd0'], ['fa50c0f61d22e5f07e3acebb1aa07b128d0012209a28b9776d76a8793180eef9', '6b84c6922397eba9b72cd2872281a68a5e683293a57a213b38cd8d7d3f4f2811'], ['da1d61d0ca721a11b1a5bf6b7d88e8421a288ab5d5bba5220e53d32b5f067ec2', '8157f55a7c99306c79c0766161c91e2966a73899d279b48a655fba0f1ad836f1'], ['a8e282ff0c9706907215ff98e8fd416615311de0446f1e062a73b0610d064e13', '7f97355b8db81c09abfb7f3c5b2515888b679a3e50dd6bd6cef7c73111f4cc0c'], ['174a53b9c9a285872d39e56e6913cab15d59b1fa512508c022f382de8319497c', 'ccc9dc37abfc9c1657b4155f2c47f9e6646b3a1d8cb9854383da13ac079afa73'], ['959396981943785c3d3e57edf5018cdbe039e730e4918b3d884fdff09475b7ba', '2e7e552888c331dd8ba0386a4b9cd6849c653f64c8709385e9b8abf87524f2fd'], ['d2a63a50ae401e56d645a1153b109a8fcca0a43d561fba2dbb51340c9d82b151', 'e82d86fb6443fcb7565aee58b2948220a70f750af484ca52d4142174dcf89405'], ['64587e2335471eb890ee7896d7cfdc866bacbdbd3839317b3436f9b45617e073', 'd99fcdd5bf6902e2ae96dd6447c299a185b90a39133aeab358299e5e9faf6589'], ['8481bde0e4e4d885b3a546d3e549de042f0aa6cea250e7fd358d6c86dd45e458', '38ee7b8cba5404dd84a25bf39cecb2ca900a79c42b262e556d64b1b59779057e'], ['13464a57a78102aa62b6979ae817f4637ffcfed3c4b1ce30bcd6303f6caf666b', '69be159004614580ef7e433453ccb0ca48f300a81d0942e13f495a907f6ecc27'], ['bc4a9df5b713fe2e9aef430bcc1dc97a0cd9ccede2f28588cada3a0d2d83f366', 'd3a81ca6e785c06383937adf4b798caa6e8a9fbfa547b16d758d666581f33c1'], ['8c28a97bf8298bc0d23d8c749452a32e694b65e30a9472a3954ab30fe5324caa', '40a30463a3305193378fedf31f7cc0eb7ae784f0451cb9459e71dc73cbef9482'], ['8ea9666139527a8c1dd94ce4f071fd23c8b350c5a4bb33748c4ba111faccae0', '620efabbc8ee2782e24e7c0cfb95c5d735b783be9cf0f8e955af34a30e62b945'], ['dd3625faef5ba06074669716bbd3788d89bdde815959968092f76cc4eb9a9787', '7a188fa3520e30d461da2501045731ca941461982883395937f68d00c644a573'], ['f710d79d9eb962297e4f6232b40e8f7feb2bc63814614d692c12de752408221e', 'ea98e67232d3b3295d3b535532115ccac8612c721851617526ae47a9c77bfc82']]
@@ -11081,19 +11129,19 @@ function dew$1k() {
       points: [['f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9', '388f7b0f632de8140fe337e62a37f3566500a99934c2231b6cb9fd7584b8e672'], ['2f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe4', 'd8ac222636e5e3d6d4dba9dda6c9c426f788271bab0d6840dca87d3aa6ac62d6'], ['5cbdf0646e5db4eaa398f365f2ea7a0e3d419b7e0330e39ce92bddedcac4f9bc', '6aebca40ba255960a3178d6d861a54dba813d0b813fde7b5a5082628087264da'], ['acd484e2f0c7f65309ad178a9f559abde09796974c57e714c35f110dfc27ccbe', 'cc338921b0a7d9fd64380971763b61e9add888a4375f8e0f05cc262ac64f9c37'], ['774ae7f858a9411e5ef4246b70c65aac5649980be5c17891bbec17895da008cb', 'd984a032eb6b5e190243dd56d7b7b365372db1e2dff9d6a8301d74c9c953c61b'], ['f28773c2d975288bc7d1d205c3748651b075fbc6610e58cddeeddf8f19405aa8', 'ab0902e8d880a89758212eb65cdaf473a1a06da521fa91f29b5cb52db03ed81'], ['d7924d4f7d43ea965a465ae3095ff41131e5946f3c85f79e44adbcf8e27e080e', '581e2872a86c72a683842ec228cc6defea40af2bd896d3a5c504dc9ff6a26b58'], ['defdea4cdb677750a420fee807eacf21eb9898ae79b9768766e4faa04a2d4a34', '4211ab0694635168e997b0ead2a93daeced1f4a04a95c0f6cfb199f69e56eb77'], ['2b4ea0a797a443d293ef5cff444f4979f06acfebd7e86d277475656138385b6c', '85e89bc037945d93b343083b5a1c86131a01f60c50269763b570c854e5c09b7a'], ['352bbf4a4cdd12564f93fa332ce333301d9ad40271f8107181340aef25be59d5', '321eb4075348f534d59c18259dda3e1f4a1b3b2e71b1039c67bd3d8bcf81998c'], ['2fa2104d6b38d11b0230010559879124e42ab8dfeff5ff29dc9cdadd4ecacc3f', '2de1068295dd865b64569335bd5dd80181d70ecfc882648423ba76b532b7d67'], ['9248279b09b4d68dab21a9b066edda83263c3d84e09572e269ca0cd7f5453714', '73016f7bf234aade5d1aa71bdea2b1ff3fc0de2a887912ffe54a32ce97cb3402'], ['daed4f2be3a8bf278e70132fb0beb7522f570e144bf615c07e996d443dee8729', 'a69dce4a7d6c98e8d4a1aca87ef8d7003f83c230f3afa726ab40e52290be1c55'], ['c44d12c7065d812e8acf28d7cbb19f9011ecd9e9fdf281b0e6a3b5e87d22e7db', '2119a460ce326cdc76c45926c982fdac0e106e861edf61c5a039063f0e0e6482'], ['6a245bf6dc698504c89a20cfded60853152b695336c28063b61c65cbd269e6b4', 'e022cf42c2bd4a708b3f5126f16a24ad8b33ba48d0423b6efd5e6348100d8a82'], ['1697ffa6fd9de627c077e3d2fe541084ce13300b0bec1146f95ae57f0d0bd6a5', 'b9c398f186806f5d27561506e4557433a2cf15009e498ae7adee9d63d01b2396'], ['605bdb019981718b986d0f07e834cb0d9deb8360ffb7f61df982345ef27a7479', '2972d2de4f8d20681a78d93ec96fe23c26bfae84fb14db43b01e1e9056b8c49'], ['62d14dab4150bf497402fdc45a215e10dcb01c354959b10cfe31c7e9d87ff33d', '80fc06bd8cc5b01098088a1950eed0db01aa132967ab472235f5642483b25eaf'], ['80c60ad0040f27dade5b4b06c408e56b2c50e9f56b9b8b425e555c2f86308b6f', '1c38303f1cc5c30f26e66bad7fe72f70a65eed4cbe7024eb1aa01f56430bd57a'], ['7a9375ad6167ad54aa74c6348cc54d344cc5dc9487d847049d5eabb0fa03c8fb', 'd0e3fa9eca8726909559e0d79269046bdc59ea10c70ce2b02d499ec224dc7f7'], ['d528ecd9b696b54c907a9ed045447a79bb408ec39b68df504bb51f459bc3ffc9', 'eecf41253136e5f99966f21881fd656ebc4345405c520dbc063465b521409933'], ['49370a4b5f43412ea25f514e8ecdad05266115e4a7ecb1387231808f8b45963', '758f3f41afd6ed428b3081b0512fd62a54c3f3afbb5b6764b653052a12949c9a'], ['77f230936ee88cbbd73df930d64702ef881d811e0e1498e2f1c13eb1fc345d74', '958ef42a7886b6400a08266e9ba1b37896c95330d97077cbbe8eb3c7671c60d6'], ['f2dac991cc4ce4b9ea44887e5c7c0bce58c80074ab9d4dbaeb28531b7739f530', 'e0dedc9b3b2f8dad4da1f32dec2531df9eb5fbeb0598e4fd1a117dba703a3c37'], ['463b3d9f662621fb1b4be8fbbe2520125a216cdfc9dae3debcba4850c690d45b', '5ed430d78c296c3543114306dd8622d7c622e27c970a1de31cb377b01af7307e'], ['f16f804244e46e2a09232d4aff3b59976b98fac14328a2d1a32496b49998f247', 'cedabd9b82203f7e13d206fcdf4e33d92a6c53c26e5cce26d6579962c4e31df6'], ['caf754272dc84563b0352b7a14311af55d245315ace27c65369e15f7151d41d1', 'cb474660ef35f5f2a41b643fa5e460575f4fa9b7962232a5c32f908318a04476'], ['2600ca4b282cb986f85d0f1709979d8b44a09c07cb86d7c124497bc86f082120', '4119b88753c15bd6a693b03fcddbb45d5ac6be74ab5f0ef44b0be9475a7e4b40'], ['7635ca72d7e8432c338ec53cd12220bc01c48685e24f7dc8c602a7746998e435', '91b649609489d613d1d5e590f78e6d74ecfc061d57048bad9e76f302c5b9c61'], ['754e3239f325570cdbbf4a87deee8a66b7f2b33479d468fbc1a50743bf56cc18', '673fb86e5bda30fb3cd0ed304ea49a023ee33d0197a695d0c5d98093c536683'], ['e3e6bd1071a1e96aff57859c82d570f0330800661d1c952f9fe2694691d9b9e8', '59c9e0bba394e76f40c0aa58379a3cb6a5a2283993e90c4167002af4920e37f5'], ['186b483d056a033826ae73d88f732985c4ccb1f32ba35f4b4cc47fdcf04aa6eb', '3b952d32c67cf77e2e17446e204180ab21fb8090895138b4a4a797f86e80888b'], ['df9d70a6b9876ce544c98561f4be4f725442e6d2b737d9c91a8321724ce0963f', '55eb2dafd84d6ccd5f862b785dc39d4ab157222720ef9da217b8c45cf2ba2417'], ['5edd5cc23c51e87a497ca815d5dce0f8ab52554f849ed8995de64c5f34ce7143', 'efae9c8dbc14130661e8cec030c89ad0c13c66c0d17a2905cdc706ab7399a868'], ['290798c2b6476830da12fe02287e9e777aa3fba1c355b17a722d362f84614fba', 'e38da76dcd440621988d00bcf79af25d5b29c094db2a23146d003afd41943e7a'], ['af3c423a95d9f5b3054754efa150ac39cd29552fe360257362dfdecef4053b45', 'f98a3fd831eb2b749a93b0e6f35cfb40c8cd5aa667a15581bc2feded498fd9c6'], ['766dbb24d134e745cccaa28c99bf274906bb66b26dcf98df8d2fed50d884249a', '744b1152eacbe5e38dcc887980da38b897584a65fa06cedd2c924f97cbac5996'], ['59dbf46f8c94759ba21277c33784f41645f7b44f6c596a58ce92e666191abe3e', 'c534ad44175fbc300f4ea6ce648309a042ce739a7919798cd85e216c4a307f6e'], ['f13ada95103c4537305e691e74e9a4a8dd647e711a95e73cb62dc6018cfd87b8', 'e13817b44ee14de663bf4bc808341f326949e21a6a75c2570778419bdaf5733d'], ['7754b4fa0e8aced06d4167a2c59cca4cda1869c06ebadfb6488550015a88522c', '30e93e864e669d82224b967c3020b8fa8d1e4e350b6cbcc537a48b57841163a2'], ['948dcadf5990e048aa3874d46abef9d701858f95de8041d2a6828c99e2262519', 'e491a42537f6e597d5d28a3224b1bc25df9154efbd2ef1d2cbba2cae5347d57e'], ['7962414450c76c1689c7b48f8202ec37fb224cf5ac0bfa1570328a8a3d7c77ab', '100b610ec4ffb4760d5c1fc133ef6f6b12507a051f04ac5760afa5b29db83437'], ['3514087834964b54b15b160644d915485a16977225b8847bb0dd085137ec47ca', 'ef0afbb2056205448e1652c48e8127fc6039e77c15c2378b7e7d15a0de293311'], ['d3cc30ad6b483e4bc79ce2c9dd8bc54993e947eb8df787b442943d3f7b527eaf', '8b378a22d827278d89c5e9be8f9508ae3c2ad46290358630afb34db04eede0a4'], ['1624d84780732860ce1c78fcbfefe08b2b29823db913f6493975ba0ff4847610', '68651cf9b6da903e0914448c6cd9d4ca896878f5282be4c8cc06e2a404078575'], ['733ce80da955a8a26902c95633e62a985192474b5af207da6df7b4fd5fc61cd4', 'f5435a2bd2badf7d485a4d8b8db9fcce3e1ef8e0201e4578c54673bc1dc5ea1d'], ['15d9441254945064cf1a1c33bbd3b49f8966c5092171e699ef258dfab81c045c', 'd56eb30b69463e7234f5137b73b84177434800bacebfc685fc37bbe9efe4070d'], ['a1d0fcf2ec9de675b612136e5ce70d271c21417c9d2b8aaaac138599d0717940', 'edd77f50bcb5a3cab2e90737309667f2641462a54070f3d519212d39c197a629'], ['e22fbe15c0af8ccc5780c0735f84dbe9a790badee8245c06c7ca37331cb36980', 'a855babad5cd60c88b430a69f53a1a7a38289154964799be43d06d77d31da06'], ['311091dd9860e8e20ee13473c1155f5f69635e394704eaa74009452246cfa9b3', '66db656f87d1f04fffd1f04788c06830871ec5a64feee685bd80f0b1286d8374'], ['34c1fd04d301be89b31c0442d3e6ac24883928b45a9340781867d4232ec2dbdf', '9414685e97b1b5954bd46f730174136d57f1ceeb487443dc5321857ba73abee'], ['f219ea5d6b54701c1c14de5b557eb42a8d13f3abbcd08affcc2a5e6b049b8d63', '4cb95957e83d40b0f73af4544cccf6b1f4b08d3c07b27fb8d8c2962a400766d1'], ['d7b8740f74a8fbaab1f683db8f45de26543a5490bca627087236912469a0b448', 'fa77968128d9c92ee1010f337ad4717eff15db5ed3c049b3411e0315eaa4593b'], ['32d31c222f8f6f0ef86f7c98d3a3335ead5bcd32abdd94289fe4d3091aa824bf', '5f3032f5892156e39ccd3d7915b9e1da2e6dac9e6f26e961118d14b8462e1661'], ['7461f371914ab32671045a155d9831ea8793d77cd59592c4340f86cbc18347b5', '8ec0ba238b96bec0cbdddcae0aa442542eee1ff50c986ea6b39847b3cc092ff6'], ['ee079adb1df1860074356a25aa38206a6d716b2c3e67453d287698bad7b2b2d6', '8dc2412aafe3be5c4c5f37e0ecc5f9f6a446989af04c4e25ebaac479ec1c8c1e'], ['16ec93e447ec83f0467b18302ee620f7e65de331874c9dc72bfd8616ba9da6b5', '5e4631150e62fb40d0e8c2a7ca5804a39d58186a50e497139626778e25b0674d'], ['eaa5f980c245f6f038978290afa70b6bd8855897f98b6aa485b96065d537bd99', 'f65f5d3e292c2e0819a528391c994624d784869d7e6ea67fb18041024edc07dc'], ['78c9407544ac132692ee1910a02439958ae04877151342ea96c4b6b35a49f51', 'f3e0319169eb9b85d5404795539a5e68fa1fbd583c064d2462b675f194a3ddb4'], ['494f4be219a1a77016dcd838431aea0001cdc8ae7a6fc688726578d9702857a5', '42242a969283a5f339ba7f075e36ba2af925ce30d767ed6e55f4b031880d562c'], ['a598a8030da6d86c6bc7f2f5144ea549d28211ea58faa70ebf4c1e665c1fe9b5', '204b5d6f84822c307e4b4a7140737aec23fc63b65b35f86a10026dbd2d864e6b'], ['c41916365abb2b5d09192f5f2dbeafec208f020f12570a184dbadc3e58595997', '4f14351d0087efa49d245b328984989d5caf9450f34bfc0ed16e96b58fa9913'], ['841d6063a586fa475a724604da03bc5b92a2e0d2e0a36acfe4c73a5514742881', '73867f59c0659e81904f9a1c7543698e62562d6744c169ce7a36de01a8d6154'], ['5e95bb399a6971d376026947f89bde2f282b33810928be4ded112ac4d70e20d5', '39f23f366809085beebfc71181313775a99c9aed7d8ba38b161384c746012865'], ['36e4641a53948fd476c39f8a99fd974e5ec07564b5315d8bf99471bca0ef2f66', 'd2424b1b1abe4eb8164227b085c9aa9456ea13493fd563e06fd51cf5694c78fc'], ['336581ea7bfbbb290c191a2f507a41cf5643842170e914faeab27c2c579f726', 'ead12168595fe1be99252129b6e56b3391f7ab1410cd1e0ef3dcdcabd2fda224'], ['8ab89816dadfd6b6a1f2634fcf00ec8403781025ed6890c4849742706bd43ede', '6fdcef09f2f6d0a044e654aef624136f503d459c3e89845858a47a9129cdd24e'], ['1e33f1a746c9c5778133344d9299fcaa20b0938e8acff2544bb40284b8c5fb94', '60660257dd11b3aa9c8ed618d24edff2306d320f1d03010e33a7d2057f3b3b6'], ['85b7c1dcb3cec1b7ee7f30ded79dd20a0ed1f4cc18cbcfcfa410361fd8f08f31', '3d98a9cdd026dd43f39048f25a8847f4fcafad1895d7a633c6fed3c35e999511'], ['29df9fbd8d9e46509275f4b125d6d45d7fbe9a3b878a7af872a2800661ac5f51', 'b4c4fe99c775a606e2d8862179139ffda61dc861c019e55cd2876eb2a27d84b'], ['a0b1cae06b0a847a3fea6e671aaf8adfdfe58ca2f768105c8082b2e449fce252', 'ae434102edde0958ec4b19d917a6a28e6b72da1834aff0e650f049503a296cf2'], ['4e8ceafb9b3e9a136dc7ff67e840295b499dfb3b2133e4ba113f2e4c0e121e5', 'cf2174118c8b6d7a4b48f6d534ce5c79422c086a63460502b827ce62a326683c'], ['d24a44e047e19b6f5afb81c7ca2f69080a5076689a010919f42725c2b789a33b', '6fb8d5591b466f8fc63db50f1c0f1c69013f996887b8244d2cdec417afea8fa3'], ['ea01606a7a6c9cdd249fdfcfacb99584001edd28abbab77b5104e98e8e3b35d4', '322af4908c7312b0cfbfe369f7a7b3cdb7d4494bc2823700cfd652188a3ea98d'], ['af8addbf2b661c8a6c6328655eb96651252007d8c5ea31be4ad196de8ce2131f', '6749e67c029b85f52a034eafd096836b2520818680e26ac8f3dfbcdb71749700'], ['e3ae1974566ca06cc516d47e0fb165a674a3dabcfca15e722f0e3450f45889', '2aeabe7e4531510116217f07bf4d07300de97e4874f81f533420a72eeb0bd6a4'], ['591ee355313d99721cf6993ffed1e3e301993ff3ed258802075ea8ced397e246', 'b0ea558a113c30bea60fc4775460c7901ff0b053d25ca2bdeee98f1a4be5d196'], ['11396d55fda54c49f19aa97318d8da61fa8584e47b084945077cf03255b52984', '998c74a8cd45ac01289d5833a7beb4744ff536b01b257be4c5767bea93ea57a4'], ['3c5d2a1ba39c5a1790000738c9e0c40b8dcdfd5468754b6405540157e017aa7a', 'b2284279995a34e2f9d4de7396fc18b80f9b8b9fdd270f6661f79ca4c81bd257'], ['cc8704b8a60a0defa3a99a7299f2e9c3fbc395afb04ac078425ef8a1793cc030', 'bdd46039feed17881d1e0862db347f8cf395b74fc4bcdc4e940b74e3ac1f1b13'], ['c533e4f7ea8555aacd9777ac5cad29b97dd4defccc53ee7ea204119b2889b197', '6f0a256bc5efdf429a2fb6242f1a43a2d9b925bb4a4b3a26bb8e0f45eb596096'], ['c14f8f2ccb27d6f109f6d08d03cc96a69ba8c34eec07bbcf566d48e33da6593', 'c359d6923bb398f7fd4473e16fe1c28475b740dd098075e6c0e8649113dc3a38'], ['a6cbc3046bc6a450bac24789fa17115a4c9739ed75f8f21ce441f72e0b90e6ef', '21ae7f4680e889bb130619e2c0f95a360ceb573c70603139862afd617fa9b9f'], ['347d6d9a02c48927ebfb86c1359b1caf130a3c0267d11ce6344b39f99d43cc38', '60ea7f61a353524d1c987f6ecec92f086d565ab687870cb12689ff1e31c74448'], ['da6545d2181db8d983f7dcb375ef5866d47c67b1bf31c8cf855ef7437b72656a', '49b96715ab6878a79e78f07ce5680c5d6673051b4935bd897fea824b77dc208a'], ['c40747cc9d012cb1a13b8148309c6de7ec25d6945d657146b9d5994b8feb1111', '5ca560753be2a12fc6de6caf2cb489565db936156b9514e1bb5e83037e0fa2d4'], ['4e42c8ec82c99798ccf3a610be870e78338c7f713348bd34c8203ef4037f3502', '7571d74ee5e0fb92a7a8b33a07783341a5492144cc54bcc40a94473693606437'], ['3775ab7089bc6af823aba2e1af70b236d251cadb0c86743287522a1b3b0dedea', 'be52d107bcfa09d8bcb9736a828cfa7fac8db17bf7a76a2c42ad961409018cf7'], ['cee31cbf7e34ec379d94fb814d3d775ad954595d1314ba8846959e3e82f74e26', '8fd64a14c06b589c26b947ae2bcf6bfa0149ef0be14ed4d80f448a01c43b1c6d'], ['b4f9eaea09b6917619f6ea6a4eb5464efddb58fd45b1ebefcdc1a01d08b47986', '39e5c9925b5a54b07433a4f18c61726f8bb131c012ca542eb24a8ac07200682a'], ['d4263dfc3d2df923a0179a48966d30ce84e2515afc3dccc1b77907792ebcc60e', '62dfaf07a0f78feb30e30d6295853ce189e127760ad6cf7fae164e122a208d54'], ['48457524820fa65a4f8d35eb6930857c0032acc0a4a2de422233eeda897612c4', '25a748ab367979d98733c38a1fa1c2e7dc6cc07db2d60a9ae7a76aaa49bd0f77'], ['dfeeef1881101f2cb11644f3a2afdfc2045e19919152923f367a1767c11cceda', 'ecfb7056cf1de042f9420bab396793c0c390bde74b4bbdff16a83ae09a9a7517'], ['6d7ef6b17543f8373c573f44e1f389835d89bcbc6062ced36c82df83b8fae859', 'cd450ec335438986dfefa10c57fea9bcc521a0959b2d80bbf74b190dca712d10'], ['e75605d59102a5a2684500d3b991f2e3f3c88b93225547035af25af66e04541f', 'f5c54754a8f71ee540b9b48728473e314f729ac5308b06938360990e2bfad125'], ['eb98660f4c4dfaa06a2be453d5020bc99a0c2e60abe388457dd43fefb1ed620c', '6cb9a8876d9cb8520609af3add26cd20a0a7cd8a9411131ce85f44100099223e'], ['13e87b027d8514d35939f2e6892b19922154596941888336dc3563e3b8dba942', 'fef5a3c68059a6dec5d624114bf1e91aac2b9da568d6abeb2570d55646b8adf1'], ['ee163026e9fd6fe017c38f06a5be6fc125424b371ce2708e7bf4491691e5764a', '1acb250f255dd61c43d94ccc670d0f58f49ae3fa15b96623e5430da0ad6c62b2'], ['b268f5ef9ad51e4d78de3a750c2dc89b1e626d43505867999932e5db33af3d80', '5f310d4b3c99b9ebb19f77d41c1dee018cf0d34fd4191614003e945a1216e423'], ['ff07f3118a9df035e9fad85eb6c7bfe42b02f01ca99ceea3bf7ffdba93c4750d', '438136d603e858a3a5c440c38eccbaddc1d2942114e2eddd4740d098ced1f0d8'], ['8d8b9855c7c052a34146fd20ffb658bea4b9f69e0d825ebec16e8c3ce2b526a1', 'cdb559eedc2d79f926baf44fb84ea4d44bcf50fee51d7ceb30e2e7f463036758'], ['52db0b5384dfbf05bfa9d472d7ae26dfe4b851ceca91b1eba54263180da32b63', 'c3b997d050ee5d423ebaf66a6db9f57b3180c902875679de924b69d84a7b375'], ['e62f9490d3d51da6395efd24e80919cc7d0f29c3f3fa48c6fff543becbd43352', '6d89ad7ba4876b0b22c2ca280c682862f342c8591f1daf5170e07bfd9ccafa7d'], ['7f30ea2476b399b4957509c88f77d0191afa2ff5cb7b14fd6d8e7d65aaab1193', 'ca5ef7d4b231c94c3b15389a5f6311e9daff7bb67b103e9880ef4bff637acaec'], ['5098ff1e1d9f14fb46a210fada6c903fef0fb7b4a1dd1d9ac60a0361800b7a00', '9731141d81fc8f8084d37c6e7542006b3ee1b40d60dfe5362a5b132fd17ddc0'], ['32b78c7de9ee512a72895be6b9cbefa6e2f3c4ccce445c96b9f2c81e2778ad58', 'ee1849f513df71e32efc3896ee28260c73bb80547ae2275ba497237794c8753c'], ['e2cb74fddc8e9fbcd076eef2a7c72b0ce37d50f08269dfc074b581550547a4f7', 'd3aa2ed71c9dd2247a62df062736eb0baddea9e36122d2be8641abcb005cc4a4'], ['8438447566d4d7bedadc299496ab357426009a35f235cb141be0d99cd10ae3a8', 'c4e1020916980a4da5d01ac5e6ad330734ef0d7906631c4f2390426b2edd791f'], ['4162d488b89402039b584c6fc6c308870587d9c46f660b878ab65c82c711d67e', '67163e903236289f776f22c25fb8a3afc1732f2b84b4e95dbda47ae5a0852649'], ['3fad3fa84caf0f34f0f89bfd2dcf54fc175d767aec3e50684f3ba4a4bf5f683d', 'cd1bc7cb6cc407bb2f0ca647c718a730cf71872e7d0d2a53fa20efcdfe61826'], ['674f2600a3007a00568c1a7ce05d0816c1fb84bf1370798f1c69532faeb1a86b', '299d21f9413f33b3edf43b257004580b70db57da0b182259e09eecc69e0d38a5'], ['d32f4da54ade74abb81b815ad1fb3b263d82d6c692714bcff87d29bd5ee9f08f', 'f9429e738b8e53b968e99016c059707782e14f4535359d582fc416910b3eea87'], ['30e4e670435385556e593657135845d36fbb6931f72b08cb1ed954f1e3ce3ff6', '462f9bce619898638499350113bbc9b10a878d35da70740dc695a559eb88db7b'], ['be2062003c51cc3004682904330e4dee7f3dcd10b01e580bf1971b04d4cad297', '62188bc49d61e5428573d48a74e1c655b1c61090905682a0d5558ed72dccb9bc'], ['93144423ace3451ed29e0fb9ac2af211cb6e84a601df5993c419859fff5df04a', '7c10dfb164c3425f5c71a3f9d7992038f1065224f72bb9d1d902a6d13037b47c'], ['b015f8044f5fcbdcf21ca26d6c34fb8197829205c7b7d2a7cb66418c157b112c', 'ab8c1e086d04e813744a655b2df8d5f83b3cdc6faa3088c1d3aea1454e3a1d5f'], ['d5e9e1da649d97d89e4868117a465a3a4f8a18de57a140d36b3f2af341a21b52', '4cb04437f391ed73111a13cc1d4dd0db1693465c2240480d8955e8592f27447a'], ['d3ae41047dd7ca065dbf8ed77b992439983005cd72e16d6f996a5316d36966bb', 'bd1aeb21ad22ebb22a10f0303417c6d964f8cdd7df0aca614b10dc14d125ac46'], ['463e2763d885f958fc66cdd22800f0a487197d0a82e377b49f80af87c897b065', 'bfefacdb0e5d0fd7df3a311a94de062b26b80c61fbc97508b79992671ef7ca7f'], ['7985fdfd127c0567c6f53ec1bb63ec3158e597c40bfe747c83cddfc910641917', '603c12daf3d9862ef2b25fe1de289aed24ed291e0ec6708703a5bd567f32ed03'], ['74a1ad6b5f76e39db2dd249410eac7f99e74c59cb83d2d0ed5ff1543da7703e9', 'cc6157ef18c9c63cd6193d83631bbea0093e0968942e8c33d5737fd790e0db08'], ['30682a50703375f602d416664ba19b7fc9bab42c72747463a71d0896b22f6da3', '553e04f6b018b4fa6c8f39e7f311d3176290d0e0f19ca73f17714d9977a22ff8'], ['9e2158f0d7c0d5f26c3791efefa79597654e7a2b2464f52b1ee6c1347769ef57', '712fcdd1b9053f09003a3481fa7762e9ffd7c8ef35a38509e2fbf2629008373'], ['176e26989a43c9cfeba4029c202538c28172e566e3c4fce7322857f3be327d66', 'ed8cc9d04b29eb877d270b4878dc43c19aefd31f4eee09ee7b47834c1fa4b1c3'], ['75d46efea3771e6e68abb89a13ad747ecf1892393dfc4f1b7004788c50374da8', '9852390a99507679fd0b86fd2b39a868d7efc22151346e1a3ca4726586a6bed8'], ['809a20c67d64900ffb698c4c825f6d5f2310fb0451c869345b7319f645605721', '9e994980d9917e22b76b061927fa04143d096ccc54963e6a5ebfa5f3f8e286c1'], ['1b38903a43f7f114ed4500b4eac7083fdefece1cf29c63528d563446f972c180', '4036edc931a60ae889353f77fd53de4a2708b26b6f5da72ad3394119daf408f9']]
     }
   };
-  return exports$1j;
+  return exports$1h;
 }
 
-var exports$1k = {},
-    _dewExec$1f = false;
-function dew$1l() {
-  if (_dewExec$1f) return exports$1k;
-  _dewExec$1f = true;
-  var curves = exports$1k;
+var exports$1i = {},
+    _dewExec$1e = false;
+function dew$1i() {
+  if (_dewExec$1e) return exports$1i;
+  _dewExec$1e = true;
+  var curves = exports$1i;
 
-  var hash = dew$1j();
+  var hash = dew$1g();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var assert = elliptic.utils.assert;
 
@@ -11207,7 +11255,7 @@ function dew$1l() {
   var pre;
 
   try {
-    pre = dew$1k();
+    pre = dew$1h();
   } catch (e) {
     pre = undefined;
   }
@@ -11234,20 +11282,20 @@ function dew$1l() {
     gRed: false,
     g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
   });
-  return exports$1k;
+  return exports$1i;
 }
 
-var exports$1l = {},
-    _dewExec$1g = false;
-function dew$1m() {
-  if (_dewExec$1g) return exports$1l;
-  _dewExec$1g = true;
+var exports$1j = {},
+    _dewExec$1f = false;
+function dew$1j() {
+  if (_dewExec$1f) return exports$1j;
+  _dewExec$1f = true;
 
-  var hash = dew$1j();
+  var hash = dew$1g();
 
-  var utils = dew$11();
+  var utils = dew$_();
 
-  var assert = dew$r();
+  var assert = dew$p();
 
   function HmacDRBG(options) {
     if (!(this instanceof HmacDRBG)) return new HmacDRBG(options);
@@ -11267,7 +11315,7 @@ function dew$1m() {
     this._init(entropy, nonce, pers);
   }
 
-  exports$1l = HmacDRBG;
+  exports$1j = HmacDRBG;
 
   HmacDRBG.prototype._init = function init(entropy, nonce, pers) {
     var seed = entropy.concat(nonce).concat(pers);
@@ -11348,18 +11396,18 @@ function dew$1m() {
     return utils.encode(res, enc);
   };
 
-  return exports$1l;
+  return exports$1j;
 }
 
-var exports$1m = {},
-    _dewExec$1h = false;
-function dew$1n() {
-  if (_dewExec$1h) return exports$1m;
-  _dewExec$1h = true;
+var exports$1k = {},
+    _dewExec$1g = false;
+function dew$1k() {
+  if (_dewExec$1g) return exports$1k;
+  _dewExec$1g = true;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11373,7 +11421,7 @@ function dew$1n() {
     if (options.pub) this._importPublic(options.pub, options.pubEnc);
   }
 
-  exports$1m = KeyPair;
+  exports$1k = KeyPair;
 
   KeyPair.fromPublic = function fromPublic(ec, pub, enc) {
     if (pub instanceof KeyPair) return pub;
@@ -11470,18 +11518,18 @@ function dew$1n() {
     return '<Key priv: ' + (this.priv && this.priv.toString(16, 2)) + ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
   };
 
-  return exports$1m;
+  return exports$1k;
 }
 
-var exports$1n = {},
-    _dewExec$1i = false;
-function dew$1o() {
-  if (_dewExec$1i) return exports$1n;
-  _dewExec$1i = true;
+var exports$1l = {},
+    _dewExec$1h = false;
+function dew$1l() {
+  if (_dewExec$1h) return exports$1l;
+  _dewExec$1h = true;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11495,7 +11543,7 @@ function dew$1o() {
     if (options.recoveryParam === undefined) this.recoveryParam = null;else this.recoveryParam = options.recoveryParam;
   }
 
-  exports$1n = Signature;
+  exports$1l = Signature;
 
   function Position() {
     this.place = 0;
@@ -11625,27 +11673,27 @@ function dew$1o() {
     return utils.encode(res, enc);
   };
 
-  return exports$1n;
+  return exports$1l;
 }
 
-var exports$1o = {},
-    _dewExec$1j = false;
-function dew$1p() {
-  if (_dewExec$1j) return exports$1o;
-  _dewExec$1j = true;
+var exports$1m = {},
+    _dewExec$1i = false;
+function dew$1m() {
+  if (_dewExec$1i) return exports$1m;
+  _dewExec$1i = true;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var HmacDRBG = dew$1m();
+  var HmacDRBG = dew$1j();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
 
-  var KeyPair = dew$1n();
+  var KeyPair = dew$1k();
 
-  var Signature = dew$1o();
+  var Signature = dew$1l();
 
   function EC(options) {
     if (!(this instanceof EC)) return new EC(options); // Shortcut `elliptic.ec(curve-name)`
@@ -11670,7 +11718,7 @@ function dew$1p() {
     this.hash = options.hash || options.curve.hash;
   }
 
-  exports$1o = EC;
+  exports$1m = EC;
 
   EC.prototype.keyPair = function keyPair(options) {
     return new KeyPair(this, options);
@@ -11834,16 +11882,16 @@ function dew$1p() {
     throw new Error('Unable to find valid recovery factor');
   };
 
-  return exports$1o;
+  return exports$1m;
 }
 
-var exports$1p = {},
-    _dewExec$1k = false;
-function dew$1q() {
-  if (_dewExec$1k) return exports$1p;
-  _dewExec$1k = true;
+var exports$1n = {},
+    _dewExec$1j = false;
+function dew$1n() {
+  if (_dewExec$1j) return exports$1n;
+  _dewExec$1j = true;
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11928,19 +11976,19 @@ function dew$1q() {
     return utils.encode(this.pubBytes(), enc);
   };
 
-  exports$1p = KeyPair;
-  return exports$1p;
+  exports$1n = KeyPair;
+  return exports$1n;
 }
 
-var exports$1q = {},
-    _dewExec$1l = false;
-function dew$1r() {
-  if (_dewExec$1l) return exports$1q;
-  _dewExec$1l = true;
+var exports$1o = {},
+    _dewExec$1k = false;
+function dew$1o() {
+  if (_dewExec$1k) return exports$1o;
+  _dewExec$1k = true;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
@@ -11994,27 +12042,27 @@ function dew$1r() {
     return utils.encode(this.toBytes(), 'hex').toUpperCase();
   };
 
-  exports$1q = Signature;
-  return exports$1q;
+  exports$1o = Signature;
+  return exports$1o;
 }
 
-var exports$1r = {},
-    _dewExec$1m = false;
-function dew$1s() {
-  if (_dewExec$1m) return exports$1r;
-  _dewExec$1m = true;
+var exports$1p = {},
+    _dewExec$1l = false;
+function dew$1p() {
+  if (_dewExec$1l) return exports$1p;
+  _dewExec$1l = true;
 
-  var hash = dew$1j();
+  var hash = dew$1g();
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
   var utils = elliptic.utils;
   var assert = utils.assert;
   var parseBytes = utils.parseBytes;
 
-  var KeyPair = dew$1q();
+  var KeyPair = dew$1n();
 
-  var Signature = dew$1r();
+  var Signature = dew$1o();
 
   function EDDSA(curve) {
     assert(curve === 'ed25519', 'only tested with ed25519 so far');
@@ -12028,7 +12076,7 @@ function dew$1s() {
     this.hash = hash.sha512;
   }
 
-  exports$1r = EDDSA;
+  exports$1p = EDDSA;
   /**
   * @param {Array|String} message - message bytes
   * @param {Array|String|KeyPair} secret - secret bytes or a keypair
@@ -12124,40 +12172,40 @@ function dew$1s() {
     return val instanceof this.pointClass;
   };
 
-  return exports$1r;
+  return exports$1p;
 }
 
-var exports$1s = {},
+var exports$1q = {},
+    _dewExec$1m = false;
+function dew$1q() {
+  if (_dewExec$1m) return exports$1q;
+  _dewExec$1m = true;
+  var elliptic = exports$1q;
+  elliptic.version = dew$Z().version;
+  elliptic.utils = dew$$();
+  elliptic.rand = dew$S();
+  elliptic.curve = dew$14();
+  elliptic.curves = dew$1i(); // Protocols
+
+  elliptic.ec = dew$1m();
+  elliptic.eddsa = dew$1p();
+  return exports$1q;
+}
+
+var exports$1r = {},
     _dewExec$1n = false;
-function dew$1t() {
-  if (_dewExec$1n) return exports$1s;
-  _dewExec$1n = true;
-  var elliptic = exports$1s;
-  elliptic.version = dew$10().version;
-  elliptic.utils = dew$12();
-  elliptic.rand = dew$U();
-  elliptic.curve = dew$17();
-  elliptic.curves = dew$1l(); // Protocols
-
-  elliptic.ec = dew$1p();
-  elliptic.eddsa = dew$1s();
-  return exports$1s;
-}
-
-var exports$1t = {},
-    _dewExec$1o = false;
 
 var _global$m = typeof self !== "undefined" ? self : global;
 
-function dew$1u() {
-  if (_dewExec$1o) return exports$1t;
-  _dewExec$1o = true;
+function dew$1r() {
+  if (_dewExec$1n) return exports$1r;
+  _dewExec$1n = true;
 
-  var asn1 = dew$1H();
+  var asn1 = dew$1E();
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var api = exports$1t;
+  var api = exports$1r;
 
   api.define = function define(name, body) {
     return new Entity(name, body);
@@ -12214,19 +12262,19 @@ function dew$1u() {
     return this._getEncoder(enc).encode(data, reporter);
   };
 
-  return exports$1t;
+  return exports$1r;
 }
 
-var exports$1u = {},
-    _dewExec$1p = false;
+var exports$1s = {},
+    _dewExec$1o = false;
 
 var _global$n = typeof self !== "undefined" ? self : global;
 
-function dew$1v() {
-  if (_dewExec$1p) return exports$1u;
-  _dewExec$1p = true;
+function dew$1s() {
+  if (_dewExec$1o) return exports$1s;
+  _dewExec$1o = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   function Reporter(options) {
     (this || _global$n)._reporterState = {
@@ -12237,7 +12285,7 @@ function dew$1v() {
     };
   }
 
-  exports$1u.Reporter = Reporter;
+  exports$1s.Reporter = Reporter;
 
   Reporter.prototype.isError = function isError(obj) {
     return obj instanceof ReporterError;
@@ -12339,21 +12387,21 @@ function dew$1v() {
     return this || _global$n;
   };
 
-  return exports$1u;
+  return exports$1s;
 }
 
-var exports$1v = {},
-    _dewExec$1q = false;
+var exports$1t = {},
+    _dewExec$1p = false;
 
 var _global$o = typeof self !== "undefined" ? self : global;
 
-function dew$1w() {
-  if (_dewExec$1q) return exports$1v;
-  _dewExec$1q = true;
+function dew$1t() {
+  if (_dewExec$1p) return exports$1t;
+  _dewExec$1p = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var Reporter = dew$1y().Reporter;
+  var Reporter = dew$1v().Reporter;
 
   var Buffer = _buffer.Buffer;
 
@@ -12371,7 +12419,7 @@ function dew$1w() {
   }
 
   inherits(DecoderBuffer, Reporter);
-  exports$1v.DecoderBuffer = DecoderBuffer;
+  exports$1t.DecoderBuffer = DecoderBuffer;
 
   DecoderBuffer.prototype.save = function save() {
     return {
@@ -12436,7 +12484,7 @@ function dew$1w() {
     }
   }
 
-  exports$1v.EncoderBuffer = EncoderBuffer;
+  exports$1t.EncoderBuffer = EncoderBuffer;
 
   EncoderBuffer.prototype.join = function join(out, offset) {
     if (!out) out = new Buffer((this || _global$o).length);
@@ -12456,25 +12504,25 @@ function dew$1w() {
     return out;
   };
 
-  return exports$1v;
+  return exports$1t;
 }
 
-var exports$1w = {},
-    _dewExec$1r = false;
+var exports$1u = {},
+    _dewExec$1q = false;
 
 var _global$p = typeof self !== "undefined" ? self : global;
 
-function dew$1x() {
-  if (_dewExec$1r) return exports$1w;
-  _dewExec$1r = true;
+function dew$1u() {
+  if (_dewExec$1q) return exports$1u;
+  _dewExec$1q = true;
 
-  var Reporter = dew$1y().Reporter;
+  var Reporter = dew$1v().Reporter;
 
-  var EncoderBuffer = dew$1y().EncoderBuffer;
+  var EncoderBuffer = dew$1v().EncoderBuffer;
 
-  var DecoderBuffer = dew$1y().DecoderBuffer;
+  var DecoderBuffer = dew$1v().DecoderBuffer;
 
-  var assert = dew$r(); // Supported tags
+  var assert = dew$p(); // Supported tags
 
 
   var tags = ['seq', 'seqof', 'set', 'setof', 'objid', 'bool', 'gentime', 'utctime', 'null_', 'enum', 'int', 'objDesc', 'bitstr', 'bmpstr', 'charstr', 'genstr', 'graphstr', 'ia5str', 'iso646str', 'numstr', 'octstr', 'printstr', 't61str', 'unistr', 'utf8str', 'videostr']; // Public methods list
@@ -12512,7 +12560,7 @@ function dew$1x() {
     }
   }
 
-  exports$1w = Node;
+  exports$1u = Node;
   var stateProps = ['enc', 'parent', 'children', 'tag', 'args', 'reverseArgs', 'choice', 'optional', 'any', 'obj', 'use', 'alteredUse', 'key', 'default', 'explicit', 'implicit', 'contains'];
 
   Node.prototype.clone = function clone() {
@@ -12944,38 +12992,38 @@ function dew$1x() {
     return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
   };
 
-  return exports$1w;
+  return exports$1u;
 }
 
-var exports$1x = {},
+var exports$1v = {},
+    _dewExec$1r = false;
+function dew$1v() {
+  if (_dewExec$1r) return exports$1v;
+  _dewExec$1r = true;
+  var base = exports$1v;
+  base.Reporter = dew$1s().Reporter;
+  base.DecoderBuffer = dew$1t().DecoderBuffer;
+  base.EncoderBuffer = dew$1t().EncoderBuffer;
+  base.Node = dew$1u();
+  return exports$1v;
+}
+
+var exports$1w = {},
     _dewExec$1s = false;
-function dew$1y() {
-  if (_dewExec$1s) return exports$1x;
+function dew$1w() {
+  if (_dewExec$1s) return exports$1w;
   _dewExec$1s = true;
-  var base = exports$1x;
-  base.Reporter = dew$1v().Reporter;
-  base.DecoderBuffer = dew$1w().DecoderBuffer;
-  base.EncoderBuffer = dew$1w().EncoderBuffer;
-  base.Node = dew$1x();
-  return exports$1x;
-}
 
-var exports$1y = {},
-    _dewExec$1t = false;
-function dew$1z() {
-  if (_dewExec$1t) return exports$1y;
-  _dewExec$1t = true;
+  var constants = dew$1x();
 
-  var constants = dew$1A();
-
-  exports$1y.tagClass = {
+  exports$1w.tagClass = {
     0: 'universal',
     1: 'application',
     2: 'context',
     3: 'private'
   };
-  exports$1y.tagClassByName = constants._reverse(exports$1y.tagClass);
-  exports$1y.tag = {
+  exports$1w.tagClassByName = constants._reverse(exports$1w.tagClass);
+  exports$1w.tag = {
     0x00: 'end',
     0x01: 'bool',
     0x02: 'int',
@@ -13006,16 +13054,16 @@ function dew$1z() {
     0x1d: 'charstr',
     0x1e: 'bmpstr'
   };
-  exports$1y.tagByName = constants._reverse(exports$1y.tag);
-  return exports$1y;
+  exports$1w.tagByName = constants._reverse(exports$1w.tag);
+  return exports$1w;
 }
 
-var exports$1z = {},
-    _dewExec$1u = false;
-function dew$1A() {
-  if (_dewExec$1u) return exports$1z;
-  _dewExec$1u = true;
-  var constants = exports$1z; // Helper
+var exports$1x = {},
+    _dewExec$1t = false;
+function dew$1x() {
+  if (_dewExec$1t) return exports$1x;
+  _dewExec$1t = true;
+  var constants = exports$1x; // Helper
 
   constants._reverse = function reverse(map) {
     var res = {};
@@ -13028,22 +13076,22 @@ function dew$1A() {
     return res;
   };
 
-  constants.der = dew$1z();
-  return exports$1z;
+  constants.der = dew$1w();
+  return exports$1x;
 }
 
-var exports$1A = {},
-    _dewExec$1v = false;
+var exports$1y = {},
+    _dewExec$1u = false;
 
 var _global$q = typeof self !== "undefined" ? self : global;
 
-function dew$1B() {
-  if (_dewExec$1v) return exports$1A;
-  _dewExec$1v = true;
+function dew$1y() {
+  if (_dewExec$1u) return exports$1y;
+  _dewExec$1u = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var asn1 = dew$1H();
+  var asn1 = dew$1E();
 
   var base = asn1.base;
   var bignum = asn1.bignum; // Import DER constants
@@ -13059,7 +13107,7 @@ function dew$1B() {
 
     (this || _global$q).tree._init(entity.body);
   }
-  exports$1A = DERDecoder;
+  exports$1y = DERDecoder;
 
   DERDecoder.prototype.decode = function decode(data, options) {
     if (!(data instanceof base.DecoderBuffer)) data = new base.DecoderBuffer(data, options);
@@ -13312,30 +13360,30 @@ function dew$1B() {
     return len;
   }
 
-  return exports$1A;
+  return exports$1y;
 }
 
-var exports$1B = {},
-    _dewExec$1w = false;
+var exports$1z = {},
+    _dewExec$1v = false;
 
 var _global$r = typeof self !== "undefined" ? self : global;
 
-function dew$1C() {
-  if (_dewExec$1w) return exports$1B;
-  _dewExec$1w = true;
+function dew$1z() {
+  if (_dewExec$1v) return exports$1z;
+  _dewExec$1v = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var Buffer = _buffer.Buffer;
 
-  var DERDecoder = dew$1B();
+  var DERDecoder = dew$1y();
 
   function PEMDecoder(entity) {
     DERDecoder.call(this || _global$r, entity);
     (this || _global$r).enc = 'pem';
   }
   inherits(PEMDecoder, DERDecoder);
-  exports$1B = PEMDecoder;
+  exports$1z = PEMDecoder;
 
   PEMDecoder.prototype.decode = function decode(data, options) {
     var lines = data.toString().split(/[\r\n]+/g);
@@ -13367,34 +13415,34 @@ function dew$1C() {
     return DERDecoder.prototype.decode.call(this || _global$r, input, options);
   };
 
-  return exports$1B;
+  return exports$1z;
 }
 
-var exports$1C = {},
+var exports$1A = {},
+    _dewExec$1w = false;
+function dew$1A() {
+  if (_dewExec$1w) return exports$1A;
+  _dewExec$1w = true;
+  var decoders = exports$1A;
+  decoders.der = dew$1y();
+  decoders.pem = dew$1z();
+  return exports$1A;
+}
+
+var exports$1B = {},
     _dewExec$1x = false;
-function dew$1D() {
-  if (_dewExec$1x) return exports$1C;
-  _dewExec$1x = true;
-  var decoders = exports$1C;
-  decoders.der = dew$1B();
-  decoders.pem = dew$1C();
-  return exports$1C;
-}
-
-var exports$1D = {},
-    _dewExec$1y = false;
 
 var _global$s = typeof self !== "undefined" ? self : global;
 
-function dew$1E() {
-  if (_dewExec$1y) return exports$1D;
-  _dewExec$1y = true;
+function dew$1B() {
+  if (_dewExec$1x) return exports$1B;
+  _dewExec$1x = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
   var Buffer = _buffer.Buffer;
 
-  var asn1 = dew$1H();
+  var asn1 = dew$1E();
 
   var base = asn1.base; // Import DER constants
 
@@ -13409,7 +13457,7 @@ function dew$1E() {
 
     (this || _global$s).tree._init(entity.body);
   }
-  exports$1D = DEREncoder;
+  exports$1B = DEREncoder;
 
   DEREncoder.prototype.encode = function encode(data, reporter) {
     return (this || _global$s).tree._encode(data, reporter).join();
@@ -13630,28 +13678,28 @@ function dew$1E() {
     return res;
   }
 
-  return exports$1D;
+  return exports$1B;
 }
 
-var exports$1E = {},
-    _dewExec$1z = false;
+var exports$1C = {},
+    _dewExec$1y = false;
 
 var _global$t = typeof self !== "undefined" ? self : global;
 
-function dew$1F() {
-  if (_dewExec$1z) return exports$1E;
-  _dewExec$1z = true;
+function dew$1C() {
+  if (_dewExec$1y) return exports$1C;
+  _dewExec$1y = true;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var DEREncoder = dew$1E();
+  var DEREncoder = dew$1B();
 
   function PEMEncoder(entity) {
     DEREncoder.call(this || _global$t, entity);
     (this || _global$t).enc = 'pem';
   }
   inherits(PEMEncoder, DEREncoder);
-  exports$1E = PEMEncoder;
+  exports$1C = PEMEncoder;
 
   PEMEncoder.prototype.encode = function encode(data, options) {
     var buf = DEREncoder.prototype.encode.call(this || _global$t, data);
@@ -13664,42 +13712,42 @@ function dew$1F() {
     return out.join('\n');
   };
 
+  return exports$1C;
+}
+
+var exports$1D = {},
+    _dewExec$1z = false;
+function dew$1D() {
+  if (_dewExec$1z) return exports$1D;
+  _dewExec$1z = true;
+  var encoders = exports$1D;
+  encoders.der = dew$1B();
+  encoders.pem = dew$1C();
+  return exports$1D;
+}
+
+var exports$1E = {},
+    _dewExec$1A = false;
+function dew$1E() {
+  if (_dewExec$1A) return exports$1E;
+  _dewExec$1A = true;
+  var asn1 = exports$1E;
+  asn1.bignum = dew$R();
+  asn1.define = dew$1r().define;
+  asn1.base = dew$1v();
+  asn1.constants = dew$1x();
+  asn1.decoders = dew$1A();
+  asn1.encoders = dew$1D();
   return exports$1E;
 }
 
 var exports$1F = {},
-    _dewExec$1A = false;
-function dew$1G() {
-  if (_dewExec$1A) return exports$1F;
-  _dewExec$1A = true;
-  var encoders = exports$1F;
-  encoders.der = dew$1E();
-  encoders.pem = dew$1F();
-  return exports$1F;
-}
-
-var exports$1G = {},
     _dewExec$1B = false;
-function dew$1H() {
-  if (_dewExec$1B) return exports$1G;
+function dew$1F() {
+  if (_dewExec$1B) return exports$1F;
   _dewExec$1B = true;
-  var asn1 = exports$1G;
-  asn1.bignum = dew$T();
-  asn1.define = dew$1u().define;
-  asn1.base = dew$1y();
-  asn1.constants = dew$1A();
-  asn1.decoders = dew$1D();
-  asn1.encoders = dew$1G();
-  return exports$1G;
-}
 
-var exports$1H = {},
-    _dewExec$1C = false;
-function dew$1I() {
-  if (_dewExec$1C) return exports$1H;
-  _dewExec$1C = true;
-
-  var asn = dew$1H();
+  var asn = dew$1E();
 
   var Time = asn.define('Time', function () {
     this.choice({
@@ -13711,7 +13759,7 @@ function dew$1I() {
     this.seq().obj(this.key('type').objid(), this.key('value').any());
   });
   var AlgorithmIdentifier = asn.define('AlgorithmIdentifier', function () {
-    this.seq().obj(this.key('algorithm').objid(), this.key('parameters').optional());
+    this.seq().obj(this.key('algorithm').objid(), this.key('parameters').optional(), this.key('curve').objid().optional());
   });
   var SubjectPublicKeyInfo = asn.define('SubjectPublicKeyInfo', function () {
     this.seq().obj(this.key('algorithm').use(AlgorithmIdentifier), this.key('subjectPublicKey').bitstr());
@@ -13734,90 +13782,91 @@ function dew$1I() {
     this.seq().obj(this.key('extnID').objid(), this.key('critical').bool().def(false), this.key('extnValue').octstr());
   });
   var TBSCertificate = asn.define('TBSCertificate', function () {
-    this.seq().obj(this.key('version').explicit(0).int(), this.key('serialNumber').int(), this.key('signature').use(AlgorithmIdentifier), this.key('issuer').use(Name), this.key('validity').use(Validity), this.key('subject').use(Name), this.key('subjectPublicKeyInfo').use(SubjectPublicKeyInfo), this.key('issuerUniqueID').implicit(1).bitstr().optional(), this.key('subjectUniqueID').implicit(2).bitstr().optional(), this.key('extensions').explicit(3).seqof(Extension).optional());
+    this.seq().obj(this.key('version').explicit(0).int().optional(), this.key('serialNumber').int(), this.key('signature').use(AlgorithmIdentifier), this.key('issuer').use(Name), this.key('validity').use(Validity), this.key('subject').use(Name), this.key('subjectPublicKeyInfo').use(SubjectPublicKeyInfo), this.key('issuerUniqueID').implicit(1).bitstr().optional(), this.key('subjectUniqueID').implicit(2).bitstr().optional(), this.key('extensions').explicit(3).seqof(Extension).optional());
   });
   var X509Certificate = asn.define('X509Certificate', function () {
     this.seq().obj(this.key('tbsCertificate').use(TBSCertificate), this.key('signatureAlgorithm').use(AlgorithmIdentifier), this.key('signatureValue').bitstr());
   });
-  exports$1H = X509Certificate;
-  return exports$1H;
+  exports$1F = X509Certificate;
+  return exports$1F;
 }
 
-var exports$1I = {},
-    _dewExec$1D = false;
-function dew$1J() {
-  if (_dewExec$1D) return exports$1I;
-  _dewExec$1D = true;
+var exports$1G = {},
+    _dewExec$1C = false;
+function dew$1G() {
+  if (_dewExec$1C) return exports$1G;
+  _dewExec$1C = true;
 
-  var asn1 = dew$1H();
+  var asn1 = dew$1E();
 
-  exports$1I.certificate = dew$1I();
+  exports$1G.certificate = dew$1F();
   var RSAPrivateKey = asn1.define('RSAPrivateKey', function () {
     this.seq().obj(this.key('version').int(), this.key('modulus').int(), this.key('publicExponent').int(), this.key('privateExponent').int(), this.key('prime1').int(), this.key('prime2').int(), this.key('exponent1').int(), this.key('exponent2').int(), this.key('coefficient').int());
   });
-  exports$1I.RSAPrivateKey = RSAPrivateKey;
+  exports$1G.RSAPrivateKey = RSAPrivateKey;
   var RSAPublicKey = asn1.define('RSAPublicKey', function () {
     this.seq().obj(this.key('modulus').int(), this.key('publicExponent').int());
   });
-  exports$1I.RSAPublicKey = RSAPublicKey;
+  exports$1G.RSAPublicKey = RSAPublicKey;
   var PublicKey = asn1.define('SubjectPublicKeyInfo', function () {
     this.seq().obj(this.key('algorithm').use(AlgorithmIdentifier), this.key('subjectPublicKey').bitstr());
   });
-  exports$1I.PublicKey = PublicKey;
+  exports$1G.PublicKey = PublicKey;
   var AlgorithmIdentifier = asn1.define('AlgorithmIdentifier', function () {
     this.seq().obj(this.key('algorithm').objid(), this.key('none').null_().optional(), this.key('curve').objid().optional(), this.key('params').seq().obj(this.key('p').int(), this.key('q').int(), this.key('g').int()).optional());
   });
   var PrivateKeyInfo = asn1.define('PrivateKeyInfo', function () {
     this.seq().obj(this.key('version').int(), this.key('algorithm').use(AlgorithmIdentifier), this.key('subjectPrivateKey').octstr());
   });
-  exports$1I.PrivateKey = PrivateKeyInfo;
+  exports$1G.PrivateKey = PrivateKeyInfo;
   var EncryptedPrivateKeyInfo = asn1.define('EncryptedPrivateKeyInfo', function () {
     this.seq().obj(this.key('algorithm').seq().obj(this.key('id').objid(), this.key('decrypt').seq().obj(this.key('kde').seq().obj(this.key('id').objid(), this.key('kdeparams').seq().obj(this.key('salt').octstr(), this.key('iters').int())), this.key('cipher').seq().obj(this.key('algo').objid(), this.key('iv').octstr()))), this.key('subjectPrivateKey').octstr());
   });
-  exports$1I.EncryptedPrivateKey = EncryptedPrivateKeyInfo;
+  exports$1G.EncryptedPrivateKey = EncryptedPrivateKeyInfo;
   var DSAPrivateKey = asn1.define('DSAPrivateKey', function () {
     this.seq().obj(this.key('version').int(), this.key('p').int(), this.key('q').int(), this.key('g').int(), this.key('pub_key').int(), this.key('priv_key').int());
   });
-  exports$1I.DSAPrivateKey = DSAPrivateKey;
-  exports$1I.DSAparam = asn1.define('DSAparam', function () {
+  exports$1G.DSAPrivateKey = DSAPrivateKey;
+  exports$1G.DSAparam = asn1.define('DSAparam', function () {
     this.int();
   });
   var ECPrivateKey = asn1.define('ECPrivateKey', function () {
     this.seq().obj(this.key('version').int(), this.key('privateKey').octstr(), this.key('parameters').optional().explicit(0).use(ECParameters), this.key('publicKey').optional().explicit(1).bitstr());
   });
-  exports$1I.ECPrivateKey = ECPrivateKey;
+  exports$1G.ECPrivateKey = ECPrivateKey;
   var ECParameters = asn1.define('ECParameters', function () {
     this.choice({
       namedCurve: this.objid()
     });
   });
-  exports$1I.signature = asn1.define('signature', function () {
+  exports$1G.signature = asn1.define('signature', function () {
     this.seq().obj(this.key('r').int(), this.key('s').int());
   });
-  return exports$1I;
+  return exports$1G;
 }
 
-function dew$1K () {
-  return exports$1J;
+function dew$1H () {
+  return exports$1H;
 }
-var exports$1J = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2":"aes-128-cbc","2.16.840.1.101.3.4.1.3":"aes-128-ofb","2.16.840.1.101.3.4.1.4":"aes-128-cfb","2.16.840.1.101.3.4.1.21":"aes-192-ecb","2.16.840.1.101.3.4.1.22":"aes-192-cbc","2.16.840.1.101.3.4.1.23":"aes-192-ofb","2.16.840.1.101.3.4.1.24":"aes-192-cfb","2.16.840.1.101.3.4.1.41":"aes-256-ecb","2.16.840.1.101.3.4.1.42":"aes-256-cbc","2.16.840.1.101.3.4.1.43":"aes-256-ofb","2.16.840.1.101.3.4.1.44":"aes-256-cfb"};
+var exports$1H = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2":"aes-128-cbc","2.16.840.1.101.3.4.1.3":"aes-128-ofb","2.16.840.1.101.3.4.1.4":"aes-128-cfb","2.16.840.1.101.3.4.1.21":"aes-192-ecb","2.16.840.1.101.3.4.1.22":"aes-192-cbc","2.16.840.1.101.3.4.1.23":"aes-192-ofb","2.16.840.1.101.3.4.1.24":"aes-192-cfb","2.16.840.1.101.3.4.1.41":"aes-256-ecb","2.16.840.1.101.3.4.1.42":"aes-256-cbc","2.16.840.1.101.3.4.1.43":"aes-256-ofb","2.16.840.1.101.3.4.1.44":"aes-256-cfb"};
 
-var exports$1K = {},
-    _dewExec$1E = false;
-function dew$1L() {
-  if (_dewExec$1E) return exports$1K;
-  _dewExec$1E = true;
-  var Buffer = _buffer.Buffer;
+var exports$1I = {},
+    _dewExec$1D = false;
+function dew$1I() {
+  if (_dewExec$1D) return exports$1I;
+  _dewExec$1D = true;
   // adapted from https://github.com/apatil/pemstrip
   var findProc = /Proc-Type: 4,ENCRYPTED[\n\r]+DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)[\n\r]+([0-9A-z\n\r\+\/\=]+)[\n\r]+/m;
-  var startRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----/m;
-  var fullRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----([0-9A-z\n\r\+\/\=]+)-----END \1-----$/m;
+  var startRegex = /^-----BEGIN ((?:.*? KEY)|CERTIFICATE)-----/m;
+  var fullRegex = /^-----BEGIN ((?:.*? KEY)|CERTIFICATE)-----([0-9A-z\n\r\+\/\=]+)-----END \1-----$/m;
 
-  var evp = dew$N();
+  var evp = dew$L();
 
-  var ciphers = dew$Q();
+  var ciphers = dew$O();
 
-  exports$1K = function (okey, password) {
+  var Buffer = dew$1X().Buffer;
+
+  exports$1I = function (okey, password) {
     var key = okey.toString();
     var match = key.match(findProc);
     var decrypted;
@@ -13827,8 +13876,8 @@ function dew$1L() {
       decrypted = new Buffer(match2[2].replace(/[\r\n]/g, ''), 'base64');
     } else {
       var suite = 'aes' + match[1];
-      var iv = new Buffer(match[2], 'hex');
-      var cipherText = new Buffer(match[3].replace(/[\r\n]/g, ''), 'base64');
+      var iv = Buffer.from(match[2], 'hex');
+      var cipherText = Buffer.from(match[3].replace(/[\r\n]/g, ''), 'base64');
       var cipherKey = evp(password, iv.slice(0, 8), parseInt(match[1], 10)).key;
       var out = [];
       var cipher = ciphers.createDecipheriv(suite, cipherKey, iv);
@@ -13844,27 +13893,28 @@ function dew$1L() {
     };
   };
 
-  return exports$1K;
+  return exports$1I;
 }
 
-var exports$1L = {},
-    _dewExec$1F = false;
-function dew$1M() {
-  if (_dewExec$1F) return exports$1L;
-  _dewExec$1F = true;
-  var Buffer = _buffer.Buffer;
+var exports$1J = {},
+    _dewExec$1E = false;
+function dew$1J() {
+  if (_dewExec$1E) return exports$1J;
+  _dewExec$1E = true;
 
-  var asn1 = dew$1J();
+  var asn1 = dew$1G();
 
-  var aesid = dew$1K();
+  var aesid = dew$1H();
 
-  var fixProc = dew$1L();
+  var fixProc = dew$1I();
 
-  var ciphers = dew$Q();
+  var ciphers = dew$O();
 
-  var compat = dew$p();
+  var compat = dew$n();
 
-  exports$1L = parseKeys;
+  var Buffer = dew$1X().Buffer;
+
+  exports$1J = parseKeys;
 
   function parseKeys(buffer) {
     var password;
@@ -13875,7 +13925,7 @@ function dew$1M() {
     }
 
     if (typeof buffer === 'string') {
-      buffer = new Buffer(buffer);
+      buffer = Buffer.from(buffer);
     }
 
     var stripped = fixProc(buffer, password);
@@ -13984,7 +14034,7 @@ function dew$1M() {
     var iv = data.algorithm.decrypt.cipher.iv;
     var cipherText = data.subjectPrivateKey;
     var keylen = parseInt(algo.split('-')[1], 10) / 8;
-    var key = compat.pbkdf2Sync(password, salt, iters, keylen);
+    var key = compat.pbkdf2Sync(password, salt, iters, keylen, 'sha1');
     var cipher = ciphers.createDecipheriv(algo, key, iv);
     var out = [];
     out.push(cipher.update(cipherText));
@@ -13992,33 +14042,33 @@ function dew$1M() {
     return Buffer.concat(out);
   }
 
-  return exports$1L;
+  return exports$1J;
 }
 
-function dew$1N () {
-  return exports$1M;
+function dew$1K () {
+  return exports$1K;
 }
-var exports$1M = {"1.3.132.0.10":"secp256k1","1.3.132.0.33":"p224","1.2.840.10045.3.1.1":"p192","1.2.840.10045.3.1.7":"p256","1.3.132.0.34":"p384","1.3.132.0.35":"p521"};
+var exports$1K = {"1.3.132.0.10":"secp256k1","1.3.132.0.33":"p224","1.2.840.10045.3.1.1":"p192","1.2.840.10045.3.1.7":"p256","1.3.132.0.34":"p384","1.3.132.0.35":"p521"};
 
-var exports$1N = {},
-    _dewExec$1G = false;
-function dew$1O() {
-  if (_dewExec$1G) return exports$1N;
-  _dewExec$1G = true;
+var exports$1L = {},
+    _dewExec$1F = false;
+function dew$1L() {
+  if (_dewExec$1F) return exports$1L;
+  _dewExec$1F = true;
   var Buffer = _buffer.Buffer;
 
   // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-  var createHmac = dew$i();
+  var createHmac = dew$g();
 
-  var crt = dew$_();
+  var crt = dew$Y();
 
-  var EC = dew$1t().ec;
+  var EC = dew$1q().ec;
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var parseKeys = dew$1M();
+  var parseKeys = dew$1J();
 
-  var curves = dew$1N();
+  var curves = dew$1K();
 
   function sign(hash, key, hashType, signType, tag) {
     var priv = parseKeys(key);
@@ -14165,27 +14215,27 @@ function dew$1O() {
     return g.toRed(BN.mont(p)).redPow(k).fromRed().mod(q);
   }
 
-  exports$1N = sign;
-  exports$1N.getKey = getKey;
-  exports$1N.makeKey = makeKey;
-  return exports$1N;
+  exports$1L = sign;
+  exports$1L.getKey = getKey;
+  exports$1L.makeKey = makeKey;
+  return exports$1L;
 }
 
-var exports$1O = {},
-    _dewExec$1H = false;
-function dew$1P() {
-  if (_dewExec$1H) return exports$1O;
-  _dewExec$1H = true;
+var exports$1M = {},
+    _dewExec$1G = false;
+function dew$1M() {
+  if (_dewExec$1G) return exports$1M;
+  _dewExec$1G = true;
   var Buffer = _buffer.Buffer;
 
   // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-  var BN = dew$T();
+  var BN = dew$R();
 
-  var EC = dew$1t().ec;
+  var EC = dew$1q().ec;
 
-  var parseKeys = dew$1M();
+  var parseKeys = dew$1J();
 
-  var curves = dew$1N();
+  var curves = dew$1K();
 
   function verify(sig, hash, key, signType, tag) {
     var pub = parseKeys(key);
@@ -14262,31 +14312,31 @@ function dew$1P() {
     if (b.cmp(q) >= q) throw new Error('invalid sig');
   }
 
-  exports$1O = verify;
-  return exports$1O;
+  exports$1M = verify;
+  return exports$1M;
 }
 
-var exports$1P = {},
-    _dewExec$1I = false;
+var exports$1N = {},
+    _dewExec$1H = false;
 
 var _global$u = typeof self !== "undefined" ? self : global;
 
-function dew$1Q() {
-  if (_dewExec$1I) return exports$1P;
-  _dewExec$1I = true;
+function dew$1N() {
+  if (_dewExec$1H) return exports$1N;
+  _dewExec$1H = true;
   var Buffer = _buffer.Buffer;
 
-  var createHash = dew$f();
+  var createHash = dew$d();
 
   var stream = _stream;
 
-  var inherits = dew$1();
+  var inherits = dew$1Y();
 
-  var sign = dew$1O();
+  var sign = dew$1L();
 
-  var verify = dew$1P();
+  var verify = dew$1M();
 
-  var algorithms = dew$j();
+  var algorithms = dew$h();
 
   Object.keys(algorithms).forEach(function (key) {
     algorithms[key].id = new Buffer(algorithms[key].id, 'hex');
@@ -14370,30 +14420,30 @@ function dew$1Q() {
     return new Verify(algorithm);
   }
 
-  exports$1P = {
+  exports$1N = {
     Sign: createSign,
     Verify: createVerify,
     createSign: createSign,
     createVerify: createVerify
   };
-  return exports$1P;
+  return exports$1N;
 }
 
-var exports$1Q = {},
-    _dewExec$1J = false;
+var exports$1O = {},
+    _dewExec$1I = false;
 
 var _global$v = typeof self !== "undefined" ? self : global;
 
-function dew$1R() {
-  if (_dewExec$1J) return exports$1Q;
-  _dewExec$1J = true;
+function dew$1O() {
+  if (_dewExec$1I) return exports$1O;
+  _dewExec$1I = true;
   var Buffer = _buffer.Buffer;
 
-  var elliptic = dew$1t();
+  var elliptic = dew$1q();
 
-  var BN = dew$T();
+  var BN = dew$R();
 
-  exports$1Q = function createECDH(curve) {
+  exports$1O = function createECDH(curve) {
     return new ECDH(curve);
   };
 
@@ -14532,22 +14582,23 @@ function dew$1R() {
     }
   }
 
-  return exports$1Q;
+  return exports$1O;
 }
 
-var exports$1R = {},
-    _dewExec$1K = false;
-function dew$1S() {
-  if (_dewExec$1K) return exports$1R;
-  _dewExec$1K = true;
-  var Buffer = _buffer.Buffer;
+var exports$1P = {},
+    _dewExec$1J = false;
+function dew$1P() {
+  if (_dewExec$1J) return exports$1P;
+  _dewExec$1J = true;
 
-  var createHash = dew$f();
+  var createHash = dew$d();
 
-  exports$1R = function (seed, len) {
-    var t = new Buffer('');
-    var i = 0,
-        c;
+  var Buffer = dew$1X().Buffer;
+
+  exports$1P = function (seed, len) {
+    var t = Buffer.alloc(0);
+    var i = 0;
+    var c;
 
     while (t.length < len) {
       c = i2ops(i++);
@@ -14558,21 +14609,21 @@ function dew$1S() {
   };
 
   function i2ops(c) {
-    var out = new Buffer(4);
+    var out = Buffer.allocUnsafe(4);
     out.writeUInt32BE(c, 0);
     return out;
   }
 
-  return exports$1R;
+  return exports$1P;
 }
 
-var exports$1S = {},
-    _dewExec$1L = false;
-function dew$1T() {
-  if (_dewExec$1L) return exports$1S;
-  _dewExec$1L = true;
+var exports$1Q = {},
+    _dewExec$1K = false;
+function dew$1Q() {
+  if (_dewExec$1K) return exports$1Q;
+  _dewExec$1K = true;
 
-  exports$1S = function xor(a, b) {
+  exports$1Q = function xor(a, b) {
     var len = a.length;
     var i = -1;
 
@@ -14583,61 +14634,63 @@ function dew$1T() {
     return a;
   };
 
-  return exports$1S;
+  return exports$1Q;
 }
 
-var exports$1T = {},
-    _dewExec$1M = false;
-function dew$1U() {
-  if (_dewExec$1M) return exports$1T;
-  _dewExec$1M = true;
-  var Buffer = _buffer.Buffer;
+var exports$1R = {},
+    _dewExec$1L = false;
+function dew$1R() {
+  if (_dewExec$1L) return exports$1R;
+  _dewExec$1L = true;
 
-  var bn = dew$T();
+  var BN = dew$R();
+
+  var Buffer = dew$1X().Buffer;
 
   function withPublic(paddedMsg, key) {
-    return new Buffer(paddedMsg.toRed(bn.mont(key.modulus)).redPow(new bn(key.publicExponent)).fromRed().toArray());
+    return Buffer.from(paddedMsg.toRed(BN.mont(key.modulus)).redPow(new BN(key.publicExponent)).fromRed().toArray());
   }
 
-  exports$1T = withPublic;
-  return exports$1T;
+  exports$1R = withPublic;
+  return exports$1R;
 }
 
-var exports$1U = {},
-    _dewExec$1N = false;
-function dew$1V() {
-  if (_dewExec$1N) return exports$1U;
-  _dewExec$1N = true;
-  var Buffer = _buffer.Buffer;
+var exports$1S = {},
+    _dewExec$1M = false;
+function dew$1S() {
+  if (_dewExec$1M) return exports$1S;
+  _dewExec$1M = true;
 
-  var parseKeys = dew$1M();
+  var parseKeys = dew$1J();
 
-  var randomBytes = dew$2();
+  var randomBytes = dew();
 
-  var createHash = dew$f();
+  var createHash = dew$d();
 
-  var mgf = dew$1S();
+  var mgf = dew$1P();
 
-  var xor = dew$1T();
+  var xor = dew$1Q();
 
-  var bn = dew$T();
+  var BN = dew$R();
 
-  var withPublic = dew$1U();
+  var withPublic = dew$1R();
 
-  var crt = dew$_();
+  var crt = dew$Y();
 
-  exports$1U = function publicEncrypt(public_key, msg, reverse) {
+  var Buffer = dew$1X().Buffer;
+
+  exports$1S = function publicEncrypt(publicKey, msg, reverse) {
     var padding;
 
-    if (public_key.padding) {
-      padding = public_key.padding;
+    if (publicKey.padding) {
+      padding = publicKey.padding;
     } else if (reverse) {
       padding = 1;
     } else {
       padding = 4;
     }
 
-    var key = parseKeys(public_key);
+    var key = parseKeys(publicKey);
     var paddedMsg;
 
     if (padding === 4) {
@@ -14645,7 +14698,7 @@ function dew$1V() {
     } else if (padding === 1) {
       paddedMsg = pkcs1(key, msg, reverse);
     } else if (padding === 3) {
-      paddedMsg = new bn(msg);
+      paddedMsg = new BN(msg);
 
       if (paddedMsg.cmp(key.modulus) >= 0) {
         throw new Error('data too long for modulus');
@@ -14664,7 +14717,7 @@ function dew$1V() {
   function oaep(key, msg) {
     var k = key.modulus.byteLength();
     var mLen = msg.length;
-    var iHash = createHash('sha1').update(new Buffer('')).digest();
+    var iHash = createHash('sha1').update(Buffer.alloc(0)).digest();
     var hLen = iHash.length;
     var hLen2 = 2 * hLen;
 
@@ -14672,13 +14725,12 @@ function dew$1V() {
       throw new Error('message too long');
     }
 
-    var ps = new Buffer(k - mLen - hLen2 - 2);
-    ps.fill(0);
+    var ps = Buffer.alloc(k - mLen - hLen2 - 2);
     var dblen = k - hLen - 1;
     var seed = randomBytes(hLen);
-    var maskedDb = xor(Buffer.concat([iHash, ps, new Buffer([1]), msg], dblen), mgf(seed, dblen));
+    var maskedDb = xor(Buffer.concat([iHash, ps, Buffer.alloc(1, 1), msg], dblen), mgf(seed, dblen));
     var maskedSeed = xor(seed, mgf(maskedDb, hLen));
-    return new bn(Buffer.concat([new Buffer([0]), maskedSeed, maskedDb], k));
+    return new BN(Buffer.concat([Buffer.alloc(1), maskedSeed, maskedDb], k));
   }
 
   function pkcs1(key, msg, reverse) {
@@ -14692,17 +14744,16 @@ function dew$1V() {
     var ps;
 
     if (reverse) {
-      ps = new Buffer(k - mLen - 3);
-      ps.fill(0xff);
+      ps = Buffer.alloc(k - mLen - 3, 0xff);
     } else {
       ps = nonZero(k - mLen - 3);
     }
 
-    return new bn(Buffer.concat([new Buffer([0, reverse ? 1 : 2]), ps, new Buffer([0]), msg], k));
+    return new BN(Buffer.concat([Buffer.from([0, reverse ? 1 : 2]), ps, Buffer.alloc(1), msg], k));
   }
 
-  function nonZero(len, crypto) {
-    var out = new Buffer(len);
+  function nonZero(len) {
+    var out = Buffer.allocUnsafe(len);
     var i = 0;
     var cache = randomBytes(len * 2);
     var cur = 0;
@@ -14724,58 +14775,58 @@ function dew$1V() {
     return out;
   }
 
-  return exports$1U;
+  return exports$1S;
 }
 
-var exports$1V = {},
-    _dewExec$1O = false;
-function dew$1W() {
-  if (_dewExec$1O) return exports$1V;
-  _dewExec$1O = true;
-  var Buffer = _buffer.Buffer;
+var exports$1T = {},
+    _dewExec$1N = false;
+function dew$1T() {
+  if (_dewExec$1N) return exports$1T;
+  _dewExec$1N = true;
 
-  var parseKeys = dew$1M();
+  var parseKeys = dew$1J();
 
-  var mgf = dew$1S();
+  var mgf = dew$1P();
 
-  var xor = dew$1T();
+  var xor = dew$1Q();
 
-  var bn = dew$T();
+  var BN = dew$R();
 
-  var crt = dew$_();
+  var crt = dew$Y();
 
-  var createHash = dew$f();
+  var createHash = dew$d();
 
-  var withPublic = dew$1U();
+  var withPublic = dew$1R();
 
-  exports$1V = function privateDecrypt(private_key, enc, reverse) {
+  var Buffer = dew$1X().Buffer;
+
+  exports$1T = function privateDecrypt(privateKey, enc, reverse) {
     var padding;
 
-    if (private_key.padding) {
-      padding = private_key.padding;
+    if (privateKey.padding) {
+      padding = privateKey.padding;
     } else if (reverse) {
       padding = 1;
     } else {
       padding = 4;
     }
 
-    var key = parseKeys(private_key);
+    var key = parseKeys(privateKey);
     var k = key.modulus.byteLength();
 
-    if (enc.length > k || new bn(enc).cmp(key.modulus) >= 0) {
+    if (enc.length > k || new BN(enc).cmp(key.modulus) >= 0) {
       throw new Error('decryption error');
     }
 
     var msg;
 
     if (reverse) {
-      msg = withPublic(new bn(enc), key);
+      msg = withPublic(new BN(enc), key);
     } else {
       msg = crt(enc, key);
     }
 
-    var zBuffer = new Buffer(k - msg.length);
-    zBuffer.fill(0);
+    var zBuffer = Buffer.alloc(k - msg.length);
     msg = Buffer.concat([zBuffer, msg], k);
 
     if (padding === 4) {
@@ -14790,10 +14841,8 @@ function dew$1W() {
   };
 
   function oaep(key, msg) {
-    var n = key.modulus;
     var k = key.modulus.byteLength();
-    var mLen = msg.length;
-    var iHash = createHash('sha1').update(new Buffer('')).digest();
+    var iHash = createHash('sha1').update(Buffer.alloc(0)).digest();
     var hLen = iHash.length;
 
     if (msg[0] !== 0) {
@@ -14835,7 +14884,6 @@ function dew$1W() {
     }
 
     var ps = msg.slice(2, i - 1);
-    var p2 = msg.slice(i - 1, i);
 
     if (p1.toString('hex') !== '0002' && !reverse || p1.toString('hex') !== '0001' && reverse) {
       status++;
@@ -14853,8 +14901,8 @@ function dew$1W() {
   }
 
   function compare(a, b) {
-    a = new Buffer(a);
-    b = new Buffer(b);
+    a = Buffer.from(a);
+    b = Buffer.from(b);
     var dif = 0;
     var len = a.length;
 
@@ -14872,45 +14920,45 @@ function dew$1W() {
     return dif;
   }
 
-  return exports$1V;
+  return exports$1T;
 }
 
-var exports$1W = {},
+var exports$1U = {},
+    _dewExec$1O = false;
+function dew$1U() {
+  if (_dewExec$1O) return exports$1U;
+  _dewExec$1O = true;
+  exports$1U.publicEncrypt = dew$1S();
+  exports$1U.privateDecrypt = dew$1T();
+
+  exports$1U.privateEncrypt = function privateEncrypt(key, buf) {
+    return exports$1U.publicEncrypt(key, buf, true);
+  };
+
+  exports$1U.publicDecrypt = function publicDecrypt(key, buf) {
+    return exports$1U.privateDecrypt(key, buf, true);
+  };
+
+  return exports$1U;
+}
+
+var exports$1V = {},
     _dewExec$1P = false;
-function dew$1X() {
-  if (_dewExec$1P) return exports$1W;
-  _dewExec$1P = true;
-  exports$1W.publicEncrypt = dew$1V();
-  exports$1W.privateDecrypt = dew$1W();
-
-  exports$1W.privateEncrypt = function privateEncrypt(key, buf) {
-    return exports$1W.publicEncrypt(key, buf, true);
-  };
-
-  exports$1W.publicDecrypt = function publicDecrypt(key, buf) {
-    return exports$1W.privateDecrypt(key, buf, true);
-  };
-
-  return exports$1W;
-}
-
-var exports$1X = {},
-    _dewExec$1Q = false;
 
 var _global$w = typeof self !== "undefined" ? self : global;
 
-function dew$1Y() {
-  if (_dewExec$1Q) return exports$1X;
-  _dewExec$1Q = true;
+function dew$1V() {
+  if (_dewExec$1P) return exports$1V;
+  _dewExec$1P = true;
   var process = _process;
 
   function oldBrowser() {
     throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11');
   }
 
-  var safeBuffer = dew();
+  var safeBuffer = dew$1X();
 
-  var randombytes = dew$2();
+  var randombytes = dew();
 
   var Buffer = safeBuffer.Buffer;
   var kBufferMaxLength = safeBuffer.kMaxLength;
@@ -14948,11 +14996,11 @@ function dew$1Y() {
   }
 
   if (crypto && crypto.getRandomValues || !process.browser) {
-    exports$1X.randomFill = randomFill;
-    exports$1X.randomFillSync = randomFillSync;
+    exports$1V.randomFill = randomFill;
+    exports$1V.randomFillSync = randomFillSync;
   } else {
-    exports$1X.randomFill = oldBrowser;
-    exports$1X.randomFillSync = oldBrowser;
+    exports$1V.randomFill = oldBrowser;
+    exports$1V.randomFillSync = oldBrowser;
   }
 
   function randomFill(buf, offset, size, cb) {
@@ -15024,67 +15072,67 @@ function dew$1Y() {
     return actualFill(buf, offset, size);
   }
 
-  return exports$1X;
+  return exports$1V;
 }
 
-var exports$1Y = {},
-    _dewExec$1R = false;
-function dew$1Z() {
-  if (_dewExec$1R) return exports$1Y;
-  _dewExec$1R = true;
-  exports$1Y.randomBytes = exports$1Y.rng = exports$1Y.pseudoRandomBytes = exports$1Y.prng = dew$2();
-  exports$1Y.createHash = exports$1Y.Hash = dew$f();
-  exports$1Y.createHmac = exports$1Y.Hmac = dew$i();
+var exports$1W = {},
+    _dewExec$1Q = false;
+function dew$1W() {
+  if (_dewExec$1Q) return exports$1W;
+  _dewExec$1Q = true;
+  exports$1W.randomBytes = exports$1W.rng = exports$1W.pseudoRandomBytes = exports$1W.prng = dew();
+  exports$1W.createHash = exports$1W.Hash = dew$d();
+  exports$1W.createHmac = exports$1W.Hmac = dew$g();
 
-  var algos = dew$k();
+  var algos = dew$i();
 
   var algoKeys = Object.keys(algos);
   var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(algoKeys);
 
-  exports$1Y.getHashes = function () {
+  exports$1W.getHashes = function () {
     return hashes;
   };
 
-  var p = dew$p();
+  var p = dew$n();
 
-  exports$1Y.pbkdf2 = p.pbkdf2;
-  exports$1Y.pbkdf2Sync = p.pbkdf2Sync;
+  exports$1W.pbkdf2 = p.pbkdf2;
+  exports$1W.pbkdf2Sync = p.pbkdf2Sync;
 
-  var aes = dew$S();
+  var aes = dew$Q();
 
-  exports$1Y.Cipher = aes.Cipher;
-  exports$1Y.createCipher = aes.createCipher;
-  exports$1Y.Cipheriv = aes.Cipheriv;
-  exports$1Y.createCipheriv = aes.createCipheriv;
-  exports$1Y.Decipher = aes.Decipher;
-  exports$1Y.createDecipher = aes.createDecipher;
-  exports$1Y.Decipheriv = aes.Decipheriv;
-  exports$1Y.createDecipheriv = aes.createDecipheriv;
-  exports$1Y.getCiphers = aes.getCiphers;
-  exports$1Y.listCiphers = aes.listCiphers;
+  exports$1W.Cipher = aes.Cipher;
+  exports$1W.createCipher = aes.createCipher;
+  exports$1W.Cipheriv = aes.Cipheriv;
+  exports$1W.createCipheriv = aes.createCipheriv;
+  exports$1W.Decipher = aes.Decipher;
+  exports$1W.createDecipher = aes.createDecipher;
+  exports$1W.Decipheriv = aes.Decipheriv;
+  exports$1W.createDecipheriv = aes.createDecipheriv;
+  exports$1W.getCiphers = aes.getCiphers;
+  exports$1W.listCiphers = aes.listCiphers;
 
-  var dh = dew$Z();
+  var dh = dew$X();
 
-  exports$1Y.DiffieHellmanGroup = dh.DiffieHellmanGroup;
-  exports$1Y.createDiffieHellmanGroup = dh.createDiffieHellmanGroup;
-  exports$1Y.getDiffieHellman = dh.getDiffieHellman;
-  exports$1Y.createDiffieHellman = dh.createDiffieHellman;
-  exports$1Y.DiffieHellman = dh.DiffieHellman;
+  exports$1W.DiffieHellmanGroup = dh.DiffieHellmanGroup;
+  exports$1W.createDiffieHellmanGroup = dh.createDiffieHellmanGroup;
+  exports$1W.getDiffieHellman = dh.getDiffieHellman;
+  exports$1W.createDiffieHellman = dh.createDiffieHellman;
+  exports$1W.DiffieHellman = dh.DiffieHellman;
 
-  var sign = dew$1Q();
+  var sign = dew$1N();
 
-  exports$1Y.createSign = sign.createSign;
-  exports$1Y.Sign = sign.Sign;
-  exports$1Y.createVerify = sign.createVerify;
-  exports$1Y.Verify = sign.Verify;
-  exports$1Y.createECDH = dew$1R();
+  exports$1W.createSign = sign.createSign;
+  exports$1W.Sign = sign.Sign;
+  exports$1W.createVerify = sign.createVerify;
+  exports$1W.Verify = sign.Verify;
+  exports$1W.createECDH = dew$1O();
 
-  var publicEncrypt = dew$1X();
+  var publicEncrypt = dew$1U();
 
-  exports$1Y.publicEncrypt = publicEncrypt.publicEncrypt;
-  exports$1Y.privateEncrypt = publicEncrypt.privateEncrypt;
-  exports$1Y.publicDecrypt = publicEncrypt.publicDecrypt;
-  exports$1Y.privateDecrypt = publicEncrypt.privateDecrypt; // the least I can do is make error messages for the rest of the node.js/crypto api.
+  exports$1W.publicEncrypt = publicEncrypt.publicEncrypt;
+  exports$1W.privateEncrypt = publicEncrypt.privateEncrypt;
+  exports$1W.publicDecrypt = publicEncrypt.publicDecrypt;
+  exports$1W.privateDecrypt = publicEncrypt.privateDecrypt; // the least I can do is make error messages for the rest of the node.js/crypto api.
   // ;[
   //   'createCredentials'
   // ].forEach(function (name) {
@@ -15097,16 +15145,16 @@ function dew$1Z() {
   //   }
   // })
 
-  var rf = dew$1Y();
+  var rf = dew$1V();
 
-  exports$1Y.randomFill = rf.randomFill;
-  exports$1Y.randomFillSync = rf.randomFillSync;
+  exports$1W.randomFill = rf.randomFill;
+  exports$1W.randomFillSync = rf.randomFillSync;
 
-  exports$1Y.createCredentials = function () {
+  exports$1W.createCredentials = function () {
     throw new Error(['sorry, createCredentials is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
   };
 
-  exports$1Y.constants = {
+  exports$1W.constants = {
     'DH_CHECK_P_NOT_SAFE_PRIME': 2,
     'DH_CHECK_P_NOT_PRIME': 1,
     'DH_UNABLE_TO_CHECK_GENERATOR': 4,
@@ -15123,11 +15171,11 @@ function dew$1Z() {
     'POINT_CONVERSION_UNCOMPRESSED': 4,
     'POINT_CONVERSION_HYBRID': 6
   };
-  return exports$1Y;
+  return exports$1W;
 }
 
-const exports$1Z = dew$1Z();
-const Cipher = exports$1Z.Cipher, Cipheriv = exports$1Z.Cipheriv, Decipher = exports$1Z.Decipher, Decipheriv = exports$1Z.Decipheriv, DiffieHellman = exports$1Z.DiffieHellman, DiffieHellmanGroup = exports$1Z.DiffieHellmanGroup, Hash = exports$1Z.Hash, Hmac = exports$1Z.Hmac, Sign = exports$1Z.Sign, Verify = exports$1Z.Verify, constants = exports$1Z.constants, createCipher = exports$1Z.createCipher, createCipheriv = exports$1Z.createCipheriv, createCredentials = exports$1Z.createCredentials, createDecipher = exports$1Z.createDecipher, createDecipheriv = exports$1Z.createDecipheriv, createDiffieHellman = exports$1Z.createDiffieHellman, createDiffieHellmanGroup = exports$1Z.createDiffieHellmanGroup, createECDH = exports$1Z.createECDH, createHash = exports$1Z.createHash, createHmac = exports$1Z.createHmac, createSign = exports$1Z.createSign, createVerify = exports$1Z.createVerify, getCiphers = exports$1Z.getCiphers, getDiffieHellman = exports$1Z.getDiffieHellman, getHashes = exports$1Z.getHashes, listCiphers = exports$1Z.listCiphers, pbkdf2 = exports$1Z.pbkdf2, pbkdf2Sync = exports$1Z.pbkdf2Sync, privateDecrypt = exports$1Z.privateDecrypt, privateEncrypt = exports$1Z.privateEncrypt, prng = exports$1Z.prng, pseudoRandomBytes = exports$1Z.pseudoRandomBytes, publicDecrypt = exports$1Z.publicDecrypt, publicEncrypt = exports$1Z.publicEncrypt, randomBytes = exports$1Z.randomBytes, randomFill = exports$1Z.randomFill, randomFillSync = exports$1Z.randomFillSync, rng = exports$1Z.rng;
+const exports$1X = dew$1W();
+const Cipher = exports$1X.Cipher, Cipheriv = exports$1X.Cipheriv, Decipher = exports$1X.Decipher, Decipheriv = exports$1X.Decipheriv, DiffieHellman = exports$1X.DiffieHellman, DiffieHellmanGroup = exports$1X.DiffieHellmanGroup, Hash = exports$1X.Hash, Hmac = exports$1X.Hmac, Sign = exports$1X.Sign, Verify = exports$1X.Verify, constants = exports$1X.constants, createCipher = exports$1X.createCipher, createCipheriv = exports$1X.createCipheriv, createCredentials = exports$1X.createCredentials, createDecipher = exports$1X.createDecipher, createDecipheriv = exports$1X.createDecipheriv, createDiffieHellman = exports$1X.createDiffieHellman, createDiffieHellmanGroup = exports$1X.createDiffieHellmanGroup, createECDH = exports$1X.createECDH, createHash = exports$1X.createHash, createHmac = exports$1X.createHmac, createSign = exports$1X.createSign, createVerify = exports$1X.createVerify, getCiphers = exports$1X.getCiphers, getDiffieHellman = exports$1X.getDiffieHellman, getHashes = exports$1X.getHashes, listCiphers = exports$1X.listCiphers, pbkdf2 = exports$1X.pbkdf2, pbkdf2Sync = exports$1X.pbkdf2Sync, privateDecrypt = exports$1X.privateDecrypt, privateEncrypt = exports$1X.privateEncrypt, prng = exports$1X.prng, pseudoRandomBytes = exports$1X.pseudoRandomBytes, publicDecrypt = exports$1X.publicDecrypt, publicEncrypt = exports$1X.publicEncrypt, randomBytes = exports$1X.randomBytes, randomFill = exports$1X.randomFill, randomFillSync = exports$1X.randomFillSync, rng = exports$1X.rng;
 
-export default exports$1Z;
+export default exports$1X;
 export { Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, Hash, Hmac, Sign, Verify, constants, createCipher, createCipheriv, createCredentials, createDecipher, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createSign, createVerify, getCiphers, getDiffieHellman, getHashes, listCiphers, pbkdf2, pbkdf2Sync, privateDecrypt, privateEncrypt, prng, pseudoRandomBytes, publicDecrypt, publicEncrypt, randomBytes, randomFill, randomFillSync, rng };

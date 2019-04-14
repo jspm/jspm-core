@@ -1,24 +1,25 @@
+import './util-c86b84df.js';
 import './process.js';
 import './buffer.js';
-import './chunk-bdb48c3e.js';
-import './chunk-931ab749.js';
+import './string_decoder-a044d0fd.js';
 import './events.js';
-import './chunk-70571ed9.js';
-import './querystring.js';
-import _url from './url.js';
+import './chunk-147c6ebb.js';
 import _http from './http.js';
+import './punycode.js';
+import _url from './url.js';
+import './querystring.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
   var http = _http;
   var url = _url;
-  var https = exports$1;
+  var https = exports;
 
   for (var key in http) {
     if (http.hasOwnProperty(key)) https[key] = http[key];
@@ -50,11 +51,11 @@ function dew() {
     return params;
   }
 
-  return exports$1;
+  return exports;
 }
 
-const exports$2 = dew();
-const Agent = exports$2.Agent, ClientRequest = exports$2.ClientRequest, IncomingMessage = exports$2.IncomingMessage, METHODS = exports$2.METHODS, STATUS_CODES = exports$2.STATUS_CODES, get = exports$2.get, globalAgent = exports$2.globalAgent, request = exports$2.request;
+const exports$1 = dew();
+const Agent = exports$1.Agent, ClientRequest = exports$1.ClientRequest, IncomingMessage = exports$1.IncomingMessage, METHODS = exports$1.METHODS, STATUS_CODES = exports$1.STATUS_CODES, get = exports$1.get, globalAgent = exports$1.globalAgent, request = exports$1.request;
 
-export default exports$2;
+export default exports$1;
 export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, get, globalAgent, request };

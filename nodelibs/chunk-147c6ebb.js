@@ -1,22 +1,22 @@
+import { a as _util, b as dew$e } from './util-c86b84df.js';
 import _process from './process.js';
 import _buffer from './buffer.js';
-import { a as dew } from './chunk-bdb48c3e.js';
-import { a as dew$1, b as exports$3 } from './chunk-931ab749.js';
+import { a as dew$d, b as _string_decoder } from './string_decoder-a044d0fd.js';
 import _events from './events.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
-function dew$2() {
-  if (_dewExec) return exports$1;
+function dew() {
+  if (_dewExec) return exports;
   _dewExec = true;
   var process = _process;
 
   if (!process.version || process.version.indexOf('v0.') === 0 || process.version.indexOf('v1.') === 0 && process.version.indexOf('v1.8.') !== 0) {
-    exports$1 = {
+    exports = {
       nextTick: nextTick
     };
   } else {
-    exports$1 = process;
+    exports = process;
   }
 
   function nextTick(fn, arg1, arg2, arg3) {
@@ -61,36 +61,36 @@ function dew$2() {
     }
   }
 
+  return exports;
+}
+
+var exports$1 = {},
+    _dewExec$1 = false;
+function dew$1() {
+  if (_dewExec$1) return exports$1;
+  _dewExec$1 = true;
+  var toString = {}.toString;
+
+  exports$1 = Array.isArray || function (arr) {
+    return toString.call(arr) == '[object Array]';
+  };
+
   return exports$1;
 }
 
 var exports$2 = {},
-    _dewExec$1 = false;
-function dew$3() {
-  if (_dewExec$1) return exports$2;
-  _dewExec$1 = true;
-  var toString = {}.toString;
-
-  exports$2 = Array.isArray || function (arr) {
-    return toString.call(arr) == '[object Array]';
-  };
-
+    _dewExec$2 = false;
+function dew$2() {
+  if (_dewExec$2) return exports$2;
+  _dewExec$2 = true;
+  exports$2 = _events.EventEmitter;
   return exports$2;
 }
 
-var exports$3$1 = {},
-    _dewExec$2 = false;
-function dew$4() {
-  if (_dewExec$2) return exports$3$1;
-  _dewExec$2 = true;
-  exports$3$1 = _events.EventEmitter;
-  return exports$3$1;
-}
-
-var exports$4 = {},
+var exports$3 = {},
     _dewExec$3 = false;
-function dew$5() {
-  if (_dewExec$3) return exports$4;
+function dew$3() {
+  if (_dewExec$3) return exports$3;
   _dewExec$3 = true;
   var Buffer = _buffer.Buffer;
 
@@ -124,101 +124,99 @@ function dew$5() {
     return objectToString(arg) === '[object Array]';
   }
 
-  exports$4.isArray = isArray;
+  exports$3.isArray = isArray;
 
   function isBoolean(arg) {
     return typeof arg === 'boolean';
   }
 
-  exports$4.isBoolean = isBoolean;
+  exports$3.isBoolean = isBoolean;
 
   function isNull(arg) {
     return arg === null;
   }
 
-  exports$4.isNull = isNull;
+  exports$3.isNull = isNull;
 
   function isNullOrUndefined(arg) {
     return arg == null;
   }
 
-  exports$4.isNullOrUndefined = isNullOrUndefined;
+  exports$3.isNullOrUndefined = isNullOrUndefined;
 
   function isNumber(arg) {
     return typeof arg === 'number';
   }
 
-  exports$4.isNumber = isNumber;
+  exports$3.isNumber = isNumber;
 
   function isString(arg) {
     return typeof arg === 'string';
   }
 
-  exports$4.isString = isString;
+  exports$3.isString = isString;
 
   function isSymbol(arg) {
     return typeof arg === 'symbol';
   }
 
-  exports$4.isSymbol = isSymbol;
+  exports$3.isSymbol = isSymbol;
 
   function isUndefined(arg) {
     return arg === void 0;
   }
 
-  exports$4.isUndefined = isUndefined;
+  exports$3.isUndefined = isUndefined;
 
   function isRegExp(re) {
     return objectToString(re) === '[object RegExp]';
   }
 
-  exports$4.isRegExp = isRegExp;
+  exports$3.isRegExp = isRegExp;
 
   function isObject(arg) {
     return typeof arg === 'object' && arg !== null;
   }
 
-  exports$4.isObject = isObject;
+  exports$3.isObject = isObject;
 
   function isDate(d) {
     return objectToString(d) === '[object Date]';
   }
 
-  exports$4.isDate = isDate;
+  exports$3.isDate = isDate;
 
   function isError(e) {
     return objectToString(e) === '[object Error]' || e instanceof Error;
   }
 
-  exports$4.isError = isError;
+  exports$3.isError = isError;
 
   function isFunction(arg) {
     return typeof arg === 'function';
   }
 
-  exports$4.isFunction = isFunction;
+  exports$3.isFunction = isFunction;
 
   function isPrimitive(arg) {
     return arg === null || typeof arg === 'boolean' || typeof arg === 'number' || typeof arg === 'string' || typeof arg === 'symbol' || // ES6 symbol
     typeof arg === 'undefined';
   }
 
-  exports$4.isPrimitive = isPrimitive;
-  exports$4.isBuffer = Buffer.isBuffer;
+  exports$3.isPrimitive = isPrimitive;
+  exports$3.isBuffer = Buffer.isBuffer;
 
   function objectToString(o) {
     return Object.prototype.toString.call(o);
   }
 
-  return exports$4;
+  return exports$3;
 }
 
-var _crypto = Object.freeze(Object.create(null));
-
-var exports$5 = {},
+var exports$4 = {},
     _dewExec$4 = false;
-function dew$6() {
-  if (_dewExec$4) return exports$5;
+function dew$4() {
+  if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
 
   function _classCallCheck(instance, Constructor) {
@@ -227,15 +225,15 @@ function dew$6() {
     }
   }
 
-  var Buffer = dew$1().Buffer;
+  var Buffer = dew$d().Buffer;
 
-  var util = _crypto;
+  var util = _util;
 
   function copyBuffer(src, target, offset) {
     src.copy(target, offset);
   }
 
-  exports$5 = function () {
+  exports$4 = function () {
     function BufferList() {
       _classCallCheck(this, BufferList);
 
@@ -309,7 +307,7 @@ function dew$6() {
   }();
 
   if (util && util.inspect && util.inspect.custom) {
-    exports$5.prototype[util.inspect.custom] = function () {
+    exports$4.prototype[util.inspect.custom] = function () {
       var obj = util.inspect({
         length: this.length
       });
@@ -317,17 +315,17 @@ function dew$6() {
     };
   }
 
-  return exports$5;
+  return exports$4;
 }
 
-var exports$6 = {},
+var exports$5 = {},
     _dewExec$5 = false;
-function dew$7() {
-  if (_dewExec$5) return exports$6;
+function dew$5() {
+  if (_dewExec$5) return exports$5;
   _dewExec$5 = true;
 
   /*<replacement>*/
-  var pna = dew$2();
+  var pna = dew();
   /*</replacement>*/
   // undocumented cb() API, needed for core, not for public API
 
@@ -395,26 +393,26 @@ function dew$7() {
     self.emit('error', err);
   }
 
-  exports$6 = {
+  exports$5 = {
     destroy: destroy,
     undestroy: undestroy
   };
-  return exports$6;
+  return exports$5;
 }
 
-var exports$7 = {},
+var exports$6 = {},
     _dewExec$6 = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$8() {
-  if (_dewExec$6) return exports$7;
+function dew$6() {
+  if (_dewExec$6) return exports$6;
   _dewExec$6 = true;
 
   /**
    * Module exports.
    */
-  exports$7 = deprecate;
+  exports$6 = deprecate;
   /**
    * Mark that a method should not be used.
    * Returns a modified function which warns once by default.
@@ -480,25 +478,25 @@ function dew$8() {
     return String(val).toLowerCase() === 'true';
   }
 
-  return exports$7;
+  return exports$6;
 }
 
-var exports$8 = {},
+var exports$7 = {},
     _dewExec$7 = false;
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$9() {
-  if (_dewExec$7) return exports$8;
+function dew$7() {
+  if (_dewExec$7) return exports$7;
   _dewExec$7 = true;
   var process = _process;
 
   /*<replacement>*/
-  var pna = dew$2();
+  var pna = dew();
   /*</replacement>*/
 
 
-  exports$8 = Writable;
+  exports$7 = Writable;
   // there will be only 2 of these for each stream
 
 
@@ -528,27 +526,27 @@ function dew$9() {
   Writable.WritableState = WritableState;
   /*<replacement>*/
 
-  var util = dew$5();
+  var util = dew$3();
 
-  util.inherits = dew();
+  util.inherits = dew$e();
   /*</replacement>*/
 
   /*<replacement>*/
 
   var internalUtil = {
-    deprecate: dew$8()
+    deprecate: dew$6()
   };
   /*</replacement>*/
 
   /*<replacement>*/
 
-  var Stream = dew$4();
+  var Stream = dew$2();
   /*</replacement>*/
 
   /*<replacement>*/
 
 
-  var Buffer = dew$1().Buffer;
+  var Buffer = dew$d().Buffer;
 
   var OurUint8Array = _global$1.Uint8Array || function () {};
 
@@ -562,14 +560,14 @@ function dew$9() {
   /*</replacement>*/
 
 
-  var destroyImpl = dew$7();
+  var destroyImpl = dew$5();
 
   util.inherits(Writable, Stream);
 
   function nop() {}
 
   function WritableState(options, stream) {
-    Duplex = Duplex || dew$a();
+    Duplex = Duplex || dew$8();
     options = options || {}; // Duplex streams are both readable and writable, but share
     // the same options object.
     // However, some cases require setting options to different
@@ -696,7 +694,7 @@ function dew$9() {
   }
 
   function Writable(options) {
-    Duplex = Duplex || dew$a(); // Writable ctor is applied to Duplexes, too.
+    Duplex = Duplex || dew$8(); // Writable ctor is applied to Duplexes, too.
     // `realHasInstance` is necessary because using plain `instanceof`
     // would return false, as no `_writableState` property is attached.
     // Trying to use the custom `instanceof` for Writable here will also break the
@@ -1137,17 +1135,17 @@ function dew$9() {
     cb(err);
   };
 
-  return exports$8;
+  return exports$7;
 }
 
-var exports$9 = {},
+var exports$8 = {},
     _dewExec$8 = false;
-function dew$a() {
-  if (_dewExec$8) return exports$9;
+function dew$8() {
+  if (_dewExec$8) return exports$8;
   _dewExec$8 = true;
 
   /*<replacement>*/
-  var pna = dew$2();
+  var pna = dew();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -1165,17 +1163,17 @@ function dew$a() {
   /*</replacement>*/
 
 
-  exports$9 = Duplex;
+  exports$8 = Duplex;
   /*<replacement>*/
 
-  var util = dew$5();
+  var util = dew$3();
 
-  util.inherits = dew();
+  util.inherits = dew$e();
   /*</replacement>*/
 
-  var Readable = dew$b();
+  var Readable = dew$9();
 
-  var Writable = dew$9();
+  var Writable = dew$7();
 
   util.inherits(Duplex, Readable);
   {
@@ -1250,28 +1248,28 @@ function dew$a() {
     pna.nextTick(cb, err);
   };
 
-  return exports$9;
+  return exports$8;
 }
 
-var exports$a = {},
+var exports$9 = {},
     _dewExec$9 = false;
 
 var _global$2 = typeof self !== "undefined" ? self : global;
 
-function dew$b() {
-  if (_dewExec$9) return exports$a;
+function dew$9() {
+  if (_dewExec$9) return exports$9;
   _dewExec$9 = true;
   var process = _process;
 
   /*<replacement>*/
-  var pna = dew$2();
+  var pna = dew();
   /*</replacement>*/
 
 
-  exports$a = Readable;
+  exports$9 = Readable;
   /*<replacement>*/
 
-  var isArray = dew$3();
+  var isArray = dew$1();
   /*</replacement>*/
 
   /*<replacement>*/
@@ -1293,13 +1291,13 @@ function dew$b() {
   /*<replacement>*/
 
 
-  var Stream = dew$4();
+  var Stream = dew$2();
   /*</replacement>*/
 
   /*<replacement>*/
 
 
-  var Buffer = dew$1().Buffer;
+  var Buffer = dew$d().Buffer;
 
   var OurUint8Array = _global$2.Uint8Array || function () {};
 
@@ -1315,14 +1313,14 @@ function dew$b() {
   /*<replacement>*/
 
 
-  var util = dew$5();
+  var util = dew$3();
 
-  util.inherits = dew();
+  util.inherits = dew$e();
   /*</replacement>*/
 
   /*<replacement>*/
 
-  var debugUtil = _crypto;
+  var debugUtil = _util;
   var debug = void 0;
 
   if (debugUtil && debugUtil.debuglog) {
@@ -1333,9 +1331,9 @@ function dew$b() {
   /*</replacement>*/
 
 
-  var BufferList = dew$6();
+  var BufferList = dew$4();
 
-  var destroyImpl = dew$7();
+  var destroyImpl = dew$5();
 
   var StringDecoder;
   util.inherits(Readable, Stream);
@@ -1353,7 +1351,7 @@ function dew$b() {
   }
 
   function ReadableState(options, stream) {
-    Duplex = Duplex || dew$a();
+    Duplex = Duplex || dew$8();
     options = options || {}; // Duplex streams are both readable and writable, but share
     // the same options object.
     // However, some cases require setting options to different
@@ -1409,14 +1407,14 @@ function dew$b() {
     this.encoding = null;
 
     if (options.encoding) {
-      if (!StringDecoder) StringDecoder = exports$3.StringDecoder;
+      if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
       this.decoder = new StringDecoder(options.encoding);
       this.encoding = options.encoding;
     }
   }
 
   function Readable(options) {
-    Duplex = Duplex || dew$a();
+    Duplex = Duplex || dew$8();
     if (!(this instanceof Readable)) return new Readable(options);
     this._readableState = new ReadableState(options, this); // legacy
 
@@ -1569,7 +1567,7 @@ function dew$b() {
 
 
   Readable.prototype.setEncoding = function (enc) {
-    if (!StringDecoder) StringDecoder = exports$3.StringDecoder;
+    if (!StringDecoder) StringDecoder = _string_decoder.StringDecoder;
     this._readableState.decoder = new StringDecoder(enc);
     this._readableState.encoding = enc;
     return this;
@@ -2281,23 +2279,23 @@ function dew$b() {
     return -1;
   }
 
-  return exports$a;
+  return exports$9;
 }
 
-var exports$b = {},
+var exports$a = {},
     _dewExec$a = false;
-function dew$c() {
-  if (_dewExec$a) return exports$b;
+function dew$a() {
+  if (_dewExec$a) return exports$a;
   _dewExec$a = true;
-  exports$b = Transform;
+  exports$a = Transform;
 
-  var Duplex = dew$a();
+  var Duplex = dew$8();
   /*<replacement>*/
 
 
-  var util = dew$5();
+  var util = dew$3();
 
-  util.inherits = dew();
+  util.inherits = dew$e();
   /*</replacement>*/
 
   util.inherits(Transform, Duplex);
@@ -2432,23 +2430,23 @@ function dew$c() {
     return stream.push(null);
   }
 
-  return exports$b;
+  return exports$a;
 }
 
-var exports$c = {},
+var exports$b = {},
     _dewExec$b = false;
-function dew$d() {
-  if (_dewExec$b) return exports$c;
+function dew$b() {
+  if (_dewExec$b) return exports$b;
   _dewExec$b = true;
-  exports$c = PassThrough;
+  exports$b = PassThrough;
 
-  var Transform = dew$c();
+  var Transform = dew$a();
   /*<replacement>*/
 
 
-  var util = dew$5();
+  var util = dew$3();
 
-  util.inherits = dew();
+  util.inherits = dew$e();
   /*</replacement>*/
 
   util.inherits(PassThrough, Transform);
@@ -2462,22 +2460,22 @@ function dew$d() {
     cb(null, chunk);
   };
 
+  return exports$b;
+}
+
+var exports$c = {},
+    _dewExec$c = false;
+function dew$c() {
+  if (_dewExec$c) return exports$c;
+  _dewExec$c = true;
+  exports$c = exports$c = dew$9();
+  exports$c.Stream = exports$c;
+  exports$c.Readable = exports$c;
+  exports$c.Writable = dew$7();
+  exports$c.Duplex = dew$8();
+  exports$c.Transform = dew$a();
+  exports$c.PassThrough = dew$b();
   return exports$c;
 }
 
-var exports$d = {},
-    _dewExec$c = false;
-function dew$e() {
-  if (_dewExec$c) return exports$d;
-  _dewExec$c = true;
-  exports$d = exports$d = dew$b();
-  exports$d.Stream = exports$d;
-  exports$d.Readable = exports$d;
-  exports$d.Writable = dew$9();
-  exports$d.Duplex = dew$a();
-  exports$d.Transform = dew$c();
-  exports$d.PassThrough = dew$d();
-  return exports$d;
-}
-
-export { dew$e as a, dew$9 as b, dew$a as c, _crypto as d };
+export { dew$7 as a, dew$8 as b, dew$c as c };

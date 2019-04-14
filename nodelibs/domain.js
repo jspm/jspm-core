@@ -1,12 +1,12 @@
 import _events from './events.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
-  exports$1 = function () {
+  exports = function () {
     // Import Events
     var events = _events; // Export Domain
 
@@ -78,13 +78,13 @@ function dew() {
     };
 
     return domain;
-  }.call(exports$1);
+  }.call(exports);
 
-  return exports$1;
+  return exports;
 }
 
-const exports$2 = dew();
-const create = exports$2.create, createDomain = exports$2.createDomain;
+const exports$1 = dew();
+const create = exports$1.create, createDomain = exports$1.createDomain;
 
-export default exports$2;
+export default exports$1;
 export { create, createDomain };

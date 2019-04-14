@@ -1,7 +1,7 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
   // If obj.hasOwnProperty has been overridden, then calling
@@ -11,7 +11,7 @@ function dew() {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   }
 
-  exports$1 = function (qs, sep, eq, options) {
+  exports = function (qs, sep, eq, options) {
     sep = sep || '&';
     eq = eq || '=';
     var obj = {};
@@ -65,13 +65,13 @@ function dew() {
     return obj;
   };
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$2;
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
 
   var stringifyPrimitive = function (v) {
@@ -90,7 +90,7 @@ function dew$1() {
     }
   };
 
-  exports$2 = function (obj, sep, eq, name) {
+  exports$1 = function (obj, sep, eq, name) {
     sep = sep || '&';
     eq = eq || '=';
 
@@ -116,21 +116,21 @@ function dew$1() {
     return encodeURIComponent(stringifyPrimitive(name)) + eq + encodeURIComponent(stringifyPrimitive(obj));
   };
 
+  return exports$1;
+}
+
+var exports$2 = {},
+    _dewExec$2 = false;
+function dew$2() {
+  if (_dewExec$2) return exports$2;
+  _dewExec$2 = true;
+  exports$2.decode = exports$2.parse = dew();
+  exports$2.encode = exports$2.stringify = dew$1();
   return exports$2;
 }
 
-var exports$3 = {},
-    _dewExec$2 = false;
-function dew$2() {
-  if (_dewExec$2) return exports$3;
-  _dewExec$2 = true;
-  exports$3.decode = exports$3.parse = dew();
-  exports$3.encode = exports$3.stringify = dew$1();
-  return exports$3;
-}
+const exports$3 = dew$2();
+const decode = exports$3.decode, encode = exports$3.encode, parse = exports$3.parse, stringify = exports$3.stringify;
 
-const exports$4 = dew$2();
-const decode = exports$4.decode, encode = exports$4.encode, parse = exports$4.parse, stringify = exports$4.stringify;
-
-export default exports$4;
+export default exports$3;
 export { decode, encode, parse, stringify };

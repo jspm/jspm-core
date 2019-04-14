@@ -1,18 +1,16 @@
-import './chunk-d6577e34.js';
+import { a as _util } from './util-c86b84df.js';
 import _process from './process.js';
 import _assert from './assert.js';
 import _buffer from './buffer.js';
-import './chunk-bdb48c3e.js';
-import _util from './util.js';
-import './chunk-931ab749.js';
+import './string_decoder-a044d0fd.js';
 import './events.js';
-import './chunk-70571ed9.js';
+import './chunk-147c6ebb.js';
 import _stream from './stream.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -73,14 +71,14 @@ function dew() {
     this.adler = 0;
   }
 
-  exports$1 = ZStream;
-  return exports$1;
+  exports = ZStream;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$2;
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
   var TYPED_OK = typeof Uint8Array !== 'undefined' && typeof Uint16Array !== 'undefined' && typeof Int32Array !== 'undefined';
 
@@ -88,7 +86,7 @@ function dew$1() {
     return Object.prototype.hasOwnProperty.call(obj, key);
   }
 
-  exports$2.assign = function (obj
+  exports$1.assign = function (obj
   /*from1, from2, from3, ...*/
   ) {
     var sources = Array.prototype.slice.call(arguments, 1);
@@ -115,7 +113,7 @@ function dew$1() {
   }; // reduce buffer size, avoiding mem copy
 
 
-  exports$2.shrinkBuf = function (buf, size) {
+  exports$1.shrinkBuf = function (buf, size) {
     if (buf.length === size) {
       return buf;
     }
@@ -176,28 +174,28 @@ function dew$1() {
   }; // Enable/Disable typed arrays use, for testing
   //
 
-  exports$2.setTyped = function (on) {
+  exports$1.setTyped = function (on) {
     if (on) {
-      exports$2.Buf8 = Uint8Array;
-      exports$2.Buf16 = Uint16Array;
-      exports$2.Buf32 = Int32Array;
-      exports$2.assign(exports$2, fnTyped);
+      exports$1.Buf8 = Uint8Array;
+      exports$1.Buf16 = Uint16Array;
+      exports$1.Buf32 = Int32Array;
+      exports$1.assign(exports$1, fnTyped);
     } else {
-      exports$2.Buf8 = Array;
-      exports$2.Buf16 = Array;
-      exports$2.Buf32 = Array;
-      exports$2.assign(exports$2, fnUntyped);
+      exports$1.Buf8 = Array;
+      exports$1.Buf16 = Array;
+      exports$1.Buf32 = Array;
+      exports$1.assign(exports$1, fnUntyped);
     }
   };
 
-  exports$2.setTyped(TYPED_OK);
-  return exports$2;
+  exports$1.setTyped(TYPED_OK);
+  return exports$1;
 }
 
-var exports$3 = {},
+var exports$2 = {},
     _dewExec$2 = false;
 function dew$2() {
-  if (_dewExec$2) return exports$3;
+  if (_dewExec$2) return exports$2;
   _dewExec$2 = true;
 
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -218,6 +216,8 @@ function dew$2() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
+
+  /* eslint-disable space-unary-ops */
   var utils = dew$1();
   /* Public constants ==========================================================*/
 
@@ -1702,18 +1702,18 @@ function dew$2() {
      */
   }
 
-  exports$3._tr_init = _tr_init;
-  exports$3._tr_stored_block = _tr_stored_block;
-  exports$3._tr_flush_block = _tr_flush_block;
-  exports$3._tr_tally = _tr_tally;
-  exports$3._tr_align = _tr_align;
-  return exports$3;
+  exports$2._tr_init = _tr_init;
+  exports$2._tr_stored_block = _tr_stored_block;
+  exports$2._tr_flush_block = _tr_flush_block;
+  exports$2._tr_tally = _tr_tally;
+  exports$2._tr_align = _tr_align;
+  return exports$2;
 }
 
-var exports$4 = {},
+var exports$3 = {},
     _dewExec$3 = false;
 function dew$3() {
-  if (_dewExec$3) return exports$4;
+  if (_dewExec$3) return exports$3;
   _dewExec$3 = true;
 
   // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -1761,14 +1761,14 @@ function dew$3() {
     return s1 | s2 << 16 | 0;
   }
 
-  exports$4 = adler32;
-  return exports$4;
+  exports$3 = adler32;
+  return exports$3;
 }
 
-var exports$5 = {},
+var exports$4 = {},
     _dewExec$4 = false;
 function dew$4() {
-  if (_dewExec$4) return exports$5;
+  if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
 
   // Note: we can't get significant speed boost here.
@@ -1825,14 +1825,14 @@ function dew$4() {
     return crc ^ -1; // >>> 0;
   }
 
-  exports$5 = crc32;
-  return exports$5;
+  exports$4 = crc32;
+  return exports$4;
 }
 
-var exports$6 = {},
+var exports$5 = {},
     _dewExec$5 = false;
 function dew$5() {
-  if (_dewExec$5) return exports$6;
+  if (_dewExec$5) return exports$5;
   _dewExec$5 = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
   // (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
@@ -1852,7 +1852,7 @@ function dew$5() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  exports$6 = {
+  exports$5 = {
     2: 'need dictionary',
 
     /* Z_NEED_DICT       2  */
@@ -1881,13 +1881,13 @@ function dew$5() {
     /* Z_VERSION_ERROR (-6) */
 
   };
-  return exports$6;
+  return exports$5;
 }
 
-var exports$7 = {},
+var exports$6 = {},
     _dewExec$6 = false;
 function dew$6() {
-  if (_dewExec$6) return exports$7;
+  if (_dewExec$6) return exports$6;
   _dewExec$6 = true;
 
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -4018,15 +4018,15 @@ function dew$6() {
     return Z_OK;
   }
 
-  exports$7.deflateInit = deflateInit;
-  exports$7.deflateInit2 = deflateInit2;
-  exports$7.deflateReset = deflateReset;
-  exports$7.deflateResetKeep = deflateResetKeep;
-  exports$7.deflateSetHeader = deflateSetHeader;
-  exports$7.deflate = deflate;
-  exports$7.deflateEnd = deflateEnd;
-  exports$7.deflateSetDictionary = deflateSetDictionary;
-  exports$7.deflateInfo = 'pako deflate (from Nodeca project)';
+  exports$6.deflateInit = deflateInit;
+  exports$6.deflateInit2 = deflateInit2;
+  exports$6.deflateReset = deflateReset;
+  exports$6.deflateResetKeep = deflateResetKeep;
+  exports$6.deflateSetHeader = deflateSetHeader;
+  exports$6.deflate = deflate;
+  exports$6.deflateEnd = deflateEnd;
+  exports$6.deflateSetDictionary = deflateSetDictionary;
+  exports$6.deflateInfo = 'pako deflate (from Nodeca project)';
   /* Not implemented
   exports.deflateBound = deflateBound;
   exports.deflateCopy = deflateCopy;
@@ -4036,13 +4036,13 @@ function dew$6() {
   exports.deflateTune = deflateTune;
   */
 
-  return exports$7;
+  return exports$6;
 }
 
-var exports$8 = {},
+var exports$7 = {},
     _dewExec$7 = false;
 function dew$7() {
-  if (_dewExec$7) return exports$8;
+  if (_dewExec$7) return exports$7;
   _dewExec$7 = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
   // (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
@@ -4105,7 +4105,7 @@ function dew$7() {
         output space.
    */
 
-  exports$8 = function inflate_fast(strm, start) {
+  exports$7 = function inflate_fast(strm, start) {
     var state;
 
     var _in;
@@ -4500,13 +4500,13 @@ function dew$7() {
     return;
   };
 
-  return exports$8;
+  return exports$7;
 }
 
-var exports$9 = {},
+var exports$8 = {},
     _dewExec$8 = false;
 function dew$8() {
-  if (_dewExec$8) return exports$9;
+  if (_dewExec$8) return exports$8;
   _dewExec$8 = true;
 
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -4549,7 +4549,7 @@ function dew$8() {
   /* Distance codes 0..29 extra */
   16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 64, 64];
 
-  exports$9 = function inflate_table(type, lens, lens_index, codes, table, table_index, work, opts) {
+  exports$8 = function inflate_table(type, lens, lens_index, codes, table, table_index, work, opts) {
     var bits = opts.bits; //here = opts.here; /* table entry for duplication */
 
     var len = 0;
@@ -4931,13 +4931,13 @@ function dew$8() {
     return 0;
   };
 
-  return exports$9;
+  return exports$8;
 }
 
-var exports$a = {},
+var exports$9 = {},
     _dewExec$9 = false;
 function dew$9() {
-  if (_dewExec$9) return exports$a;
+  if (_dewExec$9) return exports$9;
   _dewExec$9 = true;
 
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -7022,16 +7022,16 @@ function dew$9() {
     return Z_OK;
   }
 
-  exports$a.inflateReset = inflateReset;
-  exports$a.inflateReset2 = inflateReset2;
-  exports$a.inflateResetKeep = inflateResetKeep;
-  exports$a.inflateInit = inflateInit;
-  exports$a.inflateInit2 = inflateInit2;
-  exports$a.inflate = inflate;
-  exports$a.inflateEnd = inflateEnd;
-  exports$a.inflateGetHeader = inflateGetHeader;
-  exports$a.inflateSetDictionary = inflateSetDictionary;
-  exports$a.inflateInfo = 'pako inflate (from Nodeca project)';
+  exports$9.inflateReset = inflateReset;
+  exports$9.inflateReset2 = inflateReset2;
+  exports$9.inflateResetKeep = inflateResetKeep;
+  exports$9.inflateInit = inflateInit;
+  exports$9.inflateInit2 = inflateInit2;
+  exports$9.inflate = inflate;
+  exports$9.inflateEnd = inflateEnd;
+  exports$9.inflateGetHeader = inflateGetHeader;
+  exports$9.inflateSetDictionary = inflateSetDictionary;
+  exports$9.inflateInfo = 'pako inflate (from Nodeca project)';
   /* Not implemented
   exports.inflateCopy = inflateCopy;
   exports.inflateGetDictionary = inflateGetDictionary;
@@ -7042,13 +7042,13 @@ function dew$9() {
   exports.inflateUndermine = inflateUndermine;
   */
 
-  return exports$a;
+  return exports$9;
 }
 
-var exports$b = {},
+var exports$a = {},
     _dewExec$a = false;
 function dew$a() {
-  if (_dewExec$a) return exports$b;
+  if (_dewExec$a) return exports$a;
   _dewExec$a = true;
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
   // (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
@@ -7068,7 +7068,7 @@ function dew$a() {
   // 2. Altered source versions must be plainly marked as such, and must not be
   //   misrepresented as being the original software.
   // 3. This notice may not be removed or altered from any source distribution.
-  exports$b = {
+  exports$a = {
     /* Allowed flush values; see deflate() and inflate() below for details */
     Z_NO_FLUSH: 0,
     Z_PARTIAL_FLUSH: 1,
@@ -7112,13 +7112,13 @@ function dew$a() {
     Z_DEFLATED: 8 //Z_NULL:                 null // Use -1 or null inline, depending on var type
 
   };
-  return exports$b;
+  return exports$a;
 }
 
-var exports$c = {},
+var exports$b = {},
     _dewExec$b = false;
 function dew$b() {
-  if (_dewExec$b) return exports$c;
+  if (_dewExec$b) return exports$b;
   _dewExec$b = true;
   var Buffer = _buffer.Buffer;
   var process = _process;
@@ -7135,18 +7135,18 @@ function dew$b() {
   var constants = dew$a();
 
   for (var key in constants) {
-    exports$c[key] = constants[key];
+    exports$b[key] = constants[key];
   } // zlib modes
 
 
-  exports$c.NONE = 0;
-  exports$c.DEFLATE = 1;
-  exports$c.INFLATE = 2;
-  exports$c.GZIP = 3;
-  exports$c.GUNZIP = 4;
-  exports$c.DEFLATERAW = 5;
-  exports$c.INFLATERAW = 6;
-  exports$c.UNZIP = 7;
+  exports$b.NONE = 0;
+  exports$b.DEFLATE = 1;
+  exports$b.INFLATE = 2;
+  exports$b.GZIP = 3;
+  exports$b.GUNZIP = 4;
+  exports$b.DEFLATERAW = 5;
+  exports$b.INFLATERAW = 6;
+  exports$b.UNZIP = 7;
   var GZIP_HEADER_ID1 = 0x1f;
   var GZIP_HEADER_ID2 = 0x8b;
   /**
@@ -7154,7 +7154,7 @@ function dew$b() {
    */
 
   function Zlib(mode) {
-    if (typeof mode !== 'number' || mode < exports$c.DEFLATE || mode > exports$c.UNZIP) {
+    if (typeof mode !== 'number' || mode < exports$b.DEFLATE || mode > exports$b.UNZIP) {
       throw new TypeError('Bad argument');
     }
 
@@ -7180,15 +7180,15 @@ function dew$b() {
 
     this.pending_close = false;
     assert(this.init_done, 'close before init');
-    assert(this.mode <= exports$c.UNZIP);
+    assert(this.mode <= exports$b.UNZIP);
 
-    if (this.mode === exports$c.DEFLATE || this.mode === exports$c.GZIP || this.mode === exports$c.DEFLATERAW) {
+    if (this.mode === exports$b.DEFLATE || this.mode === exports$b.GZIP || this.mode === exports$b.DEFLATERAW) {
       zlib_deflate.deflateEnd(this.strm);
-    } else if (this.mode === exports$c.INFLATE || this.mode === exports$c.GUNZIP || this.mode === exports$c.INFLATERAW || this.mode === exports$c.UNZIP) {
+    } else if (this.mode === exports$b.INFLATE || this.mode === exports$b.GUNZIP || this.mode === exports$b.INFLATERAW || this.mode === exports$b.UNZIP) {
       zlib_inflate.inflateEnd(this.strm);
     }
 
-    this.mode = exports$c.NONE;
+    this.mode = exports$b.NONE;
     this.dictionary = null;
   };
 
@@ -7203,14 +7203,14 @@ function dew$b() {
   Zlib.prototype._write = function (async, flush, input, in_off, in_len, out, out_off, out_len) {
     assert.equal(arguments.length, 8);
     assert(this.init_done, 'write before init');
-    assert(this.mode !== exports$c.NONE, 'already finalized');
+    assert(this.mode !== exports$b.NONE, 'already finalized');
     assert.equal(false, this.write_in_progress, 'write already in progress');
     assert.equal(false, this.pending_close, 'close is pending');
     this.write_in_progress = true;
     assert.equal(false, flush === undefined, 'must provide flush value');
     this.write_in_progress = true;
 
-    if (flush !== exports$c.Z_NO_FLUSH && flush !== exports$c.Z_PARTIAL_FLUSH && flush !== exports$c.Z_SYNC_FLUSH && flush !== exports$c.Z_FULL_FLUSH && flush !== exports$c.Z_FINISH && flush !== exports$c.Z_BLOCK) {
+    if (flush !== exports$b.Z_NO_FLUSH && flush !== exports$b.Z_PARTIAL_FLUSH && flush !== exports$b.Z_SYNC_FLUSH && flush !== exports$b.Z_FULL_FLUSH && flush !== exports$b.Z_FINISH && flush !== exports$b.Z_BLOCK) {
       throw new Error('Invalid flush value');
     }
 
@@ -7262,13 +7262,13 @@ function dew$b() {
     // that all of the input was consumed.
 
     switch (this.mode) {
-      case exports$c.DEFLATE:
-      case exports$c.GZIP:
-      case exports$c.DEFLATERAW:
+      case exports$b.DEFLATE:
+      case exports$b.GZIP:
+      case exports$b.DEFLATERAW:
         this.err = zlib_deflate.deflate(this.strm, this.flush);
         break;
 
-      case exports$c.UNZIP:
+      case exports$b.UNZIP:
         if (this.strm.avail_in > 0) {
           next_expected_header_byte = this.strm.next_in;
         }
@@ -7288,7 +7288,7 @@ function dew$b() {
                 break;
               }
             } else {
-              this.mode = exports$c.INFLATE;
+              this.mode = exports$b.INFLATE;
               break;
             }
 
@@ -7301,11 +7301,11 @@ function dew$b() {
 
             if (this.strm.input[next_expected_header_byte] === GZIP_HEADER_ID2) {
               this.gzip_id_bytes_read = 2;
-              this.mode = exports$c.GUNZIP;
+              this.mode = exports$b.GUNZIP;
             } else {
               // There is no actual difference between INFLATE and INFLATERAW
               // (after initialization).
-              this.mode = exports$c.INFLATE;
+              this.mode = exports$b.INFLATE;
             }
 
             break;
@@ -7316,28 +7316,28 @@ function dew$b() {
 
       // fallthrough
 
-      case exports$c.INFLATE:
-      case exports$c.GUNZIP:
-      case exports$c.INFLATERAW:
+      case exports$b.INFLATE:
+      case exports$b.GUNZIP:
+      case exports$b.INFLATERAW:
         this.err = zlib_inflate.inflate(this.strm, this.flush // If data was encoded with dictionary
         );
 
-        if (this.err === exports$c.Z_NEED_DICT && this.dictionary) {
+        if (this.err === exports$b.Z_NEED_DICT && this.dictionary) {
           // Load it
           this.err = zlib_inflate.inflateSetDictionary(this.strm, this.dictionary);
 
-          if (this.err === exports$c.Z_OK) {
+          if (this.err === exports$b.Z_OK) {
             // And try to decode again
             this.err = zlib_inflate.inflate(this.strm, this.flush);
-          } else if (this.err === exports$c.Z_DATA_ERROR) {
+          } else if (this.err === exports$b.Z_DATA_ERROR) {
             // Both inflateSetDictionary() and inflate() return Z_DATA_ERROR.
             // Make it possible for After() to tell a bad dictionary from bad
             // input.
-            this.err = exports$c.Z_NEED_DICT;
+            this.err = exports$b.Z_NEED_DICT;
           }
         }
 
-        while (this.strm.avail_in > 0 && this.mode === exports$c.GUNZIP && this.err === exports$c.Z_STREAM_END && this.strm.next_in[0] !== 0x00) {
+        while (this.strm.avail_in > 0 && this.mode === exports$b.GUNZIP && this.err === exports$b.Z_STREAM_END && this.strm.next_in[0] !== 0x00) {
           // Bytes remain in input buffer. Perhaps this is another compressed
           // member in the same archive, or just trailing garbage.
           // Trailing zero bytes are okay, though, since they are frequently
@@ -7356,9 +7356,9 @@ function dew$b() {
   Zlib.prototype._checkError = function () {
     // Acceptable error states depend on the type of zlib stream.
     switch (this.err) {
-      case exports$c.Z_OK:
-      case exports$c.Z_BUF_ERROR:
-        if (this.strm.avail_out !== 0 && this.flush === exports$c.Z_FINISH) {
+      case exports$b.Z_OK:
+      case exports$b.Z_BUF_ERROR:
+        if (this.strm.avail_out !== 0 && this.flush === exports$b.Z_FINISH) {
           this._error('unexpected end of file');
 
           return false;
@@ -7366,11 +7366,11 @@ function dew$b() {
 
         break;
 
-      case exports$c.Z_STREAM_END:
+      case exports$b.Z_STREAM_END:
         // normal statuses, not fatal
         break;
 
-      case exports$c.Z_NEED_DICT:
+      case exports$b.Z_NEED_DICT:
         if (this.dictionary == null) {
           this._error('Missing dictionary');
         } else {
@@ -7424,7 +7424,7 @@ function dew$b() {
     assert(windowBits >= 8 && windowBits <= 15, 'invalid windowBits');
     assert(level >= -1 && level <= 9, 'invalid compression level');
     assert(memLevel >= 1 && memLevel <= 9, 'invalid memlevel');
-    assert(strategy === exports$c.Z_FILTERED || strategy === exports$c.Z_HUFFMAN_ONLY || strategy === exports$c.Z_RLE || strategy === exports$c.Z_FIXED || strategy === exports$c.Z_DEFAULT_STRATEGY, 'invalid strategy');
+    assert(strategy === exports$b.Z_FILTERED || strategy === exports$b.Z_HUFFMAN_ONLY || strategy === exports$b.Z_RLE || strategy === exports$b.Z_FIXED || strategy === exports$b.Z_DEFAULT_STRATEGY, 'invalid strategy');
 
     this._init(level, windowBits, memLevel, strategy, dictionary);
 
@@ -7446,34 +7446,34 @@ function dew$b() {
     this.windowBits = windowBits;
     this.memLevel = memLevel;
     this.strategy = strategy;
-    this.flush = exports$c.Z_NO_FLUSH;
-    this.err = exports$c.Z_OK;
+    this.flush = exports$b.Z_NO_FLUSH;
+    this.err = exports$b.Z_OK;
 
-    if (this.mode === exports$c.GZIP || this.mode === exports$c.GUNZIP) {
+    if (this.mode === exports$b.GZIP || this.mode === exports$b.GUNZIP) {
       this.windowBits += 16;
     }
 
-    if (this.mode === exports$c.UNZIP) {
+    if (this.mode === exports$b.UNZIP) {
       this.windowBits += 32;
     }
 
-    if (this.mode === exports$c.DEFLATERAW || this.mode === exports$c.INFLATERAW) {
+    if (this.mode === exports$b.DEFLATERAW || this.mode === exports$b.INFLATERAW) {
       this.windowBits = -1 * this.windowBits;
     }
 
     this.strm = new Zstream();
 
     switch (this.mode) {
-      case exports$c.DEFLATE:
-      case exports$c.GZIP:
-      case exports$c.DEFLATERAW:
-        this.err = zlib_deflate.deflateInit2(this.strm, this.level, exports$c.Z_DEFLATED, this.windowBits, this.memLevel, this.strategy);
+      case exports$b.DEFLATE:
+      case exports$b.GZIP:
+      case exports$b.DEFLATERAW:
+        this.err = zlib_deflate.deflateInit2(this.strm, this.level, exports$b.Z_DEFLATED, this.windowBits, this.memLevel, this.strategy);
         break;
 
-      case exports$c.INFLATE:
-      case exports$c.GUNZIP:
-      case exports$c.INFLATERAW:
-      case exports$c.UNZIP:
+      case exports$b.INFLATE:
+      case exports$b.GUNZIP:
+      case exports$b.INFLATERAW:
+      case exports$b.UNZIP:
         this.err = zlib_inflate.inflateInit2(this.strm, this.windowBits);
         break;
 
@@ -7481,7 +7481,7 @@ function dew$b() {
         throw new Error('Unknown mode ' + this.mode);
     }
 
-    if (this.err !== exports$c.Z_OK) {
+    if (this.err !== exports$b.Z_OK) {
       this._error('Init error');
     }
 
@@ -7495,11 +7495,11 @@ function dew$b() {
       return;
     }
 
-    this.err = exports$c.Z_OK;
+    this.err = exports$b.Z_OK;
 
     switch (this.mode) {
-      case exports$c.DEFLATE:
-      case exports$c.DEFLATERAW:
+      case exports$b.DEFLATE:
+      case exports$b.DEFLATERAW:
         this.err = zlib_deflate.deflateSetDictionary(this.strm, this.dictionary);
         break;
 
@@ -7507,24 +7507,24 @@ function dew$b() {
         break;
     }
 
-    if (this.err !== exports$c.Z_OK) {
+    if (this.err !== exports$b.Z_OK) {
       this._error('Failed to set dictionary');
     }
   };
 
   Zlib.prototype._reset = function () {
-    this.err = exports$c.Z_OK;
+    this.err = exports$b.Z_OK;
 
     switch (this.mode) {
-      case exports$c.DEFLATE:
-      case exports$c.DEFLATERAW:
-      case exports$c.GZIP:
+      case exports$b.DEFLATE:
+      case exports$b.DEFLATERAW:
+      case exports$b.GZIP:
         this.err = zlib_deflate.deflateReset(this.strm);
         break;
 
-      case exports$c.INFLATE:
-      case exports$c.INFLATERAW:
-      case exports$c.GUNZIP:
+      case exports$b.INFLATE:
+      case exports$b.INFLATERAW:
+      case exports$b.GUNZIP:
         this.err = zlib_inflate.inflateReset(this.strm);
         break;
 
@@ -7532,19 +7532,19 @@ function dew$b() {
         break;
     }
 
-    if (this.err !== exports$c.Z_OK) {
+    if (this.err !== exports$b.Z_OK) {
       this._error('Failed to reset stream');
     }
   };
 
-  exports$c.Zlib = Zlib;
-  return exports$c;
+  exports$b.Zlib = Zlib;
+  return exports$b;
 }
 
-var exports$d = {},
+var exports$c = {},
     _dewExec$c = false;
 function dew$c() {
-  if (_dewExec$c) return exports$d;
+  if (_dewExec$c) return exports$c;
   _dewExec$c = true;
   var process = _process;
   var Buffer = _buffer.Buffer;
@@ -7580,7 +7580,7 @@ function dew$c() {
     var bkey = bkeys[bk];
 
     if (bkey.match(/^Z/)) {
-      Object.defineProperty(exports$d, bkey, {
+      Object.defineProperty(exports$c, bkey, {
         enumerable: true,
         value: binding[bkey],
         writable: false
@@ -7607,50 +7607,50 @@ function dew$c() {
     codes[codes[ckey]] = ckey;
   }
 
-  Object.defineProperty(exports$d, 'codes', {
+  Object.defineProperty(exports$c, 'codes', {
     enumerable: true,
     value: Object.freeze(codes),
     writable: false
   });
-  exports$d.Deflate = Deflate;
-  exports$d.Inflate = Inflate;
-  exports$d.Gzip = Gzip;
-  exports$d.Gunzip = Gunzip;
-  exports$d.DeflateRaw = DeflateRaw;
-  exports$d.InflateRaw = InflateRaw;
-  exports$d.Unzip = Unzip;
+  exports$c.Deflate = Deflate;
+  exports$c.Inflate = Inflate;
+  exports$c.Gzip = Gzip;
+  exports$c.Gunzip = Gunzip;
+  exports$c.DeflateRaw = DeflateRaw;
+  exports$c.InflateRaw = InflateRaw;
+  exports$c.Unzip = Unzip;
 
-  exports$d.createDeflate = function (o) {
+  exports$c.createDeflate = function (o) {
     return new Deflate(o);
   };
 
-  exports$d.createInflate = function (o) {
+  exports$c.createInflate = function (o) {
     return new Inflate(o);
   };
 
-  exports$d.createDeflateRaw = function (o) {
+  exports$c.createDeflateRaw = function (o) {
     return new DeflateRaw(o);
   };
 
-  exports$d.createInflateRaw = function (o) {
+  exports$c.createInflateRaw = function (o) {
     return new InflateRaw(o);
   };
 
-  exports$d.createGzip = function (o) {
+  exports$c.createGzip = function (o) {
     return new Gzip(o);
   };
 
-  exports$d.createGunzip = function (o) {
+  exports$c.createGunzip = function (o) {
     return new Gunzip(o);
   };
 
-  exports$d.createUnzip = function (o) {
+  exports$c.createUnzip = function (o) {
     return new Unzip(o);
   }; // Convenience methods.
   // compress/decompress a string or buffer in one step.
 
 
-  exports$d.deflate = function (buffer, opts, callback) {
+  exports$c.deflate = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7659,11 +7659,11 @@ function dew$c() {
     return zlibBuffer(new Deflate(opts), buffer, callback);
   };
 
-  exports$d.deflateSync = function (buffer, opts) {
+  exports$c.deflateSync = function (buffer, opts) {
     return zlibBufferSync(new Deflate(opts), buffer);
   };
 
-  exports$d.gzip = function (buffer, opts, callback) {
+  exports$c.gzip = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7672,11 +7672,11 @@ function dew$c() {
     return zlibBuffer(new Gzip(opts), buffer, callback);
   };
 
-  exports$d.gzipSync = function (buffer, opts) {
+  exports$c.gzipSync = function (buffer, opts) {
     return zlibBufferSync(new Gzip(opts), buffer);
   };
 
-  exports$d.deflateRaw = function (buffer, opts, callback) {
+  exports$c.deflateRaw = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7685,11 +7685,11 @@ function dew$c() {
     return zlibBuffer(new DeflateRaw(opts), buffer, callback);
   };
 
-  exports$d.deflateRawSync = function (buffer, opts) {
+  exports$c.deflateRawSync = function (buffer, opts) {
     return zlibBufferSync(new DeflateRaw(opts), buffer);
   };
 
-  exports$d.unzip = function (buffer, opts, callback) {
+  exports$c.unzip = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7698,11 +7698,11 @@ function dew$c() {
     return zlibBuffer(new Unzip(opts), buffer, callback);
   };
 
-  exports$d.unzipSync = function (buffer, opts) {
+  exports$c.unzipSync = function (buffer, opts) {
     return zlibBufferSync(new Unzip(opts), buffer);
   };
 
-  exports$d.inflate = function (buffer, opts, callback) {
+  exports$c.inflate = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7711,11 +7711,11 @@ function dew$c() {
     return zlibBuffer(new Inflate(opts), buffer, callback);
   };
 
-  exports$d.inflateSync = function (buffer, opts) {
+  exports$c.inflateSync = function (buffer, opts) {
     return zlibBufferSync(new Inflate(opts), buffer);
   };
 
-  exports$d.gunzip = function (buffer, opts, callback) {
+  exports$c.gunzip = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7724,11 +7724,11 @@ function dew$c() {
     return zlibBuffer(new Gunzip(opts), buffer, callback);
   };
 
-  exports$d.gunzipSync = function (buffer, opts) {
+  exports$c.gunzipSync = function (buffer, opts) {
     return zlibBufferSync(new Gunzip(opts), buffer);
   };
 
-  exports$d.inflateRaw = function (buffer, opts, callback) {
+  exports$c.inflateRaw = function (buffer, opts, callback) {
     if (typeof opts === 'function') {
       callback = opts;
       opts = {};
@@ -7737,7 +7737,7 @@ function dew$c() {
     return zlibBuffer(new InflateRaw(opts), buffer, callback);
   };
 
-  exports$d.inflateRawSync = function (buffer, opts) {
+  exports$c.inflateRawSync = function (buffer, opts) {
     return zlibBufferSync(new InflateRaw(opts), buffer);
   };
 
@@ -7841,7 +7841,7 @@ function dew$c() {
     var _this = this;
 
     this._opts = opts = opts || {};
-    this._chunkSize = opts.chunkSize || exports$d.Z_DEFAULT_CHUNK;
+    this._chunkSize = opts.chunkSize || exports$c.Z_DEFAULT_CHUNK;
     Transform.call(this, opts);
 
     if (opts.flush && !isValidFlushFlag(opts.flush)) {
@@ -7856,31 +7856,31 @@ function dew$c() {
     this._finishFlushFlag = typeof opts.finishFlush !== 'undefined' ? opts.finishFlush : binding.Z_FINISH;
 
     if (opts.chunkSize) {
-      if (opts.chunkSize < exports$d.Z_MIN_CHUNK || opts.chunkSize > exports$d.Z_MAX_CHUNK) {
+      if (opts.chunkSize < exports$c.Z_MIN_CHUNK || opts.chunkSize > exports$c.Z_MAX_CHUNK) {
         throw new Error('Invalid chunk size: ' + opts.chunkSize);
       }
     }
 
     if (opts.windowBits) {
-      if (opts.windowBits < exports$d.Z_MIN_WINDOWBITS || opts.windowBits > exports$d.Z_MAX_WINDOWBITS) {
+      if (opts.windowBits < exports$c.Z_MIN_WINDOWBITS || opts.windowBits > exports$c.Z_MAX_WINDOWBITS) {
         throw new Error('Invalid windowBits: ' + opts.windowBits);
       }
     }
 
     if (opts.level) {
-      if (opts.level < exports$d.Z_MIN_LEVEL || opts.level > exports$d.Z_MAX_LEVEL) {
+      if (opts.level < exports$c.Z_MIN_LEVEL || opts.level > exports$c.Z_MAX_LEVEL) {
         throw new Error('Invalid compression level: ' + opts.level);
       }
     }
 
     if (opts.memLevel) {
-      if (opts.memLevel < exports$d.Z_MIN_MEMLEVEL || opts.memLevel > exports$d.Z_MAX_MEMLEVEL) {
+      if (opts.memLevel < exports$c.Z_MIN_MEMLEVEL || opts.memLevel > exports$c.Z_MAX_MEMLEVEL) {
         throw new Error('Invalid memLevel: ' + opts.memLevel);
       }
     }
 
     if (opts.strategy) {
-      if (opts.strategy != exports$d.Z_FILTERED && opts.strategy != exports$d.Z_HUFFMAN_ONLY && opts.strategy != exports$d.Z_RLE && opts.strategy != exports$d.Z_FIXED && opts.strategy != exports$d.Z_DEFAULT_STRATEGY) {
+      if (opts.strategy != exports$c.Z_FILTERED && opts.strategy != exports$c.Z_HUFFMAN_ONLY && opts.strategy != exports$c.Z_RLE && opts.strategy != exports$c.Z_FIXED && opts.strategy != exports$c.Z_DEFAULT_STRATEGY) {
         throw new Error('Invalid strategy: ' + opts.strategy);
       }
     }
@@ -7903,16 +7903,16 @@ function dew$c() {
       self._hadError = true;
       var error = new Error(message);
       error.errno = errno;
-      error.code = exports$d.codes[errno];
+      error.code = exports$c.codes[errno];
       self.emit('error', error);
     };
 
-    var level = exports$d.Z_DEFAULT_COMPRESSION;
+    var level = exports$c.Z_DEFAULT_COMPRESSION;
     if (typeof opts.level === 'number') level = opts.level;
-    var strategy = exports$d.Z_DEFAULT_STRATEGY;
+    var strategy = exports$c.Z_DEFAULT_STRATEGY;
     if (typeof opts.strategy === 'number') strategy = opts.strategy;
 
-    this._handle.init(opts.windowBits || exports$d.Z_DEFAULT_WINDOWBITS, level, opts.memLevel || exports$d.Z_DEFAULT_MEMLEVEL, strategy, opts.dictionary);
+    this._handle.init(opts.windowBits || exports$c.Z_DEFAULT_WINDOWBITS, level, opts.memLevel || exports$c.Z_DEFAULT_MEMLEVEL, strategy, opts.dictionary);
 
     this._buffer = Buffer.allocUnsafe(this._chunkSize);
     this._offset = 0;
@@ -7931,11 +7931,11 @@ function dew$c() {
   util.inherits(Zlib, Transform);
 
   Zlib.prototype.params = function (level, strategy, callback) {
-    if (level < exports$d.Z_MIN_LEVEL || level > exports$d.Z_MAX_LEVEL) {
+    if (level < exports$c.Z_MIN_LEVEL || level > exports$c.Z_MAX_LEVEL) {
       throw new RangeError('Invalid compression level: ' + level);
     }
 
-    if (strategy != exports$d.Z_FILTERED && strategy != exports$d.Z_HUFFMAN_ONLY && strategy != exports$d.Z_RLE && strategy != exports$d.Z_FIXED && strategy != exports$d.Z_DEFAULT_STRATEGY) {
+    if (strategy != exports$c.Z_FILTERED && strategy != exports$c.Z_HUFFMAN_ONLY && strategy != exports$c.Z_RLE && strategy != exports$c.Z_FIXED && strategy != exports$c.Z_DEFAULT_STRATEGY) {
       throw new TypeError('Invalid strategy: ' + strategy);
     }
 
@@ -8159,11 +8159,11 @@ function dew$c() {
   util.inherits(DeflateRaw, Zlib);
   util.inherits(InflateRaw, Zlib);
   util.inherits(Unzip, Zlib);
-  return exports$d;
+  return exports$c;
 }
 
-const exports$e = dew$c();
-const Deflate = exports$e.Deflate, DeflateRaw = exports$e.DeflateRaw, Gunzip = exports$e.Gunzip, Gzip = exports$e.Gzip, Inflate = exports$e.Inflate, InflateRaw = exports$e.InflateRaw, Unzip = exports$e.Unzip, Z_BEST_COMPRESSION = exports$e.Z_BEST_COMPRESSION, Z_BEST_SPEED = exports$e.Z_BEST_SPEED, Z_BINARY = exports$e.Z_BINARY, Z_BLOCK = exports$e.Z_BLOCK, Z_BUF_ERROR = exports$e.Z_BUF_ERROR, Z_DATA_ERROR = exports$e.Z_DATA_ERROR, Z_DEFAULT_CHUNK = exports$e.Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION = exports$e.Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL = exports$e.Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL = exports$e.Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY = exports$e.Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS = exports$e.Z_DEFAULT_WINDOWBITS, Z_DEFLATED = exports$e.Z_DEFLATED, Z_ERRNO = exports$e.Z_ERRNO, Z_FILTERED = exports$e.Z_FILTERED, Z_FINISH = exports$e.Z_FINISH, Z_FIXED = exports$e.Z_FIXED, Z_FULL_FLUSH = exports$e.Z_FULL_FLUSH, Z_HUFFMAN_ONLY = exports$e.Z_HUFFMAN_ONLY, Z_MAX_CHUNK = exports$e.Z_MAX_CHUNK, Z_MAX_LEVEL = exports$e.Z_MAX_LEVEL, Z_MAX_MEMLEVEL = exports$e.Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS = exports$e.Z_MAX_WINDOWBITS, Z_MIN_CHUNK = exports$e.Z_MIN_CHUNK, Z_MIN_LEVEL = exports$e.Z_MIN_LEVEL, Z_MIN_MEMLEVEL = exports$e.Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS = exports$e.Z_MIN_WINDOWBITS, Z_NEED_DICT = exports$e.Z_NEED_DICT, Z_NO_COMPRESSION = exports$e.Z_NO_COMPRESSION, Z_NO_FLUSH = exports$e.Z_NO_FLUSH, Z_OK = exports$e.Z_OK, Z_PARTIAL_FLUSH = exports$e.Z_PARTIAL_FLUSH, Z_RLE = exports$e.Z_RLE, Z_STREAM_END = exports$e.Z_STREAM_END, Z_STREAM_ERROR = exports$e.Z_STREAM_ERROR, Z_SYNC_FLUSH = exports$e.Z_SYNC_FLUSH, Z_TEXT = exports$e.Z_TEXT, Z_TREES = exports$e.Z_TREES, Z_UNKNOWN = exports$e.Z_UNKNOWN, Zlib = exports$e.Zlib, codes = exports$e.codes, createDeflate = exports$e.createDeflate, createDeflateRaw = exports$e.createDeflateRaw, createGunzip = exports$e.createGunzip, createGzip = exports$e.createGzip, createInflate = exports$e.createInflate, createInflateRaw = exports$e.createInflateRaw, createUnzip = exports$e.createUnzip, deflate = exports$e.deflate, deflateRaw = exports$e.deflateRaw, deflateRawSync = exports$e.deflateRawSync, deflateSync = exports$e.deflateSync, gunzip = exports$e.gunzip, gunzipSync = exports$e.gunzipSync, gzip = exports$e.gzip, gzipSync = exports$e.gzipSync, inflate = exports$e.inflate, inflateRaw = exports$e.inflateRaw, inflateRawSync = exports$e.inflateRawSync, inflateSync = exports$e.inflateSync, unzip = exports$e.unzip, unzipSync = exports$e.unzipSync;
+const exports$d = dew$c();
+const Deflate = exports$d.Deflate, DeflateRaw = exports$d.DeflateRaw, Gunzip = exports$d.Gunzip, Gzip = exports$d.Gzip, Inflate = exports$d.Inflate, InflateRaw = exports$d.InflateRaw, Unzip = exports$d.Unzip, Z_BEST_COMPRESSION = exports$d.Z_BEST_COMPRESSION, Z_BEST_SPEED = exports$d.Z_BEST_SPEED, Z_BINARY = exports$d.Z_BINARY, Z_BLOCK = exports$d.Z_BLOCK, Z_BUF_ERROR = exports$d.Z_BUF_ERROR, Z_DATA_ERROR = exports$d.Z_DATA_ERROR, Z_DEFAULT_CHUNK = exports$d.Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION = exports$d.Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL = exports$d.Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL = exports$d.Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY = exports$d.Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS = exports$d.Z_DEFAULT_WINDOWBITS, Z_DEFLATED = exports$d.Z_DEFLATED, Z_ERRNO = exports$d.Z_ERRNO, Z_FILTERED = exports$d.Z_FILTERED, Z_FINISH = exports$d.Z_FINISH, Z_FIXED = exports$d.Z_FIXED, Z_FULL_FLUSH = exports$d.Z_FULL_FLUSH, Z_HUFFMAN_ONLY = exports$d.Z_HUFFMAN_ONLY, Z_MAX_CHUNK = exports$d.Z_MAX_CHUNK, Z_MAX_LEVEL = exports$d.Z_MAX_LEVEL, Z_MAX_MEMLEVEL = exports$d.Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS = exports$d.Z_MAX_WINDOWBITS, Z_MIN_CHUNK = exports$d.Z_MIN_CHUNK, Z_MIN_LEVEL = exports$d.Z_MIN_LEVEL, Z_MIN_MEMLEVEL = exports$d.Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS = exports$d.Z_MIN_WINDOWBITS, Z_NEED_DICT = exports$d.Z_NEED_DICT, Z_NO_COMPRESSION = exports$d.Z_NO_COMPRESSION, Z_NO_FLUSH = exports$d.Z_NO_FLUSH, Z_OK = exports$d.Z_OK, Z_PARTIAL_FLUSH = exports$d.Z_PARTIAL_FLUSH, Z_RLE = exports$d.Z_RLE, Z_STREAM_END = exports$d.Z_STREAM_END, Z_STREAM_ERROR = exports$d.Z_STREAM_ERROR, Z_SYNC_FLUSH = exports$d.Z_SYNC_FLUSH, Z_TEXT = exports$d.Z_TEXT, Z_TREES = exports$d.Z_TREES, Z_UNKNOWN = exports$d.Z_UNKNOWN, Zlib = exports$d.Zlib, codes = exports$d.codes, createDeflate = exports$d.createDeflate, createDeflateRaw = exports$d.createDeflateRaw, createGunzip = exports$d.createGunzip, createGzip = exports$d.createGzip, createInflate = exports$d.createInflate, createInflateRaw = exports$d.createInflateRaw, createUnzip = exports$d.createUnzip, deflate = exports$d.deflate, deflateRaw = exports$d.deflateRaw, deflateRawSync = exports$d.deflateRawSync, deflateSync = exports$d.deflateSync, gunzip = exports$d.gunzip, gunzipSync = exports$d.gunzipSync, gzip = exports$d.gzip, gzipSync = exports$d.gzipSync, inflate = exports$d.inflate, inflateRaw = exports$d.inflateRaw, inflateRawSync = exports$d.inflateRawSync, inflateSync = exports$d.inflateSync, unzip = exports$d.unzip, unzipSync = exports$d.unzipSync;
 
-export default exports$e;
+export default exports$d;
 export { Deflate, DeflateRaw, Gunzip, Gzip, Inflate, InflateRaw, Unzip, Z_BEST_COMPRESSION, Z_BEST_SPEED, Z_BINARY, Z_BLOCK, Z_BUF_ERROR, Z_DATA_ERROR, Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS, Z_DEFLATED, Z_ERRNO, Z_FILTERED, Z_FINISH, Z_FIXED, Z_FULL_FLUSH, Z_HUFFMAN_ONLY, Z_MAX_CHUNK, Z_MAX_LEVEL, Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS, Z_MIN_CHUNK, Z_MIN_LEVEL, Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS, Z_NEED_DICT, Z_NO_COMPRESSION, Z_NO_FLUSH, Z_OK, Z_PARTIAL_FLUSH, Z_RLE, Z_STREAM_END, Z_STREAM_ERROR, Z_SYNC_FLUSH, Z_TEXT, Z_TREES, Z_UNKNOWN, Zlib, codes, createDeflate, createDeflateRaw, createGunzip, createGzip, createInflate, createInflateRaw, createUnzip, deflate, deflateRaw, deflateRawSync, deflateSync, gunzip, gunzipSync, gzip, gzipSync, inflate, inflateRaw, inflateRawSync, inflateSync, unzip, unzipSync };

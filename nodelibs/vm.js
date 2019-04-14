@@ -1,10 +1,10 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
   var indexOf = function (xs, item) {
@@ -54,7 +54,7 @@ function dew() {
 
   Context.prototype = {};
 
-  var Script = exports$1.Script = function NodeScript(code) {
+  var Script = exports.Script = function NodeScript(code) {
     if (!((this || _global) instanceof Script)) return new Script(code);
     (this || _global).code = code;
   };
@@ -123,21 +123,21 @@ function dew() {
   };
 
   forEach(Object_keys(Script.prototype), function (name) {
-    exports$1[name] = Script[name] = function (code) {
+    exports[name] = Script[name] = function (code) {
       var s = Script(code);
       return s[name].apply(s, [].slice.call(arguments, 1));
     };
   });
 
-  exports$1.isContext = function (context) {
+  exports.isContext = function (context) {
     return context instanceof Context;
   };
 
-  exports$1.createScript = function (code) {
-    return exports$1.Script(code);
+  exports.createScript = function (code) {
+    return exports.Script(code);
   };
 
-  exports$1.createContext = Script.createContext = function (context) {
+  exports.createContext = Script.createContext = function (context) {
     var copy = new Context();
 
     if (typeof context === 'object') {
@@ -149,11 +149,11 @@ function dew() {
     return copy;
   };
 
-  return exports$1;
+  return exports;
 }
 
-const exports$2 = dew();
-const Script = exports$2.Script, createContext = exports$2.createContext, createScript = exports$2.createScript, isContext = exports$2.isContext, runInContext = exports$2.runInContext, runInNewContext = exports$2.runInNewContext, runInThisContext = exports$2.runInThisContext;
+const exports$1 = dew();
+const Script = exports$1.Script, createContext = exports$1.createContext, createScript = exports$1.createScript, isContext = exports$1.isContext, runInContext = exports$1.runInContext, runInNewContext = exports$1.runInNewContext, runInThisContext = exports$1.runInThisContext;
 
-export default exports$2;
+export default exports$1;
 export { Script, createContext, createScript, isContext, runInContext, runInNewContext, runInThisContext };

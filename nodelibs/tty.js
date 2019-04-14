@@ -1,10 +1,10 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
 
-  exports$1.isatty = function () {
+  exports.isatty = function () {
     return false;
   };
 
@@ -12,18 +12,18 @@ function dew() {
     throw new Error('tty.ReadStream is not implemented');
   }
 
-  exports$1.ReadStream = ReadStream;
+  exports.ReadStream = ReadStream;
 
   function WriteStream() {
     throw new Error('tty.WriteStream is not implemented');
   }
 
-  exports$1.WriteStream = WriteStream;
-  return exports$1;
+  exports.WriteStream = WriteStream;
+  return exports;
 }
 
-const exports$2 = dew();
-const ReadStream = exports$2.ReadStream, WriteStream = exports$2.WriteStream, isatty = exports$2.isatty;
+const exports$1 = dew();
+const ReadStream = exports$1.ReadStream, WriteStream = exports$1.WriteStream, isatty = exports$1.isatty;
 
-export default exports$2;
+export default exports$1;
 export { ReadStream, WriteStream, isatty };

@@ -1,11 +1,11 @@
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
-  exports$1.byteLength = byteLength;
-  exports$1.toByteArray = toByteArray;
-  exports$1.fromByteArray = fromByteArray;
+  exports.byteLength = byteLength;
+  exports.toByteArray = toByteArray;
+  exports.fromByteArray = fromByteArray;
   var lookup = [];
   var revLookup = [];
   var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array;
@@ -120,16 +120,16 @@ function dew() {
     return parts.join('');
   }
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$2;
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
 
-  exports$2.read = function (buffer, offset, isLE, mLen, nBytes) {
+  exports$1.read = function (buffer, offset, isLE, mLen, nBytes) {
     var e, m;
     var eLen = nBytes * 8 - mLen - 1;
     var eMax = (1 << eLen) - 1;
@@ -163,7 +163,7 @@ function dew$1() {
     return (s ? -1 : 1) * m * Math.pow(2, e - mLen);
   };
 
-  exports$2.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+  exports$1.write = function (buffer, value, offset, isLE, mLen, nBytes) {
     var e, m, c;
     var eLen = nBytes * 8 - mLen - 1;
     var eMax = (1 << eLen) - 1;
@@ -218,24 +218,24 @@ function dew$1() {
     buffer[offset + i - d] |= s * 128;
   };
 
-  return exports$2;
+  return exports$1;
 }
 
-var exports$3 = {},
+var exports$2 = {},
     _dewExec$2 = false;
 function dew$2() {
-  if (_dewExec$2) return exports$3;
+  if (_dewExec$2) return exports$2;
   _dewExec$2 = true;
 
   var base64 = dew();
 
   var ieee754 = dew$1();
 
-  exports$3.Buffer = Buffer;
-  exports$3.SlowBuffer = SlowBuffer;
-  exports$3.INSPECT_MAX_BYTES = 50;
+  exports$2.Buffer = Buffer;
+  exports$2.SlowBuffer = SlowBuffer;
+  exports$2.INSPECT_MAX_BYTES = 50;
   var K_MAX_LENGTH = 0x7fffffff;
-  exports$3.kMaxLength = K_MAX_LENGTH;
+  exports$2.kMaxLength = K_MAX_LENGTH;
   /**
    * If `Buffer.TYPED_ARRAY_SUPPORT`:
    *   === true    Use Uint8Array implementation (fastest)
@@ -837,7 +837,7 @@ function dew$2() {
 
   Buffer.prototype.inspect = function inspect() {
     var str = '';
-    var max = exports$3.INSPECT_MAX_BYTES;
+    var max = exports$2.INSPECT_MAX_BYTES;
     str = this.toString('hex', 0, max).replace(/(.{2})/g, '$1 ').trim();
     if (this.length > max) str += ' ... ';
     return '<Buffer ' + str + '>';
@@ -2017,11 +2017,11 @@ function dew$2() {
     return obj !== obj; // eslint-disable-line no-self-compare
   }
 
-  return exports$3;
+  return exports$2;
 }
 
-const exports$4 = dew$2();
-const Buffer = exports$4.Buffer, INSPECT_MAX_BYTES = exports$4.INSPECT_MAX_BYTES, SlowBuffer = exports$4.SlowBuffer, kMaxLength = exports$4.kMaxLength;
+const exports$3 = dew$2();
+const Buffer = exports$3.Buffer, INSPECT_MAX_BYTES = exports$3.INSPECT_MAX_BYTES, SlowBuffer = exports$3.SlowBuffer, kMaxLength = exports$3.kMaxLength;
 
-export default exports$4;
+export default exports$3;
 export { Buffer, INSPECT_MAX_BYTES, SlowBuffer, kMaxLength };

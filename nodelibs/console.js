@@ -1,30 +1,28 @@
-import './chunk-d6577e34.js';
+import { a as _util } from './util-c86b84df.js';
 import './process.js';
 import _assert from './assert.js';
-import './chunk-bdb48c3e.js';
-import _util from './util.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports$1;
+  if (_dewExec) return exports;
   _dewExec = true;
-  exports$1 = now;
+  exports = now;
 
   function now() {
     return new Date().getTime();
   }
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
 function dew$1() {
-  if (_dewExec$1) return exports$2;
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
 
   /*global window, global*/
@@ -57,7 +55,7 @@ function dew$1() {
     }
   }
 
-  exports$2 = console;
+  exports$1 = console;
 
   function log() {}
 
@@ -106,11 +104,11 @@ function dew$1() {
     }
   }
 
-  return exports$2;
+  return exports$1;
 }
 
-const exports$3 = dew$1();
-const assert = exports$3.assert, clear = exports$3.clear, context = exports$3.context, count = exports$3.count, countReset = exports$3.countReset, debug = exports$3.debug, dir = exports$3.dir, dirxml = exports$3.dirxml, error = exports$3.error, group = exports$3.group, groupCollapsed = exports$3.groupCollapsed, groupEnd = exports$3.groupEnd, info = exports$3.info, log = exports$3.log, memory = exports$3.memory, profile = exports$3.profile, profileEnd = exports$3.profileEnd, table = exports$3.table, time = exports$3.time, timeEnd = exports$3.timeEnd, timeStamp = exports$3.timeStamp, trace = exports$3.trace, warn = exports$3.warn;
+const exports$2 = dew$1();
+const assert = exports$2.assert, clear = exports$2.clear, context = exports$2.context, count = exports$2.count, countReset = exports$2.countReset, debug = exports$2.debug, dir = exports$2.dir, dirxml = exports$2.dirxml, error = exports$2.error, group = exports$2.group, groupCollapsed = exports$2.groupCollapsed, groupEnd = exports$2.groupEnd, info = exports$2.info, log = exports$2.log, memory = exports$2.memory, profile = exports$2.profile, profileEnd = exports$2.profileEnd, table = exports$2.table, time = exports$2.time, timeEnd = exports$2.timeEnd, timeStamp = exports$2.timeStamp, trace = exports$2.trace, warn = exports$2.warn;
 
-export default exports$3;
+export default exports$2;
 export { assert, clear, context, count, countReset, debug, dir, dirxml, error, group, groupCollapsed, groupEnd, info, log, memory, profile, profileEnd, table, time, timeEnd, timeStamp, trace, warn };

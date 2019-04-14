@@ -1,12 +1,47 @@
 import jspmPlugin from 'rollup-plugin-jspm';
 
+const input = {
+  '@empty': 'build/@empty.js',
+  '@empty.dew': 'build/@empty.dew.js',
+  assert: 'assert',
+  buffer: 'buffer',
+  console: 'console',
+  constants: 'constants',
+  crypto: 'crypto',
+  domain: 'domain',
+  events: 'events',
+  http: 'http',
+  https: 'https',
+  os: 'os',
+  path: 'path',
+  process: 'process',
+  'process-production': 'build/process-production.js',
+  punycode: 'punycode',
+  querystring: 'querystring',
+  stream: 'stream',
+  string_decoder: 'string_decoder',
+  sys: 'build/sys.js',
+  timers: 'timers',
+  tty: 'tty',
+  url: 'url',
+  util: 'util',
+  vm: 'vm',
+  zlib: 'zlib'
+};
+
 export default {
-  input: ['build/@empty.js', 'build/@empty.dew.js', 'assert', 'buffer', 'console', 'constants', 'crypto', 'domain', 'events', 'http', 'https', 'os', 'path', 'process', 'build/process-production.js', 'punycode', 'querystring', 'stream', 'string_decoder', 'sys', 'timers', 'tty', 'url', 'util', 'vm', 'zlib'],
+  input,
   output: {
     dir: 'nodelibs',
     format: 'esm'
   },
-  plugins: [jspmPlugin({
+  plugins: [{
+    resolveId (name, parent) {
+      // load all builtins as these root inputs
+      if (parent && name in input)
+        return this.resolveId(name, undefined);
+    }
+  }, jspmPlugin({
     env: { browser: true }
   })]
 };

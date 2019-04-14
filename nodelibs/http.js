@@ -1,28 +1,29 @@
+import { b as dew$7 } from './util-c86b84df.js';
 import _process from './process.js';
 import _buffer from './buffer.js';
-import { a as dew } from './chunk-bdb48c3e.js';
-import './chunk-931ab749.js';
+import './string_decoder-a044d0fd.js';
 import './events.js';
-import { a as dew$e } from './chunk-70571ed9.js';
-import './querystring.js';
+import { c as dew$8 } from './chunk-147c6ebb.js';
+import './punycode.js';
 import _url from './url.js';
+import './querystring.js';
 
-var exports$1 = {},
+var exports = {},
     _dewExec = false;
 
 var _global = typeof self !== "undefined" ? self : global;
 
-function dew$2() {
-  if (_dewExec) return exports$1;
+function dew() {
+  if (_dewExec) return exports;
   _dewExec = true;
-  exports$1.fetch = isFunction(_global.fetch) && isFunction(_global.ReadableStream);
-  exports$1.writableStream = isFunction(_global.WritableStream);
-  exports$1.abortController = isFunction(_global.AbortController);
-  exports$1.blobConstructor = false;
+  exports.fetch = isFunction(_global.fetch) && isFunction(_global.ReadableStream);
+  exports.writableStream = isFunction(_global.WritableStream);
+  exports.abortController = isFunction(_global.AbortController);
+  exports.blobConstructor = false;
 
   try {
     new Blob([new ArrayBuffer(1)]);
-    exports$1.blobConstructor = true;
+    exports.blobConstructor = true;
   } catch (e) {} // The xhr request to example.com may violate some restrictive CSP configurations,
   // so if we're running in a browser that supports `fetch`, avoid calling getXHR()
   // and assume support for certain features below.
@@ -70,15 +71,15 @@ function dew$2() {
   var haveSlice = haveArrayBuffer && isFunction(_global.ArrayBuffer.prototype.slice); // If fetch is supported, then arraybuffer will be supported too. Skip calling
   // checkTypeSupport(), since that calls getXHR().
 
-  exports$1.arraybuffer = exports$1.fetch || haveArrayBuffer && checkTypeSupport('arraybuffer'); // These next two tests unavoidably show warnings in Chrome. Since fetch will always
+  exports.arraybuffer = exports.fetch || haveArrayBuffer && checkTypeSupport('arraybuffer'); // These next two tests unavoidably show warnings in Chrome. Since fetch will always
   // be used if it's available, just return false for these to avoid the warnings.
 
-  exports$1.msstream = !exports$1.fetch && haveSlice && checkTypeSupport('ms-stream');
-  exports$1.mozchunkedarraybuffer = !exports$1.fetch && haveArrayBuffer && checkTypeSupport('moz-chunked-arraybuffer'); // If fetch is supported, then overrideMimeType will be supported too. Skip calling
+  exports.msstream = !exports.fetch && haveSlice && checkTypeSupport('ms-stream');
+  exports.mozchunkedarraybuffer = !exports.fetch && haveArrayBuffer && checkTypeSupport('moz-chunked-arraybuffer'); // If fetch is supported, then overrideMimeType will be supported too. Skip calling
   // getXHR().
 
-  exports$1.overrideMimeType = exports$1.fetch || (getXHR() ? isFunction(getXHR().overrideMimeType) : false);
-  exports$1.vbArray = isFunction(_global.VBArray);
+  exports.overrideMimeType = exports.fetch || (getXHR() ? isFunction(getXHR().overrideMimeType) : false);
+  exports.vbArray = isFunction(_global.VBArray);
 
   function isFunction(value) {
     return typeof value === 'function';
@@ -86,27 +87,27 @@ function dew$2() {
 
   xhr = null; // Help gc
 
-  return exports$1;
+  return exports;
 }
 
-var exports$2 = {},
+var exports$1 = {},
     _dewExec$1 = false;
 
 var _global$1 = typeof self !== "undefined" ? self : global;
 
-function dew$3() {
-  if (_dewExec$1) return exports$2;
+function dew$1() {
+  if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
   var Buffer = _buffer.Buffer;
   var process = _process;
 
-  var capability = dew$2();
+  var capability = dew();
 
-  var inherits = dew();
+  var inherits = dew$7();
 
-  var stream = dew$e();
+  var stream = dew$8();
 
-  var rStates = exports$2.readyStates = {
+  var rStates = exports$1.readyStates = {
     UNSENT: 0,
     OPENED: 1,
     HEADERS_RECEIVED: 2,
@@ -114,7 +115,7 @@ function dew$3() {
     DONE: 4
   };
 
-  var IncomingMessage = exports$2.IncomingMessage = function (xhr, response, mode, fetchTimer) {
+  var IncomingMessage = exports$1.IncomingMessage = function (xhr, response, mode, fetchTimer) {
     var self = this || _global$1;
     stream.Readable.call(self);
     self._mode = mode;
@@ -345,17 +346,17 @@ function dew$3() {
     }
   };
 
-  return exports$2;
+  return exports$1;
 }
 
-var exports$3 = {},
+var exports$2 = {},
     _dewExec$2 = false;
-function dew$4() {
-  if (_dewExec$2) return exports$3;
+function dew$2() {
+  if (_dewExec$2) return exports$2;
   _dewExec$2 = true;
   var Buffer = _buffer.Buffer;
 
-  exports$3 = function (buf) {
+  exports$2 = function (buf) {
     // If the buffer is backed by a Uint8Array, a faster version will work
     if (buf instanceof Uint8Array) {
       // If the buffer isn't a subarray, return the underlying ArrayBuffer
@@ -383,29 +384,29 @@ function dew$4() {
     }
   };
 
-  return exports$3;
+  return exports$2;
 }
 
-var exports$4 = {},
+var exports$3 = {},
     _dewExec$3 = false;
 
 var _global$2 = typeof self !== "undefined" ? self : global;
 
-function dew$5() {
-  if (_dewExec$3) return exports$4;
+function dew$3() {
+  if (_dewExec$3) return exports$3;
   _dewExec$3 = true;
   var Buffer = _buffer.Buffer;
   var process = _process;
 
-  var capability = dew$2();
+  var capability = dew();
 
-  var inherits = dew();
+  var inherits = dew$7();
 
-  var response = dew$3();
+  var response = dew$1();
 
-  var stream = dew$e();
+  var stream = dew$8();
 
-  var toArrayBuffer = dew$4();
+  var toArrayBuffer = dew$2();
 
   var IncomingMessage = response.IncomingMessage;
   var rStates = response.readyStates;
@@ -426,7 +427,7 @@ function dew$5() {
     }
   }
 
-  var ClientRequest = exports$4 = function (opts) {
+  var ClientRequest = exports$3 = function (opts) {
     var self = this || _global$2;
     stream.Writable.call(self);
     self._opts = opts;
@@ -698,15 +699,15 @@ function dew$5() {
 
 
   var unsafeHeaders = ['accept-charset', 'accept-encoding', 'access-control-request-headers', 'access-control-request-method', 'connection', 'content-length', 'cookie', 'cookie2', 'date', 'dnt', 'expect', 'host', 'keep-alive', 'origin', 'referer', 'te', 'trailer', 'transfer-encoding', 'upgrade', 'via'];
-  return exports$4;
+  return exports$3;
 }
 
-var exports$5 = {},
+var exports$4 = {},
     _dewExec$4 = false;
-function dew$6() {
-  if (_dewExec$4) return exports$5;
+function dew$4() {
+  if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
-  exports$5 = extend;
+  exports$4 = extend;
   var hasOwnProperty = Object.prototype.hasOwnProperty;
 
   function extend() {
@@ -725,15 +726,15 @@ function dew$6() {
     return target;
   }
 
-  return exports$5;
+  return exports$4;
 }
 
-var exports$6 = {},
+var exports$5 = {},
     _dewExec$5 = false;
-function dew$7() {
-  if (_dewExec$5) return exports$6;
+function dew$5() {
+  if (_dewExec$5) return exports$5;
   _dewExec$5 = true;
-  exports$6 = {
+  exports$5 = {
     "100": "Continue",
     "101": "Switching Protocols",
     "102": "Processing",
@@ -797,28 +798,28 @@ function dew$7() {
     "510": "Not Extended",
     "511": "Network Authentication Required"
   };
-  return exports$6;
+  return exports$5;
 }
 
-var exports$7 = {},
+var exports$6 = {},
     _dewExec$6 = false;
 
 var _global$3 = typeof self !== "undefined" ? self : global;
 
-function dew$8() {
-  if (_dewExec$6) return exports$7;
+function dew$6() {
+  if (_dewExec$6) return exports$6;
   _dewExec$6 = true;
 
-  var ClientRequest = dew$5();
+  var ClientRequest = dew$3();
 
-  var response = dew$3();
+  var response = dew$1();
 
-  var extend = dew$6();
+  var extend = dew$4();
 
-  var statusCodes = dew$7();
+  var statusCodes = dew$5();
 
   var url = _url;
-  var http = exports$7;
+  var http = exports$6;
 
   http.request = function (opts, cb) {
     if (typeof opts === 'string') opts = url.parse(opts);else opts = extend(opts); // Normally, the page is loaded from http or https, so not specifying a protocol
@@ -857,11 +858,11 @@ function dew$8() {
   http.globalAgent = new http.Agent();
   http.STATUS_CODES = statusCodes;
   http.METHODS = ['CHECKOUT', 'CONNECT', 'COPY', 'DELETE', 'GET', 'HEAD', 'LOCK', 'M-SEARCH', 'MERGE', 'MKACTIVITY', 'MKCOL', 'MOVE', 'NOTIFY', 'OPTIONS', 'PATCH', 'POST', 'PROPFIND', 'PROPPATCH', 'PURGE', 'PUT', 'REPORT', 'SEARCH', 'SUBSCRIBE', 'TRACE', 'UNLOCK', 'UNSUBSCRIBE'];
-  return exports$7;
+  return exports$6;
 }
 
-const exports$8 = dew$8();
-const Agent = exports$8.Agent, ClientRequest = exports$8.ClientRequest, IncomingMessage = exports$8.IncomingMessage, METHODS = exports$8.METHODS, STATUS_CODES = exports$8.STATUS_CODES, get = exports$8.get, globalAgent = exports$8.globalAgent, request = exports$8.request;
+const exports$7 = dew$6();
+const Agent = exports$7.Agent, ClientRequest = exports$7.ClientRequest, IncomingMessage = exports$7.IncomingMessage, METHODS = exports$7.METHODS, STATUS_CODES = exports$7.STATUS_CODES, get = exports$7.get, globalAgent = exports$7.globalAgent, request = exports$7.request;
 
-export default exports$8;
+export default exports$7;
 export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, get, globalAgent, request };
