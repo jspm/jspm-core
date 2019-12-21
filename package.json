@@ -1,6 +1,6 @@
 {
   "name": "@jspm/core",
-  "version": "1.0.4",
+  "version": "2.0.0-beta.1",
   "description": "jspm core libraries",
   "author": "Guy Bedford",
   "license": "Apache 2.0",
@@ -40,6 +40,35 @@
     "zlib": "browserify-zlib@~0.2.0"
   },
   "type": "module",
+  "exports": {
+    "./nodelibs/assert": "./nodelibs/assert.js",
+    "./nodelibs/buffer": "./nodelibs/buffer.js",
+    "./nodelibs/console": "./nodelibs/console.js",
+    "./nodelibs/constants": "./nodelibs/constants.js",
+    "./nodelibs/crypto": "./nodelibs/crypto.js",
+    "./nodelibs/domain": "./nodelibs/domain.js",
+    "./nodelibs/events": "./nodelibs/events.js",
+    "./nodelibs/http": "./nodelibs/http.js",
+    "./nodelibs/https": "./nodelibs/https.js",
+    "./nodelibs/os": "./nodelibs/os.js",
+    "./nodelibs/path": "./nodelibs/path.js",
+    "./nodelibs/process": {
+      "production": "./nodelibs/process-production.js",
+      "development": "./nodelibs/process-development.js",
+      "default": "./nodelibs/process.js"
+    },
+    "./nodelibs/punycode": "./nodelibs/punycode.js",
+    "./nodelibs/querystring": "./nodelibs/querystring.js",
+    "./nodelibs/stream": "./nodelibs/stream.js",
+    "./nodelibs/string_decoder": "./nodelibs/string_decoder.js",
+    "./nodelibs/sys": "./nodelibs/sys.js",
+    "./nodelibs/timers": "./nodelibs/timers.js",
+    "./nodelibs/tty": "./nodelibs/tty.js",
+    "./nodelibs/url": "./nodelibs/url.js",
+    "./nodelibs/util": "./nodelibs/util.js",
+    "./nodelibs/vm": "./nodelibs/vm.js",
+    "./nodelibs/zlib": "./nodelibs/zlib.js"
+  },
   "overrides": {
     "npm:assert@^1.4.1": {
       "namedExports": {
