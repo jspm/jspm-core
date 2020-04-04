@@ -1,6 +1,6 @@
 {
   "name": "@jspm/core",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.3",
   "description": "jspm core libraries",
   "author": "Guy Bedford",
   "license": "Apache 2.0",
@@ -41,6 +41,8 @@
   },
   "type": "module",
   "exports": {
+    "./nodelibs/@empty": "./nodelibs/@empty.js",
+    "./nodelibs/@empty.dew": "./nodelibs/@empty.dew.js",
     "./nodelibs/assert": "./nodelibs/assert.js",
     "./nodelibs/buffer": "./nodelibs/buffer.js",
     "./nodelibs/console": "./nodelibs/console.js",
