@@ -1,7 +1,1 @@
-import empty from './@empty.js';
-
-function dew () {
-  return empty;
-}
-
-export { dew };
+import empty from'./@empty.js';function dew(){return empty}export{dew};
