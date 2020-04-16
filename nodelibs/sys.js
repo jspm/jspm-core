@@ -1,2 +1,1 @@
-export { c as _extend, d as callbackify, e as debuglog, f as deprecate, g as format, h as inherits, i as inspect, j as isArray, k as isBoolean, l as isBuffer, m as isDate, n as isError, o as isFunction, p as isNull, q as isNullOrUndefined, r as isNumber, s as isObject, t as isPrimitive, u as isRegExp, v as isString, w as isSymbol, x as isUndefined, y as log, z as promisify } from './util-c86b84df.js';
-import './process.js';
+import'./chunk-dac557ba.js';import'./chunk-0c2d1322.js';import a from'./util.js';export{_extend,callbackify,debuglog,deprecate,format,inherits,inspect,isArray,isBoolean,isBuffer,isDate,isError,isFunction,isNull,isNullOrUndefined,isNumber,isObject,isPrimitive,isRegExp,isString,isSymbol,isUndefined,log,promisify}from'./util.js';export default a;
