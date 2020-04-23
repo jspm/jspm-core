@@ -2,8 +2,43 @@ function unimplemented () {
   throw new Error('Node.js module module is not supported by jspm core' + (typeof Deno !== 'undefined' ? '. Deno support here is tracking in https://github.com/jspm/jspm-core/issues/4, +1\'s are appreciated!' : ' in the browser'));
 }
 
+var builtinModules = [
+  'buffer',
+  'child_process',
+  'cluster',
+  'console',
+  'constants',
+  'crypto',
+  'dgram',
+  'dns',
+  'domain',
+  'events',
+  'fs',
+  'http',
+  'https',
+  'module',
+  'net',
+  'os',
+  'path',
+  'process',
+  'punycode',
+  'querystring',
+  'readline',
+  'repl',
+  'stream',
+  'string_decoder',
+  'sys',
+  'timers',
+  'tls',
+  'tty',
+  'url',
+  'util',
+  'vm',
+  'zlib'
+];
+
 export default {
-  builtinModules: null,
+  builtinModules: builtinModules,
   _cache: null,
   _pathCache: null,
   _extensions: null,
@@ -25,13 +60,13 @@ export default {
   SourceMap: unimplemented
 };
 
-export var builtinModules = null,
-  _cache = null,
+export var _cache = null,
   _pathCache = null,
   _extensions = null,
   globalPaths = null;
 
 export {
+  builtinModules,
   unimplemented as _debug,
   unimplemented as _findPath,
   unimplemented as _nodeModulePaths,
