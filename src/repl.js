@@ -16,7 +16,7 @@ export default {
 export var _builtinLibs = null,
   REPL_MODE_SLOPPY = null,
   REPL_MODE_STRICT = null,
-  repl = null,
+  repl = null;
 
 export {
   unimplemented as writer,
