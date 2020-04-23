@@ -71,7 +71,17 @@
     "./src/url.js": "./nodelibs/url.js",
     "./src/util.js": "./nodelibs/util.js",
     "./src/vm.js": "./nodelibs/vm.js",
-    "./src/zlib.js": "./nodelibs/zlib.js"
+    "./src/zlib.js": "./nodelibs/zlib.js",
+    "./src/child_process.js": "./nodelibs/child_process.js",
+    "./src/cluster.js": "./nodelibs/cluster.js",
+    "./src/dgram.js": "./nodelibs/dgram.js",
+    "./src/dns.js": "./nodelibs/dns.js",
+    "./src/fs.js": "./nodelibs/fs.js",
+    "./src/module.js": "./nodelibs/module.js",
+    "./src/net.js": "./nodelibs/net.js",
+    "./src/readline.js": "./nodelibs/readline.js",
+    "./src/repl.js": "./nodelibs/repl.js",
+    "./src/tls.js": "./nodelibs/tls.js"
   },
   "scopes": {
     "https://ga.jspm.dev/npm:asn1.js@4.10.1/": {
