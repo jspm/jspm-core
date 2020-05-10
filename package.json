@@ -17,7 +17,7 @@
     "./nodelibs/assert": "./nodelibs/assert.js",
     "./nodelibs/buffer": "./nodelibs/buffer.js",
     "./nodelibs/child_process": "./nodelibs/child_process.js",
-    "./nodelibs/cluser": "./nodelibs/cluser.js",
+    "./nodelibs/cluster": "./nodelibs/cluster.js",
     "./nodelibs/console": "./nodelibs/console.js",
     "./nodelibs/constants": "./nodelibs/constants.js",
     "./nodelibs/crypto": "./nodelibs/crypto.js",
