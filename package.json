@@ -1,12 +1,11 @@
 {
   "name": "@jspm/core",
-  "version": "2.0.0-beta.6",
+  "version": "2.0.0-beta.7",
   "description": "jspm core libraries",
   "author": "Guy Bedford",
   "license": "Apache 2.0",
   "files": [
-    "assets",
-    "nodelibs/*.js"
+    "nodelibs"
   ],
   "scripts": {
     "build": "jspm build -c -d nodelibs -o jspm.importmap src/*"
@@ -50,9 +49,6 @@
     "./nodelibs/url": "./nodelibs/url.js",
     "./nodelibs/util": "./nodelibs/util.js",
     "./nodelibs/vm": "./nodelibs/vm.js",
-    "./nodelibs/zlib": "./nodelibs/zlib.js",
-    "./public/": "./assets/",
-    "./public/sub/": null,
-    "./public/sub/secret.html": "./assets/sub/secret.html"
+    "./nodelibs/zlib": "./nodelibs/zlib.js"
   }
 }
