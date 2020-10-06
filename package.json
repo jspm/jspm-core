@@ -1,14 +1,16 @@
 {
-  "name": "@jspm/core",
-  "version": "1.1.1",
-  "description": "jspm core libraries",
-  "author": "Guy Bedford",
-  "license": "Apache 2.0",
-  "files": [
-    "nodelibs/*.js"
-  ],
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "build": "jspm build -c -d nodelibs -o jspm.importmap src/*"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
 }
