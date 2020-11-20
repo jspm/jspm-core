@@ -1,5 +1,5 @@
 function unimplemented () {
-  throw new Error('Node.js fs promises module is not supported by jspm core in the browser'));
+  throw new Error('Node.js fs promises module is not supported by jspm core in the browser');
 }
 
 var promises = {

@@ -1,0 +1,37 @@
+{
+  "name": "@jspm/core",
+  "version": "2.0.0-beta.8",
+  "description": "jspm core libraries",
+  "author": "Guy Bedford",
+  "license": "Apache 2.0",
+  "files": [
+    "nodelibs",
+    "nodelibs-deno"
+  ],
+  "type": "module",
+  "exports": {
+    "./nodelibs/*": {
+      "deno": "./nodelibs-deno/*.js",
+      "default": "./nodelibs/*.js"
+    },
+    "./nodelibs/chunk-*": null,
+    "./nodelibs/assert": "./nodelibs/assert.js",
+    "./nodelibs/child_process": "./nodelibs/child_process.js",
+    "./nodelibs/events": "./nodelibs/events.js",
+    "./nodelibs/fs/promises": {
+      "deno": "./nodelibs-deno/fs-promises.js",
+      "default": "./nodelibs/fs-promises.js"
+    },
+    "./nodelibs/module": "./nodelibs/module.js",
+    "./nodelibs/path": "./nodelibs/path.js",
+    "./nodelibs/process": {
+      "deno": "./nodelibs-deno/process.js",
+      "production": "./nodelibs/process-production.js",
+      "default": "./nodelibs/process.js"
+    },
+    "./nodelibs/readline": "./nodelibs/readline.js",
+    "./nodelibs/stream": "./nodelibs/stream.js",
+    "./nodelibs/url": "./nodelibs/url.js",
+    "./nodelibs/util": "./nodelibs/util.js"
+  }
+}
