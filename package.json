@@ -31,28 +31,39 @@
     "vm-browserify": "^1.1.2"
   },
   "exports": {
-    "./nodelibs/*": {
-      "deno": "./nodelibs-deno/*.ts",
-      "default": "./nodelibs/*.js"
+    "./nodelibs/buffer": {
+      "deno": "./nodelibs-deno/buffer.js",
+      "default": "./nodelibs/buffer.js"
     },
-    "./nodelibs/_*": null,
-    "./nodelibs/assert": "./nodelibs/assert.js",
-    "./nodelibs/child_process": "./nodelibs/child_process.js",
-    "./nodelibs/events": "./nodelibs/events.js",
+    "./nodelibs/crypto": {
+      "deno": "./nodelibs-deno/crypto.js",
+      "default": "./nodelibs/crypto.js"
+    },
+    "./nodelibs/fs": {
+      "deno": "./nodelibs-deno/fs.js",
+      "default": "./nodelibs/fs.js"
+    },
     "./nodelibs/fs/promises": {
-      "deno": "./nodelibs-deno/fs-promises.ts",
+      "deno": "./nodelibs-deno/fs-promises.js",
       "default": "./nodelibs/fs-promises.js"
     },
-    "./nodelibs/module": "./nodelibs/module.js",
-    "./nodelibs/path": "./nodelibs/path.js",
+    "./nodelibs/os": {
+      "deno": "./nodelibs-deno/os.js",
+      "default": "./nodelibs/os.js"
+    },
     "./nodelibs/process": {
-      "deno": "./nodelibs-deno/process.ts",
+      "deno": "./nodelibs-deno/process.js",
       "production": "./nodelibs/process-production.js",
       "default": "./nodelibs/process.js"
     },
-    "./nodelibs/readline": "./nodelibs/readline.js",
-    "./nodelibs/stream": "./nodelibs/stream.js",
-    "./nodelibs/url": "./nodelibs/url.js",
-    "./nodelibs/util": "./nodelibs/util.js"
+    "./nodelibs/timers": {
+      "deno": "./nodelibs-deno/timers.js",
+      "default": "./nodelibs/timers.js"
+    },
+    "./nodelibs/tty": {
+      "deno": "./nodelibs-deno/tty.js",
+      "default": "./nodelibs/tty.js"
+    },
+    "./nodelibs/*": "./nodelibs/*.js"
   }
 }
