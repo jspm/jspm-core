@@ -1,1 +1,4 @@
-import r from'./events.js';var t={},e=t=function(){var t=r,e={};return e.createDomain=e.create=function(){var r=new t.EventEmitter;function e(t){r.emit("error",t);}return r.add=function(r){r.on("error",e);},r.remove=function(r){r.removeListener("error",e);},r.bind=function(r){return function(){var t=Array.prototype.slice.call(arguments);try{r.apply(null,t);}catch(r){e(r);}}},r.intercept=function(r){return function(t){if(t)e(t);else {var n=Array.prototype.slice.call(arguments,1);try{r.apply(null,n);}catch(t){e(t);}}}},r.run=function(r){try{r();}catch(r){e(r);}return this},r.dispose=function(){return this.removeAllListeners(),this},r.enter=r.exit=function(){return this},r},e}.call(t);var create=e.create;var createDomain=e.createDomain;export default e;export{create,createDomain};
+import domain from 'domain-browser';
+export default domain;
+export var create = domain.create;
+export var createDomain = domain.createDomain;

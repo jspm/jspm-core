@@ -1,54 +1,58 @@
 {
   "name": "@jspm/core",
-  "version": "2.0.0-beta.7",
-  "description": "jspm core libraries",
-  "author": "Guy Bedford",
-  "license": "Apache 2.0",
-  "files": [
-    "nodelibs"
-  ],
   "scripts": {
-    "build": "jspm build -c -d nodelibs -o jspm.importmap src/*"
+    "build": "npm run build-nodelibs && npm run build-nodelibs-deno",
+    "build-nodelibs": "jspm build -ic -d dist/nodelibs ./nodelibs/@empty.dew.js ./nodelibs/dgram.js ./nodelibs/os.js ./nodelibs/sys.js ./nodelibs/@empty.js ./nodelibs/dns.js ./nodelibs/path.js ./nodelibs/timers.js ./nodelibs/domain.js process-./nodelibs/production.js ./nodelibs/tls.js ./nodelibs/assert.js ./nodelibs/events.js ./nodelibs/process.js ./nodelibs/tty.js ./nodelibs/buffer.js fs-./nodelibs/promises.js ./nodelibs/punycode.js ./nodelibs/url.js ./nodelibs/child_process.js ./nodelibs/fs.js ./nodelibs/querystring.js ./nodelibs/util.js ./nodelibs/cluster.js ./nodelibs/http.js ./nodelibs/readline.js ./nodelibs/vm.js ./nodelibs/console.js ./nodelibs/https.js ./nodelibs/repl.js ./nodelibs/zlib.js ./nodelibs/constants.js ./nodelibs/module.js ./nodelibs/stream.js ./nodelibs/crypto.js ./nodelibs/net.js ./nodelibs/string_decoder.js",
+    "build-nodelibs-deno": "jspm build -ic -d dist/nodelibs-deno ./nodelibs-deno/@empty.dew.js ./nodelibs-deno/dgram.js ./nodelibs-deno/os.js ./nodelibs-deno/sys.js ./nodelibs-deno/@empty.js ./nodelibs-deno/dns.js ./nodelibs-deno/path.js ./nodelibs-deno/timers.js ./nodelibs-deno/domain.js process-./nodelibs-deno/production.js ./nodelibs-deno/tls.js ./nodelibs-deno/assert.js ./nodelibs-deno/events.js ./nodelibs-deno/process.js ./nodelibs-deno/tty.js ./nodelibs-deno/buffer.js fs-./nodelibs-deno/promises.js ./nodelibs-deno/punycode.js ./nodelibs-deno/url.js ./nodelibs-deno/child_process.js ./nodelibs-deno/fs.js ./nodelibs-deno/querystring.js ./nodelibs-deno/util.js ./nodelibs-deno/cluster.js ./nodelibs-deno/http.js ./nodelibs-deno/readline.js ./nodelibs-deno/vm.js ./nodelibs-deno/console.js ./nodelibs-deno/https.js ./nodelibs-deno/repl.js ./nodelibs-deno/zlib.js ./nodelibs-deno/constants.js ./nodelibs-deno/module.js ./nodelibs-deno/stream.js ./nodelibs-deno/crypto.js ./nodelibs-deno/net.js ./nodelibs-deno/string_decoder.js"
   },
   "type": "module",
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.2",
+    "console-browserify": "^1.2.0",
+    "constants-browserify": "^1.0.0",
+    "crypto-browserify": "^3.12.0",
+    "domain-browser": "^4.19.0",
+    "events": "^3.2.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "punycode": "^2.1.1",
+    "querystring": "^0.2.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.1.1",
+    "string_decoder": "^1.3.0",
+    "timers-browserify": "^2.0.12",
+    "tty-browserify": "^0.0.1",
+    "url": "^0.11.0",
+    "util": "^0.12.3",
+    "vm-browserify": "^1.1.2"
+  },
   "exports": {
-    "./nodelibs/@empty": "./nodelibs/@empty.js",
-    "./nodelibs/@empty.dew": "./nodelibs/@empty.dew.js",
+    "./nodelibs/*": {
+      "deno": "./nodelibs-deno/*.ts",
+      "default": "./nodelibs/*.js"
+    },
+    "./nodelibs/_*": null,
     "./nodelibs/assert": "./nodelibs/assert.js",
-    "./nodelibs/buffer": "./nodelibs/buffer.js",
     "./nodelibs/child_process": "./nodelibs/child_process.js",
-    "./nodelibs/cluster": "./nodelibs/cluster.js",
-    "./nodelibs/console": "./nodelibs/console.js",
-    "./nodelibs/constants": "./nodelibs/constants.js",
-    "./nodelibs/crypto": "./nodelibs/crypto.js",
-    "./nodelibs/dgram": "./nodelibs/dgram.js",
-    "./nodelibs/dns": "./nodelibs/dns.js",
-    "./nodelibs/domain": "./nodelibs/domain.js",
     "./nodelibs/events": "./nodelibs/events.js",
-    "./nodelibs/fs": "./nodelibs/fs.js",
-    "./nodelibs/http": "./nodelibs/http.js",
-    "./nodelibs/https": "./nodelibs/https.js",
+    "./nodelibs/fs/promises": {
+      "deno": "./nodelibs-deno/fs-promises.ts",
+      "default": "./nodelibs/fs-promises.js"
+    },
     "./nodelibs/module": "./nodelibs/module.js",
-    "./nodelibs/net": "./nodelibs/net.js",
-    "./nodelibs/os": "./nodelibs/os.js",
     "./nodelibs/path": "./nodelibs/path.js",
     "./nodelibs/process": {
+      "deno": "./nodelibs-deno/process.ts",
       "production": "./nodelibs/process-production.js",
       "default": "./nodelibs/process.js"
     },
-    "./nodelibs/punycode": "./nodelibs/punycode.js",
-    "./nodelibs/querystring": "./nodelibs/querystring.js",
     "./nodelibs/readline": "./nodelibs/readline.js",
-    "./nodelibs/repl": "./nodelibs/repl.js",
     "./nodelibs/stream": "./nodelibs/stream.js",
-    "./nodelibs/string_decoder": "./nodelibs/string_decoder.js",
-    "./nodelibs/sys": "./nodelibs/sys.js",
-    "./nodelibs/timers": "./nodelibs/timers.js",
-    "./nodelibs/tls": "./nodelibs/tls.js",
-    "./nodelibs/tty": "./nodelibs/tty.js",
     "./nodelibs/url": "./nodelibs/url.js",
-    "./nodelibs/util": "./nodelibs/util.js",
-    "./nodelibs/vm": "./nodelibs/vm.js",
-    "./nodelibs/zlib": "./nodelibs/zlib.js"
+    "./nodelibs/util": "./nodelibs/util.js"
   }
 }
