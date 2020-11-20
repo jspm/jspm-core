@@ -10,10 +10,7 @@
   ],
   "type": "module",
   "exports": {
-    "./nodelibs/*": {
-      "deno": "./nodelibs-deno/*.js",
-      "default": "./nodelibs/*.js"
-    },
+    "./nodelibs/*": "./nodelibs/*.js",
     "./nodelibs/chunk-*": null,
     "./nodelibs/assert": "./nodelibs/assert.js",
     "./nodelibs/child_process": "./nodelibs/child_process.js",
