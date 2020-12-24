@@ -32,36 +32,36 @@
   },
   "exports": {
     "./nodelibs/buffer": {
-      "deno": "./nodelibs-deno/buffer.js",
+      "deno": "./nodelibs-deno/buffer.ts",
       "default": "./nodelibs/buffer.js"
     },
     "./nodelibs/crypto": {
-      "deno": "./nodelibs-deno/crypto.js",
+      "deno": "./nodelibs-deno/crypto.ts",
       "default": "./nodelibs/crypto.js"
     },
     "./nodelibs/fs": {
-      "deno": "./nodelibs-deno/fs.js",
+      "deno": "./nodelibs-deno/fs.ts",
       "default": "./nodelibs/fs.js"
     },
     "./nodelibs/fs/promises": {
-      "deno": "./nodelibs-deno/fs-promises.js",
+      "deno": "./nodelibs-deno/fs-promises.ts",
       "default": "./nodelibs/fs-promises.js"
     },
     "./nodelibs/os": {
-      "deno": "./nodelibs-deno/os.js",
+      "deno": "./nodelibs-deno/os.ts",
       "default": "./nodelibs/os.js"
     },
     "./nodelibs/process": {
-      "deno": "./nodelibs-deno/process.js",
+      "deno": "./nodelibs-deno/process.ts",
       "production": "./nodelibs/process-production.js",
       "default": "./nodelibs/process.js"
     },
     "./nodelibs/timers": {
-      "deno": "./nodelibs-deno/timers.js",
+      "deno": "./nodelibs-deno/timers.ts",
       "default": "./nodelibs/timers.js"
     },
     "./nodelibs/tty": {
-      "deno": "./nodelibs-deno/tty.js",
+      "deno": "./nodelibs-deno/tty.ts",
       "default": "./nodelibs/tty.js"
     },
     "./nodelibs/*": "./nodelibs/*.js"

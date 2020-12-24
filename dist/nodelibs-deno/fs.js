@@ -365,10 +365,16 @@ function mkdirSync(path, options) {
     throw new Deno.errors.InvalidData("invalid recursive option , must be a boolean");
   }
 
-  Deno.mkdirSync(path, {
-    recursive,
-    mode
-  });
+  try {
+    Deno.mkdirSync(path, {
+      recursive,
+      mode
+    });
+  }
+  catch (err) {
+    console.log(JSON.stringify(err, null, 2));
+    throw err;
+  }
 }
 
 // Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.

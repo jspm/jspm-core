@@ -68,5 +68,16 @@ export function mkdirSync(path: string | URL, options?: MkdirOptions): void {
     );
   }
 
-  Deno.mkdirSync(path, { recursive, mode });
+  try {
+    Deno.mkdirSync(path, { recursive, mode });
+  }
+  catch (e) {
+    switch (e.name) {
+      case 'NotFound':
+        e.code = 'ENOENT';
+        throw e;
+      default:
+        throw e;
+    }
+  }
 }

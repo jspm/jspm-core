@@ -15,6 +15,10 @@
     "./nodelibs/assert": "./nodelibs/assert.js",
     "./nodelibs/child_process": "./nodelibs/child_process.js",
     "./nodelibs/events": "./nodelibs/events.js",
+    "./nodelibs/fs": {
+      "deno": "./nodelibs-deno/fs.js",
+      "default": "./nodelibs/fs.js"
+    },
     "./nodelibs/fs/promises": {
       "deno": "./nodelibs-deno/fs-promises.js",
       "default": "./nodelibs/fs-promises.js"
