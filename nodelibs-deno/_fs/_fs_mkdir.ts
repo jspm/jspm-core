@@ -73,6 +73,9 @@ export function mkdirSync(path: string | URL, options?: MkdirOptions): void {
   }
   catch (e) {
     switch (e.name) {
+      case 'AlreadyExists':
+        e.code = 'EEXIST';
+        throw e;
       case 'NotFound':
         e.code = 'ENOENT';
         throw e;

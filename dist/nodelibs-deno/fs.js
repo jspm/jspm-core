@@ -371,9 +371,17 @@ function mkdirSync(path, options) {
       mode
     });
   }
-  catch (err) {
-    console.log(JSON.stringify(err, null, 2));
-    throw err;
+  catch (e) {
+    switch (e.name) {
+      case 'AlreadyExists':
+        e.code = 'EEXIST';
+        throw e;
+      case 'NotFound':
+        e.code = 'ENOENT';
+        throw e;
+      default:
+        throw e;
+    }
   }
 }
 
