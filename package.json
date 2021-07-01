@@ -31,39 +31,16 @@
     "vm-browserify": "^1.1.2"
   },
   "exports": {
-    "./nodelibs/buffer": {
-      "deno": "./nodelibs-deno/buffer.ts",
-      "default": "./nodelibs/buffer.js"
-    },
-    "./nodelibs/crypto": {
-      "deno": "./nodelibs-deno/crypto.ts",
-      "default": "./nodelibs/crypto.js"
-    },
-    "./nodelibs/fs": {
-      "deno": "./nodelibs-deno/fs.ts",
-      "default": "./nodelibs/fs.js"
-    },
-    "./nodelibs/fs/promises": {
-      "deno": "./nodelibs-deno/fs-promises.ts",
-      "default": "./nodelibs/fs-promises.js"
-    },
-    "./nodelibs/os": {
-      "deno": "./nodelibs-deno/os.ts",
-      "default": "./nodelibs/os.js"
-    },
-    "./nodelibs/process": {
-      "deno": "./nodelibs-deno/process.ts",
-      "production": "./nodelibs/process-production.js",
-      "default": "./nodelibs/process.js"
-    },
-    "./nodelibs/timers": {
-      "deno": "./nodelibs-deno/timers.ts",
-      "default": "./nodelibs/timers.js"
-    },
-    "./nodelibs/tty": {
-      "deno": "./nodelibs-deno/tty.ts",
-      "default": "./nodelibs/tty.js"
-    },
-    "./nodelibs/*": "./nodelibs/*.js"
+    "./nodelibs/async_hooks": "./nodelibs/async_hooks.js",
+    "./nodelibs/dns": "./nodelibs/dns.js",
+    "./nodelibs/http": "./nodelibs/http.js",
+    "./nodelibs/https": "./nodelibs/https.js",
+    "./nodelibs/net": "./nodelibs/net.js",
+    "./nodelibs/tls": "./nodelibs/tls.js",
+    "./nodelibs/zlib": "./nodelibs/zlib.js",
+    "./nodelibs/*": {
+      "deno": "./nodelibs-deno/*.ts",
+      "default": "./nodelibs/*.js"
+    }
   }
 }

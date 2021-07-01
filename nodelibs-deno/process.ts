@@ -1,6 +1,6 @@
 // Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
-import { notImplemented } from "./_utils.ts";
-import { fileURLToPath } from '../nodelibs/url.js';
+import { notImplemented } from 'https://deno.land/std@0.100.0/node/_utils.ts';
+import { fileURLToPath } from 'https://deno.land/std@0.100.0/node/url.ts';
 
 /** https://nodejs.org/api/process.html#process_process_arch */
 export const arch = Deno.build.arch;

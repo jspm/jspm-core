@@ -1,3 +1,2 @@
-export * from './_tty.js';
-import * as m from './_tty.js';
-export default m;
+export * from 'https://deno.land/std@0.100.0/node/tty.ts';
+export { default } from 'https://deno.land/std@0.100.0/node/tty.ts';
