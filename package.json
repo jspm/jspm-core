@@ -1,9 +1,7 @@
 {
   "name": "@jspm/core",
   "scripts": {
-    "build": "npm run build-nodelibs && npm run build-nodelibs-deno",
-    "build-nodelibs": "jspm build -ic -d dist/nodelibs ./nodelibs/@empty.dew.js ./nodelibs/dgram.js ./nodelibs/os.js ./nodelibs/sys.js ./nodelibs/@empty.js ./nodelibs/dns.js ./nodelibs/path.js ./nodelibs/timers.js ./nodelibs/domain.js ./nodelibs/process-production.js ./nodelibs/tls.js ./nodelibs/assert.js ./nodelibs/events.js ./nodelibs/process.js ./nodelibs/tty.js ./nodelibs/buffer.js ./nodelibs/fs-promises.js ./nodelibs/punycode.js ./nodelibs/url.js ./nodelibs/child_process.js ./nodelibs/fs.js ./nodelibs/querystring.js ./nodelibs/util.js ./nodelibs/cluster.js ./nodelibs/http.js ./nodelibs/readline.js ./nodelibs/vm.js ./nodelibs/console.js ./nodelibs/https.js ./nodelibs/repl.js ./nodelibs/zlib.js ./nodelibs/constants.js ./nodelibs/module.js ./nodelibs/stream.js ./nodelibs/crypto.js ./nodelibs/net.js ./nodelibs/string_decoder.js",
-    "build-nodelibs-deno": "jspm build -ic -d dist/nodelibs-deno ./nodelibs-deno/buffer.ts ./nodelibs-deno/crypto.ts ./nodelibs-deno/fs-promises.ts ./nodelibs-deno/fs.ts ./nodelibs-deno/os.ts ./nodelibs-deno/process.ts ./nodelibs-deno/timers.ts ./nodelibs-deno/tty.ts"
+    "build": "rollup -c"
   },
   "type": "module",
   "devDependencies": {
@@ -21,6 +19,8 @@
     "process": "^0.11.10",
     "punycode": "^2.1.1",
     "querystring": "^0.2.0",
+    "rollup": "^2.52.6",
+    "rollup-plugin-jspm": "^1.1.0",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.1.1",
     "string_decoder": "^1.3.0",

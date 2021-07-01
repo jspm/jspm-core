@@ -1,9 +1,9 @@
 import jspmPlugin from 'rollup-plugin-jspm';
 
 const input = {
-  '@empty': 'build/@empty.js',
-  '@empty.dew': 'build/@empty.dew.js',
-  assert: 'assert',
+  '@empty': './build/@empty.js',
+  '@empty.dew': './build/@empty.dew.js',
+  assert: './node_modules/assert',
   buffer: 'buffer',
   console: 'console',
   constants: 'constants',
@@ -15,12 +15,12 @@ const input = {
   os: 'os',
   path: 'path',
   process: 'process',
-  'process-production': 'build/process-production.js',
+  'process-production': './build/process-production.js',
   punycode: 'punycode',
   querystring: 'querystring',
   stream: 'stream',
   string_decoder: 'string_decoder',
-  sys: 'build/sys.js',
+  sys: 'util',
   timers: 'timers',
   tty: 'tty',
   url: 'url',
