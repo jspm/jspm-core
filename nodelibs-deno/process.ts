@@ -117,10 +117,15 @@ export const process = {
     return {
       fd: Deno.stdout.rid,
       get columns (): number {
-        return Deno.consoleSize(Deno.stdout.rid).columns;
+        // Deno doesn't like this being called twice...
+        if (!consoleSize)
+          consoleSize = Deno.consoleSize(Deno.stdout.rid);
+        return consoleSize.columns;
       },
       get rows (): number {
-        return Deno.consoleSize(Deno.stdout.rid).rows;
+        if (!consoleSize)
+          consoleSize = Deno.consoleSize(Deno.stdout.rid);
+        return consoleSize.rows;
       },
       get isTTY(): boolean {
         return Deno.isatty(this.fd);
@@ -165,6 +170,8 @@ export const process = {
   },
   nextTick,
 };
+
+let consoleSize: { columns: number, rows: number } | undefined;
 
 /**
  * https://nodejs.org/api/process.html#process_process_argv
