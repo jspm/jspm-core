@@ -1,3 +1,1 @@
-import string_decoder from 'string_decoder';
-export default string_decoder;
-export var StringDecoder = string_decoder.StringDecoder;
+import'./buffer.js';import {s as string_decoder}from'./chunk-6e68c801.js';var StringDecoder=string_decoder.StringDecoder;export default string_decoder;export{StringDecoder};
