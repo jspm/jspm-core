@@ -36,6 +36,7 @@
     "./nodelibs/http": "./nodelibs/http.js",
     "./nodelibs/https": "./nodelibs/https.js",
     "./nodelibs/net": "./nodelibs/net.js",
+    "./nodelibs/readline": "./nodelibs/readline.js",
     "./nodelibs/tls": "./nodelibs/tls.js",
     "./nodelibs/zlib": "./nodelibs/zlib.js",
     "./nodelibs/*": {
