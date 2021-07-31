@@ -46,23 +46,23 @@
     "./nodelibs/tls": "./nodelibs/tls.js",
     "./nodelibs/zlib": "./nodelibs/zlib.js",
     "./nodelibs/fs/promises": {
-      "node": "./nodelibs/deno/fs-promises.js",
       "deno": "./nodelibs/deno/fs-promises.ts",
+      "node": "./nodelibs/deno/fs-promises.js",
       "default": "./nodelibs/browser/fs-promises.js"
     },
     "./nodelibs/process": {
       "production": {
+        "deno": "./nodelibs/deno/process-production.ts",
         "node": "./nodelibs/node/process-production.js",
-        "deno": "./nodelibs/deno/process-production.js",
         "default": "./nodelibs/browser/process-production.js"
       },
-      "node": "./nodelibs/node/process.js",
       "deno": "./nodelibs/deno/process.ts",
+      "node": "./nodelibs/node/process.js",
       "default": "./nodelibs/browser/process.js"
     },
     "./nodelibs/*": {
-      "node": "./nodelibs/node/*.js",
       "deno": "./nodelibs/deno/*.ts",
+      "node": "./nodelibs/node/*.js",
       "default": "./nodelibs/browser/*.js"
     }
   }
