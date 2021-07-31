@@ -15488,30 +15488,35 @@ function dew$W() {
 }
 
 var _package = {
-  "_from": "elliptic@^6.5.3",
+  "_args": [
+    [
+      "elliptic@6.5.4",
+      "C:\\Users\\guybe\\Projects\\rollup-plugin-jspm"
+    ]
+  ],
+  "_from": "elliptic@6.5.4",
   "_id": "elliptic@6.5.4",
   "_inBundle": false,
   "_integrity": "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==",
-  "_location": "/elliptic",
+  "_location": "/@jspm/core/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "elliptic@^6.5.3",
+    "raw": "elliptic@6.5.4",
     "name": "elliptic",
     "escapedName": "elliptic",
-    "rawSpec": "^6.5.3",
+    "rawSpec": "6.5.4",
     "saveSpec": null,
-    "fetchSpec": "^6.5.3"
+    "fetchSpec": "6.5.4"
   },
   "_requiredBy": [
-    "/browserify-sign",
-    "/create-ecdh"
+    "/@jspm/core/browserify-sign",
+    "/@jspm/core/create-ecdh"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.4.tgz",
-  "_shasum": "da37cebd31e79a1367e941b592ed1fbebd58abbb",
-  "_spec": "elliptic@^6.5.3",
-  "_where": "C:\\Users\\guybe\\Projects\\generator\\jspm-core\\node_modules\\browserify-sign",
+  "_spec": "6.5.4",
+  "_where": "C:\\Users\\guybe\\Projects\\rollup-plugin-jspm",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -15519,7 +15524,6 @@ var _package = {
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bn.js": "^4.11.9",
     "brorand": "^1.1.0",
@@ -15529,7 +15533,6 @@ var _package = {
     "minimalistic-assert": "^1.0.1",
     "minimalistic-crypto-utils": "^1.0.1"
   },
-  "deprecated": false,
   "description": "EC cryptography",
   "devDependencies": {
     "brfs": "^2.0.2",

@@ -1,3 +1,2 @@
-export * from './_fs/promises/mod.ts';
-import * as promises from './_fs/promises/mod.ts';
-export default promises;
+export * from 'https://deno.land/std@0.100.0/node/fs-promises.ts';
+export { default } from 'https://deno.land/std@0.100.0/node/fs-promises.ts';

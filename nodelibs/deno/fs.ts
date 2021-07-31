@@ -1,4 +1,10 @@
-// Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
-export * from "./_fs.ts";
-import * as m from "./_fs.ts";
-export default m;
+import { notImplemented } from 'https://deno.land/std@0.100.0/node/_utils.ts';
+export * from 'https://deno.land/std@0.100.0/node/fs.ts';
+import fs from 'https://deno.land/std@0.100.0/node/fs.ts';
+
+export function writev () {
+  notImplemented('fs.writev');
+}
+fs.writev = writev;
+
+export default fs;

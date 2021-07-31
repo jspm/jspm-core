@@ -1,4 +1,4 @@
-import rollupPluginJspm from '@jspm/plugin-rollup';
+import rollupPluginJspm from '../../rollup-plugin-jspm/jspm-rollup.js';
 import { readdirSync } from 'fs';
 import rimraf from 'rimraf';
 

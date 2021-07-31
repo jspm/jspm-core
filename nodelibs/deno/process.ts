@@ -1,6 +1,6 @@
 // Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
-import { notImplemented } from "./_utils.ts";
-import { fileURLToPath } from '../nodelibs/url.js';
+import { notImplemented } from 'https://deno.land/std@0.100.0/node/_utils.ts';
+import { fileURLToPath } from 'https://deno.land/std@0.100.0/node/url.ts';
 
 /** https://nodejs.org/api/process.html#process_process_arch */
 export const arch = Deno.build.arch;
@@ -21,11 +21,26 @@ export const pid = Deno.pid;
 export const platform = Deno.build.os === "windows" ? "win32" : Deno.build.os;
 
 /** https://nodejs.org/api/process.html#process_process_version */
-export const version = `v${Deno.version.deno}`;
+export const version = `v14.17.3`;
 
 /** https://nodejs.org/api/process.html#process_process_versions */
 export const versions = {
-  node: Deno.version.deno,
+  node: '14.17.3',
+  /*
+    uv
+    zlib
+    brotli
+    ares
+    modules
+    nghttp2
+    napi
+    llhttp
+    openssl
+    cldr
+    icu
+    tz
+    unicode
+  */
   ...Deno.version,
 };
 
