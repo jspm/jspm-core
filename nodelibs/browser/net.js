@@ -1,5 +1,5 @@
 function unimplemented () {
-  throw new Error('Node.js net module is not supported by JSPM core in the browser');
+  throw new Error('Node.js net module is not supported by JSPM core outside of Node.js');
 }
 
 var net = {
