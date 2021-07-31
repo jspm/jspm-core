@@ -1,5 +1,5 @@
 function unimplemented () {
-  throw new Error('Node.js dns module is not supported by jspm core' + (typeof Deno !== 'undefined' ? '. Deno support here is tracking in https://github.com/jspm/jspm-core/issues/4, +1\'s are appreciated!' : ' in the browser'));
+  throw new Error('Node.js dns is not supported by JSPM core in the browser');
 }
 
 var promises = {
