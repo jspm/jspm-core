@@ -13,6 +13,8 @@ const input = Object.fromEntries(
 const jspmPlugin = rollupPluginJspm({
   env: ['browser'],
   inputMap: {
+    // TODO: ensure these custom imports always override
+    //       so scopes below are not needed
     imports: input,
     scopes: {
       './node_modules/https-browserify/': { http: input.http },

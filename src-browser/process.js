@@ -1,4 +1,4 @@
-import process from '../node_modules/process/index.js';
+import process from '../node_modules/process/browser.js';
 export default process;
 export var addListener = process.addListener;
 export var argv = process.argv;
