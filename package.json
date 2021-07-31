@@ -38,6 +38,13 @@
     "./nodelibs/@empty": "./nodelibs/@empty.js",
     "./nodelibs/@empty.dew": "./nodelibs/@empty.dew.js",
     "./nodelibs/chunk-*": null,
+    "./nodelibs/dns": "./nodelibs/dns.js",
+    "./nodelibs/http": "./nodelibs/http.js",
+    "./nodelibs/https": "./nodelibs/https.js",
+    "./nodelibs/net": "./nodelibs/net.js",
+    "./nodelibs/readline": "./nodelibs/readline.js",
+    "./nodelibs/tls": "./nodelibs/tls.js",
+    "./nodelibs/zlib": "./nodelibs/zlib.js",
     "./nodelibs/fs/promises": {
       "node": "./nodelibs/deno/fs-promises.js",
       "deno": "./nodelibs/deno/fs-promises.ts",

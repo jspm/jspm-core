@@ -1,4 +1,5 @@
-// Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
-export * from "./_buffer.ts";
-import * as m from "./_buffer.ts";
-export default m;
+export * from 'https://deno.land/std@0.100.0/node/buffer.ts';
+import { default as buffer } from 'https://deno.land/std@0.100.0/node/buffer.ts';
+export const kMaxLength = 4294967296;
+buffer.kMaxLength = kMaxLength;
+export default buffer;
