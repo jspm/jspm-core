@@ -1,9 +1,10 @@
 {
   "name": "@jspm/core",
+  "version": "2.0.0-beta.20",
   "scripts": {
     "build": "npm run build-nodelibs && npm run build-nodelibs-deno",
     "build-nodelibs": "jspm build -ic -d dist/nodelibs ./nodelibs/@empty.dew.js ./nodelibs/dgram.js ./nodelibs/os.js ./nodelibs/sys.js ./nodelibs/@empty.js ./nodelibs/dns.js ./nodelibs/path.js ./nodelibs/timers.js ./nodelibs/domain.js ./nodelibs/process-production.js ./nodelibs/tls.js ./nodelibs/assert.js ./nodelibs/events.js ./nodelibs/process.js ./nodelibs/tty.js ./nodelibs/buffer.js ./nodelibs/fs-promises.js ./nodelibs/punycode.js ./nodelibs/url.js ./nodelibs/child_process.js ./nodelibs/fs.js ./nodelibs/querystring.js ./nodelibs/util.js ./nodelibs/cluster.js ./nodelibs/http.js ./nodelibs/readline.js ./nodelibs/vm.js ./nodelibs/console.js ./nodelibs/https.js ./nodelibs/repl.js ./nodelibs/zlib.js ./nodelibs/constants.js ./nodelibs/module.js ./nodelibs/stream.js ./nodelibs/crypto.js ./nodelibs/net.js ./nodelibs/string_decoder.js",
-    "build-nodelibs-deno": "jspm build -ic -d dist/nodelibs-deno ./nodelibs-deno/buffer.ts ./nodelibs-deno/crypto.ts ./nodelibs-deno/fs-promises.ts ./nodelibs-deno/fs.ts ./nodelibs-deno/os.ts ./nodelibs-deno/process.ts ./nodelibs-deno/timers.ts ./nodelibs-deno/tty.ts"
+    "build-nodelibs-deno": "jspm build -ic -d dist/nodelibs-deno ./nodelibs/deno/buffer.ts ./nodelibs/deno/crypto.ts ./nodelibs/deno/fs-promises.ts ./nodelibs/deno/fs.ts ./nodelibs/deno/os.ts ./nodelibs/deno/process.ts ./nodelibs/deno/timers.ts ./nodelibs/deno/tty.ts"
   },
   "type": "module",
   "devDependencies": {
@@ -30,40 +31,63 @@
     "util": "^0.12.3",
     "vm-browserify": "^1.1.2"
   },
+  "imports": {
+    "#process": {
+      "node": "./nodelibs/node/process.js",
+      "deno": "./nodelibs/deno/process.ts",
+      "default": "./nodelibs/browser/process.js"
+    }
+  },
   "exports": {
     "./nodelibs/buffer": {
-      "deno": "./nodelibs-deno/buffer.ts",
-      "default": "./nodelibs/buffer.js"
+      "node": "./nodelibs/node/buffer.js",
+      "deno": "./nodelibs/deno/buffer.ts",
+      "default": "./nodelibs/browser/buffer.js"
     },
     "./nodelibs/crypto": {
-      "deno": "./nodelibs-deno/crypto.ts",
-      "default": "./nodelibs/crypto.js"
+      "node": "./nodelibs/node/crypto.js",
+      "deno": "./nodelibs/deno/crypto.ts",
+      "default": "./nodelibs/browser/crypto.js"
     },
     "./nodelibs/fs": {
-      "deno": "./nodelibs-deno/fs.ts",
-      "default": "./nodelibs/fs.js"
+      "node": "./nodelibs/node/fs.js",
+      "deno": "./nodelibs/deno/fs.ts",
+      "default": "./nodelibs/browser/fs.js"
     },
     "./nodelibs/fs/promises": {
-      "deno": "./nodelibs-deno/fs-promises.ts",
-      "default": "./nodelibs/fs-promises.js"
+      "node": "./nodelibs/deno/fs-promises.js",
+      "deno": "./nodelibs/deno/fs-promises.ts",
+      "default": "./nodelibs/browser/fs-promises.js"
     },
     "./nodelibs/os": {
-      "deno": "./nodelibs-deno/os.ts",
-      "default": "./nodelibs/os.js"
+      "node": "./nodelibs/node/os.js",
+      "deno": "./nodelibs/deno/os.ts",
+      "default": "./nodelibs/browser/os.js"
     },
     "./nodelibs/process": {
-      "deno": "./nodelibs-deno/process.ts",
       "production": "./nodelibs/process-production.js",
-      "default": "./nodelibs/process.js"
+      "node": "./nodelibs/node/process.js",
+      "deno": "./nodelibs/deno/process.ts",
+      "default": "./nodelibs/browser/process.js"
     },
     "./nodelibs/timers": {
-      "deno": "./nodelibs-deno/timers.ts",
-      "default": "./nodelibs/timers.js"
+      "node": "./nodelibs/node/timers.js",
+      "deno": "./nodelibs/deno/timers.ts",
+      "default": "./nodelibs/browser/timers.js"
     },
     "./nodelibs/tty": {
-      "deno": "./nodelibs-deno/tty.ts",
-      "default": "./nodelibs/tty.js"
+      "node": "./nodelibs/node/tty.js",
+      "deno": "./nodelibs/deno/tty.ts",
+      "default": "./nodelibs/browser/tty.js"
     },
-    "./nodelibs/*": "./nodelibs/*.js"
+    "./nodelibs/v8": {
+      "node": "./nodelibs/node/v8.js",
+      "deno": "./nodelibs/deno/v8.ts",
+      "default": "./nodelibs/browser/v8.js"
+    },
+    "./nodelibs/*": {
+      "node": "./nodelibs/node/*.js",
+      "default": "./nodelibs/browser/*.js"
+    }
   }
 }
