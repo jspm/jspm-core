@@ -1,7 +1,7 @@
-import './chunk-ff6a5e51.js';
 import { X } from './chunk-13140bc3.js';
-export { X as default } from './chunk-13140bc3.js';
 import './chunk-0f70056b.js';
+
+X._extend;X.callbackify;X.debuglog;X.deprecate;X.format;X.inherits;X.inspect;X.isArray;X.isBoolean;X.isBuffer;X.isDate;X.isError;X.isFunction;X.isNull;X.isNullOrUndefined;X.isNumber;X.isObject;X.isPrimitive;X.isRegExp;X.isString;X.isSymbol;X.isUndefined;X.log;X.promisify;
 
 var _extend = X._extend;
 var callbackify = X.callbackify;
@@ -32,4 +32,4 @@ var types = X.types;
 const TextEncoder = self.TextEncoder;
 const TextDecoder = self.TextDecoder;
 
-export { TextDecoder, TextEncoder, _extend, callbackify, debuglog, deprecate, format, inherits, inspect, isArray, isBoolean, isBuffer, isDate, isError, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isPrimitive, isRegExp, isString, isSymbol, isUndefined, log, promisify, types };
+export { TextDecoder as T, _extend as _, TextEncoder as a, deprecate as b, callbackify as c, debuglog as d, inspect as e, format as f, isArray as g, isBoolean as h, inherits as i, isBuffer as j, isDate as k, isError as l, isFunction as m, isNull as n, isNullOrUndefined as o, promisify as p, isNumber as q, isObject as r, isPrimitive as s, isRegExp as t, isString as u, isSymbol as v, isUndefined as w, log as x, types as y };

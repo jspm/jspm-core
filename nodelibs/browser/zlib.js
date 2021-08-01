@@ -1,12 +1,13 @@
-import { e as e$1 } from './chunk-b5c7359e.js';
+import { b as buffer } from './chunk-5ec93e6c.js';
 import stream from './stream.js';
-import { e as et } from './chunk-70ce19f7.js';
-import { T } from './chunk-debdd147.js';
-import './chunk-bd86cb5d.js';
-import { X } from './chunk-6cc4de3c.js';
-import './chunk-fc3dcdfd.js';
-import './chunk-59a7ef50.js';
+import { e as et } from './chunk-9cb5f142.js';
+import { p as process } from './chunk-5752f882.js';
+import './chunk-ff6a5e51.js';
+import { X } from './chunk-13140bc3.js';
+import './chunk-e4efb04d.js';
+import './chunk-0029504c.js';
 import './util.js';
+import './chunk-0f70056b.js';
 
 var exports$c = {},
     _dewExec$c = false;
@@ -7096,8 +7097,8 @@ var exports$1 = {},
 function dew$1() {
   if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
-  var Buffer = e$1.Buffer;
-  var process = T;
+  var Buffer = buffer.Buffer;
+  var process$1 = process;
 
   /* eslint camelcase: "off" */
   var assert = et;
@@ -7217,7 +7218,7 @@ function dew$1() {
 
 
     var self = this;
-    process.nextTick(function () {
+    process$1.nextTick(function () {
       self._process();
 
       self._after();
@@ -7516,15 +7517,15 @@ var exports = {},
 function dew() {
   if (_dewExec) return exports;
   _dewExec = true;
-  var process = T;
-  var Buffer = e$1.Buffer;
+  var process$1 = process;
+  var Buffer = buffer.Buffer;
   var Transform = stream.Transform;
 
   var binding = dew$1();
 
   var util = X;
   var assert = et.ok;
-  var kMaxLength = e$1.kMaxLength;
+  var kMaxLength = buffer.kMaxLength;
   var kRangeErrorMessage = "Cannot create final Buffer. It would be larger " + "than 0x" + kMaxLength.toString(16) + " bytes"; // zlib doesn't provide these, so kludge them in following the same
   // const naming scheme zlib uses.
 
@@ -7923,7 +7924,7 @@ function dew() {
         }
       });
     } else {
-      process.nextTick(callback);
+      process$1.nextTick(callback);
     }
   };
 
@@ -7949,7 +7950,7 @@ function dew() {
     }
 
     if (ws.ended) {
-      if (callback) process.nextTick(callback);
+      if (callback) process$1.nextTick(callback);
     } else if (ws.ending) {
       if (callback) this.once("end", callback);
     } else if (ws.needDrain) {
@@ -7967,11 +7968,11 @@ function dew() {
   Zlib.prototype.close = function (callback) {
     _close(this, callback);
 
-    process.nextTick(emitCloseNT, this);
+    process$1.nextTick(emitCloseNT, this);
   };
 
   function _close(engine, callback) {
-    if (callback) process.nextTick(callback); // Caller may invoke .close after a zlib error (which will null _handle).
+    if (callback) process$1.nextTick(callback); // Caller may invoke .close after a zlib error (which will null _handle).
 
     if (!engine._handle) return;
 
@@ -8204,5 +8205,4 @@ var inflateSync = zlib.inflateSync;
 var unzip = zlib.unzip;
 var unzipSync = zlib.unzipSync;
 
-export default zlib;
-export { Deflate, DeflateRaw, Gunzip, Gzip, Inflate, InflateRaw, Unzip, Z_BEST_COMPRESSION, Z_BEST_SPEED, Z_BINARY, Z_BLOCK, Z_BUF_ERROR, Z_DATA_ERROR, Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS, Z_DEFLATED, Z_ERRNO, Z_FILTERED, Z_FINISH, Z_FIXED, Z_FULL_FLUSH, Z_HUFFMAN_ONLY, Z_MAX_CHUNK, Z_MAX_LEVEL, Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS, Z_MIN_CHUNK, Z_MIN_LEVEL, Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS, Z_NEED_DICT, Z_NO_COMPRESSION, Z_NO_FLUSH, Z_OK, Z_PARTIAL_FLUSH, Z_RLE, Z_STREAM_END, Z_STREAM_ERROR, Z_SYNC_FLUSH, Z_TEXT, Z_TREES, Z_UNKNOWN, Zlib, codes, createDeflate, createDeflateRaw, createGunzip, createGzip, createInflate, createInflateRaw, createUnzip, deflate, deflateRaw, deflateRawSync, deflateSync, gunzip, gunzipSync, gzip, gzipSync, inflate, inflateRaw, inflateRawSync, inflateSync, unzip, unzipSync };
+export { Deflate, DeflateRaw, Gunzip, Gzip, Inflate, InflateRaw, Unzip, Z_BEST_COMPRESSION, Z_BEST_SPEED, Z_BINARY, Z_BLOCK, Z_BUF_ERROR, Z_DATA_ERROR, Z_DEFAULT_CHUNK, Z_DEFAULT_COMPRESSION, Z_DEFAULT_LEVEL, Z_DEFAULT_MEMLEVEL, Z_DEFAULT_STRATEGY, Z_DEFAULT_WINDOWBITS, Z_DEFLATED, Z_ERRNO, Z_FILTERED, Z_FINISH, Z_FIXED, Z_FULL_FLUSH, Z_HUFFMAN_ONLY, Z_MAX_CHUNK, Z_MAX_LEVEL, Z_MAX_MEMLEVEL, Z_MAX_WINDOWBITS, Z_MIN_CHUNK, Z_MIN_LEVEL, Z_MIN_MEMLEVEL, Z_MIN_WINDOWBITS, Z_NEED_DICT, Z_NO_COMPRESSION, Z_NO_FLUSH, Z_OK, Z_PARTIAL_FLUSH, Z_RLE, Z_STREAM_END, Z_STREAM_ERROR, Z_SYNC_FLUSH, Z_TEXT, Z_TREES, Z_UNKNOWN, Zlib, codes, createDeflate, createDeflateRaw, createGunzip, createGzip, createInflate, createInflateRaw, createUnzip, zlib as default, deflate, deflateRaw, deflateRawSync, deflateSync, gunzip, gunzipSync, gzip, gzipSync, inflate, inflateRaw, inflateRawSync, inflateSync, unzip, unzipSync };

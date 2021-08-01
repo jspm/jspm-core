@@ -1,11 +1,11 @@
-import { T } from './chunk-debdd147.js';
+import { p as process } from './chunk-5752f882.js';
 
 var exports = {},
     _dewExec = false;
 function dew() {
   if (_dewExec) return exports;
   _dewExec = true;
-  var process = T;
+  var process$1 = process;
 
   function assertPath(path) {
     if (typeof path !== "string") {
@@ -110,7 +110,7 @@ function dew() {
       for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
         var path;
         if (i >= 0) path = arguments[i];else {
-          if (cwd === undefined) cwd = process.cwd();
+          if (cwd === undefined) cwd = process$1.cwd();
           path = cwd;
         }
         assertPath(path); // Skip empty entries

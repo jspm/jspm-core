@@ -162,5 +162,4 @@ var runInContext = vm.runInContext;
 var runInNewContext = vm.runInNewContext;
 var runInThisContext = vm.runInThisContext;
 
-export default vm;
-export { Script, createContext, createScript, isContext, runInContext, runInNewContext, runInThisContext };
+export { Script, createContext, createScript, vm as default, isContext, runInContext, runInNewContext, runInThisContext };

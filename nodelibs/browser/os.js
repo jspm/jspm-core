@@ -91,5 +91,4 @@ var totalmem = os.totalmem;
 var type = os.type;
 var uptime = os.uptime;
 
-export default os;
-export { EOL, arch, cpus, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, uptime };
+export { EOL, arch, cpus, os as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, uptime };

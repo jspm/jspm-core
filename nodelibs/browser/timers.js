@@ -1,4 +1,4 @@
-import { T } from './chunk-debdd147.js';
+import { p as process } from './chunk-5752f882.js';
 
 var exports$1 = {},
     _dewExec$1 = false;
@@ -8,7 +8,7 @@ var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !==
 function dew$1() {
   if (_dewExec$1) return exports$1;
   _dewExec$1 = true;
-  var process = T;
+  var process$1 = process;
 
   (function (global, undefined$1) {
 
@@ -102,7 +102,7 @@ function dew$1() {
 
     function installNextTickImplementation() {
       registerImmediate = function (handle) {
-        process.nextTick(function () {
+        process$1.nextTick(function () {
           runIfPresent(handle);
         });
       };
@@ -296,5 +296,4 @@ var setInterval$1 = timers.setInterval;
 var setTimeout$1 = timers.setTimeout;
 var unenroll = timers.unenroll;
 
-export default timers;
-export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };
+export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, timers as default, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };

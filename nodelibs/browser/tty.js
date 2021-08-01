@@ -17,5 +17,4 @@ var m = /*#__PURE__*/Object.freeze({
   WriteStream: WriteStream
 });
 
-export default m;
-export { ReadStream, WriteStream, isatty };
+export { ReadStream, WriteStream, m as default, isatty };

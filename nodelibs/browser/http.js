@@ -1,13 +1,14 @@
-import { d as dew$7 } from './chunk-59a7ef50.js';
-import { d as dew$6 } from './chunk-68f74af3.js';
-import { T } from './chunk-debdd147.js';
-import { e as e$1 } from './chunk-b5c7359e.js';
-import { h } from './chunk-8c78e46b.js';
-import './chunk-fc3dcdfd.js';
-import './chunk-bd86cb5d.js';
-import './chunk-6cc4de3c.js';
-import './chunk-a0b5238c.js';
-import './chunk-2a3df04f.js';
+import { b as buffer, d as dew$7 } from './chunk-5ec93e6c.js';
+import { d as dew$6 } from './chunk-5ab39309.js';
+import { p as process } from './chunk-5752f882.js';
+import { h } from './chunk-4b524f9b.js';
+import './chunk-e4efb04d.js';
+import './chunk-ff6a5e51.js';
+import './chunk-13140bc3.js';
+import './chunk-0f70056b.js';
+import './chunk-0029504c.js';
+import './chunk-1514fda9.js';
+import './chunk-c9ae16fc.js';
 
 var exports$5 = {},
     _dewExec$5 = false;
@@ -87,8 +88,8 @@ var _global$2 = typeof globalThis !== "undefined" ? globalThis : typeof self !==
 function dew$4() {
   if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
-  var Buffer = e$1.Buffer;
-  var process = T;
+  var Buffer = buffer.Buffer;
+  var process$1 = process;
 
   var capability = dew$5();
 
@@ -115,7 +116,7 @@ function dew$4() {
 
     self.on("end", function () {
       // The nextTick is necessary to prevent the 'request' module from causing an infinite loop
-      process.nextTick(function () {
+      process$1.nextTick(function () {
         self.emit("close");
       });
     });
@@ -324,8 +325,8 @@ var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !==
 function dew$3() {
   if (_dewExec$3) return exports$3;
   _dewExec$3 = true;
-  var Buffer = e$1.Buffer;
-  var process = T;
+  var Buffer = buffer.Buffer;
+  var process$1 = process;
 
   var capability = dew$5();
 
@@ -492,7 +493,7 @@ function dew$3() {
       try {
         xhr.open(self._opts.method, self._opts.url, true);
       } catch (err) {
-        process.nextTick(function () {
+        process$1.nextTick(function () {
           self.emit("error", err);
         });
         return;
@@ -545,7 +546,7 @@ function dew$3() {
       try {
         xhr.send(body);
       } catch (err) {
-        process.nextTick(function () {
+        process$1.nextTick(function () {
           self.emit("error", err);
         });
         return;
@@ -828,5 +829,4 @@ var get = http.get;
 var globalAgent = http.globalAgent;
 var request = http.request;
 
-export default http;
-export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, get, globalAgent, request };
+export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, http as default, get, globalAgent, request };

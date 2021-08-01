@@ -8,6 +8,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@jspm/plugin-rollup": "github:jspm/rollup-plugin-jspm#main",
     "assert": "^2.0.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.2",

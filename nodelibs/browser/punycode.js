@@ -1,5 +1,12 @@
-import { p } from './chunk-a0b5238c.js';
-export { p as default } from './chunk-a0b5238c.js';
+import { p } from './chunk-1514fda9.js';
+export { p as default } from './chunk-1514fda9.js';
+
+p.decode;
+p.encode;
+p.toASCII;
+p.toUnicode;
+p.ucs2;
+p.version;
 
 var decode = p.decode;
 var encode = p.encode;

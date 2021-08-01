@@ -53,5 +53,4 @@ var _cache = null,
   _extensions = null,
   globalPaths = null;
 
-export default module;
-export { unimplemented as Module, unimplemented as SourceMap, _cache, unimplemented as _debug, _extensions, unimplemented as _findPath, unimplemented as _initPaths, unimplemented as _load, unimplemented as _nodeModulePaths, _pathCache, unimplemented as _preloadModules, unimplemented as _resolveFilename, unimplemented as _resolveLookupPaths, builtinModules, unimplemented as createRequire, unimplemented as createRequireFromPath, unimplemented as findSourceMap, globalPaths, unimplemented as runMain, unimplemented as syncBuiltinESMExports };
+export { unimplemented as Module, unimplemented as SourceMap, _cache, unimplemented as _debug, _extensions, unimplemented as _findPath, unimplemented as _initPaths, unimplemented as _load, unimplemented as _nodeModulePaths, _pathCache, unimplemented as _preloadModules, unimplemented as _resolveFilename, unimplemented as _resolveLookupPaths, builtinModules, unimplemented as createRequire, unimplemented as createRequireFromPath, module as default, unimplemented as findSourceMap, globalPaths, unimplemented as runMain, unimplemented as syncBuiltinESMExports };

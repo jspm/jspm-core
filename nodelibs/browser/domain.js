@@ -1,4 +1,4 @@
-import { y } from './chunk-fc3dcdfd.js';
+import { y } from './chunk-e4efb04d.js';
 
 var exports = {},
     _dewExec = false;
@@ -88,5 +88,4 @@ var domain = dew();
 var create = domain.create;
 var createDomain = domain.createDomain;
 
-export default domain;
-export { create, createDomain };
+export { create, createDomain, domain as default };

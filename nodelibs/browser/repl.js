@@ -18,5 +18,4 @@ var _builtinLibs = null,
   REPL_MODE_STRICT = null,
   repl$1 = null;
 
-export default repl;
-export { unimplemented as REPLServer, REPL_MODE_SLOPPY, REPL_MODE_STRICT, unimplemented as Recoverable, _builtinLibs, repl$1 as repl, unimplemented as start, unimplemented as writer };
+export { unimplemented as REPLServer, REPL_MODE_SLOPPY, REPL_MODE_STRICT, unimplemented as Recoverable, _builtinLibs, repl as default, repl$1 as repl, unimplemented as start, unimplemented as writer };
