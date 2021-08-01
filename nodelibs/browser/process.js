@@ -220,6 +220,7 @@ function dew() {
 
 var process = dew();
 
+process.platform = 'browser';
 var addListener = process.addListener;
 var argv = process.argv;
 var binding = process.binding;
@@ -241,6 +242,7 @@ var title = process.title;
 var umask = process.umask;
 var version = process.version;
 var versions = process.versions;
+var platform = 'browser';
 
 export default process;
-export { addListener, argv, binding, browser, chdir, cwd, emit, env, listeners, nextTick, off, on, once, prependListener, prependOnceListener, removeAllListeners, removeListener, title, umask, version, versions };
+export { addListener, argv, binding, browser, chdir, cwd, emit, env, listeners, nextTick, off, on, once, platform, prependListener, prependOnceListener, removeAllListeners, removeListener, title, umask, version, versions };
