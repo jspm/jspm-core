@@ -171,14 +171,14 @@ export const process = {
  * @example `import { argv } from './std/node/process.ts'; console.log(argv)`
  */
 // Proxy delegates --allow-env and --allow-read to request time, even for exports
-export let argv;
+export let argv: any;
 
 /**
  * https://nodejs.org/api/process.html#process_process_env
  * @example `import { env } from './std/node/process.ts'; console.log(env)`
  */
 // Proxy delegates --allow-env and --allow-read to request time, even for exports
-export let env;
+export let env: any;
 
 // import process from './std/node/process.ts'
 export default process;

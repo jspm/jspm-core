@@ -1,4 +1,5 @@
 import process from '../node_modules/process/browser.js';
+process.platform = 'browser';
 export default process;
 export var addListener = process.addListener;
 export var argv = process.argv;
@@ -21,3 +22,4 @@ export var title = process.title;
 export var umask = process.umask;
 export var version = process.version;
 export var versions = process.versions;
+export var platform = 'browser';
