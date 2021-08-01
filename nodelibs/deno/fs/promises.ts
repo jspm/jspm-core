@@ -1,5 +1,5 @@
-import { promisify } from './util.ts';
-import * as fs from './fs.ts';
+import { promisify } from '../util.ts';
+import * as fs from '../fs.ts';
 
 // Can be directly aliased pending https://github.com/denoland/deno_std/pull/1083
 

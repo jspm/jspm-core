@@ -24,3 +24,4 @@ export var isSymbol = util.isSymbol;
 export var isUndefined = util.isUndefined;
 export var log = util.log;
 export var promisify = util.promisify;
+export var types = util.types;

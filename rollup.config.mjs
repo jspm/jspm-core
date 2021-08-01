@@ -5,7 +5,18 @@ import rimraf from 'rimraf';
 rimraf.sync('./nodelibs/browser');
 
 const input = Object.fromEntries(
-  readdirSync('./src-browser')
+  [
+    ...readdirSync('./src-browser'),
+    'assert/strict.js',
+    'fs/promises.js',
+    'dns/promises.js',
+    'path/posix.js',
+    'path/win32.js',
+    'stream/promises.js',
+    // 'stream/web.js',
+    'timers/promises.js',
+    'util/types.js'
+  ]
     .filter(n => !n.startsWith('_') && n.endsWith('.js'))
     .map(n => [n.slice(0, -3), './src-browser/' + n])
 );

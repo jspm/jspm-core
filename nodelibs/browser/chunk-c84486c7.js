@@ -2,7 +2,7 @@ function unimplemented () {
   throw new Error('Node.js fs promises module is not supported by JSPM core in the browser');
 }
 
-var fsPromises = {
+var promises = {
   access: unimplemented,
   copyFile: unimplemented,
   open: unimplemented,
@@ -30,9 +30,9 @@ var fsPromises = {
   readFile: unimplemented
 };
 
-var promises = /*#__PURE__*/Object.freeze({
+var promises$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': fsPromises,
+  'default': promises,
   access: unimplemented,
   copyFile: unimplemented,
   open: unimplemented,
@@ -60,4 +60,4 @@ var promises = /*#__PURE__*/Object.freeze({
   readFile: unimplemented
 });
 
-export { fsPromises as f, promises as p, unimplemented as u };
+export { promises as a, promises$1 as p, unimplemented as u };

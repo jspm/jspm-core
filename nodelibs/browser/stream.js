@@ -1,5 +1,6 @@
 import { y } from './chunk-fc3dcdfd.js';
 import { a as dew$1, b as dew$2, c as dew$3, e as dew$4, f as dew$5, g as dew$6, h as dew$7, d as dew$8 } from './chunk-59a7ef50.js';
+import { promisify } from './util.js';
 import './chunk-b5c7359e.js';
 import './chunk-bd86cb5d.js';
 import './chunk-6cc4de3c.js';
@@ -141,5 +142,10 @@ var finished = stream.finished;
 var pipeline = stream.pipeline;
 var Stream = stream.Stream;
 
+const promises = {
+  finished: promisify(stream.finished),
+  pipeline: promisify(stream.pipeline)
+};
+
 export default stream;
-export { Duplex, PassThrough, Readable, Stream, Transform, Writable, finished, pipeline };
+export { Duplex, PassThrough, Readable, Stream, Transform, Writable, finished, pipeline, promises };
