@@ -1,4 +1,4 @@
-import * as promises from './fs-promises.js';
+import * as promises from './fs/promises.js';
 
 function unimplemented () {
   throw new Error('Node.js fs module is not supported by JSPM core in the browser');

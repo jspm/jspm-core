@@ -31,7 +31,7 @@
     "timers-browserify": "^2.0.12",
     "tty-browserify": "^0.0.1",
     "url": "^0.11.0",
-    "util": "^0.12.3",
+    "util": "^0.12.4",
     "vm-browserify": "^1.1.2"
   },
   "exports": {
@@ -53,10 +53,10 @@
       "node": "./nodelibs/node/dns.js",
       "default": "./nodelibs/browser/dns.js"
     },
-    "./nodelibs/fs/promises": {
-      "deno": "./nodelibs/deno/fs-promises.ts",
-      "node": "./nodelibs/deno/fs-promises.js",
-      "default": "./nodelibs/browser/fs-promises.js"
+    "./nodelibs/dns/promises": {
+      "deno": "./nodelibs/browser/dns/promises.js",
+      "node": "./nodelibs/node/dns/promises.js",
+      "default": "./nodelibs/browser/dns/promises.js"
     },
     "./nodelibs/http": {
       "deno": "./nodelibs/browser/http.js",

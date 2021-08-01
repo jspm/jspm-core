@@ -1,5 +1,5 @@
-import { p as promises } from './chunk-ea28c117.js';
-export { p as promises } from './chunk-ea28c117.js';
+import { p as promises } from './chunk-c84486c7.js';
+export { p as promises } from './chunk-c84486c7.js';
 
 function unimplemented () {
   throw new Error('Node.js fs module is not supported by JSPM core in the browser');
