@@ -25,3 +25,6 @@ export var isUndefined = util.isUndefined;
 export var log = util.log;
 export var promisify = util.promisify;
 export var types = util.types;
+
+export const TextEncoder = self.TextEncoder;
+export const TextDecoder = self.TextDecoder;
