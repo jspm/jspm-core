@@ -1,2 +1,2 @@
-const performance = require("perf_hooks");
-export default performance;
+export * from "node:perf_hooks";
+export { default } from "node:perf_hooks";

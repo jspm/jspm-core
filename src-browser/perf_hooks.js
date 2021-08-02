@@ -4,29 +4,28 @@ function unimplemented() {
   );
 }
 
-var performance = globalThis.performance;
-var PerformanceObserver = performance.PerformanceObserver
+const PerformanceObserver = globalThis.PerformanceObserver;
+const constants = {};
 
-export default {
-  now: performance.now,
-  clearMarks: performance.clearMarks,
-  mark: performance.mark,
-  nodeTime: {},
-  nodeFrame: {},
-  timeOrigin: performance.timeOrigin,
+const performance = {
+  clearMarks: globalThis.performance.clearMarks,
   eventLoopUtilization: unimplemented,
-  toJSON: performance.toJSON,
-  PerformanceObserver
+  mark: globalThis.performance.mark,
+  measure: globalThis.performance.measure,
+  nodeTiming: {},
+  now: globalThis.performance.now,
+  nodeFrame: {},
+  timeOrigin: globalThis.performance.timeOrigin,
+  timerify: unimplemented,
 };
 
-export const {
-  now,
-  clearMarks,
-  mark,
-  nodeTime,
-  nodeFrame,
-  timeOrigin,
-  eventLoopUtilization,
-  toJSON,
-  PerformanceObserver
-}
+const monitorEventLoopDelay = unimplemented;
+
+export default {
+  performance,
+  PerformanceObserver,
+  monitorEventLoopDelay,
+  constants,
+};
+
+export { PerformanceObserver, performance, constants, monitorEventLoopDelay };
