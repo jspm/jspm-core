@@ -104,6 +104,11 @@
       "deno": "./nodelibs/browser/zlib.js",
       "node": "./nodelibs/node/zlib.js",
       "default": "./nodelibs/browser/zlib.js"
+    },
+    "./nodelibs/perf_hooks": {
+      "deno": "./nodelibs/browser/perf_hooks.js",
+      "node": "./nodelibs/node/perf_hooks.js",
+      "default": "./nodelibs/browser/perf_hooks.js"
     }
   }
 }

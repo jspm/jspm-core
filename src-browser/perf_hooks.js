@@ -1,6 +1,6 @@
-function unimplemented() {
+function unimplemented(functionName) {
   throw new Error(
-    "Node.js performance is not supported by JSPM core in the browser"
+    `Node.js performance method ${functionName} is not currently supported by JSPM core in the browser`
   );
 }
 
@@ -9,17 +9,16 @@ const constants = {};
 
 const performance = {
   clearMarks: globalThis.performance.clearMarks,
-  eventLoopUtilization: unimplemented,
+  eventLoopUtilization: unimplemented("eventLoopUtilization"),
   mark: globalThis.performance.mark,
   measure: globalThis.performance.measure,
   nodeTiming: {},
   now: globalThis.performance.now,
-  nodeFrame: {},
   timeOrigin: globalThis.performance.timeOrigin,
-  timerify: unimplemented,
+  timerify: unimplemented("timerify"),
 };
 
-const monitorEventLoopDelay = unimplemented;
+const monitorEventLoopDelay = unimplemented("monitorEventLoopDelay");
 
 export default {
   performance,
