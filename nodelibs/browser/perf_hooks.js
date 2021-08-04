@@ -20,11 +20,11 @@ const performance = {
 
 const monitorEventLoopDelay = () => unimplemented("monitorEventLoopDelay");
 
-export default {
+var perf_hooks = {
   performance,
   PerformanceObserver,
   monitorEventLoopDelay,
   constants,
 };
 
-export { PerformanceObserver, performance, constants, monitorEventLoopDelay };
+export { PerformanceObserver, constants, perf_hooks as default, monitorEventLoopDelay, performance };

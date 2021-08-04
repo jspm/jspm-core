@@ -31,6 +31,7 @@
   import * as util from '../nodelibs/browser/util.js';
   import * as vm from '../nodelibs/browser/vm.js';
   import * as zlib from '../nodelibs/browser/zlib.js';
+  import * as performance from '../nodelibs/browser/perf_hooks.js'
 
   if (Object.keys(assert).length < 2)
     console.error('Invalid exports.');
@@ -84,6 +85,8 @@
     console.error('Invalid exports.');
   else if (Object.keys(zlib).length < 2)
     console.error('Invalid exports.');
+  else if (Object.keys(performance).length < 5)
+    console.error('Invalid exports');
   else {
     console.log('OK');
     fetch('/done');
