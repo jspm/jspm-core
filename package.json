@@ -15,6 +15,7 @@
     "console-browserify": "^1.2.0",
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
+    "diagnostics_channel": "^1.0.0",
     "domain-browser": "^4.19.0",
     "events": "^3.2.0",
     "glob": "^7.1.7",
@@ -109,6 +110,11 @@
       "deno": "./nodelibs/browser/perf_hooks.js",
       "node": "./nodelibs/node/perf_hooks.js",
       "default": "./nodelibs/browser/perf_hooks.js"
+    },
+    "./nodelibs/diagnostics_channel": {
+      "deno": "./nodelibs/browser/diagnostics_channel.js",
+      "node": "./nodelibs/node/diagnostics_channel.js",
+      "default": "./nodelibs/browser/diagnostics_channel.js"
     }
   }
 }
