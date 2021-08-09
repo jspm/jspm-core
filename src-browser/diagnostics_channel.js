@@ -1,11 +1,6 @@
-import * as dc from "../node_modules/diagnostics_channel/index.js";
+import dc from "../node_modules/diagnostics_channel/index.js";
 
 const { channel, Channel, hasSubscribers } = dc
 
-export default {
-    channel,
-    Channel,
-    hasSubscribers
-};
-
+export default dc
 export { channel, hasSubscribers, Channel };

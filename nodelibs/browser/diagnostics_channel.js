@@ -170,19 +170,8 @@ function dew() {
   return exports;
 }
 
-var index = dew();
-
-var dc = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': index
-});
+var dc = dew();
 
 const { channel, Channel, hasSubscribers } = dc;
 
-var diagnostics_channel = {
-    channel,
-    Channel,
-    hasSubscribers
-};
-
-export { Channel, channel, diagnostics_channel as default, hasSubscribers };
+export { Channel, channel, dc as default, hasSubscribers };
