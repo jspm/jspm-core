@@ -65,7 +65,6 @@ if (!isMainThread) {
   Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
   parentPort.addEventListener('message', (event) => parentPort.emit('message', event.data));
   parentPort.addEventListener('messageerror', (event) => parentPort.emit('messageerror', event.data));
-  parentPort.addEventListener('close', () => parentPort.emit('close'));
 }
 
 export function getEnvironmentData(key) {
