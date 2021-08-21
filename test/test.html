@@ -33,6 +33,7 @@
   import * as zlib from '../nodelibs/browser/zlib.js';
   import * as performance from '../nodelibs/browser/perf_hooks.js'
   import * as diagnostics_channel from '../nodelibs/browser/diagnostics_channel.js'
+  import * as webStream from '../nodelibs/browser/stream/web.js';
 
   if (Object.keys(assert).length < 2)
     console.error('Invalid exports.');
@@ -90,7 +91,8 @@
     console.error('Invalid exports');
   else if (Object.keys(diagnostics_channel).length < 4) {
     console.error('Invalid exports')
-  }
+  } else if (Object.keys(webStream).length < 2)
+    console.error('Invalid exports.');
   else {
     console.log('OK');
     fetch('/done');
