@@ -13,7 +13,7 @@ const input = Object.fromEntries(
     'path/posix.js',
     'path/win32.js',
     'stream/promises.js',
-    // 'stream/web.js',
+    'stream/web.js',
     'timers/promises.js',
     'util/types.js'
   ]
