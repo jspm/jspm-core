@@ -97,9 +97,30 @@ export function setEnvironmentData(key: any, value: any) {
 export const markAsUntransferable = () => unimplemented('markAsUntransferable');
 export const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
 export const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
+export const MessagePort = globalThis.MessagePort;
+export const MessageChannel = globalThis.MessageChannel;
+export const BroadcastChannel = globalThis.BroadcastChannel;
+export const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
 export {
   _Worker as Worker,
   parentPort,
   threadId,
   workerData,
+}
+
+export default {
+  markAsUntransferable,
+  moveMessagePortToContext,
+  receiveMessageOnPort,
+  MessagePort,
+  MessageChannel,
+  BroadcastChannel,
+  Worker: _Worker,
+  getEnvironmentData,
+  setEnvironmentData,
+  SHARE_ENV,
+  threadId,
+  workerData,
+  resourceLimits,
+  parentPort,
 }
