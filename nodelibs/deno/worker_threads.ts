@@ -123,4 +123,5 @@ export default {
   workerData,
   resourceLimits,
   parentPort,
+  isMainThread,
 }

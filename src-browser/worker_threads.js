@@ -95,7 +95,7 @@ export default {
   MessagePort,
   MessageChannel,
   BroadcastChannel,
-  Worker: _Worker,
+  Worker,
   getEnvironmentData,
   setEnvironmentData,
   SHARE_ENV,
@@ -103,4 +103,5 @@ export default {
   workerData,
   resourceLimits,
   parentPort,
+  isMainThread,
 }
