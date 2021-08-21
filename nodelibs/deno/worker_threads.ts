@@ -96,6 +96,7 @@ export function setEnvironmentData(key: any, value: any) {
 
 export const markAsUntransferable = () => unimplemented('markAsUntransferable');
 export const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
+export const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
 export {
   _Worker as Worker,
   parentPort,
