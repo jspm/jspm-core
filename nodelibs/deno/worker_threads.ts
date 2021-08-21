@@ -8,8 +8,8 @@ function unimplemented(name: string) {
   );
 }
 
+const environmentData = new Map();
 let threads = 0;
-let environmentData = new Map();
 
 interface _WorkerOptions extends WorkerOptions {
   workerData?: any;

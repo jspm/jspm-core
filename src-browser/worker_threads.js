@@ -6,8 +6,8 @@ function unimplemented(name) {
   );
 }
 
+const environmentData = new Map();
 let threads = 0;
-let environmentData = new Map();
 
 export class Worker extends globalThis.Worker {
   constructor(specifier, options) {
