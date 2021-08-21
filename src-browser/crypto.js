@@ -1,4 +1,5 @@
 import crypto from 'crypto-browserify';
+crypto.webcrypto = globalThis.crypto;
 export default crypto;
 export var Cipher = crypto.Cipher;
 export var Cipheriv = crypto.Cipheriv;
@@ -39,3 +40,4 @@ export var randomBytes = crypto.randomBytes;
 export var randomFill = crypto.randomFill;
 export var randomFillSync = crypto.randomFillSync;
 export var rng = crypto.rng;
+export var webcrypto = crypto.webcrypto;
