@@ -1,5 +1,6 @@
 /// <reference lib="webworker"/>
 
+import { resolve, toFileUrl } from "https://deno.land/std@0.105.0/path/mod.ts";
 import { EventEmitter } from 'https://deno.land/std@0.105.0/node/events.ts';
 
 function unimplemented(name: string) {
@@ -69,7 +70,7 @@ class _Worker extends Worker {
   private readonly emitter = new EventEmitter();
 
   constructor(specifier: URL | string, options?: _WorkerOptions) {
-    super(specifier, {
+    super(typeof specifier === 'string' ? toFileUrl(resolve(specifier)) : specifier, {
       ...(options || {}),
       type: 'module',
       // unstable
