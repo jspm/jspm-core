@@ -2,32 +2,32 @@ import { EventEmitter } from 'events';
 
 function unimplemented(name) {
   throw new Error(
-    `Node.js worker_threads ${name} is not currently supported by JSPM core in the browser`,
+    `Node.js worker_threads ${name} is not currently supported by JSPM core in Deno`,
   );
 }
 
-const environmentData = new Map();
+let environmentData = new Map();
 let threads = 0;
 
 export class Worker extends globalThis.Worker {
+  resourceLimits = {
+    maxYoungGenerationSizeMb: -1,
+    maxOldGenerationSizeMb: -1,
+    codeRangeSizeMb: -1,
+    stackSizeMb: 4,
+  };
+
   constructor(specifier, options) {
-    if (options == null) options = { type: 'module' };
-    else if (typeof options === 'object') options.type = 'module';
-    super(specifier, options);
+    super(specifier, { ...(options || {}), type: 'module' });
+    EventEmitter.call(this);
     this.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     this.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     this.addEventListener('message', (event) => this.emit('message', event.data));
     this.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options.workerData,
-    });
-    this.resourceLimits = {
-      maxYoungGenerationSizeMb: -1,
-      maxOldGenerationSizeMb: -1,
-      codeRangeSizeMb: -1,
-      stackSizeMb: 4,
-    };
+      workerData: options?.workerData,
+    }, options?.transferList || []);
     this.emit('online');
   }
 
@@ -56,13 +56,12 @@ let workerData = null;
 let parentPort = null;
 
 if (!isMainThread) {
-  ({ threadId, workerData, environmentData } = await new Promise((resolve) =>
-    self.addEventListener('message', (event) => resolve(event.data), {
-      once: true,
-    }),
-  ));
+  ({ threadId, workerData, environmentData } = await new Promise((resolve) => {
+    self.addEventListener('message', (event) => resolve(event.data), { once: true }); 
+  }));
   parentPort = self;
   Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
+  Object.call(EventEmitter.prototype, parentPort);
   parentPort.addEventListener('message', (event) => parentPort.emit('message', event.data));
   parentPort.addEventListener('messageerror', (event) => parentPort.emit('messageerror', event.data));
 }
@@ -86,7 +85,7 @@ export const MessagePort = globalThis.MessagePort;
 export const MessageChannel = globalThis.MessageChannel;
 export const BroadcastChannel = globalThis.BroadcastChannel;
 export const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
-export { parentPort, threadId, workerData };
+export { parentPort, threadId, workerData }
 
 export default {
   markAsUntransferable,

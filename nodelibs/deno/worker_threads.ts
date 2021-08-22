@@ -8,27 +8,46 @@ function unimplemented(name: string) {
   );
 }
 
-const environmentData = new Map();
+let environmentData = new Map();
 let threads = 0;
 
-interface _WorkerOptions extends WorkerOptions {
-  workerData?: any;
+interface _WorkerOptions {
+  // only for typings
+  argv?: any[];
+  env?: object;
+  eval?: boolean;
+  execArgv?: string[];
+  stdin?: boolean;
+  stdout?: boolean;
+  stderr?: boolean;
+  trackUnmanagedFds?: boolean;
   resourceLimits?: {
     maxYoungGenerationSizeMb?: number;
     maxOldGenerationSizeMb?: number;
     codeRangeSizeMb?: number;
     stackSizeMb?: number;
   };
+
+  transferList?: Transferable[];
+  workerData?: any;
 }
 interface _Worker extends Worker, EventEmitter {}
 class _Worker extends Worker {
-  public threadId: number;
-  public resourceLimits: Required<NonNullable<_WorkerOptions['resourceLimits']>>; 
+  readonly threadId: number;
+  readonly resourceLimits: Required<NonNullable<_WorkerOptions['resourceLimits']>> = {
+    maxYoungGenerationSizeMb: -1,
+    maxOldGenerationSizeMb: -1,
+    codeRangeSizeMb: -1,
+    stackSizeMb: 4,
+  };
 
   constructor(specifier: URL | string, options?: _WorkerOptions) {
-    if (options == null) options = { type: 'module' };
-    else if (typeof options === 'object') options.type = 'module';
-    super(specifier, options);
+    super(specifier, {
+      ...(options || {}),
+      type: 'module',
+      // unstable
+      deno: { namespace: true },
+    });
     EventEmitter.call(this);
     this.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     this.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
@@ -36,14 +55,8 @@ class _Worker extends Worker {
     this.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options.workerData,
-    });
-    this.resourceLimits = {
-      maxYoungGenerationSizeMb: -1,
-      maxOldGenerationSizeMb: -1,
-      codeRangeSizeMb: -1,
-      stackSizeMb: 4,
-    };
+      workerData: options?.workerData,
+    }, options?.transferList || []);
     this.emit('online');
   }
 
@@ -52,9 +65,9 @@ class _Worker extends Worker {
     this.emit('exit', 0);
   }
 
-  getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
+  readonly getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = globalThis.performance;
+  readonly performance = globalThis.performance;
 }
 Object.assign(Worker.prototype, EventEmitter.prototype)
 
@@ -69,16 +82,16 @@ export const resourceLimits = isMainThread ? {} : {
 
 let threadId = 0;
 let workerData = null;
-let parentPort: (WorkerGlobalScope & typeof globalThis & EventEmitter) | null = null;
+type ParentPort = WorkerGlobalScope & typeof globalThis & EventEmitter;
+let parentPort: ParentPort | null = null;
 
 if (!isMainThread) {
-  ({ threadId, workerData, environmentData } = await new Promise((resolve) =>
-    self.addEventListener('message', (event: MessageEvent) => resolve(event.data), {
-      once: true,
-    }),
-  ));
-  parentPort = self as WorkerGlobalScope & typeof globalThis & EventEmitter;
+  ({ threadId, workerData, environmentData } = await new Promise((resolve) => {
+    self.addEventListener('message', (event: MessageEvent) => resolve(event.data), { once: true });
+  }));
+  parentPort = self as ParentPort;
   Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
+  Object.call(EventEmitter.prototype, parentPort);
   parentPort.addEventListener('message', (event: MessageEvent) => parentPort!.emit('message', event.data));
   parentPort.addEventListener('messageerror', (event: MessageEvent) => parentPort!.emit('messageerror', event.data));
 }
