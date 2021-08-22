@@ -1,6 +1,6 @@
 /// <reference lib="webworker"/>
 
-import { resolve, toFileUrl } from "https://deno.land/std@0.105.0/path/mod.ts";
+import { resolve, toFileUrl } from 'https://deno.land/std@0.105.0/path/mod.ts';
 import { EventEmitter } from 'https://deno.land/std@0.105.0/node/events.ts';
 
 function unimplemented(name: string) {
