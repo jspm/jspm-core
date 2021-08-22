@@ -127,7 +127,7 @@ function createWritableStdioStream(writer: typeof Deno.stdout): _Writable {
   return stream;
 }
 
-const stdin = new Readable({
+export const stdin = new Readable({
   // @ts-ignore
   read(this: Readable, size: number) {
     const p = Buffer.alloc(size || 16 * 1024);
@@ -145,6 +145,9 @@ Object.defineProperty(stdin, 'isTTY', {
   },
 });
 
+export const stderr = createWritableStdioStream(Deno.stderr);
+export const stdout = createWritableStdioStream(Deno.stdout);
+
 /** https://nodejs.org/api/process.html#process_process */
 // @deprecated `import { process } from 'process'` for backwards compatibility with old deno versions
 export const process = {
@@ -157,8 +160,8 @@ export const process = {
   version,
   versions,
   stdin,
-  stderr: createWritableStdioStream(Deno.stderr),
-  stdout: createWritableStdioStream(Deno.stdout),
+  stderr,
+  stdout,
   /** https://nodejs.org/api/process.html#process_process_events */
   // on is not exported by node, it is only available within process:
   // node --input-type=module -e "import { on } from 'process'; console.log(on)"
