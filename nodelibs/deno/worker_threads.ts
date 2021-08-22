@@ -11,6 +11,32 @@ function unimplemented(name: string) {
 let environmentData = new Map();
 let threads = 0;
 
+function attachProxy<T extends Record<PropertyKey, any>>(target: T, child: object) {
+  function selectTarget(property: PropertyKey) {
+    return Reflect.has(target, property) ? target : child;
+  }
+
+  const getOrSet = (type: 'get' | 'set') => (_: T, property: string | symbol, receiver: any): any => {
+    const target = selectTarget(property);
+    const ret = Reflect[type](target, property, receiver);
+    if (typeof ret === 'function') return ret.bind(target);
+    return ret;
+  };
+
+  return new Proxy<T>(target, {
+    get: getOrSet('get'),
+    set: getOrSet('set'),
+    deleteProperty(_, property) {
+      return Reflect.deleteProperty(selectTarget(property), property);
+    },
+    getOwnPropertyDescriptor(_, property) {
+      return Reflect.getOwnPropertyDescriptor(selectTarget(property), property);
+    },
+    has: (target, property) => Reflect.has(target, property) || Reflect.has(child, property),
+    ownKeys: (target) => Reflect.ownKeys(target).concat(Reflect.ownKeys(child)),
+  });
+}
+
 interface _WorkerOptions {
   // only for typings
   argv?: any[];
@@ -40,6 +66,7 @@ class _Worker extends Worker {
     codeRangeSizeMb: -1,
     stackSizeMb: 4,
   };
+  private readonly emitter = new EventEmitter();
 
   constructor(specifier: URL | string, options?: _WorkerOptions) {
     super(specifier, {
@@ -48,28 +75,27 @@ class _Worker extends Worker {
       // unstable
       deno: { namespace: true },
     });
-    EventEmitter.call(this);
-    this.addEventListener('error', (event) => this.emit('error', event.error || event.message));
-    this.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
-    this.addEventListener('message', (event) => this.emit('message', event.data));
+    this.addEventListener('error', (event) => this.emitter.emit('error', event.error || event.message));
+    this.addEventListener('messageerror', (event) => this.emitter.emit('messageerror', event.data));
+    this.addEventListener('message', (event) => this.emitter.emit('message', event.data));
     this.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
       workerData: options?.workerData,
     }, options?.transferList || []);
-    this.emit('online');
+    this.emitter.emit('online');
+    return attachProxy(this, this.emitter);
   }
 
   terminate() {
     super.terminate();
-    this.emit('exit', 0);
+    this.emitter.emit('exit', 0);
   }
 
   readonly getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
   readonly performance = globalThis.performance;
 }
-Object.assign(Worker.prototype, EventEmitter.prototype)
 
 export const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
 // fake resourceLimits
@@ -83,17 +109,16 @@ export const resourceLimits = isMainThread ? {} : {
 let threadId = 0;
 let workerData = null;
 type ParentPort = WorkerGlobalScope & typeof globalThis & EventEmitter;
-let parentPort: ParentPort | null = null;
+let parentPort: ParentPort = null as any;
 
 if (!isMainThread) {
   ({ threadId, workerData, environmentData } = await new Promise((resolve) => {
     self.addEventListener('message', (event: MessageEvent) => resolve(event.data), { once: true });
   }));
-  parentPort = self as ParentPort;
-  Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
-  EventEmitter.call(parentPort);
-  parentPort.addEventListener('message', (event: MessageEvent) => parentPort!.emit('message', event.data));
-  parentPort.addEventListener('messageerror', (event: MessageEvent) => parentPort!.emit('messageerror', event.data));
+  parentPort = attachProxy(self as ParentPort, new EventEmitter());
+  parentPort.addEventListener('offline', () => parentPort.emit('close'));
+  parentPort.addEventListener('message', (event: MessageEvent) => parentPort.emit('message', event.data));
+  parentPort.addEventListener('messageerror', (event: MessageEvent) => parentPort.emit('messageerror', event.data));
 }
 
 export function getEnvironmentData(key: any) {
