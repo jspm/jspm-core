@@ -122,14 +122,31 @@ function createWritableStdioStream(writer: typeof Deno.stdout): _Writable {
       get(): boolean {
         return Deno.isatty(writer.rid);
       },
-    }
+    },
   });
   return stream;
 }
 
-let stdin: _Readable;
-let stdout: _Writable;
-let stderr: _Writable;
+export const stdin = new Readable({
+  // @ts-ignore
+  read(this: Readable, size: number) {
+    const p = Buffer.alloc(size || 16 * 1024);
+    const length = Deno.stdin.readSync(p);
+    this.push(length === null ? null : p.slice(0, length));
+  }
+}) as _Readable;
+stdin.on('close', () => Deno.stdin.close());
+stdin.fd = Deno.stdin.rid;
+Object.defineProperty(stdin, 'isTTY', {
+  enumerable: true,
+  configurable: true,
+  get() {
+    return Deno.isatty(Deno.stdin.rid);
+  },
+});
+
+export const stderr = createWritableStdioStream(Deno.stderr);
+export const stdout = createWritableStdioStream(Deno.stdout);
 
 /** https://nodejs.org/api/process.html#process_process */
 // @deprecated `import { process } from 'process'` for backwards compatibility with old deno versions
@@ -142,40 +159,9 @@ export const process = {
   platform,
   version,
   versions,
-  get stdin() {
-    if (!stdin) {
-      stdin = new Readable({
-        // @ts-ignore
-        read(this: Readable, size: number) {
-          const p = Buffer.alloc(size || 16 * 1024);
-          const length = Deno.stdin.readSync(p);
-          this.push(length === null ? null : p.slice(0, length));
-        }
-      }) as _Readable;
-      stdin.fd = Deno.stdin.rid;
-      Object.defineProperty(stdin, 'isTTY', {
-        enumerable: true,
-        configurable: true,
-        get() {
-          return Deno.isatty(Deno.stdin.rid);
-        },
-      });
-    }
-    return stdin;
-  },
-  get stderr() {
-    if (!stderr) {
-      stderr = createWritableStdioStream(Deno.stderr);
-    }
-    return stderr;
-  },
-  get stdout() {
-    if (!stdout) {
-      stdout = createWritableStdioStream(Deno.stdout);
-    }
-    return stdout;
-  },
-
+  stdin,
+  stderr,
+  stdout,
   /** https://nodejs.org/api/process.html#process_process_events */
   // on is not exported by node, it is only available within process:
   // node --input-type=module -e "import { on } from 'process'; console.log(on)"
