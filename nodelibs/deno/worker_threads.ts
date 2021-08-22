@@ -91,7 +91,7 @@ if (!isMainThread) {
   }));
   parentPort = self as ParentPort;
   Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
-  Object.call(EventEmitter.prototype, parentPort);
+  EventEmitter.call(parentPort);
   parentPort.addEventListener('message', (event: MessageEvent) => parentPort!.emit('message', event.data));
   parentPort.addEventListener('messageerror', (event: MessageEvent) => parentPort!.emit('messageerror', event.data));
 }
