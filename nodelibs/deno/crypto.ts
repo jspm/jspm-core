@@ -1,7 +1,7 @@
 // TODO: update this when deno_std/node will export webcrypto (when Node.js Web Crypto API is stable)
-export * from 'https://deno.land/std@0.103.0/node/crypto.ts';
+export * from 'https://deno.land/std@0.105.0/node/crypto.ts';
 export const webcrypto = globalThis.crypto;
-import crypto from 'https://deno.land/std@0.103.0/node/crypto.ts';
+import crypto from 'https://deno.land/std@0.105.0/node/crypto.ts';
 export default {
   ...crypto,
   webcrypto: globalThis.crypto,
