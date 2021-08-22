@@ -1,4 +1,4 @@
-import { win32 } from 'https://deno.land/std@0.103.0/node/path.ts';
+import { win32 } from 'https://deno.land/std@0.105.0/node/path.ts';
 
 export const {
   resolve,
