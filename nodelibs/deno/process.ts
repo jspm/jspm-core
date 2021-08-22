@@ -1,6 +1,8 @@
 // Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
-import { notImplemented } from 'https://deno.land/std@0.103.0/node/_utils.ts';
-import { fileURLToPath } from 'https://deno.land/std@0.103.0/node/url.ts';
+import { notImplemented } from 'https://deno.land/std@0.105.0/node/_utils.ts';
+import { fileURLToPath } from 'https://deno.land/std@0.105.0/node/url.ts';
+import { Readable, Writable } from 'https://deno.land/std@0.105.0/node/stream.ts';
+import { Buffer } from 'https://deno.land/std@0.105.0/node/buffer.ts';
 
 /** https://nodejs.org/api/process.html#process_process_arch */
 export const arch = Deno.build.arch;
@@ -63,6 +65,72 @@ export function nextTick<T extends Array<unknown>>(
   }
 }
 
+
+interface _Readable extends Readable {
+  get isTTY(): boolean;
+  destroySoon: Readable['destroy'],
+  fd: number;
+  _isStdio: false | undefined
+};
+
+interface _Writable extends Writable {
+  get isTTY(): boolean;
+  get columns(): number;
+  get rows(): number
+  destroySoon: Writable['destroy'],
+  fd: number;
+  _isStdio: true,
+};
+
+// https://github.com/nodejs/node/blob/00738314828074243c9a52a228ab4c68b04259ef/lib/internal/bootstrap/switches/is_main_thread.js#L41
+function createWritableStdioStream(writer: typeof Deno.stdout): _Writable {
+  const stream = new Writable({
+    write(buf: Uint8Array, enc: string, cb) {
+      writer.writeSync(buf instanceof Uint8Array ? buf : Buffer.from(buf, enc));
+      cb();
+    },
+    destroy(err, cb) {
+      cb(err);
+      this._undestroy();
+      if (!this._writableState.emitClose) {
+        queueMicrotask(() => this.emit('close'));
+      }
+    },
+  }) as _Writable;
+  stream.fd = writer.rid;
+  stream.destroySoon = stream.destroy;
+  stream._isStdio = true;
+  stream.once('close', () => writer.close());
+  Object.defineProperties(stream, {
+    columns: {
+      enumerable: true,
+      configurable: true,
+      get(): number {
+        return Deno.consoleSize(writer.rid).columns;
+      },
+    },
+    rows: {
+      enumerable: true,
+      configurable: true,
+      get(): number {
+        return Deno.consoleSize(writer.rid).rows;
+      },
+    },
+    isTTY: {
+      enumerable: true,
+      configurable: true,
+      get(): boolean {
+        return Deno.isatty(writer.rid);
+      },
+    }
+  });
+  return stream;
+}
+
+let stdin: _Readable;
+let stdout: _Writable;
+let stderr: _Writable;
+
 /** https://nodejs.org/api/process.html#process_process */
 // @deprecated `import { process } from 'process'` for backwards compatibility with old deno versions
 export const process = {
@@ -74,71 +142,38 @@ export const process = {
   platform,
   version,
   versions,
-  get stderr() {
-    return {
-      fd: Deno.stderr.rid,
-      get isTTY(): boolean {
-        return Deno.isatty(this.fd);
-      },
-      pipe(_destination: Deno.Writer, _options: { end: boolean }): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stderr pipe');
-      },
-      // deno-lint-ignore ban-types
-      write(_chunk: string | Uint8Array, _callback: Function): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stderr write');
-      },
-      // deno-lint-ignore ban-types
-      on(_event: string, _callback: Function): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stderr on');
-      },
-    };
-  },
   get stdin() {
-    return {
-      fd: Deno.stdin.rid,
-      get isTTY(): boolean {
-        return Deno.isatty(this.fd);
-      },
-      read(_size: number): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stdin read');
-      },
-      // deno-lint-ignore ban-types
-      on(_event: string, _callback: Function): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stdin on');
-      },
-    };
+    if (!stdin) {
+      stdin = new Readable({
+        // @ts-ignore
+        read(this: Readable, size: number) {
+          const p = Buffer.alloc(size || 16 * 1024);
+          const length = Deno.stdin.readSync(p);
+          this.push(length === null ? null : p.slice(0, length));
+        }
+      }) as _Readable;
+      stdin.fd = Deno.stdin.rid;
+      Object.defineProperty(stdin, 'isTTY', {
+        enumerable: true,
+        configurable: true,
+        get() {
+          return Deno.isatty(Deno.stdin.rid);
+        },
+      });
+    }
+    return stdin;
+  },
+  get stderr() {
+    if (!stderr) {
+      stderr = createWritableStdioStream(Deno.stderr);
+    }
+    return stderr;
   },
   get stdout() {
-    return {
-      fd: Deno.stdout.rid,
-      get columns (): number {
-        return Deno.consoleSize(Deno.stdout.rid).columns;
-      },
-      get rows (): number {
-        return Deno.consoleSize(Deno.stdout.rid).rows;
-      },
-      get isTTY(): boolean {
-        return Deno.isatty(this.fd);
-      },
-      pipe(_destination: Deno.Writer, _options: { end: boolean }): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stdout pipe');
-      },
-      // deno-lint-ignore ban-types
-      write(_chunk: string | Uint8Array, _callback: Function): void {
-        Deno.stdout.writeSync(typeof _chunk === 'string' ? new TextEncoder().encode(_chunk) : _chunk);
-      },
-      // deno-lint-ignore ban-types
-      on(_event: string, _callback: Function): void {
-        // TODO(JayHelton): to be implemented
-        notImplemented('stdout on');
-      },
-    };
+    if (!stdout) {
+      stdout = createWritableStdioStream(Deno.stdout);
+    }
+    return stdout;
   },
 
   /** https://nodejs.org/api/process.html#process_process_events */
