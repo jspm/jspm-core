@@ -29,6 +29,7 @@ class _Worker extends Worker {
     if (options == null) options = { type: 'module' };
     else if (typeof options === 'object') options.type = 'module';
     super(specifier, options);
+    EventEmitter.call(this);
     this.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     this.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     this.addEventListener('message', (event) => this.emit('message', event.data));
