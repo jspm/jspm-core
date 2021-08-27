@@ -25,8 +25,7 @@ events.on = function (emitter, event) {
 
       return new Promise((resolve, reject) => unconsumedPromises.push({ resolve, reject }));
     },
-
-    return() {
+    async return() {
       emitter.removeListener(event, eventHandler);
       emitter.removeListener('error', errorHandler);
       finished = true;
@@ -35,7 +34,7 @@ events.on = function (emitter, event) {
         promise.resolve(createIterResult(undefined, true));
       }
 
-      return Promise.resolve(createIterResult(undefined, true));
+      return createIterResult(undefined, true);
     },
     throw(err) {
       error = err;
