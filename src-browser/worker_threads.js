@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+import { EventEmitter, once } from 'events';
 
 function unimplemented(name) {
   throw new Error(
@@ -9,7 +9,8 @@ function unimplemented(name) {
 let environmentData = new Map();
 let threads = 0;
 
-export class Worker extends globalThis.Worker {
+const kHandle = Symbol('kHandle');
+export class Worker extends EventEmitter {
   resourceLimits = {
     maxYoungGenerationSizeMb: -1,
     maxOldGenerationSizeMb: -1,
@@ -18,21 +19,30 @@ export class Worker extends globalThis.Worker {
   };
 
   constructor(specifier, options) {
-    super(specifier, { ...(options || {}), type: 'module' });
-    EventEmitter.call(this);
-    this.addEventListener('error', (event) => this.emit('error', event.error || event.message));
-    this.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
-    this.addEventListener('message', (event) => this.emit('message', event.data));
-    this.postMessage({
+    super();
+    if (options?.eval === true) {
+      specifier = `data:text/javascript,${specifier}`;
+    }
+    const handle = this[kHandle] = new globalThis.Worker(specifier, {
+      ...(options || {}),
+      type: 'module',
+      // unstable
+      deno: { namespace: true },
+    });
+    handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
+    handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
+    handle.addEventListener('message', (event) => this.emit('message', event.data));
+    handle.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
       workerData: options?.workerData,
     }, options?.transferList || []);
+    this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
 
   terminate() {
-    super.terminate();
+    this[kHandle].terminate();
     this.emit('exit', 0);
   }
 
@@ -40,9 +50,9 @@ export class Worker extends globalThis.Worker {
   // fake performance
   performance = globalThis.performance;
 }
-Object.assign(Worker.prototype, EventEmitter.prototype)
 
 export const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
+
 // fake resourceLimits
 export const resourceLimits = isMainThread ? {} : {
   maxYoungGenerationSizeMb: 48,
@@ -56,14 +66,39 @@ let workerData = null;
 let parentPort = null;
 
 if (!isMainThread) {
-  ({ threadId, workerData, environmentData } = await new Promise((resolve) => {
-    self.addEventListener('message', (event) => resolve(event.data), { once: true }); 
-  }));
+  const listeners = new WeakMap();
   parentPort = self;
-  Object.assign(Object.getPrototypeOf(parentPort), EventEmitter.prototype);
-  EventEmitter.call(parentPort);
-  parentPort.addEventListener('message', (event) => parentPort.emit('message', event.data));
-  parentPort.addEventListener('messageerror', (event) => parentPort.emit('messageerror', event.data));
+  parentPort.off = parentPort.removeListener = function (name, listener) {
+    this.removeEventListener(name, listeners.get(listener));
+    listeners.delete(listener);
+    return this;
+  };
+  parentPort.on = parentPort.addListener = function (name, listener) {
+    const _listener = (ev) => listener(ev.data);
+    listeners.set(listener, _listener);
+    this.addEventListener(name, _listener);
+    return this;
+  };
+  parentPort.once = function (name, listener) {
+    const _listener = (ev) => listener(ev.data);
+    listeners.set(listener, _listener);
+    this.addEventListener(name, _listener);
+    return this;
+  };
+
+  // mocks
+  parentPort.setMaxListeners = () => {};
+  parentPort.getMaxListeners = () => Infinity;
+  parentPort.eventNames = () => [];
+  parentPort.listenerCount = () => 0;
+
+  parentPort.emit = () => notImplemented();
+  parentPort.removeAllListeners = () => notImplemented();
+
+  ([{ threadId, workerData, environmentData }] = await once(parentPort, 'message'));
+
+  // alias
+  parentPort.addEventListener('offline', () => parentPort.emit('close'));
 }
 
 export function getEnvironmentData(key) {
