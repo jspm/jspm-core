@@ -1,4 +1,4 @@
-import { EventEmitter, once } from 'events';
+import EventEmitter from 'events';
 
 function unimplemented(name) {
   throw new Error(
@@ -95,7 +95,7 @@ if (!isMainThread) {
   parentPort.emit = () => notImplemented();
   parentPort.removeAllListeners = () => notImplemented();
 
-  ([{ threadId, workerData, environmentData }] = await once(parentPort, 'message'));
+  ([{ threadId, workerData, environmentData }] = await EventEmitter.once(parentPort, 'message'));
 
   // alias
   parentPort.addEventListener('offline', () => parentPort.emit('close'));
