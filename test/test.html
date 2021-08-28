@@ -1,7 +1,6 @@
 <!doctype html>
 <script type="module">
   let done = false;
-
   import * as empty from '../nodelibs/@empty.js';
   import * as emptyDew from '../nodelibs/@empty.dew.js';
   import * as assert from '../nodelibs/browser/assert.js';
@@ -124,4 +123,7 @@
   if (!done) {
     fetch('/error?1', { method: 'post', body: '[]' });
   }
+</script>
+<script type="module">
+  import './wasi/wasi.mjs';
 </script>
