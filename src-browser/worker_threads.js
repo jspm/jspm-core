@@ -49,7 +49,7 @@ export class Worker extends EventEmitter {
 
   getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = globalThis.performance;
+  performance = _global.performance;
 }
 
 export const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
