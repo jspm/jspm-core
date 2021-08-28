@@ -85,7 +85,7 @@ export default class Test extends Array {
    assertObjectEqual(a, b, message) {
     try {
       const got = a();
-      if (isDeepEqual(got, b)) {
+      if (!isDeepEqual(got, b)) {
         this.push(new Error(message || `${getFunctionContent(a)} === ${JSON.stringify(got)}, expected ${JSON.stringify(b)}`));
       }
     } catch (e) {

@@ -29,6 +29,11 @@ for (let i = 0; i < 3; i++) {
   if (fd !== i) throw new Error(`invalid handle for ${file}: ${fd}`);
 }
 
+// create "real" os paths
+vol.mkdirSync('/usr/bin', { recursive: true });
+vol.mkdirSync('/home');
+vol.mkdirSync('/tmp');
+
 watchStdo('/dev/stdout', 1, console.log);
 watchStdo('/dev/stderr', 2, console.error);
 
