@@ -20,15 +20,15 @@ export class Worker extends EventEmitter {
 
   constructor(specifier, options) {
     super();
-    if (options?.eval === true) {
+    if (typeof options === 'object' && options !== null && options.eval === true) {
       specifier = `data:text/javascript,${specifier}`;
     }
-    const handle = this[kHandle] = new globalThis.Worker(specifier, {
-      ...(options || {}),
+    const _global = typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : null;
+    const handle = this[kHandle] = Object.assign(new _global.Worker(specifier, Object.assign({}, options || {}, {
       type: 'module',
       // unstable
       deno: { namespace: true },
-    });
+    }));
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     handle.addEventListener('message', (event) => this.emit('message', event.data));
