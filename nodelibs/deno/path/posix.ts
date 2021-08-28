@@ -1,4 +1,4 @@
-import { posix } from 'https://deno.land/std@0.105.0/node/path.ts';
+import { posix } from 'https://deno.land/std@0.106.0/node/path.ts';
 
 export const {
   resolve,
