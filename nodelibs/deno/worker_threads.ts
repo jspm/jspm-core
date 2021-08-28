@@ -1,3 +1,4 @@
+// TODO: replace this when deno_std 0.107.0 is released
 /// <reference lib="webworker"/>
 
 import { resolve, toFileUrl } from 'https://deno.land/std@0.106.0/path/mod.ts';
