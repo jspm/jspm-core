@@ -1,7 +1,7 @@
 import http from "http";
 import fs from "fs";
 import { once } from "events";
-import { extname, resolve } from "path";
+import { extname } from "path";
 import { fileURLToPath } from "url";
 import open from "open";
 import kleur from 'kleur';
@@ -9,9 +9,10 @@ import { spawn } from 'child_process';
 import glob from 'glob';
 import path from 'path';
 
+const timeout = 60 * 1000;
 const port = 8080;
 
-const rootURL = new URL("..", import.meta.url);
+const rootURL = new URL('..', import.meta.url);
 
 const mimes = {
   '.html': 'text/html',
@@ -25,8 +26,26 @@ const mimes = {
 const shouldExit = !process.env.WATCH_MODE;
 const testName = process.env.TEST_NAME ?? 'test';
 
-const testBase = resolve(fileURLToPath(import.meta.url) + '/../');
-const tests = glob.sync(testBase + '/**/*.test.js').map(test => test.slice(testBase.length + 1, -3));
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+function getTests() {
+  return glob.sync('**/*.test.js', {
+    ignore: 'node_modules/**',
+    cwd: path.join(dirname, '..'),
+    absolute: true,
+  }).map(test => path.relative(dirname, test).replace(/\\/g, '/'));
+}
+
+// Firefox stack to Node.js stack
+function createError({ message, stack }) {
+  const error = new Error(message);
+  const lines = stack.trim().split('\n').map((l) => {
+    if (l[0] === '@') return `    at <anonymous> (${kleur.blue(l.slice(1) || '<anonymous>')})`
+    return `    at ${l.slice(0, l.indexOf('@'))} (${kleur.blue(l.slice(l.indexOf('@') + 1) || '<anonymous>')})`;
+  });
+  lines.unshift(kleur.red(`Error: ${message}`));
+  error.stack = lines.join('\n');
+  return error;
+}
 
 let failTimeout, browserTimeout;
 
@@ -36,9 +55,9 @@ function setBrowserTimeout () {
   if (browserTimeout)
     clearTimeout(browserTimeout);
   browserTimeout = setTimeout(() => {
-    console.log('No browser requests made to server for 10s, closing.');
+    console.log(`No browser requests made to server for ${timeout / 1000}s, closing.`);
     process.exit(failTimeout || process.env.CI_BROWSER ? 1 : 0);
-  }, 10000);
+  }, timeout);
 }
 
 setBrowserTimeout();
@@ -52,7 +71,7 @@ http.createServer(async function (req, res) {
   }
   else if (req.url.startsWith('/tests/list')) {
     res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-cache' });
-    res.end(JSON.stringify(tests));
+    res.end(JSON.stringify(getTests()));
     return;
   }
   else if (req.url.startsWith('/done')) {
@@ -66,7 +85,15 @@ http.createServer(async function (req, res) {
   }
   else if (req.url.startsWith('/error?')) {
     const cnt = req.url.slice(7);
-    console.log(kleur.red(cnt + ' test failures found.'));
+    console.log(kleur.red(cnt + ' test failures found.\n'));
+    req.setEncoding('utf8');
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    await once(req, 'end');
+    const errors = JSON.parse(body).map(createError);
+    for (const error of errors) console.error(error);
+    res.statusCode = 201;
+    res.end();
     if (shouldExit) {
       failTimeout = setTimeout(() => process.exit(1), 5000);
     }
