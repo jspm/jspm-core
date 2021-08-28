@@ -21,6 +21,7 @@
     "glob": "^7.1.7",
     "https-browserify": "^1.0.0",
     "kleur": "^4.1.4",
+    "memfs": "^3.2.2",
     "open": "^8.2.1",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
