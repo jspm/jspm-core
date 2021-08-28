@@ -3,14 +3,12 @@ import fs from './fs.js';
 
 export class WASI extends _WASI {
   constructor(options) {
-    super({
-      ...options,
-      bindings: {
-        ..._WASI.defaultBindings,
+    super(Object.assign({}, options, {
+      bindings: Object.assign({}, _WASI.defaultBindings, {
         isTTY: () => false,
         fs,
-      },
-    });
+      }),
+    }));
   }
 }
 
