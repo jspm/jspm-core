@@ -1,6 +1,6 @@
 import os from 'os-browserify';
 import { uptime } from './process.js';
-var _endianness = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1 ? 'LE' : 'BE';;
+var _endianness = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1 ? 'LE' : 'BE';
 os.endianness = function() { return _endianness; };
 os.homedir = function() { return '/home'; };
 os.version = function() { return ''; };

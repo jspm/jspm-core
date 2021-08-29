@@ -2,7 +2,7 @@ function unimplemented(name) {
   throw new Error('Node.js process ' + name + ' is not supported by JSPM core outside of Node.js');
 }
 
-export var nextTick = queueMicrotask.bind(self);
+export var nextTick = cb => Promise.resolve().then(cb);
 export var title = 'browser';
 export var arch = 'x64';
 export var platform = 'browser';
