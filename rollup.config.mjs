@@ -17,7 +17,7 @@ const input = Object.fromEntries(
     'timers/promises.js',
     'util/types.js'
   ]
-    .filter(n => !n.startsWith('_') && n.endsWith('.js'))
+    .filter(n => !n.startsWith('__') && n.endsWith('.js'))
     .map(n => [n.slice(0, -3), './src-browser/' + n])
 );
 

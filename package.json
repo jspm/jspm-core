@@ -3,6 +3,7 @@
   "version": "2.0.0-beta.8",
   "scripts": {
     "build": "rollup -c",
+    "generate:node": "node generate-node-libs.mjs",
     "test": "npm run test:browser",
     "test:browser": "node test/server.js"
   },

@@ -1,3 +1,3 @@
-export * from './_tty.js';
-import * as m from './_tty.js';
+export * from './__tty.js';
+import * as m from './__tty.js';
 export default m;
