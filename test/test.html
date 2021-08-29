@@ -1,5 +1,7 @@
 <!doctype html>
 <script type="module">
+  let done = false;
+
   import * as empty from '../nodelibs/@empty.js';
   import * as emptyDew from '../nodelibs/@empty.dew.js';
   import * as assert from '../nodelibs/browser/assert.js';
@@ -90,15 +92,33 @@
     console.error('Invalid exports.');
   else if (Object.keys(performance).length < 5)
     console.error('Invalid exports');
-  else if (Object.keys(diagnostics_channel).length < 4) {
+  else if (Object.keys(diagnostics_channel).length < 4)
     console.error('Invalid exports')
-  } else if (Object.keys(webStream).length < 2)
+  else if (Object.keys(webStream).length < 2)
     console.error('Invalid exports.');
-  else if (Object.keys(workerThreads).length < 16) {
+  else if (Object.keys(workerThreads).length < 16)
     console.error('Invalid exports')
-  }
   else {
-    console.log('OK');
-    fetch('/done');
+    const errors = await Promise.allSettled(
+      await fetch('/tests/list')
+        .then(r => r.json())
+        .then(tests => tests.map(test => import(test[0] === '.' ? test : `./${test}`))),
+    ).then(r => r.flatMap(p => p.reason ?? p.value.default));
+    if (errors.length > 0) {
+      for (const error of errors) console.error(error);
+      fetch('/error?' + errors.length, {
+        method: 'post',
+        body: JSON.stringify(errors.map(e => ({ message: e.message, stack: e.stack }))),
+      });
+    } else {
+      console.log('OK');
+      fetch('/done');
+    }
+    done = true;
+  }
+
+  // a module has invalid exports
+  if (!done) {
+    fetch('/error?1', { method: 'post', body: '[]' });
   }
 </script>
