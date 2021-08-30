@@ -1,247 +1,208 @@
-var exports = {},
-    _dewExec = false;
-
-var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
-
-function dew() {
-  if (_dewExec) return exports;
-  _dewExec = true;
-  // shim for using process in browser
-  var process = exports = {}; // cached from whatever global is present so that test runners that stub it
-  // don't break things.  But we need to wrap it in a try catch in case it is
-  // wrapped in strict mode code which doesn't define any globals.  It's inside a
-  // function because try/catches deoptimize in certain engines.
-
-  var cachedSetTimeout;
-  var cachedClearTimeout;
-
-  function defaultSetTimout() {
-    throw new Error("setTimeout has not been defined");
-  }
-
-  function defaultClearTimeout() {
-    throw new Error("clearTimeout has not been defined");
-  }
-
-  (function () {
-    try {
-      if (typeof setTimeout === "function") {
-        cachedSetTimeout = setTimeout;
-      } else {
-        cachedSetTimeout = defaultSetTimout;
-      }
-    } catch (e) {
-      cachedSetTimeout = defaultSetTimout;
-    }
-
-    try {
-      if (typeof clearTimeout === "function") {
-        cachedClearTimeout = clearTimeout;
-      } else {
-        cachedClearTimeout = defaultClearTimeout;
-      }
-    } catch (e) {
-      cachedClearTimeout = defaultClearTimeout;
-    }
-  })();
-
-  function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-      //normal enviroments in sane situations
-      return setTimeout(fun, 0);
-    } // if setTimeout wasn't available but was latter defined
-
-
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-      cachedSetTimeout = setTimeout;
-      return setTimeout(fun, 0);
-    }
-
-    try {
-      // when when somebody has screwed with setTimeout but no I.E. maddness
-      return cachedSetTimeout(fun, 0);
-    } catch (e) {
-      try {
-        // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-        return cachedSetTimeout.call(null, fun, 0);
-      } catch (e) {
-        // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-        return cachedSetTimeout.call(this || _global, fun, 0);
-      }
-    }
-  }
-
-  function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-      //normal enviroments in sane situations
-      return clearTimeout(marker);
-    } // if clearTimeout wasn't available but was latter defined
-
-
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-      cachedClearTimeout = clearTimeout;
-      return clearTimeout(marker);
-    }
-
-    try {
-      // when when somebody has screwed with setTimeout but no I.E. maddness
-      return cachedClearTimeout(marker);
-    } catch (e) {
-      try {
-        // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-        return cachedClearTimeout.call(null, marker);
-      } catch (e) {
-        // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-        // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-        return cachedClearTimeout.call(this || _global, marker);
-      }
-    }
-  }
-
-  var queue = [];
-  var draining = false;
-  var currentQueue;
-  var queueIndex = -1;
-
-  function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-      return;
-    }
-
-    draining = false;
-
-    if (currentQueue.length) {
-      queue = currentQueue.concat(queue);
-    } else {
-      queueIndex = -1;
-    }
-
-    if (queue.length) {
-      drainQueue();
-    }
-  }
-
-  function drainQueue() {
-    if (draining) {
-      return;
-    }
-
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-    var len = queue.length;
-
-    while (len) {
-      currentQueue = queue;
-      queue = [];
-
-      while (++queueIndex < len) {
-        if (currentQueue) {
-          currentQueue[queueIndex].run();
-        }
-      }
-
-      queueIndex = -1;
-      len = queue.length;
-    }
-
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-  }
-
-  process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-
-    if (arguments.length > 1) {
-      for (var i = 1; i < arguments.length; i++) {
-        args[i - 1] = arguments[i];
-      }
-    }
-
-    queue.push(new Item(fun, args));
-
-    if (queue.length === 1 && !draining) {
-      runTimeout(drainQueue);
-    }
-  }; // v8 likes predictible objects
-
-
-  function Item(fun, array) {
-    (this || _global).fun = fun;
-    (this || _global).array = array;
-  }
-
-  Item.prototype.run = function () {
-    (this || _global).fun.apply(null, (this || _global).array);
-  };
-
-  process.title = "browser";
-  process.browser = true;
-  process.env = {};
-  process.argv = [];
-  process.version = ""; // empty string to avoid regexp issues
-
-  process.versions = {};
-
-  function noop() {}
-
-  process.on = noop;
-  process.addListener = noop;
-  process.once = noop;
-  process.off = noop;
-  process.removeListener = noop;
-  process.removeAllListeners = noop;
-  process.emit = noop;
-  process.prependListener = noop;
-  process.prependOnceListener = noop;
-
-  process.listeners = function (name) {
-    return [];
-  };
-
-  process.binding = function (name) {
-    throw new Error("process.binding is not supported");
-  };
-
-  process.cwd = function () {
-    return "/";
-  };
-
-  process.chdir = function (dir) {
-    throw new Error("process.chdir is not supported");
-  };
-
-  process.umask = function () {
-    return 0;
-  };
-
-  return exports;
+function unimplemented(name) {
+  throw new Error('Node.js process ' + name + ' is not supported by JSPM core outside of Node.js');
 }
 
-var process = dew();
-
-process.platform = 'browser';
-var addListener = process.addListener;
-var argv = process.argv;
-var binding = process.binding;
-var browser = process.browser;
-var chdir = process.chdir;
-var cwd = process.cwd;
-var emit = process.emit;
-var env = process.env;
-var listeners = process.listeners;
-var nextTick = process.nextTick;
-var off = process.off;
-var on = process.on;
-var once = process.once;
-var prependListener = process.prependListener;
-var prependOnceListener = process.prependOnceListener;
-var removeAllListeners = process.removeAllListeners;
-var removeListener = process.removeListener;
-var title = process.title;
-var umask = process.umask;
-var version = process.version;
-var versions = process.versions;
+var nextTick = cb => Promise.resolve().then(cb);
+var title = 'browser';
+var arch = 'x64';
 var platform = 'browser';
+var env = {
+  PATH: '/usr/bin',
+  LANG: navigator.language + '.UTF-8',
+  PWD: '/',
+  HOME: '/home',
+  TMP: '/tmp',
+};
+var argv = ['/usr/bin/node'];
+var execArgv = [];
+var version = 'v16.8.0';
+var versions = { node: '16.8.0' };
 
-export { addListener, argv, binding, browser, chdir, cwd, process as default, emit, env, listeners, nextTick, off, on, once, platform, prependListener, prependOnceListener, removeAllListeners, removeListener, title, umask, version, versions };
+var emitWarning = function(message, type) {
+  console.warn((type ? (type + ': ') : '') + message);
+};
+
+var binding = function(name) { unimplemented('binding'); };
+
+var umask = function(mask) { return 0; };
+
+var cwd = function() { return '/'; };
+var chdir = function(dir) {};
+
+var release = {
+  name: 'node',
+  sourceUrl: '',
+  headersUrl: '',
+  libUrl: '',
+};
+
+function noop() {}
+
+var _rawDebug = noop;
+var moduleLoadList = [];
+function _linkedBinding(name) { unimplemented('_linkedBinding'); }
+var domain = {};
+var _exiting = false;
+var config = {};
+function dlopen(name) { unimplemented('dlopen'); }
+function _getActiveRequests() { return []; }
+function _getActiveHandles() { return []; }
+var reallyExit = noop;
+var _kill = noop;
+var cpuUsage = function() { return {}; };
+var resourceUsage = cpuUsage;
+var memoryUsage = cpuUsage;
+var kill = noop;
+var exit = noop;
+var openStdin = noop;
+var allowedNodeEnvironmentFlags = {};
+function assert(condition, message) {
+  if (!condition) throw new Error(message || 'assertion error');
+}
+var features = {
+  inspector: false,
+  debug: false,
+  uv: false,
+  ipv6: false,
+  tls_alpn: false,
+  tls_sni: false,
+  tls_ocsp: false,
+  tls: false,
+  cached_builtins: true,
+};
+var _fatalExceptions = noop;
+var setUncaughtExceptionCaptureCallback = noop;
+function hasUncaughtExceptionCaptureCallback() { return false; }var _tickCallback = noop;
+var _debugProcess = noop;
+var _debugEnd = noop;
+var _startProfilerIdleNotifier = noop;
+var _stopProfilerIdleNotifier = noop;
+var stdout = undefined;
+var stderr = undefined;
+var stdin = undefined;
+var abort = noop;
+var pid = 2;
+var ppid = 1;
+var execPath = '/bin/usr/node';
+var debugPort = 9229;
+var argv0 = 'node';
+var _preload_modules = [];
+var setSourceMapsEnabled = noop;
+
+var _performance = {
+  now: typeof performance !== 'undefined' ? performance.now.bind(performance) : undefined,
+  timing: typeof performance !== 'undefined' ? performance.timing : undefined,
+};
+if (_performance.now === undefined) {
+  var nowOffset = Date.now();
+
+  if (_performance.timing && _performance.timing.navigationStart) {
+    nowOffset = _performance.timing.navigationStart;
+  }
+  _performance.now = () => Date.now() - nowOffset;
+}
+
+function uptime() {
+  return _performance.now() / 1000;
+}
+
+var nanoPerSec = 1000000000;
+function hrtime(previousTimestamp) {
+  var baseNow = Math.floor((Date.now() - _performance.now()) * 1e-3);
+  var clocktime = _performance.now() * 1e-3;
+  var seconds = Math.floor(clocktime) + baseNow;
+  var nanoseconds = Math.floor((clocktime % 1) * 1e9);
+  if (previousTimestamp) {
+    seconds = seconds - previousTimestamp[0];
+    nanoseconds = nanoseconds - previousTimestamp[1];
+    if (nanoseconds < 0) {
+      seconds--;
+      nanoseconds += nanoPerSec;
+    }
+  }
+  return [seconds, nanoseconds];
+}hrtime.bigint = function(time) {
+  var diff = hrtime(time);
+  if (typeof BigInt === 'undefined') {
+    return diff[0] * nanoPerSec + diff[1];
+  }
+  return BigInt(diff[0] * nanoPerSec) + BigInt(diff[1]);
+};
+
+var process = {
+  version,
+  versions,
+  arch,
+  platform,
+  release,
+  _rawDebug,
+  moduleLoadList,
+  binding,
+  _linkedBinding,
+  _events,
+  _eventsCount,
+  _maxListeners,
+  domain,
+  _exiting,
+  config,
+  dlopen,
+  uptime,
+  _getActiveRequests,
+  _getActiveHandles,
+  reallyExit,
+  _kill,
+  cpuUsage,
+  resourceUsage,
+  memoryUsage,
+  kill,
+  exit,
+  openStdin,
+  allowedNodeEnvironmentFlags,
+  assert,
+  features,
+  _fatalExceptions,
+  setUncaughtExceptionCaptureCallback,
+  hasUncaughtExceptionCaptureCallback,
+  emitWarning,
+  nextTick,
+  _tickCallback,
+  _debugProcess,
+  _debugEnd,
+  _startProfilerIdleNotifier,
+  _stopProfilerIdleNotifier,
+  stdout,
+  stdin,
+  stderr,
+  abort,
+  umask,
+  chdir,
+  cwd,
+  env,
+  title,
+  argv,
+  execArgv,
+  pid,
+  ppid,
+  execPath,
+  debugPort,
+  hrtime,
+  argv0,
+  _preload_modules,
+  setSourceMapsEnabled,
+};
+
+var _maxListeners = 10;
+var _events = {};
+var _eventsCount = 0;
+var on = function() { return process; };
+var addListener = on;
+var once = on;
+var off = on;
+var removeListener = on;
+var removeAllListeners = on;
+var emit = noop;
+var prependListener = on;
+var prependOnceListener = on;
+var listeners = function(name) { return []; };
+
+export { _debugEnd, _debugProcess, _events, _eventsCount, _exiting, _fatalExceptions, _getActiveHandles, _getActiveRequests, _kill, _linkedBinding, _maxListeners, _preload_modules, _rawDebug, _startProfilerIdleNotifier, _stopProfilerIdleNotifier, _tickCallback, abort, addListener, allowedNodeEnvironmentFlags, arch, argv, argv0, assert, binding, chdir, config, cpuUsage, cwd, debugPort, process as default, dlopen, domain, emit, emitWarning, env, execArgv, execPath, exit, features, hasUncaughtExceptionCaptureCallback, hrtime, kill, listeners, memoryUsage, moduleLoadList, nextTick, off, on, once, openStdin, pid, platform, ppid, prependListener, prependOnceListener, process, reallyExit, release, removeAllListeners, removeListener, resourceUsage, setSourceMapsEnabled, setUncaughtExceptionCaptureCallback, stderr, stdin, stdout, title, umask, uptime, version, versions };

@@ -1,3 +1,6 @@
+import { uptime } from './process.js';
+export { uptime } from './process.js';
+
 var exports = {},
     _dewExec = false;
 function dew() {
@@ -73,6 +76,21 @@ function dew() {
 
 var os = dew();
 
+var _endianness = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1 ? 'LE' : 'BE';
+os.endianness = function() { return _endianness; };
+os.homedir = function() { return '/home'; };
+os.version = function() { return ''; };
+os.arch = function() { return 'x64'; };
+os.totalmem = function() {
+  return navigator.deviceMemory !== undefined ? navigator.deviceMemory * (1 << 30) : 2 * (1 << 30);
+};
+os.cpus = function () {
+  return Array(navigator.hardwareConcurrency || 0).fill({ model: '', times: {} });
+};
+os.uptime = uptime;
+os.constants = {};
+var version = os.version;
+var constants = os.constants;
 var EOL = os.EOL;
 var arch = os.arch;
 var cpus = os.cpus;
@@ -89,6 +107,5 @@ var tmpDir = os.tmpDir;
 var tmpdir = os.tmpdir;
 var totalmem = os.totalmem;
 var type = os.type;
-var uptime = os.uptime;
 
-export { EOL, arch, cpus, os as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, uptime };
+export { EOL, arch, constants, cpus, os as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };
