@@ -1,9 +1,85 @@
-import { y } from './chunk-cc7644df.js';
-export { y as default } from './chunk-cc7644df.js';
+import { y } from './chunk-e4efb04d.js';
+export { y as default } from './chunk-e4efb04d.js';
 
-var EventEmitter = y.EventEmitter;
-var defaultMaxListeners = y.defaultMaxListeners;
-var init = y.init;
-var listenerCount = y.listenerCount;
+// https://github.com/denoland/deno_std/blob/d005433c709054af87aca54f57a446b4f7966f11/node/events.ts#L542
+y.on = function (emitter, event) {
+  const unconsumedEventValues = [];
+  const unconsumedPromises = [];
+  let error = null;
+  let finished = false;
 
-export { EventEmitter, defaultMaxListeners, init, listenerCount };
+  const iterator = {
+    async next() {
+      const value = unconsumedEventValues.shift();
+      if (value) {
+        return createIterResult(value, false);
+      }
+
+      if (error) {
+        const p = Promise.reject(error);
+        error = null;
+        return p;
+      }
+
+      if (finished) {
+        return createIterResult(undefined, true);
+      }
+
+      return new Promise((resolve, reject) => unconsumedPromises.push({ resolve, reject }));
+    },
+    async return() {
+      emitter.removeListener(event, eventHandler);
+      emitter.removeListener('error', errorHandler);
+      finished = true;
+
+      for (const promise of unconsumedPromises) {
+        promise.resolve(createIterResult(undefined, true));
+      }
+
+      return createIterResult(undefined, true);
+    },
+    throw(err) {
+      error = err;
+      emitter.removeListener(event, eventHandler);
+      emitter.removeListener('error', errorHandler);
+    },
+    [Symbol.asyncIterator]() {
+      return this;
+    },
+  };
+
+  emitter.on(event, eventHandler);
+  emitter.on('error', errorHandler);
+
+  return iterator;
+
+  function eventHandler(...args) {
+    const promise = unconsumedPromises.shift();
+    if (promise) {
+      promise.resolve(createIterResult(args, false));
+    } else {
+      unconsumedEventValues.push(args);
+    }
+  }
+
+  function errorHandler(err) {
+    finished = true;
+    const toError = unconsumedPromises.shift();
+    if (toError) {
+      toError.reject(err);
+    } else {
+      error = err;
+    }
+    iterator.return();
+  }
+};
+const {
+  EventEmitter,
+  defaultMaxListeners,
+  init,
+  listenerCount,
+  on,
+  once,
+} = y;
+
+export { EventEmitter, defaultMaxListeners, init, listenerCount, on, once };
