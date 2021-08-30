@@ -20,20 +20,21 @@ export class Worker extends EventEmitter {
 
   constructor(specifier, options) {
     super();
-    if (options && options.eval === true) {
+    if (options?.eval === true) {
       specifier = `data:application/javascript,${encodeURIComponent(specifier)}`;
     }
-    const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
+    const handle = this[kHandle] = new globalThis.Worker(specifier, {
+      ...(options || {}),
       type: 'module',
-    }));
+    });
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     handle.addEventListener('message', (event) => this.emit('message', event.data));
     handle.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options && options.workerData,
-    }, options && options.transferList);
+      workerData: options?.workerData,
+    }, options?.transferList);
     this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
@@ -45,7 +46,7 @@ export class Worker extends EventEmitter {
 
   getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = self.performance;
+  performance = globalThis.performance;
 }
 
 export const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
@@ -64,7 +65,7 @@ let parentPort = null;
 
 if (!isMainThread) {
   const listeners = new WeakMap();
-  parentPort = self;
+  parentPort = globalThis;
   parentPort.off = parentPort.removeListener = function (name, listener) {
     this.removeEventListener(name, listeners.get(listener));
     listeners.delete(listener);
@@ -113,9 +114,9 @@ export function setEnvironmentData(key, value) {
 export const markAsUntransferable = () => unimplemented('markAsUntransferable');
 export const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
 export const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
-export const MessagePort = self.MessagePort;
-export const MessageChannel = self.MessageChannel;
-export const BroadcastChannel = self.BroadcastChannel;
+export const MessagePort = globalThis.MessagePort;
+export const MessageChannel = globalThis.MessageChannel;
+export const BroadcastChannel = globalThis.BroadcastChannel;
 export const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
 export { parentPort, threadId, workerData }
 

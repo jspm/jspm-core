@@ -4,7 +4,12 @@ import { once } from '../nodelibs/browser/events.js';
 
 const test = new Test();
 
-const worker = new Worker('./worker_threads-fixture.js');
+const worker = new Worker(`import { parentPort } from 'http://localhost:8080/nodelibs/browser/worker_threads.js';
+import { once } from 'http://localhost:8080/nodelibs/browser/events.js';
+
+parentPort.postMessage('hello');
+parentPort.postMessage(\`received: \${(await once(parentPort, 'message'))[0]}\`);
+`, { eval: true });
 worker.postMessage('hello2');
 
 test.assertObjectEqual(await once(worker, 'message'), ['hello']);
