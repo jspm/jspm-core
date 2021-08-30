@@ -12,7 +12,7 @@ parentPort.postMessage(\`received: \${(await once(parentPort, 'message'))[0]}\`)
 `, { eval: true });
 worker.postMessage('hello2');
 
-test.assertObjectEqual(() => await once(worker, 'message'), ['hello']);
-test.assertObjectEqual(() => await once(worker, 'message'), ['received: hello2']);
+test.assertObjectEqual(async () => await once(worker, 'message'), ['hello']);
+test.assertObjectEqual(async () => await once(worker, 'message'), ['received: hello2']);
 
 export default test;
