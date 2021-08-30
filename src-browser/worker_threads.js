@@ -21,7 +21,7 @@ export class Worker extends EventEmitter {
   constructor(specifier, options) {
     super();
     if (options?.eval === true) {
-      specifier = `data:application/javascript,${encodeURIComponent(specifier)}`;
+      specifier = URL.createObjectURL(new Blob([specifier], { type: 'application/javascript' }));
     }
     const handle = this[kHandle] = new globalThis.Worker(specifier, {
       ...(options || {}),
@@ -65,7 +65,7 @@ let parentPort = null;
 
 if (!isMainThread) {
   const listeners = new WeakMap();
-  parentPort = globalThis;
+  parentPort = self;
   parentPort.off = parentPort.removeListener = function (name, listener) {
     this.removeEventListener(name, listeners.get(listener));
     listeners.delete(listener);

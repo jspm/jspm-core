@@ -21,20 +21,21 @@ class Worker extends EventEmitter {
 
   constructor(specifier, options) {
     super();
-    if (options && options.eval === true) {
-      specifier = `data:application/javascript,${encodeURIComponent(specifier)}`;
+    if (options?.eval === true) {
+      specifier = URL.createObjectURL(new Blob([specifier], { type: 'application/javascript' }));
     }
-    const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
+    const handle = this[kHandle] = new globalThis.Worker(specifier, {
+      ...(options || {}),
       type: 'module',
-    }));
+    });
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     handle.addEventListener('message', (event) => this.emit('message', event.data));
     handle.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options && options.workerData,
-    }, options && options.transferList);
+      workerData: options?.workerData,
+    }, options?.transferList);
     this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
@@ -46,7 +47,7 @@ class Worker extends EventEmitter {
 
   getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = self.performance;
+  performance = globalThis.performance;
 }
 
 const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
@@ -114,9 +115,9 @@ function setEnvironmentData(key, value) {
 const markAsUntransferable = () => unimplemented('markAsUntransferable');
 const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
 const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
-const MessagePort = self.MessagePort;
-const MessageChannel = self.MessageChannel;
-const BroadcastChannel = self.BroadcastChannel;
+const MessagePort = globalThis.MessagePort;
+const MessageChannel = globalThis.MessageChannel;
+const BroadcastChannel = globalThis.BroadcastChannel;
 const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
 
 var worker_threads = {

@@ -1,4 +1,3 @@
-process.exit = (code) => {};
 import http from "http";
 import fs from "fs";
 import { once } from "events";
@@ -66,7 +65,6 @@ function setBrowserTimeout () {
 setBrowserTimeout();
 
 http.createServer(async function (req, res) {
-  console.log(req.url);
   setBrowserTimeout();
   if (req.url.startsWith('/tests/ping')) {
     res.writeHead(200);
@@ -167,8 +165,6 @@ http.createServer(async function (req, res) {
   await once(fileStream, 'end');
   res.end();
 }).listen(port);
-
-console.log(process.env);
 
 let spawnPs;
 if (process.env.CI_BROWSER) {
