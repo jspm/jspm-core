@@ -1,3 +1,4 @@
+import './events.js';
 import { y } from './chunk-e4efb04d.js';
 
 var exports = {},

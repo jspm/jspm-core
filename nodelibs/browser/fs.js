@@ -1,16 +1,21 @@
-import { b as buffer } from './chunk-dc85b607.js';
-import { e as et } from './chunk-9cb5f142.js';
-import './chunk-ff6a5e51.js';
+import { b as buffer } from './chunk-5ec93e6c.js';
+import et from './assert.js';
+import './util.js';
 import { X } from './chunk-13140bc3.js';
-import { p as path, h } from './chunk-ea37514c.js';
-import './chunk-0f70056b.js';
+import './path.js';
 import { p as process } from './chunk-5752f882.js';
+import './events.js';
 import { y } from './chunk-e4efb04d.js';
-import { s as stream } from './chunk-1de0da33.js';
+import './stream.js';
+import h from './url.js';
+import { p as path } from './chunk-1a141dcd.js';
+import { s as stream } from './chunk-b5b08cb5.js';
 import { Buffer } from './buffer.js';
+import './chunk-ff6a5e51.js';
+import './chunk-0f70056b.js';
+import './chunk-0029504c.js';
 import './chunk-1514fda9.js';
 import './chunk-c9ae16fc.js';
-import './chunk-2edd5477.js';
 
 var exports$f = {},
     _dewExec$f = false;
@@ -675,22 +680,6 @@ function dew$9() {
   exports$9.default = Dirent;
   return exports$9;
 }
-
-path._makeLong;
-path.basename;
-path.delimiter;
-path.dirname;
-path.extname;
-path.format;
-path.isAbsolute;
-path.join;
-path.normalize;
-path.parse;
-path.posix;
-path.relative;
-path.resolve;
-path.sep;
-path.win32;
 
 var exports$8 = {},
     _dewExec$8 = false;

@@ -4,4 +4,6 @@ var e={},n=e$1$1,o=n.Buffer;function t(r,e){for(var n in r)e[n]=r[n];}function f
 
 e$1.StringDecoder;
 
-export { e$1$1 as a, e$1 as e, u };
+e$1.StringDecoder;
+
+export { e$1 as a, e$1$1 as e, u };
