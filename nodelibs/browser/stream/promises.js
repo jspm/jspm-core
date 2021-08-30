@@ -1,6 +1,6 @@
 import { promises } from '../stream.js';
 export { promises as default } from '../stream.js';
-import '../chunk-7b20f189.js';
+import '../chunk-342db2c9.js';
 import '../events.js';
 import '../chunk-eb4a3827.js';
 import '../chunk-a75abdc7.js';

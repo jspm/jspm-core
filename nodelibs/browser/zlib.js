@@ -3,7 +3,7 @@ import './stream.js';
 import et from './assert.js';
 import { p as process } from './chunk-41a25566.js';
 import './util.js';
-import { s as stream } from './chunk-7b20f189.js';
+import { s as stream } from './chunk-342db2c9.js';
 import { X } from './chunk-b196e9ea.js';
 import './chunk-eb4a3827.js';
 import './chunk-bf402f6f.js';

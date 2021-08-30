@@ -9,7 +9,7 @@ import { y } from './chunk-eb4a3827.js';
 import './stream.js';
 import h, { fileURLToPath } from './url.js';
 import { p as path } from './chunk-8330aff8.js';
-import { s as stream } from './chunk-7b20f189.js';
+import { s as stream } from './chunk-342db2c9.js';
 import { Buffer } from './buffer.js';
 import './chunk-bf402f6f.js';
 import './chunk-af36a440.js';

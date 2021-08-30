@@ -1,4 +1,5 @@
-import { y } from './chunk-eb4a3827.js';
+import { once, EventEmitter } from './events.js';
+import './chunk-eb4a3827.js';
 
 function unimplemented(name) {
   throw new Error(
@@ -10,7 +11,7 @@ let environmentData = new Map();
 let threads = 0;
 
 const kHandle = Symbol('kHandle');
-class Worker extends y {
+class Worker extends EventEmitter {
   resourceLimits = {
     maxYoungGenerationSizeMb: -1,
     maxOldGenerationSizeMb: -1,
@@ -21,7 +22,7 @@ class Worker extends y {
   constructor(specifier, options) {
     super();
     if (options && options.eval === true) {
-      specifier = `data:text/javascript,${specifier}`;
+      specifier = `data:application/javascript,${encodeURIComponent(specifier)}`;
     }
     const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
       type: 'module',
@@ -92,7 +93,7 @@ if (!isMainThread) {
   parentPort.emit = () => notImplemented();
   parentPort.removeAllListeners = () => notImplemented();
 
-  ([{ threadId, workerData, environmentData }] = await y.once(parentPort, 'message'));
+  ([{ threadId, workerData, environmentData }] = await once(parentPort, 'message'));
 
   // alias
   parentPort.addEventListener('offline', () => parentPort.emit('close'));

@@ -12,7 +12,7 @@ import './path.js';
 import './chunk-8330aff8.js';
 import './events.js';
 import './stream.js';
-import './chunk-7b20f189.js';
+import './chunk-342db2c9.js';
 import './url.js';
 import './chunk-32ebc98f.js';
 import './chunk-3afc512b.js';
