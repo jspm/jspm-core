@@ -9,8 +9,6 @@ function unimplemented(name) {
 let environmentData = new Map();
 let threads = 0;
 
-const _global = typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : null;
-
 const kHandle = Symbol('kHandle');
 class Worker extends y {
   resourceLimits = {
@@ -25,10 +23,8 @@ class Worker extends y {
     if (options && options.eval === true) {
       specifier = `data:text/javascript,${specifier}`;
     }
-    const handle = this[kHandle] = new _global.Worker(specifier, Object.assign({}, options || {}, {
+    const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
       type: 'module',
-      // unstable
-      deno: { namespace: true },
     }));
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
@@ -36,8 +32,8 @@ class Worker extends y {
     handle.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options?.workerData,
-    }, options && options.transferList || []);
+      workerData: options && options.workerData,
+    }, options && options.transferList);
     this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
@@ -49,7 +45,7 @@ class Worker extends y {
 
   getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = _global.performance;
+  performance = self.performance;
 }
 
 const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
@@ -117,9 +113,9 @@ function setEnvironmentData(key, value) {
 const markAsUntransferable = () => unimplemented('markAsUntransferable');
 const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
 const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
-const MessagePort = _global.MessagePort;
-const MessageChannel = _global.MessageChannel;
-const BroadcastChannel = _global.BroadcastChannel;
+const MessagePort = self.MessagePort;
+const MessageChannel = self.MessageChannel;
+const BroadcastChannel = self.BroadcastChannel;
 const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
 
 var worker_threads = {
