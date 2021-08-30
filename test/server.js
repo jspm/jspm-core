@@ -1,3 +1,4 @@
+process.exit = (code) => {};
 import http from "http";
 import fs from "fs";
 import { once } from "events";
@@ -38,11 +39,11 @@ function getTests() {
 // Firefox stack to Node.js stack
 function createError({ message, stack }) {
   const error = new Error(message);
-  const lines = stack.trim().split('\n').map((l) => {
+  const lines = stack ? stack.trim().split('\n').map((l) => {
     if (l[0] === '@') return `    at <anonymous> (${kleur.blue(l.slice(1) || '<anonymous>')})`
     return `    at ${l.slice(0, l.indexOf('@'))} (${kleur.blue(l.slice(l.indexOf('@') + 1) || '<anonymous>')})`;
-  });
-  lines.unshift(kleur.red(`Error: ${message}`));
+  }) : [];
+  lines.unshift(kleur.red(message));
   error.stack = lines.join('\n');
   return error;
 }
@@ -159,7 +160,7 @@ http.createServer(async function (req, res) {
     mime = mimes[extname(filePath)] || 'text/plain';
 
   const headers = filePath.endsWith('content-type-none.json') ?
-    {} : { 'content-type': mime, 'Cache-Control': 'no-cache' }
+    {} : { 'content-type': mime, 'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*' }
 
   res.writeHead(200, headers);
   fileStream.pipe(res);

@@ -1,4 +1,4 @@
-import EventEmitter from 'events';
+import { EventEmitter, once } from './events.js';
 
 function unimplemented(name) {
   throw new Error(
@@ -21,7 +21,7 @@ export class Worker extends EventEmitter {
   constructor(specifier, options) {
     super();
     if (options && options.eval === true) {
-      specifier = `data:text/javascript,${specifier}`;
+      specifier = `data:application/javascript,${encodeURIComponent(specifier)}`;
     }
     const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
       type: 'module',
@@ -92,7 +92,7 @@ if (!isMainThread) {
   parentPort.emit = () => notImplemented();
   parentPort.removeAllListeners = () => notImplemented();
 
-  ([{ threadId, workerData, environmentData }] = await EventEmitter.once(parentPort, 'message'));
+  ([{ threadId, workerData, environmentData }] = await once(parentPort, 'message'));
 
   // alias
   parentPort.addEventListener('offline', () => parentPort.emit('close'));
