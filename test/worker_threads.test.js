@@ -6,7 +6,7 @@ const test = new Test();
 
 const worker = new Worker('./worker_threads-fixture.js');
 worker.postMessage('hello2');
-console.log(await once(worker, 'message'))
+
 test.assertObjectEqual(await once(worker, 'message'), ['hello']);
 test.assertObjectEqual(await once(worker, 'message'), ['received: hello2']);
 
