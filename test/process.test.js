@@ -3,6 +3,8 @@ import * as process from '../nodelibs/browser/process.js';
 
 assert.strictEqual(process.cwd(), '/');
 
+assert.strictEqual(process.cwd(), '/');
+
 assert.strictEqual(typeof process.uptime(), 'number');
 assert.ok(process.uptime() >= 0);
 assert.strictEqual(process.hrtime().length, 2);
