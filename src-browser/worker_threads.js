@@ -23,7 +23,7 @@ export class Worker extends EventEmitter {
     if (options && options.eval === true) {
       specifier = `data:text/javascript,${specifier}`;
     }
-    const handle = this[kHandle] = new Worker(specifier, Object.assign({}, options || {}, {
+    const handle = this[kHandle] = new self.Worker(specifier, Object.assign({}, options || {}, {
       type: 'module',
     }));
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
@@ -32,8 +32,8 @@ export class Worker extends EventEmitter {
     handle.postMessage({
       environmentData,
       threadId: (this.threadId = ++threads),
-      workerData: options?.workerData,
-    }, options ? options.transferList : []);
+      workerData: options && options.workerData,
+    }, options && options.transferList);
     this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
