@@ -24,12 +24,37 @@ const input = Object.fromEntries(
 const jspmPlugin = rollupPluginJspm({
   env: ['browser'],
   inputMap: {
-    // TODO: ensure these custom imports always override
-    //       so scopes below are not needed
+    // TODO: better way to override scopes?
     imports: input,
     scopes: {
-      './node_modules/https-browserify/': { http: input.http },
-      './node_modules/browserify-zlib/': { stream: input.stream }
+      './node_modules/assert/': input,
+      './node_modules/browserify-zlib/': input,
+      './node_modules/buffer/': input,
+      './node_modules/console-browserify/': input,
+      './node_modules/constants-browserify/': input,
+      './node_modules/crypto-browserify/': input,
+      './node_modules/diagnostics_channel/': input,
+      './node_modules/domain-browser/': input,
+      './node_modules/events/': input,
+      './node_modules/glob/': input,
+      './node_modules/https-browserify/': input,
+      './node_modules/kleur/': input,
+      './node_modules/memfs/': input,
+      './node_modules/open/': input,
+      './node_modules/os-browserify/': input,
+      './node_modules/path-browserify/': input,
+      './node_modules/punycode/': input,
+      './node_modules/querystring/': input,
+      './node_modules/rollup/': input,
+      './node_modules/stream-browserify/': input,
+      './node_modules/stream-http/': input,
+      './node_modules/string_decoder/': input,
+      './node_modules/timers-browserify/': input,
+      './node_modules/tty-browserify/': input,
+      './node_modules/url/': input,
+      './node_modules/util/': input,
+      './node_modules/vm-browserify/': input
+      
     }
   }
 });
