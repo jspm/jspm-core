@@ -9,5 +9,7 @@ assert.deepStrictEqual(fs.readdirSync('/usr'), ['bin']);
 
 // TODO: test that stdout and stderr are console.logged and console.errored.
 
-assert.strictEqual(fs.readFileSync('/dev/stderr', 'utf8'), 'test');
-assert.strictEqual(fs.readFileSync('/dev/stdout', 'utf8'), 'test');
+assert.assertStrictEqual(fs.readFileSync('/dev/stderr', 'utf8'), 'test');
+assert.assertStrictEqual(fs.readFileSync('/dev/stdout', 'utf8'), 'test');
+
+export default test;
