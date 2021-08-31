@@ -1,7 +1,29 @@
 import { y } from './chunk-eb4a3827.js';
 export { y as default } from './chunk-eb4a3827.js';
 
-// https://github.com/denoland/deno_std/blob/d005433c709054af87aca54f57a446b4f7966f11/node/events.ts#L542
+// https://github.com/denoland/deno_std/blob/d005433c709054af87aca54f57a446b4f7966f11/node/events.ts#L501-L638
+y.once = function (emitter, event) {
+  return new Promise((resolve, reject) => {
+    function eventListener(...args) {
+      if (errorListener !== undefined) {
+        emitter.removeListener('error', errorListener);
+      }
+      resolve(args);
+    }
+    let errorListener;
+    if (event !== 'error') {
+      // deno-lint-ignore no-explicit-any
+      errorListener = (err) => {
+        emitter.removeListener(name, eventListener);
+        reject(err);
+      };
+
+      emitter.once('error', errorListener);
+    }
+
+    emitter.once(event, eventListener);
+  });
+};
 y.on = function (emitter, event) {
   const unconsumedEventValues = [];
   const unconsumedPromises = [];

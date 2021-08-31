@@ -4,6 +4,8 @@
   let curTest;
   try {
     for (curTest of tests) {
+      if (curTest.startsWith('chrome-') && navigator.userAgent.indexOf('Chrome/') === -1)
+        continue;
       await import(`./${curTest}`);
     }
     console.log('OK');

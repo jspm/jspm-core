@@ -1,4 +1,5 @@
-import { y } from './chunk-eb4a3827.js';
+import { once, EventEmitter } from './events.js';
+import './chunk-eb4a3827.js';
 
 function unimplemented(name) {
   throw new Error(
@@ -9,10 +10,8 @@ function unimplemented(name) {
 let environmentData = new Map();
 let threads = 0;
 
-const _global = typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : null;
-
 const kHandle = Symbol('kHandle');
-class Worker extends y {
+class Worker extends EventEmitter {
   resourceLimits = {
     maxYoungGenerationSizeMb: -1,
     maxOldGenerationSizeMb: -1,
@@ -22,14 +21,13 @@ class Worker extends y {
 
   constructor(specifier, options) {
     super();
-    if (options && options.eval === true) {
-      specifier = `data:text/javascript,${specifier}`;
+    if (options?.eval === true) {
+      specifier = URL.createObjectURL(new Blob([specifier], { type: 'application/javascript' }));
     }
-    const handle = this[kHandle] = new _global.Worker(specifier, Object.assign({}, options || {}, {
+    const handle = this[kHandle] = new globalThis.Worker(specifier, {
+      ...(options || {}),
       type: 'module',
-      // unstable
-      deno: { namespace: true },
-    }));
+    });
     handle.addEventListener('error', (event) => this.emit('error', event.error || event.message));
     handle.addEventListener('messageerror', (event) => this.emit('messageerror', event.data));
     handle.addEventListener('message', (event) => this.emit('message', event.data));
@@ -37,7 +35,7 @@ class Worker extends y {
       environmentData,
       threadId: (this.threadId = ++threads),
       workerData: options?.workerData,
-    }, options && options.transferList || []);
+    }, options?.transferList);
     this.postMessage = handle.postMessage.bind(handle);
     this.emit('online');
   }
@@ -49,7 +47,7 @@ class Worker extends y {
 
   getHeapSnapshot = () => unimplemented('Worker#getHeapsnapshot');
   // fake performance
-  performance = _global.performance;
+  performance = globalThis.performance;
 }
 
 const isMainThread = typeof WorkerGlobalScope === 'undefined' || self instanceof WorkerGlobalScope === false;
@@ -96,7 +94,7 @@ if (!isMainThread) {
   parentPort.emit = () => notImplemented();
   parentPort.removeAllListeners = () => notImplemented();
 
-  ([{ threadId, workerData, environmentData }] = await y.once(parentPort, 'message'));
+  ([{ threadId, workerData, environmentData }] = await once(parentPort, 'message'));
 
   // alias
   parentPort.addEventListener('offline', () => parentPort.emit('close'));
@@ -117,9 +115,9 @@ function setEnvironmentData(key, value) {
 const markAsUntransferable = () => unimplemented('markAsUntransferable');
 const moveMessagePortToContext = () => unimplemented('moveMessagePortToContext');
 const receiveMessageOnPort = () => unimplemented('receiveMessageOnPort');
-const MessagePort = _global.MessagePort;
-const MessageChannel = _global.MessageChannel;
-const BroadcastChannel = _global.BroadcastChannel;
+const MessagePort = globalThis.MessagePort;
+const MessageChannel = globalThis.MessageChannel;
+const BroadcastChannel = globalThis.BroadcastChannel;
 const SHARE_ENV = Symbol.for('nodejs.worker_threads.SHARE_ENV');
 
 var worker_threads = {
