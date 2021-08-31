@@ -1,21 +1,21 @@
-import { b as buffer } from './chunk-5ec93e6c.js';
+import { b as buffer } from './chunk-a75abdc7.js';
 import et from './assert.js';
 import './util.js';
-import { X } from './chunk-13140bc3.js';
+import { X } from './chunk-b196e9ea.js';
 import './path.js';
-import { p as process } from './chunk-5752f882.js';
+import { p as process } from './chunk-41a25566.js';
 import './events.js';
-import { y } from './chunk-e4efb04d.js';
+import { y } from './chunk-eb4a3827.js';
 import './stream.js';
-import h from './url.js';
-import { p as path } from './chunk-1a141dcd.js';
-import { s as stream } from './chunk-b5b08cb5.js';
+import h, { fileURLToPath } from './url.js';
+import { p as path } from './chunk-8330aff8.js';
+import { s as stream } from './chunk-7b20f189.js';
 import { Buffer } from './buffer.js';
-import './chunk-ff6a5e51.js';
-import './chunk-0f70056b.js';
-import './chunk-0029504c.js';
-import './chunk-1514fda9.js';
-import './chunk-c9ae16fc.js';
+import './chunk-bf402f6f.js';
+import './chunk-af36a440.js';
+import './chunk-83f77422.js';
+import './chunk-32ebc98f.js';
+import './chunk-3afc512b.js';
 
 var exports$f = {},
     _dewExec$f = false;
@@ -4425,6 +4425,61 @@ fs.StatWatcher.prototype.start = function (path, persistent, interval = 5007) {
 
 fs.FileReadStream = fs.ReadStream;
 fs.FileWriteStream = fs.WriteStream;
+
+function handleFsUrl (url, isSync) {
+  if (url.protocol === 'file:')
+    return fileURLToPath(url);
+  if (url.protocol === 'https:' || url.protocol === 'http:') {
+    const path = '\\\\url\\' + url.href.replaceAll(/\//g, '\\\\');
+    if (existsSync(path))
+      return path;
+    if (isSync)
+      throw new Error(`Cannot sync request URL ${url} via FS. JSPM FS support for network URLs requires using async FS methods or priming the MemFS cache first with an async request before a sync request.`);
+    return (async () => {
+      const res = await fetch(url);
+      if (!res.ok)
+        throw new Error(`Unable to fetch ${url.href}, ${res.status}`);
+      const buf = await res.arrayBuffer();
+      writeFileSync(path, Buffer.from(buf));
+      return path;
+    })();
+  }
+  throw new Error('URL ' + url + ' not supported in JSPM FS implementation.');
+}
+
+function wrapFsSync (fn) {
+  return function (path, ...args) {
+    if (path instanceof URL)
+      return fn(handleFsUrl(path, true), ...args);
+    return fn(path, ...args);
+  };
+}
+
+function wrapFsPromise (fn) {
+  return async function (path, ...args) {
+    if (path instanceof URL)
+      return fn(await handleFsUrl(path), ...args);
+    return fn(path, ...args);
+  };
+}
+
+function wrapFsCallback (fn) {
+  return function (path, ...args) {
+    const cb = args[args.length - 1];
+    if (path instanceof URL && typeof cb === 'function') {
+      handleFsUrl(path).then(path => {
+        fn(path, ...args);
+      }, cb);
+    }
+    else {
+      fn(path, ...args);
+    }
+  }; 
+}
+
+fs.promises.readFile = wrapFsPromise(fs.promises.readFile);
+fs.readFile = wrapFsCallback(fs.readFile);
+fs.readFileSync = wrapFsSync(fs.readFileSync);
 
 const {
   appendFile,

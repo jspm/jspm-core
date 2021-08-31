@@ -1,5 +1,5 @@
-import { y } from './chunk-e4efb04d.js';
-export { y as default } from './chunk-e4efb04d.js';
+import { y } from './chunk-eb4a3827.js';
+export { y as default } from './chunk-eb4a3827.js';
 
 // https://github.com/denoland/deno_std/blob/d005433c709054af87aca54f57a446b4f7966f11/node/events.ts#L542
 y.on = function (emitter, event) {
