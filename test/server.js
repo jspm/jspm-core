@@ -79,7 +79,9 @@ http.createServer(async function (req, res) {
     const message = new URL(req.url, rootURL).searchParams.get('message');
     if (message) console.log(message);
     if (shouldExit) {
-      process.exit();
+      if (spawnPs)
+        spawnPs.kill('SIGKILL');
+      setTimeout(() => process.exit(), 500);
     }
     return;
   }
@@ -160,9 +162,12 @@ http.createServer(async function (req, res) {
   res.end();
 }).listen(port);
 
+let spawnPs;
 if (process.env.CI_BROWSER) {
-  spawn(process.env.CI_BROWSER, [...process.env.CI_BROWSER_FLAGS ? process.env.CI_BROWSER_FLAGS.split(' ') : [], `http://localhost:${port}/test/${testName}.html`]);
+  const args = process.env.CI_BROWSER_FLAGS ? process.env.CI_BROWSER_FLAGS.split(' ') : [];
+  console.log('Spawning browser: ' + process.env.CI_BROWSER + ' ' + args.join(' '));
+  spawnPs = spawn(process.env.CI_BROWSER, [...args, `http://localhost:${port}/test/${testName}.html`]);
 }
 else {
-  open(`http://localhost:${port}/test/${testName}.html`);
+  open(`http://localhost:${port}/test/${testName}.html`, { app: { name: open.apps.chrome } });
 }
