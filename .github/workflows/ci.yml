@@ -24,7 +24,7 @@ jobs:
         with:
           firefox-version: ${{ matrix.firefox }}
       - run: npm install
-      #- run: npm run build
+      - run: npm run build
       - run: npm run test:browser
         env:
           CI_BROWSER: /opt/hostedtoolcache/firefox/${{ matrix.firefox }}/x64/firefox
@@ -52,7 +52,7 @@ jobs:
         run: $env:CI_BROWSER=$(where chrome)
       - run: echo $env:CI_BROWSER
       - run: npm install
-      #- run: npm run build
+      - run: npm run build
       - run: npm run test:browser
         env:
           CI_BROWSER_FLAGS: --headless --screenshot
