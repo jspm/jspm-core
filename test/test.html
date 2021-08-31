@@ -110,7 +110,7 @@
       for (const error of errors) console.error(error);
       fetch('/error?' + errors.length, {
         method: 'post',
-        body: JSON.stringify(errors.map(e => ({ message: e.message, stack: e.stack }))),
+        body: JSON.stringify(errors.map(e => ({ message: e && e.message || String(e), stack: e && e.stack || String(e) }))),
       });
     } else {
       console.log('OK');

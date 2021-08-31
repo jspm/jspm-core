@@ -1,5 +1,8 @@
+import Test from './common.js';
 import { readFile } from '../nodelibs/browser/fs/promises.js';
 import { WASI } from '../nodelibs/browser/wasi.js';
+
+const test = new Test();
 
 const wasi = new WASI({
   args: ['cowsay', 'moo']
@@ -11,3 +14,5 @@ const wasm = await WebAssembly.compile(await readFile(new URL('./cowsay.wasm', i
 const instance = await WebAssembly.instantiate(wasm, importObject);
 
 wasi.start(instance);
+
+export default test;
