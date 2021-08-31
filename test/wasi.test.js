@@ -1,5 +1,5 @@
-import { readFile } from '../../nodelibs/browser/fs/promises.js';
-import { WASI } from '../../nodelibs/browser/wasi.js';
+import { readFile } from '../nodelibs/browser/fs/promises.js';
+import { WASI } from '../nodelibs/browser/wasi.js';
 
 const wasi = new WASI({
   args: ['cowsay', 'moo']

@@ -2,6 +2,7 @@ import memfs from 'memfs';
 import volume from 'memfs/lib/volume.js';
 const { vol, createFsFromVolume } = memfs;
 import { Buffer } from './buffer.js';
+import { fileURLToPath } from './url.js';
 
 function unimplemented(name) {
   throw new Error(`Node.js fs ${name} is not supported by JSPM core in the browser`);
@@ -59,6 +60,34 @@ fs.StatWatcher.prototype.start = function (path, persistent, interval = 5007) {
 
 fs.FileReadStream = fs.ReadStream;
 fs.FileWriteStream = fs.WriteStream;
+
+function handleFsUrl (url, isAsync) {
+  if (url.protocol === 'file:')
+    return fileURLToPath(url);
+  if (url.protocol === 'https:' || url.protocol === 'http:') {
+    const path = '\\\\url\\' + url.replaceAll(/\//g, '\\\\');
+    if (existsSync(path))
+      return path;
+    if (!isAsync)
+      throw new Error(`Cannot sync request URL ${url} via FS. JSPM FS support for network URLs requires using async FS methods or priming the MemFS cache first with an async request before a sync request.`);
+    return (async () => {
+      const res = await fetch(url);
+      if (!res.ok)
+        throw new Error(`Unable to fetch ${url.href}, ${res.status}`);
+      const buf = await res.arrayBuffer();
+      writeFileSync(path, Buffer.from(buf));
+      return path;
+    })();
+  }
+  throw new Error('URL ' + url + ' not supported in JSPM FS implementation.');
+}
+
+const _readFile = fs.promises.readFile;
+fs.promises.readFile = async function (input, ...args) {
+  if (input instanceof URL)
+    return _readFile(await handleFsUrl(input, true), ...args);
+  return _readFile(input, ...args);
+}
 
 export const {
   appendFile,
