@@ -167,6 +167,8 @@ http.createServer(async function (req, res) {
   res.end();
 }).listen(port);
 
+console.log(process.env);
+
 let spawnPs;
 if (process.env.CI_BROWSER) {
   const args = process.env.CI_BROWSER_FLAGS ? process.env.CI_BROWSER_FLAGS.split(' ') : [];

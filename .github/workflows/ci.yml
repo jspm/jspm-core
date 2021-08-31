@@ -50,6 +50,7 @@ jobs:
           chrome-version: ${{ matrix.chrome }}
       - name: Set Chrome Path
         run: $env:CI_BROWSER=$(where chrome)
+      - run: echo $env:CI_BROWSER
       - run: npm install
       - run: npm run build
       - run: npm run test:browser
