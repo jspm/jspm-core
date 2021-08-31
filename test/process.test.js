@@ -1,17 +1,13 @@
-import Test from './common.js';
+import assert from '../nodelibs/browser/assert.js';
 import * as process from '../nodelibs/browser/process.js';
 
-const test = new Test();
+assert.strictEqual(process.cwd(), '/');
 
-test.assertStrictEqual(() => process.cwd(), '/');
-
-test.assertStrictEqual(() => typeof process.uptime(), 'number');
-test.assert(() => process.uptime() >= 0);
-test.assertStrictEqual(() => process.hrtime().length, 2);
-test.assertStrictEqual(() => typeof process.hrtime()[0], 'number');
-test.assertStrictEqual(() => typeof process.hrtime()[1], 'number');
-test.assert(() => process.hrtime()[0] > 0);
-test.assert(() => process.hrtime()[1] >= 0);
-test.assertStrictEqual(() => typeof process.hrtime.bigint(), typeof BigInt === 'undefined' ? 'number' : 'bigint');
-
-export default test;
+assert.strictEqual(typeof process.uptime(), 'number');
+assert.ok(process.uptime() >= 0);
+assert.strictEqual(process.hrtime().length, 2);
+assert.strictEqual(typeof process.hrtime()[0], 'number');
+assert.strictEqual(typeof process.hrtime()[1], 'number');
+assert.ok(process.hrtime()[0] > 0);
+assert.ok(process.hrtime()[1] >= 0);
+assert.strictEqual(typeof process.hrtime.bigint(), typeof BigInt === 'undefined' ? 'number' : 'bigint');

@@ -95,8 +95,8 @@ http.createServer(async function (req, res) {
     let body = '';
     req.on('data', chunk => body += chunk);
     await once(req, 'end');
-    const errors = JSON.parse(body).map(createError);
-    for (const error of errors) console.error(error);
+    const err = JSON.parse(body);
+    console.error(err);
     res.statusCode = 201;
     res.end();
     if (shouldExit) {
