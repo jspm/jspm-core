@@ -1,4 +1,3 @@
-import assert from '../nodelibs/browser/assert.js';
 import { readFile } from '../nodelibs/browser/fs/promises.js';
 import { WASI } from '../nodelibs/browser/wasi.js';
 
