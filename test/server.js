@@ -56,6 +56,8 @@ function setBrowserTimeout () {
     clearTimeout(browserTimeout);
   browserTimeout = setTimeout(() => {
     console.log(`No browser requests made to server for ${timeout / 1000}s, closing.`);
+    if (spawnPs)
+      spawnPs.kill('SIGKILL');
     process.exit(failTimeout || process.env.CI_BROWSER ? 1 : 0);
   }, timeout);
 }
