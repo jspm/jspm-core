@@ -63,6 +63,7 @@ function setBrowserTimeout () {
 setBrowserTimeout();
 
 http.createServer(async function (req, res) {
+  console.log(req.url);
   setBrowserTimeout();
   if (req.url.startsWith('/tests/ping')) {
     res.writeHead(200);
@@ -97,6 +98,8 @@ http.createServer(async function (req, res) {
     res.statusCode = 201;
     res.end();
     if (shouldExit) {
+      if (spawnPs)
+        spawnPs.kill('SIGKILL');
       failTimeout = setTimeout(() => process.exit(1), 5000);
     }
     return;
