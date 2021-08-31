@@ -7,8 +7,8 @@ export interface WASIOptions extends Omit<ContextOptions, 'exitOnReturn'> {
 export class WASI extends Context {
   readonly wasiImport: Context['exports'];
 
-  constructor(options: WASIOptions) {
-    super({ ...options, exitOnReturn: options.returnOnExit });
+  constructor(options?: WASIOptions) {
+    super(options && { ...options, exitOnReturn: options.returnOnExit });
     this.wasiImport = this.exports;
   }
 }
