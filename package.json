@@ -5,16 +5,19 @@
     "build": "rollup -c",
     "generate:node": "node generate-node-libs.mjs",
     "test": "npm run test:browser",
-    "test:browser": "node test/server.js"
+    "test:browser": "node test/server.js",
+    "test:browser:watch": "cross-env WATCH_MODE=1 node test/server.js"
   },
   "type": "module",
   "devDependencies": {
     "@jspm/plugin-rollup": "github:jspm/rollup-plugin-jspm#main",
+    "@wasmer/wasi": "^0.12.0",
     "assert": "^2.0.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "console-browserify": "^1.2.0",
     "constants-browserify": "^1.0.0",
+    "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.0",
     "diagnostics_channel": "^1.0.0",
     "domain-browser": "^4.22.0",

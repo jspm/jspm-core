@@ -1,7 +1,6 @@
 <!doctype html>
 <script type="module">
   let done = false;
-
   import * as empty from '../nodelibs/@empty.js';
   import * as emptyDew from '../nodelibs/@empty.dew.js';
   import * as assert from '../nodelibs/browser/assert.js';
@@ -35,7 +34,8 @@
   import * as zlib from '../nodelibs/browser/zlib.js';
   import * as performance from '../nodelibs/browser/perf_hooks.js'
   import * as diagnostics_channel from '../nodelibs/browser/diagnostics_channel.js'
-  import * as webStream from '../nodelibs/browser/stream/web.js';
+  import * as wasi from '../nodelibs/browser/wasi.js'
+  import * as webStream from '../nodelibs/browser/stream/web.js'
   import * as workerThreads from '../nodelibs/browser/worker_threads.js'
 
   if (Object.keys(assert).length < 2)
@@ -94,6 +94,8 @@
     console.error('Invalid exports');
   else if (Object.keys(diagnostics_channel).length < 4)
     console.error('Invalid exports')
+  else if (Object.keys(wasi).length < 2)
+    console.error('Invalid exports.');
   else if (Object.keys(webStream).length < 2)
     console.error('Invalid exports.');
   else if (Object.keys(workerThreads).length < 16)
@@ -108,7 +110,7 @@
       for (const error of errors) console.error(error);
       fetch('/error?' + errors.length, {
         method: 'post',
-        body: JSON.stringify(errors.map(e => ({ message: e.message, stack: e.stack }))),
+        body: JSON.stringify(errors.map(e => ({ message: e && e.message || String(e), stack: e && e.stack || String(e) }))),
       });
     } else {
       console.log('OK');

@@ -97,6 +97,7 @@ http.createServer(async function (req, res) {
     if (shouldExit) {
       failTimeout = setTimeout(() => process.exit(1), 5000);
     }
+    return;
   }
   else if (failTimeout) {
     clearTimeout(failTimeout);

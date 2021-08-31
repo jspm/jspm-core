@@ -2,6 +2,7 @@ import memfs from 'memfs';
 import volume from 'memfs/lib/volume.js';
 const { vol, createFsFromVolume } = memfs;
 import { Buffer } from './buffer.js';
+import { fileURLToPath } from './url.js';
 
 function unimplemented(name) {
   throw new Error(`Node.js fs ${name} is not supported by JSPM core in the browser`);
@@ -59,6 +60,61 @@ fs.StatWatcher.prototype.start = function (path, persistent, interval = 5007) {
 
 fs.FileReadStream = fs.ReadStream;
 fs.FileWriteStream = fs.WriteStream;
+
+function handleFsUrl (url, isSync) {
+  if (url.protocol === 'file:')
+    return fileURLToPath(url);
+  if (url.protocol === 'https:' || url.protocol === 'http:') {
+    const path = '\\\\url\\' + url.href.replaceAll(/\//g, '\\\\');
+    if (existsSync(path))
+      return path;
+    if (isSync)
+      throw new Error(`Cannot sync request URL ${url} via FS. JSPM FS support for network URLs requires using async FS methods or priming the MemFS cache first with an async request before a sync request.`);
+    return (async () => {
+      const res = await fetch(url);
+      if (!res.ok)
+        throw new Error(`Unable to fetch ${url.href}, ${res.status}`);
+      const buf = await res.arrayBuffer();
+      writeFileSync(path, Buffer.from(buf));
+      return path;
+    })();
+  }
+  throw new Error('URL ' + url + ' not supported in JSPM FS implementation.');
+}
+
+function wrapFsSync (fn) {
+  return function (path, ...args) {
+    if (path instanceof URL)
+      return fn(handleFsUrl(path, true), ...args);
+    return fn(path, ...args);
+  };
+}
+
+function wrapFsPromise (fn) {
+  return async function (path, ...args) {
+    if (path instanceof URL)
+      return fn(await handleFsUrl(path), ...args);
+    return fn(path, ...args);
+  };
+}
+
+function wrapFsCallback (fn) {
+  return function (path, ...args) {
+    const cb = args[args.length - 1];
+    if (path instanceof URL && typeof cb === 'function') {
+      handleFsUrl(path).then(path => {
+        fn(path, ...args);
+      }, cb);
+    }
+    else {
+      fn(path, ...args);
+    }
+  }; 
+}
+
+fs.promises.readFile = wrapFsPromise(fs.promises.readFile);
+fs.readFile = wrapFsCallback(fs.readFile);
+fs.readFileSync = wrapFsSync(fs.readFileSync);
 
 export const {
   appendFile,
