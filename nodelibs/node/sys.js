@@ -1,2 +1,2 @@
-export { default } from 'node:sys';
-export * from 'node:sys';
+export { default } from 'sys';
+export * from 'sys';

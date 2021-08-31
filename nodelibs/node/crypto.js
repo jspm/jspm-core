@@ -1,2 +1,2 @@
-export { default } from 'node:crypto';
-export * from 'node:crypto';
+export { default } from 'crypto';
+export * from 'crypto';

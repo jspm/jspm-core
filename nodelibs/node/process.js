@@ -1,2 +1,2 @@
-export { default } from 'node:process';
-export * from 'node:process';
+export { default } from 'process';
+export * from 'process';

@@ -1,2 +1,2 @@
-export { default } from 'node:domain';
-export * from 'node:domain';
+export { default } from 'domain';
+export * from 'domain';

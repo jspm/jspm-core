@@ -1,2 +1,2 @@
-export { default } from 'node:inspector';
-export * from 'node:inspector';
+export { default } from 'inspector';
+export * from 'inspector';

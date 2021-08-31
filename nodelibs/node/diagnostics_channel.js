@@ -1,2 +1,2 @@
-export { default } from 'node:diagnostics_channel';
-export * from 'node:diagnostics_channel';
+export { default } from 'diagnostics_channel';
+export * from 'diagnostics_channel';
