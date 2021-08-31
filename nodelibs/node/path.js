@@ -1,2 +1,2 @@
-export { default } from 'node:path';
-export * from 'node:path';
+export { default } from 'path';
+export * from 'path';

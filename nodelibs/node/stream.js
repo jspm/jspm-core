@@ -1,2 +1,2 @@
-export { default } from 'node:stream';
-export * from 'node:stream';
+export { default } from 'stream';
+export * from 'stream';

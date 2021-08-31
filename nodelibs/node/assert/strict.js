@@ -1,2 +1,2 @@
-export { default } from 'node:assert/strict';
-export * from 'node:assert/strict';
+export { default } from 'assert/strict';
+export * from 'assert/strict';

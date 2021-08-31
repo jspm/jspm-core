@@ -1,2 +1,2 @@
-export { default } from 'node:url';
-export * from 'node:url';
+export { default } from 'url';
+export * from 'url';

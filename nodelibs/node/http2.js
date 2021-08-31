@@ -1,2 +1,2 @@
-export { default } from 'node:http2';
-export * from 'node:http2';
+export { default } from 'http2';
+export * from 'http2';

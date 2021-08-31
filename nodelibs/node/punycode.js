@@ -1,2 +1,2 @@
-export { default } from 'node:punycode';
-export * from 'node:punycode';
+export { default } from 'punycode';
+export * from 'punycode';

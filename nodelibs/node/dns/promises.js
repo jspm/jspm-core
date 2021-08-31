@@ -1,2 +1,2 @@
-export { default } from 'node:dns/promises';
-export * from 'node:dns/promises';
+export { default } from 'dns/promises';
+export * from 'dns/promises';

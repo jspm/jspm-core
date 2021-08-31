@@ -1,2 +1,2 @@
-export { default } from 'node:_http_outgoing';
-export * from 'node:_http_outgoing';
+export { default } from '_http_outgoing';
+export * from '_http_outgoing';

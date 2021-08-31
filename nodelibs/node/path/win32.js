@@ -1,2 +1,2 @@
-export { default } from 'node:path/win32';
-export * from 'node:path/win32';
+export { default } from 'path/win32';
+export * from 'path/win32';

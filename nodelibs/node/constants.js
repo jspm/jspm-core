@@ -1,2 +1,2 @@
-export { default } from 'node:constants';
-export * from 'node:constants';
+export { default } from 'constants';
+export * from 'constants';

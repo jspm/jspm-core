@@ -1,2 +1,2 @@
-export { default } from 'node:stream/consumers';
-export * from 'node:stream/consumers';
+export { default } from 'stream/consumers';
+export * from 'stream/consumers';

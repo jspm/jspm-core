@@ -1,2 +1,2 @@
-export { default } from 'node:_tls_wrap';
-export * from 'node:_tls_wrap';
+export { default } from '_tls_wrap';
+export * from '_tls_wrap';

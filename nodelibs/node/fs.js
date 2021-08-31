@@ -1,2 +1,2 @@
-export { default } from 'node:fs';
-export * from 'node:fs';
+export { default } from 'fs';
+export * from 'fs';
