@@ -120,5 +120,9 @@
       "node": "./nodelibs/node/diagnostics_channel.js",
       "default": "./nodelibs/browser/diagnostics_channel.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jspm/jspm-core.git"
   }
 }
