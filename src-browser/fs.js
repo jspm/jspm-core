@@ -49,15 +49,6 @@ fs.promises.rm = () => unimplemented('promises.rm');
 fs.Dir = () => unimplemented('Dir');
 fs.promises.watch = () => unimplemented('promises.watch');
 
-// TODO: remove this when https://github.com/streamich/memfs/pull/732 is merged and memfs released
-fs.StatWatcher.prototype.start = function (path, persistent, interval = 5007) {
-  this.filename = volume.pathToFilename(path);
-  this.setTimeout = setTimeout.bind(self);
-  this.interval = interval;
-  this.prev = this.fs.statSync(this.filename);
-  this.loop();
-}
-
 fs.FileReadStream = fs.ReadStream;
 fs.FileWriteStream = fs.WriteStream;
 
