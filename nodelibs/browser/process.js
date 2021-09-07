@@ -188,6 +188,18 @@ function hrtime(previousTimestamp) {
   return BigInt(diff[0] * nanoPerSec) + BigInt(diff[1]);
 };
 
+var _maxListeners = 10;
+var _events = {};
+var _eventsCount = 0;
+function on () { return process }var addListener = on;
+var once = on;
+var off = on;
+var removeListener = on;
+var removeAllListeners = on;
+var emit = noop;
+var prependListener = on;
+var prependOnceListener = on;
+function listeners (name) { return []; }
 var process = {
   version,
   versions,
@@ -201,6 +213,16 @@ var process = {
   _events,
   _eventsCount,
   _maxListeners,
+  on,
+  addListener,
+  once,
+  off,
+  removeListener,
+  removeAllListeners,
+  emit,
+  prependListener,
+  prependOnceListener,
+  listeners,
   domain,
   _exiting,
   config,
@@ -250,18 +272,4 @@ var process = {
   setSourceMapsEnabled,
 };
 
-var _maxListeners = 10;
-var _events = {};
-var _eventsCount = 0;
-var on = function() { return process; };
-var addListener = on;
-var once = on;
-var off = on;
-var removeListener = on;
-var removeAllListeners = on;
-var emit = noop;
-var prependListener = on;
-var prependOnceListener = on;
-var listeners = function(name) { return []; };
-
-export { _debugEnd, _debugProcess, _events, _eventsCount, _exiting, _fatalExceptions, _getActiveHandles, _getActiveRequests, _kill, _linkedBinding, _maxListeners, _preload_modules, _rawDebug, _startProfilerIdleNotifier, _stopProfilerIdleNotifier, _tickCallback, abort, addListener, allowedNodeEnvironmentFlags, arch, argv, argv0, assert, binding, chdir, config, cpuUsage, cwd, debugPort, process as default, dlopen, domain, emit, emitWarning, env, execArgv, execPath, exit, features, hasUncaughtExceptionCaptureCallback, hrtime, kill, listeners, memoryUsage, moduleLoadList, nextTick, off, on, once, openStdin, pid, platform, ppid, prependListener, prependOnceListener, process, reallyExit, release, removeAllListeners, removeListener, resourceUsage, setSourceMapsEnabled, setUncaughtExceptionCaptureCallback, stderr, stdin, stdout, title, umask, uptime, version, versions };
+export { _debugEnd, _debugProcess, _events, _eventsCount, _exiting, _fatalExceptions, _getActiveHandles, _getActiveRequests, _kill, _linkedBinding, _maxListeners, _preload_modules, _rawDebug, _startProfilerIdleNotifier, _stopProfilerIdleNotifier, _tickCallback, abort, addListener, allowedNodeEnvironmentFlags, arch, argv, argv0, assert, binding, chdir, config, cpuUsage, cwd, debugPort, process as default, dlopen, domain, emit, emitWarning, env, execArgv, execPath, exit, features, hasUncaughtExceptionCaptureCallback, hrtime, kill, listeners, memoryUsage, moduleLoadList, nextTick, off, on, once, openStdin, pid, platform, ppid, prependListener, prependOnceListener, reallyExit, release, removeAllListeners, removeListener, resourceUsage, setSourceMapsEnabled, setUncaughtExceptionCaptureCallback, stderr, stdin, stdout, title, umask, uptime, version, versions };

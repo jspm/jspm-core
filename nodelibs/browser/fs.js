@@ -1,21 +1,21 @@
-import { b as buffer } from './chunk-a75abdc7.js';
+import { b as buffer } from './chunk-44e51b61.js';
 import et from './assert.js';
 import './util.js';
-import { X } from './chunk-b196e9ea.js';
+import { X } from './chunk-b4205b57.js';
 import './path.js';
-import { p as process } from './chunk-41a25566.js';
+import { p as process } from './chunk-2eac56ff.js';
 import './events.js';
-import { y } from './chunk-eb4a3827.js';
+import { y } from './chunk-4bd36a8f.js';
 import './stream.js';
 import h, { fileURLToPath } from './url.js';
-import { p as path } from './chunk-8330aff8.js';
-import { s as stream } from './chunk-342db2c9.js';
+import { p as path } from './chunk-c8a91054.js';
+import { s as stream } from './chunk-c3b08ff9.js';
 import { Buffer } from './buffer.js';
-import './chunk-bf402f6f.js';
-import './chunk-af36a440.js';
-import './chunk-83f77422.js';
-import './chunk-32ebc98f.js';
-import './chunk-3afc512b.js';
+import './chunk-ce0fbc82.js';
+import './chunk-5decc758.js';
+import './chunk-4ccc3a29.js';
+import './chunk-924bb2e1.js';
+import './chunk-b04e620d.js';
 
 var exports$f = {},
     _dewExec$f = false;
@@ -202,10 +202,14 @@ function dew$c() {
   if (_dewExec$c) return exports$c;
   _dewExec$c = true;
 
-  var __spreadArray = exports$c && exports$c.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$c && exports$c.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
   Object.defineProperty(exports$c, "__esModule", {
@@ -227,7 +231,7 @@ function dew$c() {
       args[_i - 1] = arguments[_i];
     }
 
-    return new (buffer_1.Buffer.bind.apply(buffer_1.Buffer, __spreadArray([void 0, arg0], args)))();
+    return new (buffer_1.Buffer.bind.apply(buffer_1.Buffer, __spreadArray([void 0, arg0], args, false)))();
   }
 
   var bufferAllocUnsafe = buffer_1.Buffer.allocUnsafe || bufferV0P12Ponyfill;
@@ -240,7 +244,7 @@ function dew$c() {
 var exports$b = {},
     _dewExec$b = false;
 
-var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+var _global$3 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$b() {
   if (_dewExec$b) return exports$b;
@@ -308,6 +312,8 @@ function dew$b() {
     }(Base);
   }
 
+  var g = typeof globalThis !== "undefined" ? globalThis : _global$3;
+
   var AssertionError = function (_super) {
     __extends(AssertionError, _super);
 
@@ -335,7 +341,7 @@ function dew$b() {
     }
 
     return AssertionError;
-  }(_global$1.Error);
+  }(g.Error);
 
   exports$b.AssertionError = AssertionError;
 
@@ -365,9 +371,9 @@ function dew$b() {
   }
 
   exports$b.E = E;
-  exports$b.Error = makeNodeError(_global$1.Error);
-  exports$b.TypeError = makeNodeError(_global$1.TypeError);
-  exports$b.RangeError = makeNodeError(_global$1.RangeError); // To declare an error message, use the E(sym, val) function above. The sym
+  exports$b.Error = makeNodeError(g.Error);
+  exports$b.TypeError = makeNodeError(g.TypeError);
+  exports$b.RangeError = makeNodeError(g.RangeError); // To declare an error message, use the E(sym, val) function above. The sym
   // must be an upper case string. The val can be either a function or a string.
   // The return value of the function must be a string.
   // Examples:
@@ -636,7 +642,7 @@ function dew$9() {
     Dirent.build = function (link, encoding) {
       var dirent = new Dirent();
       var mode = link.getNode().mode;
-      dirent.name = encoding_1.strToEncoding(link.getName(), encoding);
+      dirent.name = (0, encoding_1.strToEncoding)(link.getName(), encoding);
       dirent.mode = mode;
       return dirent;
     };
@@ -684,7 +690,7 @@ function dew$9() {
 var exports$8 = {},
     _dewExec$8 = false;
 
-var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+var _global$2 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$8() {
   if (_dewExec$8) return exports$8;
@@ -696,7 +702,7 @@ function dew$8() {
 
   var _setImmediate;
 
-  if (typeof process$1.nextTick === "function") _setImmediate = process$1.nextTick.bind(_global);else _setImmediate = setTimeout.bind(_global);
+  if (typeof process$1.nextTick === "function") _setImmediate = process$1.nextTick.bind(typeof globalThis !== "undefined" ? globalThis : _global$2);else _setImmediate = setTimeout.bind(typeof globalThis !== "undefined" ? globalThis : _global$2);
   exports$8.default = _setImmediate;
   return exports$8;
 }
@@ -854,17 +860,17 @@ function dew$6() {
 
     Node.prototype.setString = function (str) {
       // this.setBuffer(bufferFrom(str, 'utf8'));
-      this.buf = buffer_1.bufferFrom(str, "utf8");
+      this.buf = (0, buffer_1.bufferFrom)(str, "utf8");
       this.touch();
     };
 
     Node.prototype.getBuffer = function () {
-      if (!this.buf) this.setBuffer(buffer_1.bufferAllocUnsafe(0));
-      return buffer_1.bufferFrom(this.buf); // Return a copy.
+      if (!this.buf) this.setBuffer((0, buffer_1.bufferAllocUnsafe)(0));
+      return (0, buffer_1.bufferFrom)(this.buf); // Return a copy.
     };
 
     Node.prototype.setBuffer = function (buf) {
-      this.buf = buffer_1.bufferFrom(buf); // Creates a copy of data.
+      this.buf = (0, buffer_1.bufferFrom)(buf); // Creates a copy of data.
 
       this.touch();
     };
@@ -920,10 +926,10 @@ function dew$6() {
         pos = 0;
       }
 
-      if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
 
       if (pos + len > this.buf.length) {
-        var newBuf = buffer_1.bufferAllocUnsafe(pos + len);
+        var newBuf = (0, buffer_1.bufferAllocUnsafe)(pos + len);
         this.buf.copy(newBuf, 0, 0, this.buf.length);
         this.buf = newBuf;
       }
@@ -947,7 +953,7 @@ function dew$6() {
         pos = 0;
       }
 
-      if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
       var actualLen = len;
 
       if (actualLen > buf.byteLength) {
@@ -967,13 +973,13 @@ function dew$6() {
         len = 0;
       }
 
-      if (!len) this.buf = buffer_1.bufferAllocUnsafe(0);else {
-        if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!len) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);else {
+        if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
 
         if (len <= this.buf.length) {
           this.buf = this.buf.slice(0, len);
         } else {
-          var buf = buffer_1.bufferAllocUnsafe(0);
+          var buf = (0, buffer_1.bufferAllocUnsafe)(0);
           this.buf.copy(buf);
           buf.fill(0, len);
         }
@@ -1320,6 +1326,9 @@ function dew$6() {
 
 var exports$5 = {},
     _dewExec$5 = false;
+
+var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+
 function dew$5() {
   if (_dewExec$5) return exports$5;
   _dewExec$5 = true;
@@ -1332,7 +1341,7 @@ function dew$5() {
    */
 
   function setTimeoutUnref(callback, time, args) {
-    var ref = setTimeout.apply(null, arguments);
+    var ref = setTimeout.apply(typeof globalThis !== "undefined" ? globalThis : _global$1, arguments);
     if (ref && typeof ref === "object" && typeof ref.unref === "function") ref.unref();
     return ref;
   }
@@ -1347,10 +1356,14 @@ function dew$4() {
   if (_dewExec$4) return exports$4;
   _dewExec$4 = true;
 
-  var __spreadArray = exports$4 && exports$4.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$4 && exports$4.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
   Object.defineProperty(exports$4, "__esModule", {
@@ -1373,10 +1386,10 @@ function dew$4() {
       }
 
       return new Promise(function (resolve, reject) {
-        vol[fn].bind(vol).apply(void 0, __spreadArray(__spreadArray([], args), [function (error, result) {
+        vol[fn].bind(vol).apply(void 0, __spreadArray(__spreadArray([], args, false), [function (error, result) {
           if (error) return reject(error);
           return resolve(getResult(result));
-        }]));
+        }], false));
       });
     };
   }
@@ -1605,6 +1618,9 @@ function dew$3() {
 
 var exports$2 = {},
     _dewExec$2 = false;
+
+var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+
 function dew$2() {
   if (_dewExec$2) return exports$2;
   _dewExec$2 = true;
@@ -1634,10 +1650,14 @@ function dew$2() {
     };
   }();
 
-  var __spreadArray = exports$2 && exports$2.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$2 && exports$2.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
   Object.defineProperty(exports$2, "__esModule", {
@@ -1887,7 +1907,7 @@ function dew$2() {
           throw TypeError(ERRSTR_OPTS(tipeof));
       }
     }
-    if (opts.encoding !== "buffer") encoding_1.assertEncoding(opts.encoding);
+    if (opts.encoding !== "buffer") (0, encoding_1.assertEncoding)(opts.encoding);
     return opts;
   }
 
@@ -2059,7 +2079,7 @@ function dew$2() {
       encoding = encoding_1.ENCODING_UTF8;
     }
 
-    if (buffer_1.Buffer.isBuffer(data)) return data.toString(encoding);else if (data instanceof Uint8Array) return buffer_1.bufferFrom(data).toString(encoding);else return String(data);
+    if (buffer_1.Buffer.isBuffer(data)) return data.toString(encoding);else if (data instanceof Uint8Array) return (0, buffer_1.bufferFrom)(data).toString(encoding);else return String(data);
   }
 
   exports$2.dataToStr = dataToStr;
@@ -2069,7 +2089,7 @@ function dew$2() {
       encoding = encoding_1.ENCODING_UTF8;
     }
 
-    if (buffer_1.Buffer.isBuffer(data)) return data;else if (data instanceof Uint8Array) return buffer_1.bufferFrom(data);else return buffer_1.bufferFrom(String(data), encoding);
+    if (buffer_1.Buffer.isBuffer(data)) return data;else if (data instanceof Uint8Array) return (0, buffer_1.bufferFrom)(data);else return (0, buffer_1.bufferFrom)(String(data), encoding);
   }
 
   exports$2.dataToBuffer = dataToBuffer;
@@ -2196,7 +2216,7 @@ function dew$2() {
       this.maxFiles = 10000; // Current number of open files.
 
       this.openFiles = 0;
-      this.promisesApi = promises_1.default(this);
+      this.promisesApi = (0, promises_1.default)(this);
       this.statWatchers = {};
       this.props = Object.assign({
         Node: node_1.Node,
@@ -2229,7 +2249,7 @@ function dew$2() {
             args[_i] = arguments[_i];
           }
 
-          return _super.apply(this, __spreadArray([self], args)) || this;
+          return _super.apply(this, __spreadArray([self], args, false)) || this;
         }
 
         return class_1;
@@ -2247,7 +2267,7 @@ function dew$2() {
             args[_i] = arguments[_i];
           }
 
-          return _super.apply(this, __spreadArray([self], args)) || this;
+          return _super.apply(this, __spreadArray([self], args, false)) || this;
         }
 
         return class_2;
@@ -2473,12 +2493,17 @@ function dew$2() {
       var _this = this;
 
       validateCallback(callback);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
+        var result;
+
         try {
-          callback(null, method.apply(_this, args));
+          result = method.apply(_this, args);
         } catch (err) {
           callback(err);
+          return;
         }
+
+        callback(null, result);
       });
     };
 
@@ -2761,7 +2786,7 @@ function dew$2() {
         });
       }
 
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           var bytes = _this.readBase(fd, buffer, offset, length, position);
 
@@ -2905,7 +2930,7 @@ function dew$2() {
       }
 
       var cb = validateCallback(callback);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           var bytes = _this.writeBase(fd, buf, offset, length, position);
 
@@ -3097,7 +3122,7 @@ function dew$2() {
       var steps = filenameToSteps(filename);
       var realLink = this.getResolvedLink(steps);
       if (!realLink) throw createError(ENOENT, "realpath", filename);
-      return encoding_1.strToEncoding(realLink.getPath(), encoding);
+      return (0, encoding_1.strToEncoding)(realLink.getPath(), encoding);
     };
 
     Volume.prototype.realpathSync = function (path, options) {
@@ -3198,7 +3223,7 @@ function dew$2() {
 
 
       var name = newPathSteps[newPathSteps.length - 1];
-      link.steps = __spreadArray(__spreadArray([], newPathDirLink.steps), [name]);
+      link.steps = __spreadArray(__spreadArray([], newPathDirLink.steps, true), [name], false);
       newPathDirLink.setChild(link.getName(), link);
     };
 
@@ -3231,7 +3256,7 @@ function dew$2() {
 
       var filename = pathToFilename(path);
       if (typeof callback !== "function") throw Error(ERRSTR.CB);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           callback(_this.existsBase(filename));
         } catch (err) {
@@ -3322,7 +3347,7 @@ function dew$2() {
       var list = [];
 
       for (var name_4 in link.children) {
-        list.push(encoding_1.strToEncoding(name_4, options.encoding));
+        list.push((0, encoding_1.strToEncoding)(name_4, options.encoding));
       }
 
       if (!isWin && options.encoding !== "buffer") list.sort();
@@ -3349,7 +3374,7 @@ function dew$2() {
       var node = link.getNode();
       if (!node.isSymlink()) throw createError(EINVAL, "readlink", filename);
       var str = sep + node.symlink.join(sep);
-      return encoding_1.strToEncoding(str, encoding);
+      return (0, encoding_1.strToEncoding)(str, encoding);
     };
 
     Volume.prototype.readlinkSync = function (path, options) {
@@ -3541,7 +3566,7 @@ function dew$2() {
         this.mkdirBase(filename, 511
         /* DIR */
         );
-        return encoding_1.strToEncoding(filename, encoding);
+        return (0, encoding_1.strToEncoding)(filename, encoding);
       } catch (err) {
         if (err.code === EEXIST) {
           if (retry > 1) return this.mkdtempBase(prefix, encoding, retry - 1);else throw Error("Could not create temp dir.");
@@ -3848,7 +3873,7 @@ function dew$2() {
       }
 
       this.filename = pathToFilename(path);
-      this.setTimeout = persistent ? setTimeout : setTimeoutUnref_1.default;
+      this.setTimeout = persistent ? setTimeout.bind(typeof globalThis !== "undefined" ? globalThis : _global) : setTimeoutUnref_1.default;
       this.interval = interval;
       this.prev = this.vol.statSync(this.filename);
       this.loop();
@@ -3866,7 +3891,7 @@ function dew$2() {
   var pool;
 
   function allocNewPool(poolSize) {
-    pool = buffer_1.bufferAllocUnsafe(poolSize);
+    pool = (0, buffer_1.bufferAllocUnsafe)(poolSize);
     pool.used = 0;
   }
 
@@ -4212,7 +4237,7 @@ function dew$2() {
 
       this._filename = pathToFilename(path);
       this._steps = filenameToSteps(this._filename);
-      this._filenameEncoded = encoding_1.strToEncoding(this._filename); // this._persistent = persistent;
+      this._filenameEncoded = (0, encoding_1.strToEncoding)(this._filename); // this._persistent = persistent;
 
       this._recursive = recursive;
       this._encoding = encoding;
@@ -4365,7 +4390,7 @@ function dew() {
 
 var memfs = dew();
 
-var volume = dew$2();
+dew$2();
 
 const { vol, createFsFromVolume } = memfs;
 
@@ -4413,15 +4438,6 @@ fs.rmSync = () => unimplemented('rmSync');
 fs.promises.rm = () => unimplemented('promises.rm');
 fs.Dir = () => unimplemented('Dir');
 fs.promises.watch = () => unimplemented('promises.watch');
-
-// TODO: remove this when https://github.com/streamich/memfs/pull/732 is merged and memfs released
-fs.StatWatcher.prototype.start = function (path, persistent, interval = 5007) {
-  this.filename = volume.pathToFilename(path);
-  this.setTimeout = setTimeout.bind(self);
-  this.interval = interval;
-  this.prev = this.fs.statSync(this.filename);
-  this.loop();
-};
 
 fs.FileReadStream = fs.ReadStream;
 fs.FileWriteStream = fs.WriteStream;
