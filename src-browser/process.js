@@ -191,7 +191,21 @@ hrtime.bigint = function(time) {
   return BigInt(diff[0] * nanoPerSec) + BigInt(diff[1]);
 };
 
-export var process = {
+export var _maxListeners = 10;
+export var _events = {};
+export var _eventsCount = 0;
+export function on () { return process };
+export var addListener = on;
+export var once = on;
+export var off = on;
+export var removeListener = on;
+export var removeAllListeners = on;
+export var emit = noop;
+export var prependListener = on;
+export var prependOnceListener = on;
+export function listeners (name) { return []; };
+
+var process = {
   version,
   versions,
   arch,
@@ -204,6 +218,16 @@ export var process = {
   _events,
   _eventsCount,
   _maxListeners,
+  on,
+  addListener,
+  once,
+  off,
+  removeListener,
+  removeAllListeners,
+  emit,
+  prependListener,
+  prependOnceListener,
+  listeners,
   domain,
   _exiting,
   config,
@@ -252,19 +276,5 @@ export var process = {
   _preload_modules,
   setSourceMapsEnabled,
 };
-
-export var _maxListeners = 10;
-export var _events = {};
-export var _eventsCount = 0;
-export var on = function() { return process; };
-export var addListener = on;
-export var once = on;
-export var off = on;
-export var removeListener = on;
-export var removeAllListeners = on;
-export var emit = noop;
-export var prependListener = on;
-export var prependOnceListener = on;
-export var listeners = function(name) { return []; };
 
 export default process;
