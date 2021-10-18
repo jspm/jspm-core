@@ -29,7 +29,7 @@ var log = X.log;
 var promisify = X.promisify;
 var types = X.types;
 
-const TextEncoder = self.TextEncoder;
-const TextDecoder = self.TextDecoder;
+const TextEncoder = X.TextEncoder = self.TextEncoder;
+const TextDecoder = X.TextDecoder = self.TextDecoder;
 
 export { TextDecoder, TextEncoder, _extend, callbackify, debuglog, deprecate, format, inherits, inspect, isArray, isBoolean, isBuffer, isDate, isError, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isPrimitive, isRegExp, isString, isSymbol, isUndefined, log, promisify, types };

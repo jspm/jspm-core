@@ -26,5 +26,5 @@ export var log = util.log;
 export var promisify = util.promisify;
 export var types = util.types;
 
-export const TextEncoder = self.TextEncoder;
-export const TextDecoder = self.TextDecoder;
+export const TextEncoder = util.TextEncoder = self.TextEncoder;
+export const TextDecoder = util.TextDecoder = self.TextDecoder;
