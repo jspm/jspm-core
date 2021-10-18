@@ -76,7 +76,7 @@
       "default": "./nodelibs/browser/https.js"
     },
     "./nodelibs/net": {
-      "deno": "./nodelibs/browser/net.js",
+      "deno": "./nodelibs/deno/net.ts",
       "node": "./nodelibs/node/net.js",
       "default": "./nodelibs/browser/net.js"
     },
