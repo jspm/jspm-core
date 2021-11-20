@@ -76,7 +76,7 @@ export var env = {
 export var argv = ['/usr/bin/node'];
 export var execArgv = [];
 export var version = 'v16.8.0';
-export var versions = { node: '16.8.0' };
+export var versions = {};
 
 export var emitWarning = function(message, type) {
   console.warn((type ? (type + ': ') : '') + message);
