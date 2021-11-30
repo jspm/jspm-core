@@ -75,7 +75,7 @@ var env = {
 var argv = ['/usr/bin/node'];
 var execArgv = [];
 var version = 'v16.8.0';
-var versions = { node: '16.8.0' };
+var versions = {};
 
 var emitWarning = function(message, type) {
   console.warn((type ? (type + ': ') : '') + message);
