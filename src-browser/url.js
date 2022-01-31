@@ -34,6 +34,7 @@ export var Url = url.Url;
 export var format = url.format;
 export var resolve = url.resolve;
 export var resolveObject = url.resolveObject;
+export var parse = url.parse;
 
 const _URL = url.URL;
 export { _URL as URL }
