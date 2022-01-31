@@ -685,6 +685,7 @@ var Url = h.Url;
 var format = h.format;
 var resolve = h.resolve;
 var resolveObject = h.resolveObject;
+var parse = h.parse;
 
 const _URL = h.URL;
 
@@ -801,4 +802,4 @@ function pathToFileURL(filepath) {
   return outURL;
 }
 
-export { _URL as URL, Url, h as default, fileURLToPath, format, pathToFileURL, resolve, resolveObject };
+export { _URL as URL, Url, h as default, fileURLToPath, format, parse, pathToFileURL, resolve, resolveObject };
