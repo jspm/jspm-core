@@ -49,36 +49,11 @@
     },
     "./nodelibs/@empty": "./nodelibs/@empty.js",
     "./nodelibs/@empty.dew": "./nodelibs/@empty.dew.js",
-    "./nodelibs/async_hooks": {
-      "deno": "./nodelibs/browser/async_hooks.js",
-      "node": "./nodelibs/node/async_hooks.js",
-      "default": "./nodelibs/browser/async_hooks.js"
-    },
     "./nodelibs/chunk-*": null,
-    "./nodelibs/dns": {
-      "deno": "./nodelibs/browser/dns.js",
-      "node": "./nodelibs/node/dns.js",
-      "default": "./nodelibs/browser/dns.js"
-    },
     "./nodelibs/dns/promises": {
       "deno": "./nodelibs/browser/dns/promises.js",
       "node": "./nodelibs/node/dns/promises.js",
       "default": "./nodelibs/browser/dns/promises.js"
-    },
-    "./nodelibs/http": {
-      "deno": "./nodelibs/browser/http.js",
-      "node": "./nodelibs/node/http.js",
-      "default": "./nodelibs/browser/http.js"
-    },
-    "./nodelibs/https": {
-      "deno": "./nodelibs/browser/https.js",
-      "node": "./nodelibs/node/https.js",
-      "default": "./nodelibs/browser/https.js"
-    },
-    "./nodelibs/net": {
-      "deno": "./nodelibs/deno/net.ts",
-      "node": "./nodelibs/node/net.js",
-      "default": "./nodelibs/browser/net.js"
     },
     "./nodelibs/process": {
       "production": {
@@ -90,30 +65,10 @@
       "node": "./nodelibs/node/process.js",
       "default": "./nodelibs/browser/process.js"
     },
-    "./nodelibs/readline": {
-      "deno": "./nodelibs/browser/readline.js",
-      "node": "./nodelibs/node/readline.js",
-      "default": "./nodelibs/browser/readline.js"
-    },
-    "./nodelibs/tls": {
-      "deno": "./nodelibs/browser/tls.js",
-      "node": "./nodelibs/node/tls.js",
-      "default": "./nodelibs/browser/tls.js"
-    },
-    "./nodelibs/v8": {
-      "deno": "./nodelibs/browser/v8.js",
-      "node": "./nodelibs/node/v8.js",
-      "default": "./nodelibs/browser/v8.js"
-    },
     "./nodelibs/zlib": {
       "deno": "./nodelibs/browser/zlib.js",
       "node": "./nodelibs/node/zlib.js",
       "default": "./nodelibs/browser/zlib.js"
-    },
-    "./nodelibs/perf_hooks": {
-      "deno": "./nodelibs/browser/perf_hooks.js",
-      "node": "./nodelibs/node/perf_hooks.js",
-      "default": "./nodelibs/browser/perf_hooks.js"
     },
     "./nodelibs/diagnostics_channel": {
       "deno": "./nodelibs/browser/diagnostics_channel.js",
