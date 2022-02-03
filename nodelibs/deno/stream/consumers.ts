@@ -1,5 +1,5 @@
-import type { Readable } from 'https://deno.land/std@0.123.0/node/stream.ts';
-import { Buffer } from 'https://deno.land/std@0.123.0/node/buffer.ts'
+import type { Readable } from 'https://deno.land/std@0.124.0/node/stream.ts';
+import { Buffer } from 'https://deno.land/std@0.124.0/node/buffer.ts'
 
 // https://github.com/nodejs/node/blob/449147ebab8d91e5326b839a1ae61e45b1e73582/lib/stream/consumers.js
 
