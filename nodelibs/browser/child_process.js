@@ -14,4 +14,5 @@ var child_process = {
   spawnSync: unimplemented
 };
 
-export { unimplemented as ChildProcess, unimplemented as _forkChild, child_process as default, unimplemented as exec, unimplemented as execFile, unimplemented as execFileSync, unimplemented as execSync, unimplemented as fork, unimplemented as spawn, unimplemented as spawnSync };
+export default child_process;
+export { unimplemented as ChildProcess, unimplemented as _forkChild, unimplemented as exec, unimplemented as execFile, unimplemented as execFileSync, unimplemented as execSync, unimplemented as fork, unimplemented as spawn, unimplemented as spawnSync };

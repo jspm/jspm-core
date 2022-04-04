@@ -1,5 +1,5 @@
 import './events.js';
-import { y } from './chunk-4bd36a8f.js';
+import { y } from './chunk-eb4a3827.js';
 
 var exports = {},
     _dewExec = false;
@@ -89,4 +89,5 @@ var domain = dew();
 var create = domain.create;
 var createDomain = domain.createDomain;
 
-export { create, createDomain, domain as default };
+export default domain;
+export { create, createDomain };

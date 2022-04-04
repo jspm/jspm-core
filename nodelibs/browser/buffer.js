@@ -2308,4 +2308,5 @@ var Buffer = buffer.Buffer;
 var INSPECT_MAX_BYTES = buffer.INSPECT_MAX_BYTES;
 var kMaxLength = buffer.kMaxLength;
 
-export { Buffer, INSPECT_MAX_BYTES, buffer as default, kMaxLength };
+export default buffer;
+export { Buffer, INSPECT_MAX_BYTES, kMaxLength };

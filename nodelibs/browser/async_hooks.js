@@ -11,4 +11,5 @@ var async_hooks = {
   AsyncResource: unimplemented
 };
 
-export { unimplemented as AsyncLocalStorage, unimplemented as AsyncResource, unimplemented as createHook, async_hooks as default, unimplemented as executionAsyncId, unimplemented as executionAsyncResource, unimplemented as triggerAsyncId };
+export default async_hooks;
+export { unimplemented as AsyncLocalStorage, unimplemented as AsyncResource, unimplemented as createHook, unimplemented as executionAsyncId, unimplemented as executionAsyncResource, unimplemented as triggerAsyncId };

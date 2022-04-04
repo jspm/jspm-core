@@ -18,4 +18,5 @@ var v8 = {
   writeHeapSnapshot: unimplemented
 };
 
-export { unimplemented as DefaultDeserializer, unimplemented as DefaultSerializer, unimplemented as Deserializer, unimplemented as Serializer, unimplemented as cacheDataVersionTag, v8 as default, unimplemented as deserialize, unimplemented as getHeapSnapshot, unimplemented as getHeapSpaceStatistics, unimplemented as getHeapStatistics, unimplemented as serialize, unimplemented as setFlagsFromString, unimplemented as writeHeapSnapshot };
+export default v8;
+export { unimplemented as DefaultDeserializer, unimplemented as DefaultSerializer, unimplemented as Deserializer, unimplemented as Serializer, unimplemented as cacheDataVersionTag, unimplemented as deserialize, unimplemented as getHeapSnapshot, unimplemented as getHeapSpaceStatistics, unimplemented as getHeapStatistics, unimplemented as serialize, unimplemented as setFlagsFromString, unimplemented as writeHeapSnapshot };

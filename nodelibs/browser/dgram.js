@@ -8,4 +8,5 @@ var dgram = {
   Socket: unimplemented
 };
 
-export { unimplemented as Socket, unimplemented as _createSocketHandle, unimplemented as createSocket, dgram as default };
+export default dgram;
+export { unimplemented as Socket, unimplemented as _createSocketHandle, unimplemented as createSocket };
