@@ -24,8 +24,9 @@ jobs:
         with:
           firefox-version: ${{ matrix.firefox }}
       - run: npm ci
-      - run: npm run build
-      - run: npm run test:browser
+      - name: Setup Chomp
+        uses: guybedford/chomp-action@v1
+      - run: chomp test
         env:
           CI_BROWSER: /opt/hostedtoolcache/firefox/${{ matrix.firefox }}/x64/firefox
           CI_BROWSER_FLAGS: -headless
@@ -52,7 +53,8 @@ jobs:
         run: $env:CI_BROWSER=$(where chrome)
       - run: echo $env:CI_BROWSER
       - run: npm ci
-      - run: npm run build
-      - run: npm run test:browser
+      - name: Setup Chomp
+        uses: guybedford/chomp-action@v1
+      - run: chomp test
         env:
           CI_BROWSER_FLAGS: --headless --screenshot
