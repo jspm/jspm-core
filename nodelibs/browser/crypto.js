@@ -1,11 +1,11 @@
-import { b as buffer, d as dew$2R } from './chunk-44e51b61.js';
-import { p as process } from './chunk-2eac56ff.js';
-import { d as dew$2Q } from './chunk-c3d025d9.js';
-import { y as y$o } from './chunk-4bd36a8f.js';
-import { e as e$1$1$1, a as e$1$2, u as u$q } from './chunk-4ccc3a29.js';
-import { p as promisify } from './chunk-ce0fbc82.js';
-import { X as X$5, t as t$2$2 } from './chunk-b4205b57.js';
-import { T as T$9 } from './chunk-5decc758.js';
+import { b as buffer, d as dew$2R } from './chunk-a75abdc7.js';
+import { p as process } from './chunk-41a25566.js';
+import { d as dew$2Q } from './chunk-191e88d4.js';
+import { y as y$o } from './chunk-eb4a3827.js';
+import { e as e$1$1$1, a as e$1$2, u as u$q } from './chunk-83f77422.js';
+import { p as promisify } from './chunk-bf402f6f.js';
+import { X as X$5, t as t$2$2 } from './chunk-b196e9ea.js';
+import { T as T$9 } from './chunk-af36a440.js';
 
 var exports$2Q = {},
     _dewExec$2P = false;
@@ -55318,36 +55318,53 @@ function dew$W() {
 }
 
 var _package = {
-  "name": "elliptic",
-  "version": "6.5.4",
-  "description": "EC cryptography",
-  "main": "lib/elliptic.js",
-  "files": [
-    "lib"
+  "_args": [
+    [
+      "elliptic@6.5.4",
+      "C:\\Users\\guybe\\Projects\\jspm-core"
+    ]
   ],
-  "scripts": {
-    "lint": "eslint lib test",
-    "lint:fix": "npm run lint -- --fix",
-    "unit": "istanbul test _mocha --reporter=spec test/index.js",
-    "test": "npm run lint && npm run unit",
-    "version": "grunt dist && git add dist/"
+  "_development": true,
+  "_from": "elliptic@6.5.4",
+  "_id": "elliptic@6.5.4",
+  "_inBundle": false,
+  "_integrity": "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==",
+  "_location": "/elliptic",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "elliptic@6.5.4",
+    "name": "elliptic",
+    "escapedName": "elliptic",
+    "rawSpec": "6.5.4",
+    "saveSpec": null,
+    "fetchSpec": "6.5.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:indutny/elliptic"
-  },
-  "keywords": [
-    "EC",
-    "Elliptic",
-    "curve",
-    "Cryptography"
+  "_requiredBy": [
+    "/browserify-sign",
+    "/create-ecdh"
   ],
-  "author": "Fedor Indutny <fedor@indutny.com>",
-  "license": "MIT",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.4.tgz",
+  "_spec": "6.5.4",
+  "_where": "C:\\Users\\guybe\\Projects\\jspm-core",
+  "author": {
+    "name": "Fedor Indutny",
+    "email": "fedor@indutny.com"
+  },
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "homepage": "https://github.com/indutny/elliptic",
+  "dependencies": {
+    "bn.js": "^4.11.9",
+    "brorand": "^1.1.0",
+    "hash.js": "^1.0.0",
+    "hmac-drbg": "^1.0.1",
+    "inherits": "^2.0.4",
+    "minimalistic-assert": "^1.0.1",
+    "minimalistic-crypto-utils": "^1.0.1"
+  },
+  "description": "EC cryptography",
   "devDependencies": {
     "brfs": "^2.0.2",
     "coveralls": "^3.1.0",
@@ -55363,15 +55380,31 @@ var _package = {
     "istanbul": "^0.4.5",
     "mocha": "^8.0.1"
   },
-  "dependencies": {
-    "bn.js": "^4.11.9",
-    "brorand": "^1.1.0",
-    "hash.js": "^1.0.0",
-    "hmac-drbg": "^1.0.1",
-    "inherits": "^2.0.4",
-    "minimalistic-assert": "^1.0.1",
-    "minimalistic-crypto-utils": "^1.0.1"
-  }
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/indutny/elliptic",
+  "keywords": [
+    "EC",
+    "Elliptic",
+    "curve",
+    "Cryptography"
+  ],
+  "license": "MIT",
+  "main": "lib/elliptic.js",
+  "name": "elliptic",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/indutny/elliptic.git"
+  },
+  "scripts": {
+    "lint": "eslint lib test",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run lint && npm run unit",
+    "unit": "istanbul test _mocha --reporter=spec test/index.js",
+    "version": "grunt dist && git add dist/"
+  },
+  "version": "6.5.4"
 };
 
 var exports$V = {},
@@ -76119,4 +76152,5 @@ var randomFillSync = crypto.randomFillSync;
 var rng = crypto.rng;
 var webcrypto = crypto.webcrypto;
 
-export { Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, Hash, Hmac, Sign, Verify, constants, createCipher, createCipheriv, createCredentials, createDecipher, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createSign, createVerify, crypto as default, getCiphers, getDiffieHellman, getHashes, listCiphers, pbkdf2, pbkdf2Sync, privateDecrypt, privateEncrypt, prng, pseudoRandomBytes, publicDecrypt, publicEncrypt, randomBytes, randomFill, randomFillSync, rng, webcrypto };
+export default crypto;
+export { Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, Hash, Hmac, Sign, Verify, constants, createCipher, createCipheriv, createCredentials, createDecipher, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createSign, createVerify, getCiphers, getDiffieHellman, getHashes, listCiphers, pbkdf2, pbkdf2Sync, privateDecrypt, privateEncrypt, prng, pseudoRandomBytes, publicDecrypt, publicEncrypt, randomBytes, randomFill, randomFillSync, rng, webcrypto };

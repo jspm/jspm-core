@@ -27,4 +27,5 @@ var perf_hooks = {
   constants,
 };
 
-export { PerformanceObserver, constants, perf_hooks as default, monitorEventLoopDelay, performance };
+export default perf_hooks;
+export { PerformanceObserver, constants, monitorEventLoopDelay, performance };

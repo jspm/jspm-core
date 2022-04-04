@@ -12,4 +12,5 @@ var readline = {
   moveCursor: unimplemented
 };
 
-export { unimplemented as Interface, unimplemented as clearLine, unimplemented as clearScreenDown, unimplemented as createInterface, unimplemented as cursorTo, readline as default, unimplemented as emitKeypressEvents, unimplemented as moveCursor };
+export default readline;
+export { unimplemented as Interface, unimplemented as clearLine, unimplemented as clearScreenDown, unimplemented as createInterface, unimplemented as cursorTo, unimplemented as emitKeypressEvents, unimplemented as moveCursor };

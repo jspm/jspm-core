@@ -1,8 +1,8 @@
 import './util.js';
 import et from './assert.js';
-import { X } from './chunk-b4205b57.js';
-import './chunk-ce0fbc82.js';
-import './chunk-5decc758.js';
+import { X } from './chunk-b196e9ea.js';
+import './chunk-bf402f6f.js';
+import './chunk-af36a440.js';
 
 var exports = {},
     _dewExec = false;
@@ -124,4 +124,5 @@ var timeStamp = console.timeStamp;
 var trace = console.trace;
 var warn = console.warn;
 
-export { assert, clear, context, count, countReset, debug, console as default, dir, dirxml, error, group, groupCollapsed, groupEnd, info, log, memory, profile, profileEnd, table, time, timeEnd, timeStamp, trace, warn };
+export default console;
+export { assert, clear, context, count, countReset, debug, dir, dirxml, error, group, groupCollapsed, groupEnd, info, log, memory, profile, profileEnd, table, time, timeEnd, timeStamp, trace, warn };

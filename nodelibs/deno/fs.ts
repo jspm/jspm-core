@@ -1,6 +1,6 @@
-import { notImplemented } from 'https://deno.land/std@0.125.0/node/_utils.ts';
-export * from 'https://deno.land/std@0.125.0/node/fs.ts';
-import fs from 'https://deno.land/std@0.125.0/node/fs.ts';
+import { notImplemented } from 'https://deno.land/std@0.133.0/node/_utils.ts';
+export * from 'https://deno.land/std@0.133.0/node/fs.ts';
+import fs from 'https://deno.land/std@0.133.0/node/fs.ts';
 import * as promises from './fs/promises.ts';
 
 export { promises }

@@ -23,4 +23,5 @@ var promises = {
   setServers: unimplemented
 };
 
-export { unimplemented as Resolver, promises as default, unimplemented as getServers, unimplemented as lookup, unimplemented as lookupService, unimplemented as resolve, unimplemented as resolve4, unimplemented as resolve6, unimplemented as resolveAny, unimplemented as resolveCname, unimplemented as resolveMx, unimplemented as resolveNaptr, unimplemented as resolveNs, unimplemented as resolvePtr, unimplemented as resolveSoa, unimplemented as resolveSrv, unimplemented as resolveTxt, unimplemented as reverse, unimplemented as setServers };
+export default promises;
+export { unimplemented as Resolver, unimplemented as getServers, unimplemented as lookup, unimplemented as lookupService, unimplemented as resolve, unimplemented as resolve4, unimplemented as resolve6, unimplemented as resolveAny, unimplemented as resolveCname, unimplemented as resolveMx, unimplemented as resolveNaptr, unimplemented as resolveNs, unimplemented as resolvePtr, unimplemented as resolveSoa, unimplemented as resolveSrv, unimplemented as resolveTxt, unimplemented as reverse, unimplemented as setServers };

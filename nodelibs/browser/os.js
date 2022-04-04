@@ -108,4 +108,5 @@ var tmpdir = os.tmpdir;
 var totalmem = os.totalmem;
 var type = os.type;
 
-export { EOL, arch, constants, cpus, os as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };
+export default os;
+export { EOL, arch, constants, cpus, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };

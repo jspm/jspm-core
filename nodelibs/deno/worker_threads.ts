@@ -1,8 +1,8 @@
 // TODO: replace this when deno_std 0.107.0 is released
 /// <reference lib="webworker"/>
 
-import { resolve, toFileUrl } from 'https://deno.land/std@0.125.0/path/mod.ts';
-import { EventEmitter } from 'https://deno.land/std@0.125.0/node/events.ts';
+import { resolve, toFileUrl } from 'https://deno.land/std@0.133.0/path/mod.ts';
+import { EventEmitter } from 'https://deno.land/std@0.133.0/node/events.ts';
 
 function unimplemented(name: string) {
   throw new Error(

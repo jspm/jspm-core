@@ -1,4 +1,4 @@
-import { p as process } from './chunk-2eac56ff.js';
+import { p as process } from './chunk-41a25566.js';
 
 var exports$1 = {},
     _dewExec$1 = false;
@@ -296,4 +296,5 @@ var setInterval$1 = timers.setInterval;
 var setTimeout$1 = timers.setTimeout;
 var unenroll = timers.unenroll;
 
-export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, timers as default, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };
+export default timers;
+export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };
