@@ -1,7 +1,7 @@
-import './chunk-ce0fbc82.js';
-import { X } from './chunk-b4205b57.js';
-export { X as default } from './chunk-b4205b57.js';
-import './chunk-5decc758.js';
+import './chunk-50aa119c.js';
+import { X } from './chunk-8b7cc49c.js';
+export { X as default } from './chunk-8b7cc49c.js';
+import './chunk-4a97e952.js';
 
 var _extend = X._extend;
 var callbackify = X.callbackify;
@@ -29,7 +29,7 @@ var log = X.log;
 var promisify = X.promisify;
 var types = X.types;
 
-const TextEncoder = X.TextEncoder = self.TextEncoder;
-const TextDecoder = X.TextDecoder = self.TextDecoder;
+const TextEncoder = X.TextEncoder = globalThis.TextEncoder;
+const TextDecoder = X.TextDecoder = globalThis.TextDecoder;
 
 export { TextDecoder, TextEncoder, _extend, callbackify, debuglog, deprecate, format, inherits, inspect, isArray, isBoolean, isBuffer, isDate, isError, isFunction, isNull, isNullOrUndefined, isNumber, isObject, isPrimitive, isRegExp, isString, isSymbol, isUndefined, log, promisify, types };

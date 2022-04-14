@@ -6,4 +6,4 @@ e$1.StringDecoder;
 
 e$1.StringDecoder;
 
-export { e$1 as a, e$1$1 as e, u };
+export { e$1$1 as a, e$1 as e, u };
