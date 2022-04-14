@@ -1,13 +1,13 @@
 import { promisify } from '../util.js';
-import timers from '../timers.js';
-import '../chunk-bf402f6f.js';
-import '../chunk-b196e9ea.js';
-import '../chunk-af36a440.js';
-import '../chunk-41a25566.js';
+import exports from '../timers.js';
+import '../chunk-ce0fbc82.js';
+import '../chunk-b4205b57.js';
+import '../chunk-5decc758.js';
+import '../chunk-2eac56ff.js';
 
-const setTimeout = promisify(timers.setTimeout),
-  setImmediate = promisify(timers.setImmediate),
-  setInterval = promisify(timers.setInterval);
+const setTimeout = promisify(exports.setTimeout),
+  setImmediate = promisify(exports.setImmediate),
+  setInterval = promisify(exports.setInterval);
 
 var promises = {
   setTimeout,
@@ -15,5 +15,4 @@ var promises = {
   setInterval
 };
 
-export default promises;
-export { setImmediate, setInterval, setTimeout };
+export { promises as default, setImmediate, setInterval, setTimeout };

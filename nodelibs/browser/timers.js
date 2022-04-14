@@ -1,12 +1,12 @@
-import { p as process } from './chunk-41a25566.js';
+import { p as process } from './chunk-2eac56ff.js';
 
-var exports$1 = {},
+var exports$2 = {},
     _dewExec$1 = false;
 
 var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$1() {
-  if (_dewExec$1) return exports$1;
+  if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
   var process$1 = process;
 
@@ -209,31 +209,31 @@ function dew$1() {
 
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
-  })(typeof self === "undefined" ? typeof _global$1 === "undefined" ? exports$1 : _global$1 : self);
+  })(typeof self === "undefined" ? typeof _global$1 === "undefined" ? exports$2 : _global$1 : self);
 
-  return exports$1;
+  return exports$2;
 }
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
   var scope = typeof _global !== "undefined" && _global || typeof self !== "undefined" && self || window;
   var apply = Function.prototype.apply; // DOM APIs, for completeness
 
-  exports.setTimeout = function () {
+  exports$1.setTimeout = function () {
     return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
   };
 
-  exports.setInterval = function () {
+  exports$1.setInterval = function () {
     return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
   };
 
-  exports.clearTimeout = exports.clearInterval = function (timeout) {
+  exports$1.clearTimeout = exports$1.clearInterval = function (timeout) {
     if (timeout) {
       timeout.close();
     }
@@ -251,17 +251,17 @@ function dew() {
   }; // Does not start the time, just sets up the members needed.
 
 
-  exports.enroll = function (item, msecs) {
+  exports$1.enroll = function (item, msecs) {
     clearTimeout(item._idleTimeoutId);
     item._idleTimeout = msecs;
   };
 
-  exports.unenroll = function (item) {
+  exports$1.unenroll = function (item) {
     clearTimeout(item._idleTimeoutId);
     item._idleTimeout = -1;
   };
 
-  exports._unrefActive = exports.active = function (item) {
+  exports$1._unrefActive = exports$1.active = function (item) {
     clearTimeout(item._idleTimeoutId);
     var msecs = item._idleTimeout;
 
@@ -278,23 +278,23 @@ function dew() {
   // `setimmediate` library.
 
 
-  exports.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof _global !== "undefined" && _global.setImmediate || exports && exports.setImmediate;
-  exports.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof _global !== "undefined" && _global.clearImmediate || exports && exports.clearImmediate;
-  return exports;
+  exports$1.setImmediate = typeof self !== "undefined" && self.setImmediate || typeof _global !== "undefined" && _global.setImmediate || exports$1 && exports$1.setImmediate;
+  exports$1.clearImmediate = typeof self !== "undefined" && self.clearImmediate || typeof _global !== "undefined" && _global.clearImmediate || exports$1 && exports$1.clearImmediate;
+  return exports$1;
 }
 
-var timers = dew();
+const exports = dew();
+exports['setTimeout']; exports['setInterval']; exports['clearTimeout']; exports['clearInterval']; exports['enroll']; exports['unenroll']; exports['_unrefActive']; exports['active']; exports['setImmediate']; exports['clearImmediate'];
 
-var _unrefActive = timers._unrefActive;
-var active = timers.active;
-var clearImmediate = timers.clearImmediate;
-var clearInterval$1 = timers.clearInterval;
-var clearTimeout$1 = timers.clearTimeout;
-var enroll = timers.enroll;
-var setImmediate = timers.setImmediate;
-var setInterval$1 = timers.setInterval;
-var setTimeout$1 = timers.setTimeout;
-var unenroll = timers.unenroll;
+var _unrefActive = exports._unrefActive;
+var active = exports.active;
+var clearImmediate = exports.clearImmediate;
+var clearInterval$1 = exports.clearInterval;
+var clearTimeout$1 = exports.clearTimeout;
+var enroll = exports.enroll;
+var setImmediate = exports.setImmediate;
+var setInterval$1 = exports.setInterval;
+var setTimeout$1 = exports.setTimeout;
+var unenroll = exports.unenroll;
 
-export default timers;
-export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };
+export { _unrefActive, active, clearImmediate, clearInterval$1 as clearInterval, clearTimeout$1 as clearTimeout, exports as default, enroll, setImmediate, setInterval$1 as setInterval, setTimeout$1 as setTimeout, unenroll };

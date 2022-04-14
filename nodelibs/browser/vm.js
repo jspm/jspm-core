@@ -1,10 +1,10 @@
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
   var indexOf = function (xs, item) {
@@ -54,7 +54,7 @@ function dew() {
 
   Context.prototype = {};
 
-  var Script = exports.Script = function NodeScript(code) {
+  var Script = exports$1.Script = function NodeScript(code) {
     if (!((this || _global) instanceof Script)) return new Script(code);
     (this || _global).code = code;
   };
@@ -123,21 +123,21 @@ function dew() {
   };
 
   forEach(Object_keys(Script.prototype), function (name) {
-    exports[name] = Script[name] = function (code) {
+    exports$1[name] = Script[name] = function (code) {
       var s = Script(code);
       return s[name].apply(s, [].slice.call(arguments, 1));
     };
   });
 
-  exports.isContext = function (context) {
+  exports$1.isContext = function (context) {
     return context instanceof Context;
   };
 
-  exports.createScript = function (code) {
-    return exports.Script(code);
+  exports$1.createScript = function (code) {
+    return exports$1.Script(code);
   };
 
-  exports.createContext = Script.createContext = function (context) {
+  exports$1.createContext = Script.createContext = function (context) {
     var copy = new Context();
 
     if (typeof context === "object") {
@@ -149,18 +149,18 @@ function dew() {
     return copy;
   };
 
-  return exports;
+  return exports$1;
 }
 
-var vm = dew();
+const exports = dew();
+exports['Script']; exports['isContext']; exports['createScript']; exports['createContext'];
 
-var Script = vm.Script;
-var createContext = vm.createContext;
-var createScript = vm.createScript;
-var isContext = vm.isContext;
-var runInContext = vm.runInContext;
-var runInNewContext = vm.runInNewContext;
-var runInThisContext = vm.runInThisContext;
+var Script = exports.Script;
+var createContext = exports.createContext;
+var createScript = exports.createScript;
+var isContext = exports.isContext;
+var runInContext = exports.runInContext;
+var runInNewContext = exports.runInNewContext;
+var runInThisContext = exports.runInThisContext;
 
-export default vm;
-export { Script, createContext, createScript, isContext, runInContext, runInNewContext, runInThisContext };
+export { Script, createContext, createScript, exports as default, isContext, runInContext, runInNewContext, runInThisContext };

@@ -1,32 +1,32 @@
-import { b as buffer } from './chunk-a75abdc7.js';
+import { b as buffer } from './chunk-44e51b61.js';
 import et from './assert.js';
 import './util.js';
-import { X } from './chunk-b196e9ea.js';
+import { X } from './chunk-b4205b57.js';
 import './path.js';
-import { p as process } from './chunk-41a25566.js';
+import { p as process } from './chunk-2eac56ff.js';
 import './events.js';
-import { y } from './chunk-eb4a3827.js';
+import { y } from './chunk-4bd36a8f.js';
 import './stream.js';
 import h, { fileURLToPath } from './url.js';
-import { p as path } from './chunk-8330aff8.js';
-import { s as stream } from './chunk-342db2c9.js';
+import { e as exports$i } from './chunk-23dbec7b.js';
+import { e as exports$j } from './chunk-6c718bbe.js';
 import { Buffer } from './buffer.js';
-import './chunk-bf402f6f.js';
-import './chunk-af36a440.js';
-import './chunk-83f77422.js';
-import './chunk-32ebc98f.js';
-import './chunk-3afc512b.js';
+import './chunk-ce0fbc82.js';
+import './chunk-5decc758.js';
+import './chunk-4ccc3a29.js';
+import './chunk-924bb2e1.js';
+import './chunk-b04e620d.js';
 
-var exports$f = {},
+var exports$h = {},
     _dewExec$f = false;
 function dew$f() {
-  if (_dewExec$f) return exports$f;
+  if (_dewExec$f) return exports$h;
   _dewExec$f = true;
-  Object.defineProperty(exports$f, "__esModule", {
+  Object.defineProperty(exports$h, "__esModule", {
     value: true
   });
-  exports$f.constants = void 0;
-  exports$f.constants = {
+  exports$h.constants = void 0;
+  exports$h.constants = {
     O_RDONLY: 0,
     O_WRONLY: 1,
     O_RDWR: 2,
@@ -74,29 +74,29 @@ function dew$f() {
     COPYFILE_FICLONE: 2,
     COPYFILE_FICLONE_FORCE: 4
   };
-  return exports$f;
+  return exports$h;
 }
 
-var exports$e = {},
+var exports$g = {},
     _dewExec$e = false;
 function dew$e() {
-  if (_dewExec$e) return exports$e;
+  if (_dewExec$e) return exports$g;
   _dewExec$e = true;
-  if (typeof BigInt === "function") exports$e.default = BigInt;else exports$e.default = function BigIntNotSupported() {
+  if (typeof BigInt === "function") exports$g.default = BigInt;else exports$g.default = function BigIntNotSupported() {
     throw new Error("BigInt is not supported in this environment.");
   };
-  return exports$e;
+  return exports$g;
 }
 
-var exports$d = {},
+var exports$f = {},
     _dewExec$d = false;
 function dew$d() {
-  if (_dewExec$d) return exports$d;
+  if (_dewExec$d) return exports$f;
   _dewExec$d = true;
-  Object.defineProperty(exports$d, "__esModule", {
+  Object.defineProperty(exports$f, "__esModule", {
     value: true
   });
-  exports$d.Stats = void 0;
+  exports$f.Stats = void 0;
 
   var constants_1 = dew$f();
 
@@ -191,29 +191,33 @@ function dew$d() {
     return Stats;
   }();
 
-  exports$d.Stats = Stats;
-  exports$d.default = Stats;
-  return exports$d;
+  exports$f.Stats = Stats;
+  exports$f.default = Stats;
+  return exports$f;
 }
 
-var exports$c = {},
+var exports$e = {},
     _dewExec$c = false;
 function dew$c() {
-  if (_dewExec$c) return exports$c;
+  if (_dewExec$c) return exports$e;
   _dewExec$c = true;
 
-  var __spreadArray = exports$c && exports$c.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$e && exports$e.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
-  Object.defineProperty(exports$c, "__esModule", {
+  Object.defineProperty(exports$e, "__esModule", {
     value: true
   });
-  exports$c.bufferFrom = exports$c.bufferAllocUnsafe = exports$c.Buffer = void 0;
+  exports$e.bufferFrom = exports$e.bufferAllocUnsafe = exports$e.Buffer = void 0;
   var buffer_1 = buffer;
-  Object.defineProperty(exports$c, "Buffer", {
+  Object.defineProperty(exports$e, "Buffer", {
     enumerable: true,
     get: function () {
       return buffer_1.Buffer;
@@ -227,23 +231,23 @@ function dew$c() {
       args[_i - 1] = arguments[_i];
     }
 
-    return new (buffer_1.Buffer.bind.apply(buffer_1.Buffer, __spreadArray([void 0, arg0], args)))();
+    return new (buffer_1.Buffer.bind.apply(buffer_1.Buffer, __spreadArray([void 0, arg0], args, false)))();
   }
 
   var bufferAllocUnsafe = buffer_1.Buffer.allocUnsafe || bufferV0P12Ponyfill;
-  exports$c.bufferAllocUnsafe = bufferAllocUnsafe;
+  exports$e.bufferAllocUnsafe = bufferAllocUnsafe;
   var bufferFrom = buffer_1.Buffer.from || bufferV0P12Ponyfill;
-  exports$c.bufferFrom = bufferFrom;
-  return exports$c;
+  exports$e.bufferFrom = bufferFrom;
+  return exports$e;
 }
 
-var exports$b = {},
+var exports$d = {},
     _dewExec$b = false;
 
-var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+var _global$3 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$b() {
-  if (_dewExec$b) return exports$b;
+  if (_dewExec$b) return exports$d;
   _dewExec$b = true;
 
   // The whole point behind this internal module is to allow Node.js to no
@@ -251,7 +255,7 @@ function dew$b() {
   // change. The NodeError classes here all expose a `code` property whose
   // value statically and permanently identifies the error. While the error
   // message may change, the code should not.
-  var __extends = exports$b && exports$b.__extends || function () {
+  var __extends = exports$d && exports$d.__extends || function () {
     var extendStatics = function (d, b) {
       extendStatics = Object.setPrototypeOf || {
         __proto__: []
@@ -276,10 +280,10 @@ function dew$b() {
     };
   }();
 
-  Object.defineProperty(exports$b, "__esModule", {
+  Object.defineProperty(exports$d, "__esModule", {
     value: true
   });
-  exports$b.E = exports$b.AssertionError = exports$b.message = exports$b.RangeError = exports$b.TypeError = exports$b.Error = void 0;
+  exports$d.E = exports$d.AssertionError = exports$d.message = exports$d.RangeError = exports$d.TypeError = exports$d.Error = void 0;
   var assert = et;
   var util = X;
   var kCode = typeof Symbol === "undefined" ? "_kCode" : Symbol("code");
@@ -308,6 +312,8 @@ function dew$b() {
     }(Base);
   }
 
+  var g = typeof globalThis !== "undefined" ? globalThis : _global$3;
+
   var AssertionError = function (_super) {
     __extends(AssertionError, _super);
 
@@ -315,7 +321,7 @@ function dew$b() {
       var _this = this;
 
       if (typeof options !== "object" || options === null) {
-        throw new exports$b.TypeError("ERR_INVALID_ARG_TYPE", "options", "object");
+        throw new exports$d.TypeError("ERR_INVALID_ARG_TYPE", "options", "object");
       }
 
       if (options.message) {
@@ -330,14 +336,14 @@ function dew$b() {
       _this.actual = options.actual;
       _this.expected = options.expected;
       _this.operator = options.operator;
-      exports$b.Error.captureStackTrace(_this, options.stackStartFunction);
+      exports$d.Error.captureStackTrace(_this, options.stackStartFunction);
       return _this;
     }
 
     return AssertionError;
-  }(_global$1.Error);
+  }(g.Error);
 
-  exports$b.AssertionError = AssertionError;
+  exports$d.AssertionError = AssertionError;
 
   function message(key, args) {
     assert.strictEqual(typeof key, "string"); // const msg = messages.get(key);
@@ -357,17 +363,17 @@ function dew$b() {
     return String(fmt.apply(null, args));
   }
 
-  exports$b.message = message; // Utility function for registering the error codes. Only used here. Exported
+  exports$d.message = message; // Utility function for registering the error codes. Only used here. Exported
   // *only* to allow for testing.
 
   function E(sym, val) {
     messages[sym] = typeof val === "function" ? val : String(val);
   }
 
-  exports$b.E = E;
-  exports$b.Error = makeNodeError(_global$1.Error);
-  exports$b.TypeError = makeNodeError(_global$1.TypeError);
-  exports$b.RangeError = makeNodeError(_global$1.RangeError); // To declare an error message, use the E(sym, val) function above. The sym
+  exports$d.E = E;
+  exports$d.Error = makeNodeError(g.Error);
+  exports$d.TypeError = makeNodeError(g.TypeError);
+  exports$d.RangeError = makeNodeError(g.RangeError); // To declare an error message, use the E(sym, val) function above. The sym
   // must be an upper case string. The val can be either a function or a string.
   // The return value of the function must be a string.
   // Examples:
@@ -564,52 +570,52 @@ function dew$b() {
     }
   }
 
-  return exports$b;
+  return exports$d;
 }
 
-var exports$a = {},
+var exports$c = {},
     _dewExec$a = false;
 function dew$a() {
-  if (_dewExec$a) return exports$a;
+  if (_dewExec$a) return exports$c;
   _dewExec$a = true;
-  Object.defineProperty(exports$a, "__esModule", {
+  Object.defineProperty(exports$c, "__esModule", {
     value: true
   });
-  exports$a.strToEncoding = exports$a.assertEncoding = exports$a.ENCODING_UTF8 = void 0;
+  exports$c.strToEncoding = exports$c.assertEncoding = exports$c.ENCODING_UTF8 = void 0;
 
   var buffer_1 = dew$c();
 
   var errors = dew$b();
 
-  exports$a.ENCODING_UTF8 = "utf8";
+  exports$c.ENCODING_UTF8 = "utf8";
 
   function assertEncoding(encoding) {
     if (encoding && !buffer_1.Buffer.isEncoding(encoding)) throw new errors.TypeError("ERR_INVALID_OPT_VALUE_ENCODING", encoding);
   }
 
-  exports$a.assertEncoding = assertEncoding;
+  exports$c.assertEncoding = assertEncoding;
 
   function strToEncoding(str, encoding) {
-    if (!encoding || encoding === exports$a.ENCODING_UTF8) return str; // UTF-8
+    if (!encoding || encoding === exports$c.ENCODING_UTF8) return str; // UTF-8
 
     if (encoding === "buffer") return new buffer_1.Buffer(str); // `buffer` encoding
 
     return new buffer_1.Buffer(str).toString(encoding); // Custom encoding
   }
 
-  exports$a.strToEncoding = strToEncoding;
-  return exports$a;
+  exports$c.strToEncoding = strToEncoding;
+  return exports$c;
 }
 
-var exports$9 = {},
+var exports$b = {},
     _dewExec$9 = false;
 function dew$9() {
-  if (_dewExec$9) return exports$9;
+  if (_dewExec$9) return exports$b;
   _dewExec$9 = true;
-  Object.defineProperty(exports$9, "__esModule", {
+  Object.defineProperty(exports$b, "__esModule", {
     value: true
   });
-  exports$9.Dirent = void 0;
+  exports$b.Dirent = void 0;
 
   var constants_1 = dew$f();
 
@@ -636,7 +642,7 @@ function dew$9() {
     Dirent.build = function (link, encoding) {
       var dirent = new Dirent();
       var mode = link.getNode().mode;
-      dirent.name = encoding_1.strToEncoding(link.getName(), encoding);
+      dirent.name = (0, encoding_1.strToEncoding)(link.getName(), encoding);
       dirent.mode = mode;
       return dirent;
     };
@@ -676,42 +682,42 @@ function dew$9() {
     return Dirent;
   }();
 
-  exports$9.Dirent = Dirent;
-  exports$9.default = Dirent;
-  return exports$9;
+  exports$b.Dirent = Dirent;
+  exports$b.default = Dirent;
+  return exports$b;
 }
 
-var exports$8 = {},
+var exports$a = {},
     _dewExec$8 = false;
 
-var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+var _global$2 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$8() {
-  if (_dewExec$8) return exports$8;
+  if (_dewExec$8) return exports$a;
   _dewExec$8 = true;
   var process$1 = process;
-  Object.defineProperty(exports$8, "__esModule", {
+  Object.defineProperty(exports$a, "__esModule", {
     value: true
   });
 
   var _setImmediate;
 
-  if (typeof process$1.nextTick === "function") _setImmediate = process$1.nextTick.bind(_global);else _setImmediate = setTimeout.bind(_global);
-  exports$8.default = _setImmediate;
-  return exports$8;
+  if (typeof process$1.nextTick === "function") _setImmediate = process$1.nextTick.bind(typeof globalThis !== "undefined" ? globalThis : _global$2);else _setImmediate = setTimeout.bind(typeof globalThis !== "undefined" ? globalThis : _global$2);
+  exports$a.default = _setImmediate;
+  return exports$a;
 }
 
-var exports$7 = {},
+var exports$9 = {},
     _dewExec$7 = false;
 function dew$7() {
-  if (_dewExec$7) return exports$7;
+  if (_dewExec$7) return exports$9;
   _dewExec$7 = true;
   var process$1 = process;
   // Here we mock the global `process` variable in case we are not in Node's environment.
-  Object.defineProperty(exports$7, "__esModule", {
+  Object.defineProperty(exports$9, "__esModule", {
     value: true
   });
-  exports$7.createProcess = void 0;
+  exports$9.createProcess = void 0;
   /**
    * Looks to return a `process` object, if one is available.
    *
@@ -755,18 +761,18 @@ function dew$7() {
     return p;
   }
 
-  exports$7.createProcess = createProcess;
-  exports$7.default = createProcess();
-  return exports$7;
+  exports$9.createProcess = createProcess;
+  exports$9.default = createProcess();
+  return exports$9;
 }
 
-var exports$6 = {},
+var exports$8 = {},
     _dewExec$6 = false;
 function dew$6() {
-  if (_dewExec$6) return exports$6;
+  if (_dewExec$6) return exports$8;
   _dewExec$6 = true;
 
-  var __extends = exports$6 && exports$6.__extends || function () {
+  var __extends = exports$8 && exports$8.__extends || function () {
     var extendStatics = function (d, b) {
       extendStatics = Object.setPrototypeOf || {
         __proto__: []
@@ -791,10 +797,10 @@ function dew$6() {
     };
   }();
 
-  Object.defineProperty(exports$6, "__esModule", {
+  Object.defineProperty(exports$8, "__esModule", {
     value: true
   });
-  exports$6.File = exports$6.Link = exports$6.Node = exports$6.SEP = void 0;
+  exports$8.File = exports$8.Link = exports$8.Node = exports$8.SEP = void 0;
 
   var process_1 = dew$7();
 
@@ -811,7 +817,7 @@ function dew$6() {
       S_IFREG = constants_1.constants.S_IFREG,
       S_IFLNK = constants_1.constants.S_IFLNK,
       O_APPEND = constants_1.constants.O_APPEND;
-  exports$6.SEP = "/";
+  exports$8.SEP = "/";
   /**
    * Node in a file system (like i-node, v-node).
    */
@@ -854,17 +860,17 @@ function dew$6() {
 
     Node.prototype.setString = function (str) {
       // this.setBuffer(bufferFrom(str, 'utf8'));
-      this.buf = buffer_1.bufferFrom(str, "utf8");
+      this.buf = (0, buffer_1.bufferFrom)(str, "utf8");
       this.touch();
     };
 
     Node.prototype.getBuffer = function () {
-      if (!this.buf) this.setBuffer(buffer_1.bufferAllocUnsafe(0));
-      return buffer_1.bufferFrom(this.buf); // Return a copy.
+      if (!this.buf) this.setBuffer((0, buffer_1.bufferAllocUnsafe)(0));
+      return (0, buffer_1.bufferFrom)(this.buf); // Return a copy.
     };
 
     Node.prototype.setBuffer = function (buf) {
-      this.buf = buffer_1.bufferFrom(buf); // Creates a copy of data.
+      this.buf = (0, buffer_1.bufferFrom)(buf); // Creates a copy of data.
 
       this.touch();
     };
@@ -920,10 +926,10 @@ function dew$6() {
         pos = 0;
       }
 
-      if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
 
       if (pos + len > this.buf.length) {
-        var newBuf = buffer_1.bufferAllocUnsafe(pos + len);
+        var newBuf = (0, buffer_1.bufferAllocUnsafe)(pos + len);
         this.buf.copy(newBuf, 0, 0, this.buf.length);
         this.buf = newBuf;
       }
@@ -947,7 +953,7 @@ function dew$6() {
         pos = 0;
       }
 
-      if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
       var actualLen = len;
 
       if (actualLen > buf.byteLength) {
@@ -967,13 +973,13 @@ function dew$6() {
         len = 0;
       }
 
-      if (!len) this.buf = buffer_1.bufferAllocUnsafe(0);else {
-        if (!this.buf) this.buf = buffer_1.bufferAllocUnsafe(0);
+      if (!len) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);else {
+        if (!this.buf) this.buf = (0, buffer_1.bufferAllocUnsafe)(0);
 
         if (len <= this.buf.length) {
           this.buf = this.buf.slice(0, len);
         } else {
-          var buf = buffer_1.bufferAllocUnsafe(0);
+          var buf = (0, buffer_1.bufferAllocUnsafe)(0);
           this.buf.copy(buf);
           buf.fill(0, len);
         }
@@ -1089,7 +1095,7 @@ function dew$6() {
     return Node;
   }(events_1.EventEmitter);
 
-  exports$6.Node = Node;
+  exports$8.Node = Node;
   /**
    * Represents a hard link that points to an i-node `node`.
    */
@@ -1161,7 +1167,7 @@ function dew$6() {
     };
 
     Link.prototype.getPath = function () {
-      return this.steps.join(exports$6.SEP);
+      return this.steps.join(exports$8.SEP);
     };
 
     Link.prototype.getName = function () {
@@ -1213,7 +1219,7 @@ function dew$6() {
     return Link;
   }(events_1.EventEmitter);
 
-  exports$6.Link = Link;
+  exports$8.Link = Link;
   /**
    * Represents an open file (file descriptor) that points to a `Link` (Hard-link) and a `Node`.
    */
@@ -1314,16 +1320,19 @@ function dew$6() {
     return File;
   }();
 
-  exports$6.File = File;
-  return exports$6;
+  exports$8.File = File;
+  return exports$8;
 }
 
-var exports$5 = {},
+var exports$7 = {},
     _dewExec$5 = false;
+
+var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+
 function dew$5() {
-  if (_dewExec$5) return exports$5;
+  if (_dewExec$5) return exports$7;
   _dewExec$5 = true;
-  Object.defineProperty(exports$5, "__esModule", {
+  Object.defineProperty(exports$7, "__esModule", {
     value: true
   });
   /**
@@ -1332,31 +1341,35 @@ function dew$5() {
    */
 
   function setTimeoutUnref(callback, time, args) {
-    var ref = setTimeout.apply(null, arguments);
+    var ref = setTimeout.apply(typeof globalThis !== "undefined" ? globalThis : _global$1, arguments);
     if (ref && typeof ref === "object" && typeof ref.unref === "function") ref.unref();
     return ref;
   }
 
-  exports$5.default = setTimeoutUnref;
-  return exports$5;
+  exports$7.default = setTimeoutUnref;
+  return exports$7;
 }
 
-var exports$4 = {},
+var exports$6 = {},
     _dewExec$4 = false;
 function dew$4() {
-  if (_dewExec$4) return exports$4;
+  if (_dewExec$4) return exports$6;
   _dewExec$4 = true;
 
-  var __spreadArray = exports$4 && exports$4.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$6 && exports$6.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
-  Object.defineProperty(exports$4, "__esModule", {
+  Object.defineProperty(exports$6, "__esModule", {
     value: true
   });
-  exports$4.FileHandle = void 0;
+  exports$6.FileHandle = void 0;
 
   function promisify(vol, fn, getResult) {
     if (getResult === void 0) {
@@ -1373,10 +1386,10 @@ function dew$4() {
       }
 
       return new Promise(function (resolve, reject) {
-        vol[fn].bind(vol).apply(void 0, __spreadArray(__spreadArray([], args), [function (error, result) {
+        vol[fn].bind(vol).apply(void 0, __spreadArray(__spreadArray([], args, false), [function (error, result) {
           if (error) return reject(error);
           return resolve(getResult(result));
-        }]));
+        }], false));
       });
     };
   }
@@ -1452,7 +1465,7 @@ function dew$4() {
     return FileHandle;
   }();
 
-  exports$4.FileHandle = FileHandle;
+  exports$6.FileHandle = FileHandle;
 
   function createPromisesApi(vol) {
     if (typeof Promise === "undefined") return null;
@@ -1535,21 +1548,21 @@ function dew$4() {
     };
   }
 
-  exports$4.default = createPromisesApi;
-  return exports$4;
+  exports$6.default = createPromisesApi;
+  return exports$6;
 }
 
-var exports$3 = {},
+var exports$5 = {},
     _dewExec$3 = false;
 function dew$3() {
-  if (_dewExec$3) return exports$3;
+  if (_dewExec$3) return exports$5;
   _dewExec$3 = true;
   var process$1 = process;
-  Object.defineProperty(exports$3, "__esModule", {
+  Object.defineProperty(exports$5, "__esModule", {
     value: true
   });
-  exports$3.unixify = unixify;
-  exports$3.correctPath = correctPath;
+  exports$5.unixify = unixify;
+  exports$5.correctPath = correctPath;
   var isWin = process$1.platform === "win32";
 
   function removeTrailingSeparator(str) {
@@ -1600,16 +1613,19 @@ function dew$3() {
     return unixify(filepath.replace(/^\\\\\?\\.:\\/, "\\"));
   }
 
-  return exports$3;
+  return exports$5;
 }
 
-var exports$2 = {},
+var exports$4 = {},
     _dewExec$2 = false;
+
+var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
+
 function dew$2() {
-  if (_dewExec$2) return exports$2;
+  if (_dewExec$2) return exports$4;
   _dewExec$2 = true;
 
-  var __extends = exports$2 && exports$2.__extends || function () {
+  var __extends = exports$4 && exports$4.__extends || function () {
     var extendStatics = function (d, b) {
       extendStatics = Object.setPrototypeOf || {
         __proto__: []
@@ -1634,17 +1650,21 @@ function dew$2() {
     };
   }();
 
-  var __spreadArray = exports$2 && exports$2.__spreadArray || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-    return to;
+  var __spreadArray = exports$4 && exports$4.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+      if (ar || !(i in from)) {
+        if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+        ar[i] = from[i];
+      }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
   };
 
-  Object.defineProperty(exports$2, "__esModule", {
+  Object.defineProperty(exports$4, "__esModule", {
     value: true
   });
-  exports$2.FSWatcher = exports$2.StatWatcher = exports$2.Volume = exports$2.toUnixTimestamp = exports$2.bufferToEncoding = exports$2.dataToBuffer = exports$2.dataToStr = exports$2.pathToSteps = exports$2.filenameToSteps = exports$2.pathToFilename = exports$2.flagsToNumber = exports$2.FLAGS = void 0;
-  var pathModule = path;
+  exports$4.FSWatcher = exports$4.StatWatcher = exports$4.Volume = exports$4.toUnixTimestamp = exports$4.bufferToEncoding = exports$4.dataToBuffer = exports$4.dataToStr = exports$4.pathToSteps = exports$4.filenameToSteps = exports$4.pathToFilename = exports$4.flagsToNumber = exports$4.FLAGS = void 0;
+  var pathModule = exports$i;
 
   var node_1 = dew$6();
 
@@ -1660,7 +1680,7 @@ function dew$2() {
 
   var setTimeoutUnref_1 = dew$5();
 
-  var stream_1 = stream;
+  var stream_1 = exports$j;
 
   var constants_1 = dew$f();
 
@@ -1851,7 +1871,7 @@ function dew$2() {
 
     FLAGS[FLAGS["ax+"] = O_RDWR | O_APPEND | O_CREAT | O_EXCL] = "ax+";
     FLAGS[FLAGS["xa+"] = FLAGS["ax+"]] = "xa+";
-  })(FLAGS = exports$2.FLAGS || (exports$2.FLAGS = {}));
+  })(FLAGS = exports$4.FLAGS || (exports$4.FLAGS = {}));
 
   function flagsToNumber(flags) {
     if (typeof flags === "number") return flags;
@@ -1865,7 +1885,7 @@ function dew$2() {
     throw new errors.TypeError("ERR_INVALID_OPT_VALUE", "flags", flags);
   }
 
-  exports$2.flagsToNumber = flagsToNumber; // ---------------------------------------- Options
+  exports$4.flagsToNumber = flagsToNumber; // ---------------------------------------- Options
 
   function getOptions(defaults, options) {
     var opts;
@@ -1887,7 +1907,7 @@ function dew$2() {
           throw TypeError(ERRSTR_OPTS(tipeof));
       }
     }
-    if (opts.encoding !== "buffer") encoding_1.assertEncoding(opts.encoding);
+    if (opts.encoding !== "buffer") (0, encoding_1.assertEncoding)(opts.encoding);
     return opts;
   }
 
@@ -2019,7 +2039,7 @@ function dew$2() {
     return pathString;
   }
 
-  exports$2.pathToFilename = pathToFilename;
+  exports$4.pathToFilename = pathToFilename;
 
   var resolve = function (filename, base) {
     if (base === void 0) {
@@ -2046,39 +2066,39 @@ function dew$2() {
     return fullPathSansSlash.split(sep);
   }
 
-  exports$2.filenameToSteps = filenameToSteps;
+  exports$4.filenameToSteps = filenameToSteps;
 
   function pathToSteps(path) {
     return filenameToSteps(pathToFilename(path));
   }
 
-  exports$2.pathToSteps = pathToSteps;
+  exports$4.pathToSteps = pathToSteps;
 
   function dataToStr(data, encoding) {
     if (encoding === void 0) {
       encoding = encoding_1.ENCODING_UTF8;
     }
 
-    if (buffer_1.Buffer.isBuffer(data)) return data.toString(encoding);else if (data instanceof Uint8Array) return buffer_1.bufferFrom(data).toString(encoding);else return String(data);
+    if (buffer_1.Buffer.isBuffer(data)) return data.toString(encoding);else if (data instanceof Uint8Array) return (0, buffer_1.bufferFrom)(data).toString(encoding);else return String(data);
   }
 
-  exports$2.dataToStr = dataToStr;
+  exports$4.dataToStr = dataToStr;
 
   function dataToBuffer(data, encoding) {
     if (encoding === void 0) {
       encoding = encoding_1.ENCODING_UTF8;
     }
 
-    if (buffer_1.Buffer.isBuffer(data)) return data;else if (data instanceof Uint8Array) return buffer_1.bufferFrom(data);else return buffer_1.bufferFrom(String(data), encoding);
+    if (buffer_1.Buffer.isBuffer(data)) return data;else if (data instanceof Uint8Array) return (0, buffer_1.bufferFrom)(data);else return (0, buffer_1.bufferFrom)(String(data), encoding);
   }
 
-  exports$2.dataToBuffer = dataToBuffer;
+  exports$4.dataToBuffer = dataToBuffer;
 
   function bufferToEncoding(buffer, encoding) {
     if (!encoding || encoding === "buffer") return buffer;else return buffer.toString(encoding);
   }
 
-  exports$2.bufferToEncoding = bufferToEncoding;
+  exports$4.bufferToEncoding = bufferToEncoding;
 
   function nullCheck(path, callback) {
     if (("" + path).indexOf("\0") !== -1) {
@@ -2136,7 +2156,7 @@ function dew$2() {
     throw new Error("Cannot parse time: " + time);
   }
 
-  exports$2.toUnixTimestamp = toUnixTimestamp;
+  exports$4.toUnixTimestamp = toUnixTimestamp;
 
   function validateUid(uid) {
     if (typeof uid !== "number") throw TypeError(ERRSTR.UID);
@@ -2196,7 +2216,7 @@ function dew$2() {
       this.maxFiles = 10000; // Current number of open files.
 
       this.openFiles = 0;
-      this.promisesApi = promises_1.default(this);
+      this.promisesApi = (0, promises_1.default)(this);
       this.statWatchers = {};
       this.props = Object.assign({
         Node: node_1.Node,
@@ -2229,7 +2249,7 @@ function dew$2() {
             args[_i] = arguments[_i];
           }
 
-          return _super.apply(this, __spreadArray([self], args)) || this;
+          return _super.apply(this, __spreadArray([self], args, false)) || this;
         }
 
         return class_1;
@@ -2247,7 +2267,7 @@ function dew$2() {
             args[_i] = arguments[_i];
           }
 
-          return _super.apply(this, __spreadArray([self], args)) || this;
+          return _super.apply(this, __spreadArray([self], args, false)) || this;
         }
 
         return class_2;
@@ -2473,12 +2493,17 @@ function dew$2() {
       var _this = this;
 
       validateCallback(callback);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
+        var result;
+
         try {
-          callback(null, method.apply(_this, args));
+          result = method.apply(_this, args);
         } catch (err) {
           callback(err);
+          return;
         }
+
+        callback(null, result);
       });
     };
 
@@ -2761,7 +2786,7 @@ function dew$2() {
         });
       }
 
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           var bytes = _this.readBase(fd, buffer, offset, length, position);
 
@@ -2905,7 +2930,7 @@ function dew$2() {
       }
 
       var cb = validateCallback(callback);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           var bytes = _this.writeBase(fd, buf, offset, length, position);
 
@@ -3097,7 +3122,7 @@ function dew$2() {
       var steps = filenameToSteps(filename);
       var realLink = this.getResolvedLink(steps);
       if (!realLink) throw createError(ENOENT, "realpath", filename);
-      return encoding_1.strToEncoding(realLink.getPath(), encoding);
+      return (0, encoding_1.strToEncoding)(realLink.getPath(), encoding);
     };
 
     Volume.prototype.realpathSync = function (path, options) {
@@ -3198,7 +3223,7 @@ function dew$2() {
 
 
       var name = newPathSteps[newPathSteps.length - 1];
-      link.steps = __spreadArray(__spreadArray([], newPathDirLink.steps), [name]);
+      link.steps = __spreadArray(__spreadArray([], newPathDirLink.steps, true), [name], false);
       newPathDirLink.setChild(link.getName(), link);
     };
 
@@ -3231,7 +3256,7 @@ function dew$2() {
 
       var filename = pathToFilename(path);
       if (typeof callback !== "function") throw Error(ERRSTR.CB);
-      setImmediate_1.default(function () {
+      (0, setImmediate_1.default)(function () {
         try {
           callback(_this.existsBase(filename));
         } catch (err) {
@@ -3322,7 +3347,7 @@ function dew$2() {
       var list = [];
 
       for (var name_4 in link.children) {
-        list.push(encoding_1.strToEncoding(name_4, options.encoding));
+        list.push((0, encoding_1.strToEncoding)(name_4, options.encoding));
       }
 
       if (!isWin && options.encoding !== "buffer") list.sort();
@@ -3349,7 +3374,7 @@ function dew$2() {
       var node = link.getNode();
       if (!node.isSymlink()) throw createError(EINVAL, "readlink", filename);
       var str = sep + node.symlink.join(sep);
-      return encoding_1.strToEncoding(str, encoding);
+      return (0, encoding_1.strToEncoding)(str, encoding);
     };
 
     Volume.prototype.readlinkSync = function (path, options) {
@@ -3541,7 +3566,7 @@ function dew$2() {
         this.mkdirBase(filename, 511
         /* DIR */
         );
-        return encoding_1.strToEncoding(filename, encoding);
+        return (0, encoding_1.strToEncoding)(filename, encoding);
       } catch (err) {
         if (err.code === EEXIST) {
           if (retry > 1) return this.mkdtempBase(prefix, encoding, retry - 1);else throw Error("Could not create temp dir.");
@@ -3797,7 +3822,7 @@ function dew$2() {
     return Volume;
   }();
 
-  exports$2.Volume = Volume;
+  exports$4.Volume = Volume;
 
   function emitStop(self) {
     self.emit("stop");
@@ -3848,7 +3873,7 @@ function dew$2() {
       }
 
       this.filename = pathToFilename(path);
-      this.setTimeout = persistent ? setTimeout : setTimeoutUnref_1.default;
+      this.setTimeout = persistent ? setTimeout.bind(typeof globalThis !== "undefined" ? globalThis : _global) : setTimeoutUnref_1.default;
       this.interval = interval;
       this.prev = this.vol.statSync(this.filename);
       this.loop();
@@ -3862,16 +3887,16 @@ function dew$2() {
     return StatWatcher;
   }(events_1.EventEmitter);
 
-  exports$2.StatWatcher = StatWatcher;
+  exports$4.StatWatcher = StatWatcher;
   var pool;
 
   function allocNewPool(poolSize) {
-    pool = buffer_1.bufferAllocUnsafe(poolSize);
+    pool = (0, buffer_1.bufferAllocUnsafe)(poolSize);
     pool.used = 0;
   }
 
   util.inherits(FsReadStream, stream_1.Readable);
-  exports$2.ReadStream = FsReadStream;
+  exports$4.ReadStream = FsReadStream;
 
   function FsReadStream(vol, path, options) {
     if (!(this instanceof FsReadStream)) return new FsReadStream(vol, path, options);
@@ -4027,7 +4052,7 @@ function dew$2() {
   }
 
   util.inherits(FsWriteStream, stream_1.Writable);
-  exports$2.WriteStream = FsWriteStream;
+  exports$4.WriteStream = FsWriteStream;
 
   function FsWriteStream(vol, path, options) {
     if (!(this instanceof FsWriteStream)) return new FsWriteStream(vol, path, options);
@@ -4212,7 +4237,7 @@ function dew$2() {
 
       this._filename = pathToFilename(path);
       this._steps = filenameToSteps(this._filename);
-      this._filenameEncoded = encoding_1.strToEncoding(this._filename); // this._persistent = persistent;
+      this._filenameEncoded = (0, encoding_1.strToEncoding)(this._filename); // this._persistent = persistent;
 
       this._recursive = recursive;
       this._encoding = encoding;
@@ -4259,35 +4284,35 @@ function dew$2() {
     return FSWatcher;
   }(events_1.EventEmitter);
 
-  exports$2.FSWatcher = FSWatcher;
-  return exports$2;
+  exports$4.FSWatcher = FSWatcher;
+  return exports$4;
 }
 
-var exports$1 = {},
+var exports$3 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$1;
+  if (_dewExec$1) return exports$3;
   _dewExec$1 = true;
-  Object.defineProperty(exports$1, "__esModule", {
+  Object.defineProperty(exports$3, "__esModule", {
     value: true
   });
-  exports$1.fsAsyncMethods = exports$1.fsSyncMethods = exports$1.fsProps = void 0;
+  exports$3.fsAsyncMethods = exports$3.fsSyncMethods = exports$3.fsProps = void 0;
   var fsProps = ["constants", "F_OK", "R_OK", "W_OK", "X_OK", "Stats"];
-  exports$1.fsProps = fsProps;
+  exports$3.fsProps = fsProps;
   var fsSyncMethods = ["renameSync", "ftruncateSync", "truncateSync", "chownSync", "fchownSync", "lchownSync", "chmodSync", "fchmodSync", "lchmodSync", "statSync", "lstatSync", "fstatSync", "linkSync", "symlinkSync", "readlinkSync", "realpathSync", "unlinkSync", "rmdirSync", "mkdirSync", "mkdirpSync", "readdirSync", "closeSync", "openSync", "utimesSync", "futimesSync", "fsyncSync", "writeSync", "readSync", "readFileSync", "writeFileSync", "appendFileSync", "existsSync", "accessSync", "fdatasyncSync", "mkdtempSync", "copyFileSync", "createReadStream", "createWriteStream"];
-  exports$1.fsSyncMethods = fsSyncMethods;
+  exports$3.fsSyncMethods = fsSyncMethods;
   var fsAsyncMethods = ["rename", "ftruncate", "truncate", "chown", "fchown", "lchown", "chmod", "fchmod", "lchmod", "stat", "lstat", "fstat", "link", "symlink", "readlink", "realpath", "unlink", "rmdir", "mkdir", "mkdirp", "readdir", "close", "open", "utimes", "futimes", "fsync", "write", "read", "readFile", "writeFile", "appendFile", "exists", "access", "fdatasync", "mkdtemp", "copyFile", "watchFile", "unwatchFile", "watch"];
-  exports$1.fsAsyncMethods = fsAsyncMethods;
-  return exports$1;
+  exports$3.fsAsyncMethods = fsAsyncMethods;
+  return exports$3;
 }
 
-var exports = {},
+var exports$2 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$2;
   _dewExec = true;
 
-  var __assign = exports && exports.__assign || function () {
+  var __assign = exports$2 && exports$2.__assign || function () {
     __assign = Object.assign || function (t) {
       for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -4301,10 +4326,10 @@ function dew() {
     return __assign.apply(this, arguments);
   };
 
-  Object.defineProperty(exports, "__esModule", {
+  Object.defineProperty(exports$2, "__esModule", {
     value: true
   });
-  exports.fs = exports.createFsFromVolume = exports.vol = exports.Volume = void 0;
+  exports$2.fs = exports$2.createFsFromVolume = exports$2.vol = exports$2.Volume = void 0;
 
   var Stats_1 = dew$d();
 
@@ -4322,9 +4347,9 @@ function dew() {
       R_OK = constants_1.constants.R_OK,
       W_OK = constants_1.constants.W_OK,
       X_OK = constants_1.constants.X_OK;
-  exports.Volume = volume_1.Volume; // Default volume.
+  exports$2.Volume = volume_1.Volume; // Default volume.
 
-  exports.vol = new volume_1.Volume();
+  exports$2.vol = new volume_1.Volume();
 
   function createFsFromVolume(vol) {
     var fs = {
@@ -4356,18 +4381,20 @@ function dew() {
     return fs;
   }
 
-  exports.createFsFromVolume = createFsFromVolume;
-  exports.fs = createFsFromVolume(exports.vol);
-  exports = __assign(__assign({}, exports), exports.fs);
-  exports.semantic = true;
-  return exports;
+  exports$2.createFsFromVolume = createFsFromVolume;
+  exports$2.fs = createFsFromVolume(exports$2.vol);
+  exports$2 = __assign(__assign({}, exports$2), exports$2.fs);
+  exports$2.semantic = true;
+  return exports$2;
 }
 
-var memfs = dew();
+const exports$1 = dew();
+exports$1['__esModule']; exports$1['fs']; exports$1['createFsFromVolume']; exports$1['vol']; exports$1['Volume']; exports$1['semantic'];
 
-dew$2();
+const exports = dew$2();
+exports['__esModule']; exports['FSWatcher']; exports['StatWatcher']; exports['Volume']; exports['toUnixTimestamp']; exports['bufferToEncoding']; exports['dataToBuffer']; exports['dataToStr']; exports['pathToSteps']; exports['filenameToSteps']; exports['pathToFilename']; exports['flagsToNumber']; exports['FLAGS']; exports['ReadStream']; exports['WriteStream'];
 
-const { vol, createFsFromVolume } = memfs;
+const { vol, createFsFromVolume } = exports$1;
 
 function unimplemented(name) {
   throw new Error(`Node.js fs ${name} is not supported by JSPM core in the browser`);
@@ -4571,5 +4598,4 @@ const {
   promises,
 } = fs;
 
-export default fs;
-export { Dir, Dirent, F_OK, FileReadStream, FileWriteStream, R_OK, ReadStream, Stats, W_OK, WriteStream, X_OK, _toUnixTimestamp, access, accessSync, appendFile, appendFileSync, chmod, chmodSync, chown, chownSync, close, closeSync, constants, copyFile, copyFileSync, cp, cpSync, createReadStream, createWriteStream, exists, existsSync, fchmod, fchmodSync, fchown, fchownSync, fdatasync, fdatasyncSync, fstat, fstatSync, fsync, fsyncSync, ftruncate, ftruncateSync, futimes, futimesSync, lchmod, lchmodSync, lchown, lchownSync, link, linkSync, lstat, lstatSync, mkdir, mkdirSync, mkdtemp, mkdtempSync, open, openSync, opendir, opendirSync, promises, read, readFile, readFileSync, readSync, readdir, readdirSync, readlink, readlinkSync, readv, readvSync, realpath, realpathSync, rename, renameSync, rm, rmSync, rmdir, rmdirSync, stat, statSync, symlink, symlinkSync, truncate, truncateSync, unlink, unlinkSync, unwatchFile, utimes, utimesSync, watch, watchFile, write, writeFile, writeFileSync, writeSync, writev, writevSync };
+export { Dir, Dirent, F_OK, FileReadStream, FileWriteStream, R_OK, ReadStream, Stats, W_OK, WriteStream, X_OK, _toUnixTimestamp, access, accessSync, appendFile, appendFileSync, chmod, chmodSync, chown, chownSync, close, closeSync, constants, copyFile, copyFileSync, cp, cpSync, createReadStream, createWriteStream, fs as default, exists, existsSync, fchmod, fchmodSync, fchown, fchownSync, fdatasync, fdatasyncSync, fstat, fstatSync, fsync, fsyncSync, ftruncate, ftruncateSync, futimes, futimesSync, lchmod, lchmodSync, lchown, lchownSync, link, linkSync, lstat, lstatSync, mkdir, mkdirSync, mkdtemp, mkdtempSync, open, openSync, opendir, opendirSync, promises, read, readFile, readFileSync, readSync, readdir, readdirSync, readlink, readlinkSync, readv, readvSync, realpath, realpathSync, rename, renameSync, rm, rmSync, rmdir, rmdirSync, stat, statSync, symlink, symlinkSync, truncate, truncateSync, unlink, unlinkSync, unwatchFile, utimes, utimesSync, watch, watchFile, write, writeFile, writeFileSync, writeSync, writev, writevSync };

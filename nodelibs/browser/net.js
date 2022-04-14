@@ -17,5 +17,4 @@ var net = {
   Stream: unimplemented
 };
 
-export default net;
-export { unimplemented as Server, unimplemented as Socket, unimplemented as Stream, unimplemented as _createServerHandle, unimplemented as _normalizeArgs, unimplemented as _setSimultaneousAccepts, unimplemented as connect, unimplemented as createConnection, unimplemented as createServer, unimplemented as isIP, unimplemented as isIPv4, unimplemented as isIPv6 };
+export { unimplemented as Server, unimplemented as Socket, unimplemented as Stream, unimplemented as _createServerHandle, unimplemented as _normalizeArgs, unimplemented as _setSimultaneousAccepts, unimplemented as connect, unimplemented as createConnection, unimplemented as createServer, net as default, unimplemented as isIP, unimplemented as isIPv4, unimplemented as isIPv6 };

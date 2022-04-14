@@ -1,27 +1,27 @@
-import { b as buffer, d as dew$7 } from './chunk-a75abdc7.js';
-import { d as dew$6 } from './chunk-191e88d4.js';
-import { p as process } from './chunk-41a25566.js';
+import { b as buffer, d as dew$7 } from './chunk-44e51b61.js';
+import { d as dew$6 } from './chunk-c3d025d9.js';
+import { p as process } from './chunk-2eac56ff.js';
 import h from './url.js';
-import './chunk-eb4a3827.js';
-import './chunk-bf402f6f.js';
-import './chunk-b196e9ea.js';
-import './chunk-af36a440.js';
-import './chunk-83f77422.js';
-import './chunk-32ebc98f.js';
-import './chunk-3afc512b.js';
-import './chunk-8330aff8.js';
+import './chunk-4bd36a8f.js';
+import './chunk-ce0fbc82.js';
+import './chunk-b4205b57.js';
+import './chunk-5decc758.js';
+import './chunk-4ccc3a29.js';
+import './chunk-924bb2e1.js';
+import './chunk-b04e620d.js';
+import './chunk-23dbec7b.js';
 
-var exports$5 = {},
+var exports$6 = {},
     _dewExec$5 = false;
 
 var _global$3 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$5() {
-  if (_dewExec$5) return exports$5;
+  if (_dewExec$5) return exports$6;
   _dewExec$5 = true;
-  exports$5.fetch = isFunction(_global$3.fetch) && isFunction(_global$3.ReadableStream);
-  exports$5.writableStream = isFunction(_global$3.WritableStream);
-  exports$5.abortController = isFunction(_global$3.AbortController); // The xhr request to example.com may violate some restrictive CSP configurations,
+  exports$6.fetch = isFunction(_global$3.fetch) && isFunction(_global$3.ReadableStream);
+  exports$6.writableStream = isFunction(_global$3.WritableStream);
+  exports$6.abortController = isFunction(_global$3.AbortController); // The xhr request to example.com may violate some restrictive CSP configurations,
   // so if we're running in a browser that supports `fetch`, avoid calling getXHR()
   // and assume support for certain features below.
 
@@ -63,14 +63,14 @@ function dew$5() {
   // checkTypeSupport(), since that calls getXHR().
 
 
-  exports$5.arraybuffer = exports$5.fetch || checkTypeSupport("arraybuffer"); // These next two tests unavoidably show warnings in Chrome. Since fetch will always
+  exports$6.arraybuffer = exports$6.fetch || checkTypeSupport("arraybuffer"); // These next two tests unavoidably show warnings in Chrome. Since fetch will always
   // be used if it's available, just return false for these to avoid the warnings.
 
-  exports$5.msstream = !exports$5.fetch && checkTypeSupport("ms-stream");
-  exports$5.mozchunkedarraybuffer = !exports$5.fetch && checkTypeSupport("moz-chunked-arraybuffer"); // If fetch is supported, then overrideMimeType will be supported too. Skip calling
+  exports$6.msstream = !exports$6.fetch && checkTypeSupport("ms-stream");
+  exports$6.mozchunkedarraybuffer = !exports$6.fetch && checkTypeSupport("moz-chunked-arraybuffer"); // If fetch is supported, then overrideMimeType will be supported too. Skip calling
   // getXHR().
 
-  exports$5.overrideMimeType = exports$5.fetch || (getXHR() ? isFunction(getXHR().overrideMimeType) : false);
+  exports$6.overrideMimeType = exports$6.fetch || (getXHR() ? isFunction(getXHR().overrideMimeType) : false);
 
   function isFunction(value) {
     return typeof value === "function";
@@ -78,16 +78,16 @@ function dew$5() {
 
   xhr = null; // Help gc
 
-  return exports$5;
+  return exports$6;
 }
 
-var exports$4 = {},
+var exports$5 = {},
     _dewExec$4 = false;
 
 var _global$2 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$4() {
-  if (_dewExec$4) return exports$4;
+  if (_dewExec$4) return exports$5;
   _dewExec$4 = true;
   var Buffer = buffer.Buffer;
   var process$1 = process;
@@ -98,7 +98,7 @@ function dew$4() {
 
   var stream = dew$6();
 
-  var rStates = exports$4.readyStates = {
+  var rStates = exports$5.readyStates = {
     UNSENT: 0,
     OPENED: 1,
     HEADERS_RECEIVED: 2,
@@ -106,7 +106,7 @@ function dew$4() {
     DONE: 4
   };
 
-  var IncomingMessage = exports$4.IncomingMessage = function (xhr, response, mode, resetTimers) {
+  var IncomingMessage = exports$5.IncomingMessage = function (xhr, response, mode, resetTimers) {
     var self = this || _global$2;
     stream.Readable.call(self);
     self._mode = mode;
@@ -315,16 +315,16 @@ function dew$4() {
     }
   };
 
-  return exports$4;
+  return exports$5;
 }
 
-var exports$3 = {},
+var exports$4 = {},
     _dewExec$3 = false;
 
 var _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew$3() {
-  if (_dewExec$3) return exports$3;
+  if (_dewExec$3) return exports$4;
   _dewExec$3 = true;
   var Buffer = buffer.Buffer;
   var process$1 = process;
@@ -354,7 +354,7 @@ function dew$3() {
     }
   }
 
-  var ClientRequest = exports$3 = function (opts) {
+  var ClientRequest = exports$4 = function (opts) {
     var self = this || _global$1;
     stream.Writable.call(self);
     self._opts = opts;
@@ -657,15 +657,15 @@ function dew$3() {
 
 
   var unsafeHeaders = ["accept-charset", "accept-encoding", "access-control-request-headers", "access-control-request-method", "connection", "content-length", "cookie", "cookie2", "date", "dnt", "expect", "host", "keep-alive", "origin", "referer", "te", "trailer", "transfer-encoding", "upgrade", "via"];
-  return exports$3;
+  return exports$4;
 }
 
-var exports$2 = {},
+var exports$3 = {},
     _dewExec$2 = false;
 function dew$2() {
-  if (_dewExec$2) return exports$2;
+  if (_dewExec$2) return exports$3;
   _dewExec$2 = true;
-  exports$2 = extend;
+  exports$3 = extend;
   var hasOwnProperty = Object.prototype.hasOwnProperty;
 
   function extend() {
@@ -684,15 +684,15 @@ function dew$2() {
     return target;
   }
 
-  return exports$2;
+  return exports$3;
 }
 
-var exports$1 = {},
+var exports$2 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$1;
+  if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
-  exports$1 = {
+  exports$2 = {
     "100": "Continue",
     "101": "Switching Protocols",
     "102": "Processing",
@@ -756,16 +756,16 @@ function dew$1() {
     "510": "Not Extended",
     "511": "Network Authentication Required"
   };
-  return exports$1;
+  return exports$2;
 }
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
   var ClientRequest = dew$3();
@@ -777,7 +777,7 @@ function dew() {
   var statusCodes = dew$1();
 
   var url = h;
-  var http = exports;
+  var http = exports$1;
 
   http.request = function (opts, cb) {
     if (typeof opts === "string") opts = url.parse(opts);else opts = extend(opts); // Normally, the page is loaded from http or https, so not specifying a protocol
@@ -816,19 +816,18 @@ function dew() {
   http.globalAgent = new http.Agent();
   http.STATUS_CODES = statusCodes;
   http.METHODS = ["CHECKOUT", "CONNECT", "COPY", "DELETE", "GET", "HEAD", "LOCK", "M-SEARCH", "MERGE", "MKACTIVITY", "MKCOL", "MOVE", "NOTIFY", "OPTIONS", "PATCH", "POST", "PROPFIND", "PROPPATCH", "PURGE", "PUT", "REPORT", "SEARCH", "SUBSCRIBE", "TRACE", "UNLOCK", "UNSUBSCRIBE"];
-  return exports;
+  return exports$1;
 }
 
-var http = dew();
+const exports = dew();
 
-var Agent = http.Agent;
-var ClientRequest = http.ClientRequest;
-var IncomingMessage = http.IncomingMessage;
-var METHODS = http.METHODS;
-var STATUS_CODES = http.STATUS_CODES;
-var get = http.get;
-var globalAgent = http.globalAgent;
-var request = http.request;
+var Agent = exports.Agent;
+var ClientRequest = exports.ClientRequest;
+var IncomingMessage = exports.IncomingMessage;
+var METHODS = exports.METHODS;
+var STATUS_CODES = exports.STATUS_CODES;
+var get = exports.get;
+var globalAgent = exports.globalAgent;
+var request = exports.request;
 
-export default http;
-export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, get, globalAgent, request };
+export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, exports as default, get, globalAgent, request };

@@ -30,5 +30,4 @@ var _events = null,
   SCHED_RR = null,
   schedulingPolicy = null;
 
-export default cluster;
-export { SCHED_NONE, SCHED_RR, unimplemented as Worker, _events, _eventsCount, _maxListeners, unimplemented as disconnect, unimplemented as fork, isMaster, isWorker, schedulingPolicy, settings, unimplemented as setupMaster, workers };
+export { SCHED_NONE, SCHED_RR, unimplemented as Worker, _events, _eventsCount, _maxListeners, cluster as default, unimplemented as disconnect, unimplemented as fork, isMaster, isWorker, schedulingPolicy, settings, unimplemented as setupMaster, workers };

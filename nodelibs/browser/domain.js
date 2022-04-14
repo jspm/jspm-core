@@ -1,13 +1,13 @@
 import './events.js';
-import { y } from './chunk-eb4a3827.js';
+import { y } from './chunk-4bd36a8f.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
-  exports = function () {
+  exports$1 = function () {
     // Import Events
     var events = y; // Export Domain
 
@@ -79,15 +79,14 @@ function dew() {
     };
 
     return domain;
-  }.call(exports);
+  }.call(exports$1);
 
-  return exports;
+  return exports$1;
 }
 
-var domain = dew();
+const exports = dew();
 
-var create = domain.create;
-var createDomain = domain.createDomain;
+var create = exports.create;
+var createDomain = exports.createDomain;
 
-export default domain;
-export { create, createDomain };
+export { create, createDomain, exports as default };

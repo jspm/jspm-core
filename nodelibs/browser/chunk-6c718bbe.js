@@ -1,14 +1,14 @@
 import './events.js';
-import { a as dew$1, c as dew$2, e as dew$3, f as dew$4, g as dew$5, h as dew$6, i as dew$7, d as dew$8 } from './chunk-a75abdc7.js';
-import { y } from './chunk-eb4a3827.js';
+import { a as dew$1, c as dew$2, e as dew$3, f as dew$4, g as dew$5, h as dew$6, i as dew$7, d as dew$8 } from './chunk-44e51b61.js';
+import { y } from './chunk-4bd36a8f.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
   // Copyright Joyent, Inc. and other Node contributors.
   //
@@ -30,7 +30,7 @@ function dew() {
   // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
   // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
   // USE OR OTHER DEALINGS IN THE SOFTWARE.
-  exports = Stream;
+  exports$1 = Stream;
   var EE = y.EventEmitter;
 
   var inherits = dew$8();
@@ -124,9 +124,9 @@ function dew() {
     return dest;
   };
 
-  return exports;
+  return exports$1;
 }
 
-var stream = dew();
+const exports = dew();
 
-export { stream as s };
+export { exports as e };

@@ -1,9 +1,9 @@
-import { p as process } from './chunk-41a25566.js';
+import { p as process } from './chunk-2eac56ff.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
   var process$1 = process;
 
@@ -532,10 +532,10 @@ function dew() {
     posix: null
   };
   posix.posix = posix;
-  exports = posix;
-  return exports;
+  exports$1 = posix;
+  return exports$1;
 }
 
-var path = dew();
+const exports = dew();
 
-export { path as p };
+export { exports as e };

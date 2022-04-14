@@ -1,5 +1,5 @@
-import { EventEmitter, once } from './events.js';
-import './chunk-eb4a3827.js';
+import { once, EventEmitter } from './events.js';
+import './chunk-4bd36a8f.js';
 
 function unimplemented(name) {
   throw new Error(
@@ -138,5 +138,4 @@ var worker_threads = {
   isMainThread,
 };
 
-export default worker_threads;
-export { BroadcastChannel, MessageChannel, MessagePort, SHARE_ENV, Worker, getEnvironmentData, isMainThread, markAsUntransferable, moveMessagePortToContext, parentPort, receiveMessageOnPort, resourceLimits, setEnvironmentData, threadId, workerData };
+export { BroadcastChannel, MessageChannel, MessagePort, SHARE_ENV, Worker, worker_threads as default, getEnvironmentData, isMainThread, markAsUntransferable, moveMessagePortToContext, parentPort, receiveMessageOnPort, resourceLimits, setEnvironmentData, threadId, workerData };

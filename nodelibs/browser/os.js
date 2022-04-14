@@ -1,47 +1,47 @@
 import { uptime } from './process.js';
 export { uptime } from './process.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
-  exports.endianness = function () {
+  exports$1.endianness = function () {
     return "LE";
   };
 
-  exports.hostname = function () {
+  exports$1.hostname = function () {
     if (typeof location !== "undefined") {
       return location.hostname;
     } else return "";
   };
 
-  exports.loadavg = function () {
+  exports$1.loadavg = function () {
     return [];
   };
 
-  exports.uptime = function () {
+  exports$1.uptime = function () {
     return 0;
   };
 
-  exports.freemem = function () {
+  exports$1.freemem = function () {
     return Number.MAX_VALUE;
   };
 
-  exports.totalmem = function () {
+  exports$1.totalmem = function () {
     return Number.MAX_VALUE;
   };
 
-  exports.cpus = function () {
+  exports$1.cpus = function () {
     return [];
   };
 
-  exports.type = function () {
+  exports$1.type = function () {
     return "Browser";
   };
 
-  exports.release = function () {
+  exports$1.release = function () {
     if (typeof navigator !== "undefined") {
       return navigator.appVersion;
     }
@@ -49,64 +49,64 @@ function dew() {
     return "";
   };
 
-  exports.networkInterfaces = exports.getNetworkInterfaces = function () {
+  exports$1.networkInterfaces = exports$1.getNetworkInterfaces = function () {
     return {};
   };
 
-  exports.arch = function () {
+  exports$1.arch = function () {
     return "javascript";
   };
 
-  exports.platform = function () {
+  exports$1.platform = function () {
     return "browser";
   };
 
-  exports.tmpdir = exports.tmpDir = function () {
+  exports$1.tmpdir = exports$1.tmpDir = function () {
     return "/tmp";
   };
 
-  exports.EOL = "\n";
+  exports$1.EOL = "\n";
 
-  exports.homedir = function () {
+  exports$1.homedir = function () {
     return "/";
   };
 
-  return exports;
+  return exports$1;
 }
 
-var os = dew();
+const exports = dew();
+exports['endianness']; exports['hostname']; exports['loadavg']; exports['uptime']; exports['freemem']; exports['totalmem']; exports['cpus']; exports['type']; exports['release']; exports['networkInterfaces']; exports['getNetworkInterfaces']; exports['arch']; exports['platform']; exports['tmpdir']; exports['tmpDir']; exports['EOL']; exports['homedir'];
 
 var _endianness = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1 ? 'LE' : 'BE';
-os.endianness = function() { return _endianness; };
-os.homedir = function() { return '/home'; };
-os.version = function() { return ''; };
-os.arch = function() { return 'x64'; };
-os.totalmem = function() {
+exports.endianness = function() { return _endianness; };
+exports.homedir = function() { return '/home'; };
+exports.version = function() { return ''; };
+exports.arch = function() { return 'x64'; };
+exports.totalmem = function() {
   return navigator.deviceMemory !== undefined ? navigator.deviceMemory * (1 << 30) : 2 * (1 << 30);
 };
-os.cpus = function () {
+exports.cpus = function () {
   return Array(navigator.hardwareConcurrency || 0).fill({ model: '', times: {} });
 };
-os.uptime = uptime;
-os.constants = {};
-var version = os.version;
-var constants = os.constants;
-var EOL = os.EOL;
-var arch = os.arch;
-var cpus = os.cpus;
-var endianness = os.endianness;
-var freemem = os.freemem;
-var getNetworkInterfaces = os.getNetworkInterfaces;
-var homedir = os.homedir;
-var hostname = os.hostname;
-var loadavg = os.loadavg;
-var networkInterfaces = os.networkInterfaces;
-var platform = os.platform;
-var release = os.release;
-var tmpDir = os.tmpDir;
-var tmpdir = os.tmpdir;
-var totalmem = os.totalmem;
-var type = os.type;
+exports.uptime = uptime;
+exports.constants = {};
+var version = exports.version;
+var constants = exports.constants;
+var EOL = exports.EOL;
+var arch = exports.arch;
+var cpus = exports.cpus;
+var endianness = exports.endianness;
+var freemem = exports.freemem;
+var getNetworkInterfaces = exports.getNetworkInterfaces;
+var homedir = exports.homedir;
+var hostname = exports.hostname;
+var loadavg = exports.loadavg;
+var networkInterfaces = exports.networkInterfaces;
+var platform = exports.platform;
+var release = exports.release;
+var tmpDir = exports.tmpDir;
+var tmpdir = exports.tmpdir;
+var totalmem = exports.totalmem;
+var type = exports.type;
 
-export default os;
-export { EOL, arch, constants, cpus, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };
+export { EOL, arch, constants, cpus, exports as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };

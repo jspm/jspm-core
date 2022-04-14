@@ -1,41 +1,41 @@
-import http from './http.js';
+import exports$2 from './http.js';
 import h from './url.js';
-import './chunk-a75abdc7.js';
-import './chunk-eb4a3827.js';
-import './chunk-bf402f6f.js';
-import './chunk-b196e9ea.js';
-import './chunk-af36a440.js';
-import './chunk-41a25566.js';
-import './chunk-83f77422.js';
-import './chunk-191e88d4.js';
-import './chunk-32ebc98f.js';
-import './chunk-3afc512b.js';
-import './chunk-8330aff8.js';
+import './chunk-44e51b61.js';
+import './chunk-4bd36a8f.js';
+import './chunk-ce0fbc82.js';
+import './chunk-b4205b57.js';
+import './chunk-5decc758.js';
+import './chunk-2eac56ff.js';
+import './chunk-4ccc3a29.js';
+import './chunk-c3d025d9.js';
+import './chunk-924bb2e1.js';
+import './chunk-b04e620d.js';
+import './chunk-23dbec7b.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
-  var http$1 = http;
+  var http = exports$2;
   var url = h;
-  var https = exports;
+  var https = exports$1;
 
-  for (var key in http$1) {
-    if (http$1.hasOwnProperty(key)) https[key] = http$1[key];
+  for (var key in http) {
+    if (http.hasOwnProperty(key)) https[key] = http[key];
   }
 
   https.request = function (params, cb) {
     params = validateParams(params);
-    return http$1.request.call(this || _global, params, cb);
+    return http.request.call(this || _global, params, cb);
   };
 
   https.get = function (params, cb) {
     params = validateParams(params);
-    return http$1.get.call(this || _global, params, cb);
+    return http.get.call(this || _global, params, cb);
   };
 
   function validateParams(params) {
@@ -54,19 +54,18 @@ function dew() {
     return params;
   }
 
-  return exports;
+  return exports$1;
 }
 
-var https = dew();
+const exports = dew();
 
-var Agent = https.Agent;
-var ClientRequest = https.ClientRequest;
-var IncomingMessage = https.IncomingMessage;
-var METHODS = https.METHODS;
-var STATUS_CODES = https.STATUS_CODES;
-var get = https.get;
-var globalAgent = https.globalAgent;
-var request = https.request;
+var Agent = exports.Agent;
+var ClientRequest = exports.ClientRequest;
+var IncomingMessage = exports.IncomingMessage;
+var METHODS = exports.METHODS;
+var STATUS_CODES = exports.STATUS_CODES;
+var get = exports.get;
+var globalAgent = exports.globalAgent;
+var request = exports.request;
 
-export default https;
-export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, get, globalAgent, request };
+export { Agent, ClientRequest, IncomingMessage, METHODS, STATUS_CODES, exports as default, get, globalAgent, request };

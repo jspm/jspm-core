@@ -1,13 +1,13 @@
 import './util.js';
-import { p as process } from './chunk-41a25566.js';
-import { X } from './chunk-b196e9ea.js';
-import './chunk-bf402f6f.js';
-import './chunk-af36a440.js';
+import { p as process } from './chunk-2eac56ff.js';
+import { X } from './chunk-b4205b57.js';
+import './chunk-ce0fbc82.js';
+import './chunk-5decc758.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
   var process$1 = process;
   const util = X; // Port from node core lib/internal/errors.js
@@ -162,18 +162,18 @@ function dew() {
     return false;
   }
 
-  exports = {
+  exports$1 = {
     channel,
     hasSubscribers,
     Channel,
     deleteChannel
   };
-  return exports;
+  return exports$1;
 }
 
-var dc = dew();
+const exports = dew();
+exports['channel']; exports['hasSubscribers']; exports['Channel']; exports['deleteChannel'];
 
-const { channel, Channel, hasSubscribers } = dc;
+const { channel, Channel, hasSubscribers } = exports;
 
-export default dc;
-export { Channel, channel, hasSubscribers };
+export { Channel, channel, exports as default, hasSubscribers };

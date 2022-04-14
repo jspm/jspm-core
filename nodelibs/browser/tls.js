@@ -31,5 +31,4 @@ var CLIENT_RENEG_LIMIT = null,
   DEFAULT_MAX_VERSION = null,
   rootCertificates = null;
 
-export default tls;
-export { CLIENT_RENEG_LIMIT, CLIENT_RENEG_WINDOW, DEFAULT_CIPHERS, DEFAULT_ECDH_CURVE, DEFAULT_MAX_VERSION, DEFAULT_MIN_VERSION, unimplemented as SecureContext, unimplemented as Server, unimplemented as TLSSocket, unimplemented as checkServerIdentity, unimplemented as connect, unimplemented as convertALPNProtocols, unimplemented as createSecureContext, unimplemented as createSecurePair, unimplemented as createServer, unimplemented as getCiphers, unimplemented as parseCertString, rootCertificates };
+export { CLIENT_RENEG_LIMIT, CLIENT_RENEG_WINDOW, DEFAULT_CIPHERS, DEFAULT_ECDH_CURVE, DEFAULT_MAX_VERSION, DEFAULT_MIN_VERSION, unimplemented as SecureContext, unimplemented as Server, unimplemented as TLSSocket, unimplemented as checkServerIdentity, unimplemented as connect, unimplemented as convertALPNProtocols, unimplemented as createSecureContext, unimplemented as createSecurePair, unimplemented as createServer, tls as default, unimplemented as getCiphers, unimplemented as parseCertString, rootCertificates };
