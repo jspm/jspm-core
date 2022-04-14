@@ -85,5 +85,4 @@ var http2 = {
   Http2ServerResponse,
 };
 
-export default http2;
-export { ClientHttp2Session, ClientHttp2Stream, Http2SecureServer, Http2Server, Http2ServerRequest, Http2ServerResponse, Http2Session, Http2Stream, ServerHttp2Session, ServerHttp2Stream, connect, constants, createSecureServer, createServer, getDefaultSettings, getPackedSettings, getUnpackedSettings, sensitiveHeaders };
+export { ClientHttp2Session, ClientHttp2Stream, Http2SecureServer, Http2Server, Http2ServerRequest, Http2ServerResponse, Http2Session, Http2Stream, ServerHttp2Session, ServerHttp2Stream, connect, constants, createSecureServer, createServer, http2 as default, getDefaultSettings, getPackedSettings, getUnpackedSettings, sensitiveHeaders };

@@ -1,11 +1,11 @@
-var exports$2 = {},
+var exports$3 = {},
     _dewExec$2 = false;
 function dew$2() {
-  if (_dewExec$2) return exports$2;
+  if (_dewExec$2) return exports$3;
   _dewExec$2 = true;
-  exports$2.byteLength = byteLength;
-  exports$2.toByteArray = toByteArray;
-  exports$2.fromByteArray = fromByteArray;
+  exports$3.byteLength = byteLength;
+  exports$3.toByteArray = toByteArray;
+  exports$3.fromByteArray = fromByteArray;
   var lookup = [];
   var revLookup = [];
   var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
@@ -121,17 +121,17 @@ function dew$2() {
     return parts.join("");
   }
 
-  return exports$2;
+  return exports$3;
 }
 
-var exports$1 = {},
+var exports$2 = {},
     _dewExec$1 = false;
 function dew$1() {
-  if (_dewExec$1) return exports$1;
+  if (_dewExec$1) return exports$2;
   _dewExec$1 = true;
 
   /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-  exports$1.read = function (buffer, offset, isLE, mLen, nBytes) {
+  exports$2.read = function (buffer, offset, isLE, mLen, nBytes) {
     var e, m;
     var eLen = nBytes * 8 - mLen - 1;
     var eMax = (1 << eLen) - 1;
@@ -165,7 +165,7 @@ function dew$1() {
     return (s ? -1 : 1) * m * Math.pow(2, e - mLen);
   };
 
-  exports$1.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+  exports$2.write = function (buffer, value, offset, isLE, mLen, nBytes) {
     var e, m, c;
     var eLen = nBytes * 8 - mLen - 1;
     var eMax = (1 << eLen) - 1;
@@ -220,13 +220,13 @@ function dew$1() {
     buffer[offset + i - d] |= s * 128;
   };
 
-  return exports$1;
+  return exports$2;
 }
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
   const base64 = dew$2();
@@ -235,11 +235,11 @@ function dew() {
 
   const customInspectSymbol = typeof Symbol === "function" && typeof Symbol["for"] === "function" ? Symbol["for"]("nodejs.util.inspect.custom") // eslint-disable-line dot-notation
   : null;
-  exports.Buffer = Buffer;
-  exports.SlowBuffer = SlowBuffer;
-  exports.INSPECT_MAX_BYTES = 50;
+  exports$1.Buffer = Buffer;
+  exports$1.SlowBuffer = SlowBuffer;
+  exports$1.INSPECT_MAX_BYTES = 50;
   const K_MAX_LENGTH = 2147483647;
-  exports.kMaxLength = K_MAX_LENGTH;
+  exports$1.kMaxLength = K_MAX_LENGTH;
   /**
    * If `Buffer.TYPED_ARRAY_SUPPORT`:
    *   === true    Use Uint8Array implementation (fastest)
@@ -849,7 +849,7 @@ function dew() {
 
   Buffer.prototype.inspect = function inspect() {
     let str = "";
-    const max = exports.INSPECT_MAX_BYTES;
+    const max = exports$1.INSPECT_MAX_BYTES;
     str = this.toString("hex", 0, max).replace(/(.{2})/g, "$1 ").trim();
     if (this.length > max) str += " ... ";
     return "<Buffer " + str + ">";
@@ -2299,14 +2299,14 @@ function dew() {
     throw new Error("BigInt not supported");
   }
 
-  return exports;
+  return exports$1;
 }
 
-var buffer = dew();
+const exports = dew();
+exports['Buffer']; exports['SlowBuffer']; exports['INSPECT_MAX_BYTES']; exports['kMaxLength'];
 
-var Buffer = buffer.Buffer;
-var INSPECT_MAX_BYTES = buffer.INSPECT_MAX_BYTES;
-var kMaxLength = buffer.kMaxLength;
+var Buffer = exports.Buffer;
+var INSPECT_MAX_BYTES = exports.INSPECT_MAX_BYTES;
+var kMaxLength = exports.kMaxLength;
 
-export default buffer;
-export { Buffer, INSPECT_MAX_BYTES, kMaxLength };
+export { Buffer, INSPECT_MAX_BYTES, exports as default, kMaxLength };

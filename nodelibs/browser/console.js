@@ -1,16 +1,16 @@
 import './util.js';
 import et from './assert.js';
-import { X } from './chunk-b196e9ea.js';
-import './chunk-bf402f6f.js';
-import './chunk-af36a440.js';
+import { X } from './chunk-b4205b57.js';
+import './chunk-ce0fbc82.js';
+import './chunk-5decc758.js';
 
-var exports = {},
+var exports$1 = {},
     _dewExec = false;
 
 var _global = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : global;
 
 function dew() {
-  if (_dewExec) return exports;
+  if (_dewExec) return exports$1;
   _dewExec = true;
 
   /*global window, global*/
@@ -45,7 +45,7 @@ function dew() {
     }
   }
 
-  exports = console;
+  exports$1 = console;
 
   function log() {}
 
@@ -95,34 +95,33 @@ function dew() {
     }
   }
 
-  return exports;
+  return exports$1;
 }
 
-var console = dew();
+const exports = dew();
 
-var assert = console.assert;
-var clear = console.clear;
-var context = console.context;
-var count = console.count;
-var countReset = console.countReset;
-var debug = console.debug;
-var dir = console.dir;
-var dirxml = console.dirxml;
-var error = console.error;
-var group = console.group;
-var groupCollapsed = console.groupCollapsed;
-var groupEnd = console.groupEnd;
-var info = console.info;
-var log = console.log;
-var memory = console.memory;
-var profile = console.profile;
-var profileEnd = console.profileEnd;
-var table = console.table;
-var time = console.time;
-var timeEnd = console.timeEnd;
-var timeStamp = console.timeStamp;
-var trace = console.trace;
-var warn = console.warn;
+var assert = exports.assert;
+var clear = exports.clear;
+var context = exports.context;
+var count = exports.count;
+var countReset = exports.countReset;
+var debug = exports.debug;
+var dir = exports.dir;
+var dirxml = exports.dirxml;
+var error = exports.error;
+var group = exports.group;
+var groupCollapsed = exports.groupCollapsed;
+var groupEnd = exports.groupEnd;
+var info = exports.info;
+var log = exports.log;
+var memory = exports.memory;
+var profile = exports.profile;
+var profileEnd = exports.profileEnd;
+var table = exports.table;
+var time = exports.time;
+var timeEnd = exports.timeEnd;
+var timeStamp = exports.timeStamp;
+var trace = exports.trace;
+var warn = exports.warn;
 
-export default console;
-export { assert, clear, context, count, countReset, debug, dir, dirxml, error, group, groupCollapsed, groupEnd, info, log, memory, profile, profileEnd, table, time, timeEnd, timeStamp, trace, warn };
+export { assert, clear, context, count, countReset, debug, exports as default, dir, dirxml, error, group, groupCollapsed, groupEnd, info, log, memory, profile, profileEnd, table, time, timeEnd, timeStamp, trace, warn };
