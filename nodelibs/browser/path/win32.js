@@ -1,7 +1,7 @@
 import { posix } from '../path.js';
 export { posix } from '../path.js';
-import '../chunk-808bfe19.js';
-import '../chunk-830ada85.js';
+import '../chunk-23dbec7b.js';
+import '../chunk-2eac56ff.js';
 
 function unimplemented () {
   throw new Error('Node.js path/win32 module is not supported by JSPM core in the browser');

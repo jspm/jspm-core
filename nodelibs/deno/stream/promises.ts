@@ -1,4 +1,2 @@
-import { promises } from '../stream.ts';
-
-export const { finished, pipeline } = promises;
-export default promises;
+export * from 'https://deno.land/std@0.135.0/node/stream/promises.mjs';
+export { default } from 'https://deno.land/std@0.135.0/node/stream/promises.mjs';
