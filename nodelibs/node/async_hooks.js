@@ -1,2 +1,2 @@
-export { default } from 'async_hooks';
-export * from 'async_hooks';
+export { default } from 'node:async_hooks';
+export * from 'node:async_hooks';

@@ -1,2 +1,2 @@
-export { default } from 'zlib';
-export * from 'zlib';
+export { default } from 'node:zlib';
+export * from 'node:zlib';

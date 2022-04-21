@@ -1,2 +1,2 @@
-export { default } from 'https';
-export * from 'https';
+export { default } from 'node:https';
+export * from 'node:https';

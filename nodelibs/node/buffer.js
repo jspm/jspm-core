@@ -1,2 +1,2 @@
-export { default } from 'buffer';
-export * from 'buffer';
+export { default } from 'node:buffer';
+export * from 'node:buffer';

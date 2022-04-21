@@ -1,2 +1,2 @@
-export { default } from 'events';
-export * from 'events';
+export { default } from 'node:events';
+export * from 'node:events';

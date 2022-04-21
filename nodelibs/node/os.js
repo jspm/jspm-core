@@ -1,2 +1,2 @@
-export { default } from 'os';
-export * from 'os';
+export { default } from 'node:os';
+export * from 'node:os';

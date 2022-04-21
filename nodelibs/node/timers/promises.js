@@ -1,2 +1,2 @@
-export { default } from 'timers/promises';
-export * from 'timers/promises';
+export { default } from 'node:timers/promises';
+export * from 'node:timers/promises';

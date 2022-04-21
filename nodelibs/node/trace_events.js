@@ -1,2 +1,2 @@
-export { default } from 'trace_events';
-export * from 'trace_events';
+export { default } from 'node:trace_events';
+export * from 'node:trace_events';

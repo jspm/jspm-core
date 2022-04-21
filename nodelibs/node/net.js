@@ -1,2 +1,2 @@
-export { default } from 'net';
-export * from 'net';
+export { default } from 'node:net';
+export * from 'node:net';

@@ -1,2 +1,2 @@
-export { default } from '_http_agent';
-export * from '_http_agent';
+export { default } from 'node:_http_agent';
+export * from 'node:_http_agent';

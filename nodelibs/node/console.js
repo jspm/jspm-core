@@ -1,2 +1,2 @@
-export { default } from 'console';
-export * from 'console';
+export { default } from 'node:console';
+export * from 'node:console';

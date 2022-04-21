@@ -1,2 +1,2 @@
-export { default } from '_stream_passthrough';
-export * from '_stream_passthrough';
+export { default } from 'node:_stream_passthrough';
+export * from 'node:_stream_passthrough';

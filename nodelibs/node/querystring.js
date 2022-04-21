@@ -1,2 +1,2 @@
-export { default } from 'querystring';
-export * from 'querystring';
+export { default } from 'node:querystring';
+export * from 'node:querystring';

@@ -1,2 +1,2 @@
-export { default } from 'timers';
-export * from 'timers';
+export { default } from 'node:timers';
+export * from 'node:timers';

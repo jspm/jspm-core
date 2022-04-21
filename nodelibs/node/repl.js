@@ -1,2 +1,2 @@
-export { default } from 'repl';
-export * from 'repl';
+export { default } from 'node:repl';
+export * from 'node:repl';

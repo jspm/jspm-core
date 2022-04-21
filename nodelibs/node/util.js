@@ -1,2 +1,2 @@
-export { default } from 'util';
-export * from 'util';
+export { default } from 'node:util';
+export * from 'node:util';
