@@ -1,4 +1,4 @@
-import process from 'node:./process.js';
-export * from 'node:./process.js';
+import process from 'node:process';
+export * from 'node:process';
 export default process;
 process.env.NODE_ENV = 'production';
