@@ -1,4 +1,4 @@
-import Context, { ContextOptions } from 'https://deno.land/std@0.136.0wasi/snapshot_preview1.ts';
+import Context, { ContextOptions } from 'https://deno.land/std@0.136.0/wasi/snapshot_preview1.ts';
 
 export interface WASIOptions extends Omit<ContextOptions, 'exitOnReturn'> {
   returnOnExit?: boolean;
