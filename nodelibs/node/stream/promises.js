@@ -1,2 +1,2 @@
-export { default } from 'stream/promises';
-export * from 'stream/promises';
+export { default } from 'node:stream/promises';
+export * from 'node:stream/promises';

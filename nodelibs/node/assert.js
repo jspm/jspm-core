@@ -1,2 +1,2 @@
-export { default } from 'assert';
-export * from 'assert';
+export { default } from 'node:assert';
+export * from 'node:assert';

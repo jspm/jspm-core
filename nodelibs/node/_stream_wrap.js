@@ -1,2 +1,2 @@
-export { default } from '_stream_wrap';
-export * from '_stream_wrap';
+export { default } from 'node:_stream_wrap';
+export * from 'node:_stream_wrap';

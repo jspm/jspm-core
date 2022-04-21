@@ -1,2 +1,2 @@
-export { default } from 'cluster';
-export * from 'cluster';
+export { default } from 'node:cluster';
+export * from 'node:cluster';

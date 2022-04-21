@@ -1,2 +1,2 @@
-export { default } from 'vm';
-export * from 'vm';
+export { default } from 'node:vm';
+export * from 'node:vm';

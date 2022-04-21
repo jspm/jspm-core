@@ -1,2 +1,2 @@
-export { default } from 'worker_threads';
-export * from 'worker_threads';
+export { default } from 'node:worker_threads';
+export * from 'node:worker_threads';

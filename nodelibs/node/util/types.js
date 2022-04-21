@@ -1,2 +1,2 @@
-export { default } from 'util/types';
-export * from 'util/types';
+export { default } from 'node:util/types';
+export * from 'node:util/types';

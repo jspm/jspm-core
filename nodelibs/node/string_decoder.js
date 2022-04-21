@@ -1,2 +1,2 @@
-export { default } from 'string_decoder';
-export * from 'string_decoder';
+export { default } from 'node:string_decoder';
+export * from 'node:string_decoder';

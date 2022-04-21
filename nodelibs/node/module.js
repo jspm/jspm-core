@@ -1,2 +1,2 @@
-export { default } from 'module';
-export * from 'module';
+export { default } from 'node:module';
+export * from 'node:module';

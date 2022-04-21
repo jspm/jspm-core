@@ -1,2 +1,2 @@
-export { default } from 'dns';
-export * from 'dns';
+export { default } from 'node:dns';
+export * from 'node:dns';

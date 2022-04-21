@@ -1,2 +1,2 @@
-export { default } from 'tls';
-export * from 'tls';
+export { default } from 'node:tls';
+export * from 'node:tls';

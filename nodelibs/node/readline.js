@@ -1,2 +1,2 @@
-export { default } from 'readline';
-export * from 'readline';
+export { default } from 'node:readline';
+export * from 'node:readline';
