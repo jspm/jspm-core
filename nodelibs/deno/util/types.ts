@@ -1,5 +1,5 @@
-import { types } from 'https://deno.land/std@0.136.0/node/util.ts';
-export { types as default } from 'https://deno.land/std@0.136.0/node/util.ts';
+import { types } from 'https://deno.land/std@0.152.0/node/util.ts';
+export { types as default } from 'https://deno.land/std@0.152.0/node/util.ts';
 
 export const {
   // isExternal,
