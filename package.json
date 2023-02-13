@@ -1,6 +1,6 @@
 {
   "name": "@jspm/core",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "build": "npm install -g chomp ; chomp"
   },
@@ -50,6 +50,16 @@
       "deno": "./nodelibs/browser/dns/promises.js",
       "node": "./nodelibs/node/dns/promises.js",
       "default": "./nodelibs/browser/dns/promises.js"
+    },
+    "./nodelibs/inspector": {
+      "deno": "./nodelibs/deno/inspector.ts",
+      "node": "./nodelibs/node/inspector.js",
+      "default": "./nodelibs/@empty.js"
+    },
+    "./nodelibs/inspector/promises": {
+      "deno": "./nodelibs/@empty.js",
+      "node": "./nodelibs/node/inspector/promises.js",
+      "default": "./nodelibs/@empty.js"
     },
     "./nodelibs/process": {
       "production": {
