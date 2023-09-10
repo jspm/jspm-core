@@ -65,7 +65,7 @@ export var platform = 'browser';
 export var env = {
   NODE_ENV: 'production',
   PATH: '/usr/bin',
-  LANG: navigator.language + '.UTF-8',
+  LANG: typeof navigator !== 'undefined' ? navigator.language + '.UTF-8' : undefined,
   PWD: '/',
   HOME: '/home',
   TMP: '/tmp'
