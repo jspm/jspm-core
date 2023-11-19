@@ -85,5 +85,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jspm/jspm-core.git"
-  }
+  },
+  "license": "Apache-2.0"
 }
