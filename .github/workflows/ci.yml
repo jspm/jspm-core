@@ -9,7 +9,7 @@ on:
 jobs:
   test-firefox:
     name: Firefox Browser Tests
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         firefox: ['89.0']
@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: chomp test
         env:
-          CI_BROWSER: /opt/hostedtoolcache/firefox/${{ matrix.firefox }}/x64/firefox
+          CI_BROWSER: C:\Program Files\Firefox_${{ matrix.firefox }}\firefox.exe
           CI_BROWSER_FLAGS: -headless
 
   test-chrome:
@@ -57,6 +57,8 @@ jobs:
       - run: npm ci
       - name: Setup Chomp
         uses: guybedford/chomp-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: chomp test
         env:
           CI_BROWSER_FLAGS: --headless --screenshot
