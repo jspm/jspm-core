@@ -76079,6 +76079,24 @@ const exports = dew();
 exports['randomBytes']; exports['rng']; exports['pseudoRandomBytes']; exports['prng']; exports['createHash']; exports['Hash']; exports['createHmac']; exports['Hmac']; exports['getHashes']; exports['pbkdf2']; exports['pbkdf2Sync']; exports['Cipher']; exports['createCipher']; exports['Cipheriv']; exports['createCipheriv']; exports['Decipher']; exports['createDecipher']; exports['Decipheriv']; exports['createDecipheriv']; exports['getCiphers']; exports['listCiphers']; exports['DiffieHellmanGroup']; exports['createDiffieHellmanGroup']; exports['getDiffieHellman']; exports['createDiffieHellman']; exports['DiffieHellman']; exports['createSign']; exports['Sign']; exports['createVerify']; exports['Verify']; exports['createECDH']; exports['publicEncrypt']; exports['privateEncrypt']; exports['publicDecrypt']; exports['privateDecrypt']; exports['randomFill']; exports['randomFillSync']; exports['createCredentials']; exports['constants'];
 
 exports.webcrypto = globalThis.crypto;
+exports.getRandomValues = function (abv) {
+  var l = abv.length;
+  while (l--) {
+    var bytes = exports.randomBytes(7);
+    var randomFloat = (bytes[0] % 32) / 32;
+    for (var i = 0; i < bytes.length; i++) {
+      var byte = bytes[i];
+      randomFloat = (randomFloat + byte) / 256;
+    }
+    abv[l] = Math.floor(randomFloat * 256);
+  }
+  return abv;
+};
+exports.randomUUID = function () {
+  return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, function (c) {
+    return  (c ^ (exports.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16);
+  });
+};
 var Cipher = exports.Cipher;
 var Cipheriv = exports.Cipheriv;
 var Decipher = exports.Decipher;
@@ -76119,5 +76137,7 @@ var randomFill = exports.randomFill;
 var randomFillSync = exports.randomFillSync;
 var rng = exports.rng;
 var webcrypto = exports.webcrypto;
+var getRandomValues = exports.getRandomValues;
+var randomUUID = exports.randomUUID;
 
-export { Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, Hash, Hmac, Sign, Verify, constants, createCipher, createCipheriv, createCredentials, createDecipher, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createSign, createVerify, exports as default, getCiphers, getDiffieHellman, getHashes, listCiphers, pbkdf2, pbkdf2Sync, privateDecrypt, privateEncrypt, prng, pseudoRandomBytes, publicDecrypt, publicEncrypt, randomBytes, randomFill, randomFillSync, rng, webcrypto };
+export { Cipher, Cipheriv, Decipher, Decipheriv, DiffieHellman, DiffieHellmanGroup, Hash, Hmac, Sign, Verify, constants, createCipher, createCipheriv, createCredentials, createDecipher, createDecipheriv, createDiffieHellman, createDiffieHellmanGroup, createECDH, createHash, createHmac, createSign, createVerify, exports as default, getCiphers, getDiffieHellman, getHashes, getRandomValues, listCiphers, pbkdf2, pbkdf2Sync, privateDecrypt, privateEncrypt, prng, pseudoRandomBytes, publicDecrypt, publicEncrypt, randomBytes, randomFill, randomFillSync, randomUUID, rng, webcrypto };
