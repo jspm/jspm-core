@@ -1,7 +1,6 @@
 import { strict } from '../assert.js';
-export { strict as default, strict } from '../assert.js';
-import '../chunk-b4205b57.js';
-import '../chunk-5decc758.js';
+import '../chunk-D04hy_Cu.js';
+import '../chunk-DEckhzyo.js';
 
 const {
   fail,
@@ -25,4 +24,4 @@ const {
   CallTracker
 } = strict;
 
-export { AssertionError, CallTracker, deepEqual, deepStrictEqual, doesNotMatch, doesNotReject, doesNotThrow, equal, fail, ifError, match, notDeepEqual, notDeepStrictEqual, notEqual, notStrictEqual, ok, rejects, strictEqual, throws };
+export { AssertionError, CallTracker, deepEqual, deepStrictEqual, strict as default, doesNotMatch, doesNotReject, doesNotThrow, equal, fail, ifError, match, notDeepEqual, notDeepStrictEqual, notEqual, notStrictEqual, ok, rejects, strict, strictEqual, throws };

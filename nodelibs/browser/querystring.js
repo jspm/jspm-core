@@ -1,5 +1,4 @@
-import { o } from './chunk-b04e620d.js';
-export { o as default } from './chunk-b04e620d.js';
+import { o } from './chunk-D5E0hY9V.js';
 
 o.decode;
 o.encode;
@@ -11,4 +10,4 @@ var encode = o.encode;
 var parse = o.parse;
 var stringify = o.stringify;
 
-export { decode, encode, parse, stringify };
+export { decode, o as default, encode, parse, stringify };

@@ -1,8 +1,8 @@
-import { y } from './chunk-4bd36a8f.js';
-import './chunk-ce0fbc82.js';
-import { X } from './chunk-b4205b57.js';
-import { p as process } from './chunk-2eac56ff.js';
-import { a as e$1 } from './chunk-4ccc3a29.js';
+import { y } from './chunk-tHuMsdT0.js';
+import './chunk-BZgdGiNw.js';
+import { X } from './chunk-D04hy_Cu.js';
+import { p as process } from './chunk-b0rmRow7.js';
+import { a as e$1 } from './chunk-C9hMJ5VR.js';
 
 var exports$2$1 = {},
     _dewExec$2$1 = false;
@@ -2106,14 +2106,12 @@ function dew$g() {
       const n = typeof min === "bigint" ? "n" : "";
       let range;
 
-      if (byteLength > 3) {
+      {
         if (min === 0 || min === BigInt(0)) {
           range = `>= 0${n} and < 2${n} ** ${(byteLength + 1) * 8}${n}`;
         } else {
           range = `>= -(2${n} ** ${(byteLength + 1) * 8 - 1}${n}) and < 2 ** ` + `${(byteLength + 1) * 8 - 1}${n}`;
         }
-      } else {
-        range = `>= ${min}${n} and <= ${max}${n}`;
       }
 
       throw new errors.ERR_OUT_OF_RANGE("value", range, value);
@@ -2131,14 +2129,14 @@ function dew$g() {
   function boundsError(value, length, type) {
     if (Math.floor(value) !== value) {
       validateNumber(value, type);
-      throw new errors.ERR_OUT_OF_RANGE(type || "offset", "an integer", value);
+      throw new errors.ERR_OUT_OF_RANGE("offset", "an integer", value);
     }
 
     if (length < 0) {
       throw new errors.ERR_BUFFER_OUT_OF_BOUNDS();
     }
 
-    throw new errors.ERR_OUT_OF_RANGE(type || "offset", `>= ${type ? 1 : 0} and <= ${length}`, value);
+    throw new errors.ERR_OUT_OF_RANGE("offset", `>= ${0} and <= ${length}`, value);
   } // HELPER FUNCTIONS
   // ================
 
@@ -2435,7 +2433,6 @@ function dew$d() {
 
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
     return Constructor;
   }
 
@@ -2801,7 +2798,7 @@ function dew$b() {
 
 
   function startsWith(str, search, pos) {
-    return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+    return str.substr(0 , search.length) === search;
   } // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
 
 

@@ -1,5 +1,4 @@
-import { p } from './chunk-924bb2e1.js';
-export { p as default } from './chunk-924bb2e1.js';
+import { p } from './chunk-CKeAujU-.js';
 
 p.decode;
 p.encode;
@@ -15,4 +14,4 @@ var toUnicode = p.toUnicode;
 var ucs2 = p.ucs2;
 var version = p.version;
 
-export { decode, encode, toASCII, toUnicode, ucs2, version };
+export { decode, p as default, encode, toASCII, toUnicode, ucs2, version };

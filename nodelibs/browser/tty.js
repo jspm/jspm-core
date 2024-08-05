@@ -12,9 +12,9 @@ function WriteStream() {
 
 var m = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  isatty: isatty,
   ReadStream: ReadStream,
-  WriteStream: WriteStream
+  WriteStream: WriteStream,
+  isatty: isatty
 });
 
 export { ReadStream, WriteStream, m as default, isatty };
