@@ -46,11 +46,6 @@
     "./nodelibs/@empty": "./nodelibs/@empty.js",
     "./nodelibs/@empty.dew": "./nodelibs/@empty.dew.js",
     "./nodelibs/chunk-*": null,
-    "./nodelibs/dns/promises": {
-      "deno": "./nodelibs/browser/dns/promises.js",
-      "node": "./nodelibs/node/dns/promises.js",
-      "default": "./nodelibs/browser/dns/promises.js"
-    },
     "./nodelibs/inspector": {
       "deno": "./nodelibs/deno/inspector.ts",
       "node": "./nodelibs/node/inspector.js",
@@ -70,16 +65,6 @@
       "deno": "./nodelibs/deno/process.ts",
       "node": "./nodelibs/node/process.js",
       "default": "./nodelibs/browser/process.js"
-    },
-    "./nodelibs/zlib": {
-      "deno": "./nodelibs/browser/zlib.js",
-      "node": "./nodelibs/node/zlib.js",
-      "default": "./nodelibs/browser/zlib.js"
-    },
-    "./nodelibs/diagnostics_channel": {
-      "deno": "./nodelibs/browser/diagnostics_channel.js",
-      "node": "./nodelibs/node/diagnostics_channel.js",
-      "default": "./nodelibs/browser/diagnostics_channel.js"
     }
   },
   "repository": {

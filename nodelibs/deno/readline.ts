@@ -1,2 +1,2 @@
-export * from 'https://deno.land/std@0.173.0/node/readline.ts';
-export { default } from 'https://deno.land/std@0.173.0/node/readline.ts';
+export * from 'node:readline';
+export { default } from 'node:readline';

@@ -1,2 +1,2 @@
-export * from 'https://deno.land/std@0.173.0/node/url.ts';
-export { default } from 'https://deno.land/std@0.173.0/node/url.ts';
+export * from 'node:url';
+export { default } from 'node:url';

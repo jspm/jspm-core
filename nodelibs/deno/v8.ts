@@ -1,2 +1,2 @@
-export * from 'https://deno.land/std@0.173.0/node/v8.ts';
-export { default } from 'https://deno.land/std@0.173.0/node/v8.ts';
+export * from 'node:v8';
+export { default } from 'node:v8';

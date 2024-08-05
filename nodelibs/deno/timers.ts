@@ -1,2 +1,2 @@
-export * from 'https://deno.land/std@0.173.0/node/timers.ts';
-export { default } from 'https://deno.land/std@0.173.0/node/timers.ts';
+export * from 'node:timers';
+export { default } from 'node:timers';
