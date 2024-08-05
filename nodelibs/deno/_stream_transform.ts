@@ -1,1 +1,1 @@
-export { default } from 'node:_stream/passthrough';
+export { Transform as default } from 'node:stream';

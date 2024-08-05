@@ -1,3 +1,5 @@
-import Writable from 'node:_stream/readable';
-export default Writable;
+import { Writable } from 'node:stream';
+export { Writable as default }
 export const WritableState = Writable.WritableState;
+export const fromWeb = Writable.fromWeb;
+export const toWeb = Writable.toWeb;
