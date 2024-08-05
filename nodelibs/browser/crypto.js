@@ -1,11 +1,11 @@
-import { b as buffer, d as dew$2R } from './chunk-44e51b61.js';
-import { p as process } from './chunk-2eac56ff.js';
-import { d as dew$2Q } from './chunk-c3d025d9.js';
-import { y as y$o } from './chunk-4bd36a8f.js';
-import { e as e$1$1$1, a as e$1$2, u as u$q } from './chunk-4ccc3a29.js';
-import { p as promisify } from './chunk-ce0fbc82.js';
-import { X as X$5, t as t$2$2 } from './chunk-b4205b57.js';
-import { T as T$9 } from './chunk-5decc758.js';
+import { b as buffer, d as dew$2R } from './chunk-CU2hd6BF.js';
+import { p as process } from './chunk-b0rmRow7.js';
+import { d as dew$2Q } from './chunk-aBeyrThb.js';
+import { y as y$o } from './chunk-tHuMsdT0.js';
+import { e as e$1$1$1, a as e$1$2, u as u$q } from './chunk-C9hMJ5VR.js';
+import { p as promisify } from './chunk-BZgdGiNw.js';
+import { X as X$5, t as t$2$2 } from './chunk-D04hy_Cu.js';
+import { T as T$9 } from './chunk-DEckhzyo.js';
 
 var exports$2Q = {},
     _dewExec$2P = false;
@@ -1554,7 +1554,6 @@ function dew$d$2() {
 
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
     return Constructor;
   }
 
@@ -1920,7 +1919,7 @@ function dew$b$2() {
 
 
   function startsWith(str, search, pos) {
-    return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+    return str.substr(0 , search.length) === search;
   } // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
 
 

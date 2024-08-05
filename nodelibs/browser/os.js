@@ -1,5 +1,4 @@
 import { uptime } from './process.js';
-export { uptime } from './process.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -109,4 +108,4 @@ var tmpdir = exports.tmpdir;
 var totalmem = exports.totalmem;
 var type = exports.type;
 
-export { EOL, arch, constants, cpus, exports as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, version };
+export { EOL, arch, constants, cpus, exports as default, endianness, freemem, getNetworkInterfaces, homedir, hostname, loadavg, networkInterfaces, platform, release, tmpDir, tmpdir, totalmem, type, uptime, version };

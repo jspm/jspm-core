@@ -2100,14 +2100,12 @@ function dew() {
       const n = typeof min === "bigint" ? "n" : "";
       let range;
 
-      if (byteLength > 3) {
+      {
         if (min === 0 || min === BigInt(0)) {
           range = `>= 0${n} and < 2${n} ** ${(byteLength + 1) * 8}${n}`;
         } else {
           range = `>= -(2${n} ** ${(byteLength + 1) * 8 - 1}${n}) and < 2 ** ` + `${(byteLength + 1) * 8 - 1}${n}`;
         }
-      } else {
-        range = `>= ${min}${n} and <= ${max}${n}`;
       }
 
       throw new errors.ERR_OUT_OF_RANGE("value", range, value);
@@ -2125,14 +2123,14 @@ function dew() {
   function boundsError(value, length, type) {
     if (Math.floor(value) !== value) {
       validateNumber(value, type);
-      throw new errors.ERR_OUT_OF_RANGE(type || "offset", "an integer", value);
+      throw new errors.ERR_OUT_OF_RANGE("offset", "an integer", value);
     }
 
     if (length < 0) {
       throw new errors.ERR_BUFFER_OUT_OF_BOUNDS();
     }
 
-    throw new errors.ERR_OUT_OF_RANGE(type || "offset", `>= ${type ? 1 : 0} and <= ${length}`, value);
+    throw new errors.ERR_OUT_OF_RANGE("offset", `>= ${0} and <= ${length}`, value);
   } // HELPER FUNCTIONS
   // ================
 

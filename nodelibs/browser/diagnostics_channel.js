@@ -1,8 +1,8 @@
 import './util.js';
-import { p as process } from './chunk-2eac56ff.js';
-import { X } from './chunk-b4205b57.js';
-import './chunk-ce0fbc82.js';
-import './chunk-5decc758.js';
+import { p as process } from './chunk-b0rmRow7.js';
+import { X } from './chunk-D04hy_Cu.js';
+import './chunk-BZgdGiNw.js';
+import './chunk-DEckhzyo.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -75,15 +75,17 @@ function dew() {
     unsubscribe(subscription) {
       const index = this._subscribers.indexOf(subscription);
 
-      if (index >= 0) {
-        this._subscribers.splice(index, 1); // When there are no more active subscribers, restore to fast prototype.
+      if (index === -1) return false;
+
+      this._subscribers.splice(index, 1); // When there are no more active subscribers, restore to fast prototype.
 
 
-        if (!this._subscribers.length) {
-          // eslint-disable-next-line no-use-before-define
-          Object.setPrototypeOf(this, Channel.prototype);
-        }
+      if (!this._subscribers.length) {
+        // eslint-disable-next-line no-use-before-define
+        Object.setPrototypeOf(this, Channel.prototype);
       }
+
+      return true;
     }
 
     get hasSubscribers() {
@@ -120,6 +122,10 @@ function dew() {
       Object.setPrototypeOf(this, ActiveChannel.prototype);
       this._subscribers = [];
       this.subscribe(subscription);
+    }
+
+    unsubscribe() {
+      return false;
     }
 
     get hasSubscribers() {

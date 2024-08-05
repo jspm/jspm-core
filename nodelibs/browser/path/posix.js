@@ -1,7 +1,6 @@
 import { posix as posix$1 } from '../path.js';
-export { posix } from '../path.js';
-import '../chunk-23dbec7b.js';
-import '../chunk-2eac56ff.js';
+import '../chunk-DppJZDIM.js';
+import '../chunk-b0rmRow7.js';
 
 const {
   resolve,
@@ -38,4 +37,4 @@ var posix = {
   win32
 };
 
-export { _makeLong, basename, posix as default, delimiter, dirname, extname, format, isAbsolute, join, normalize, parse, relative, resolve, sep, win32 };
+export { _makeLong, basename, posix as default, delimiter, dirname, extname, format, isAbsolute, join, normalize, parse, posix$1 as posix, relative, resolve, sep, win32 };

@@ -1,21 +1,21 @@
-import { b as buffer } from './chunk-44e51b61.js';
+import { b as buffer } from './chunk-CU2hd6BF.js';
 import et from './assert.js';
 import './util.js';
-import { X } from './chunk-b4205b57.js';
+import { X } from './chunk-D04hy_Cu.js';
+import './chunk-BZgdGiNw.js';
 import './path.js';
-import { p as process } from './chunk-2eac56ff.js';
+import { p as process } from './chunk-b0rmRow7.js';
 import './events.js';
-import { y } from './chunk-4bd36a8f.js';
+import { y } from './chunk-tHuMsdT0.js';
 import './stream.js';
 import h, { fileURLToPath } from './url.js';
-import { e as exports$i } from './chunk-23dbec7b.js';
-import { e as exports$j } from './chunk-6c718bbe.js';
+import { e as exports$i } from './chunk-DppJZDIM.js';
+import { e as exports$j } from './chunk-gkrMq4sQ.js';
 import { Buffer } from './buffer.js';
-import './chunk-ce0fbc82.js';
-import './chunk-5decc758.js';
-import './chunk-4ccc3a29.js';
-import './chunk-924bb2e1.js';
-import './chunk-b04e620d.js';
+import './chunk-C9hMJ5VR.js';
+import './chunk-DEckhzyo.js';
+import './chunk-CKeAujU-.js';
+import './chunk-D5E0hY9V.js';
 
 var exports$h = {},
     _dewExec$f = false;
@@ -2104,9 +2104,7 @@ function dew$2() {
     if (("" + path).indexOf("\0") !== -1) {
       var er = new Error("Path must be a string without null bytes");
       er.code = ENOENT;
-      if (typeof callback !== "function") throw er;
-      process_1.default.nextTick(callback, er);
-      return false;
+      throw er;
     }
 
     return true;

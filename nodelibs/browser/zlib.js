@@ -1,15 +1,15 @@
-import { b as buffer } from './chunk-44e51b61.js';
+import { b as buffer } from './chunk-CU2hd6BF.js';
 import './stream.js';
 import et from './assert.js';
-import { p as process } from './chunk-2eac56ff.js';
+import { p as process } from './chunk-b0rmRow7.js';
 import './util.js';
-import { e as exports$e } from './chunk-6c718bbe.js';
-import { X } from './chunk-b4205b57.js';
-import './chunk-4bd36a8f.js';
-import './chunk-ce0fbc82.js';
-import './chunk-5decc758.js';
-import './chunk-4ccc3a29.js';
+import { e as exports$e } from './chunk-gkrMq4sQ.js';
+import { X } from './chunk-D04hy_Cu.js';
+import './chunk-BZgdGiNw.js';
+import './chunk-tHuMsdT0.js';
+import './chunk-C9hMJ5VR.js';
 import './events.js';
+import './chunk-DEckhzyo.js';
 
 var exports$d = {},
     _dewExec$c = false;
@@ -903,7 +903,7 @@ function dew$a() {
     bi_windup(s);
     /* align on byte boundary */
 
-    if (header) {
+    {
       put_short(s, len);
       put_short(s, ~len);
     } //  while (len--) {
@@ -1541,7 +1541,7 @@ function dew$a() {
     send_bits(s, (STORED_BLOCK << 1) + (last ? 1 : 0), 3);
     /* send block type */
 
-    copy_block(s, buf, stored_len, true);
+    copy_block(s, buf, stored_len);
     /* with header */
   }
   /* ===========================================================================
