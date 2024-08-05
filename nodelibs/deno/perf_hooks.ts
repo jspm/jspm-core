@@ -1,2 +1,2 @@
-export * from 'https://deno.land/std@0.173.0/node/perf_hooks.ts';
-export { default } from 'https://deno.land/std@0.173.0/node/perf_hooks.ts';
+export * from 'node:perf_hooks';
+export { default } from 'node:perf_hooks';

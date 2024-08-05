@@ -1,3 +1,3 @@
-import Duplex from 'https://deno.land/std@0.173.0/node/_stream/duplex.ts';
+import Duplex from 'node:_stream/duplex';
 export default Duplex;
 export const from = Duplex.from;

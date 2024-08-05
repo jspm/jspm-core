@@ -1,3 +1,3 @@
-import Writable from 'https://deno.land/std@0.173.0/node/_stream/readable.ts';
+import Writable from 'node:_stream/readable';
 export default Writable;
 export const WritableState = Writable.WritableState;

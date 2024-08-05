@@ -1,4 +1,4 @@
-import Readable from 'https://deno.land/std@0.173.0/node/_stream/readable.ts';
+import Readable from 'node:_stream/readable';
 export default Readable;
 export const from = Readable.from;
 export const ReadableState = Readable.ReadableState;
