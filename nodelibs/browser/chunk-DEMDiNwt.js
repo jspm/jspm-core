@@ -1,3 +1,7 @@
+function unimplemented(name) {
+  throw new Error('Node.js process ' + name + ' is not supported by JSPM core outside of Node.js');
+}
+
 var queue = [];
 var draining = false;
 var currentQueue;
@@ -62,12 +66,11 @@ var title = 'browser';
 var arch = 'x64';
 var platform = 'browser';
 var env = {
-  NODE_ENV: 'production',
   PATH: '/usr/bin',
-  LANG: typeof navigator !== 'undefined' ? navigator.language + '.UTF-8' : undefined,
+  LANG: navigator.language + '.UTF-8',
   PWD: '/',
   HOME: '/home',
-  TMP: '/tmp'
+  TMP: '/tmp',
 };
 var argv = ['/usr/bin/node'];
 var execArgv = [];
@@ -78,7 +81,7 @@ var emitWarning = function(message, type) {
   console.warn((type ? (type + ': ') : '') + message);
 };
 
-var binding = null;
+var binding = function(name) { unimplemented('binding'); };
 
 var umask = function(mask) { return 0; };
 
@@ -94,14 +97,13 @@ var release = {
 
 function noop() {}
 
-var browser = true;
 var _rawDebug = noop;
 var moduleLoadList = [];
-var _linkedBinding = null;
+function _linkedBinding(name) { unimplemented('_linkedBinding'); }
 var domain = {};
 var _exiting = false;
 var config = {};
-var dlopen = null;
+function dlopen(name) { unimplemented('dlopen'); }
 function _getActiveRequests() { return []; }
 function _getActiveHandles() { return []; }
 var reallyExit = noop;
@@ -197,13 +199,12 @@ var removeAllListeners = on;
 var emit = noop;
 var prependListener = on;
 var prependOnceListener = on;
-function listeners () { return []; }
+function listeners (name) { return []; }
 var process = {
   version,
   versions,
   arch,
   platform,
-  browser,
   release,
   _rawDebug,
   moduleLoadList,
@@ -271,4 +272,4 @@ var process = {
   setSourceMapsEnabled,
 };
 
-export { _debugEnd, _debugProcess, _events, _eventsCount, _exiting, _fatalExceptions, _getActiveHandles, _getActiveRequests, _kill, _linkedBinding, _maxListeners, _preload_modules, _rawDebug, _startProfilerIdleNotifier, _stopProfilerIdleNotifier, _tickCallback, abort, addListener, allowedNodeEnvironmentFlags, arch, argv, argv0, assert, binding, browser, chdir, config, cpuUsage, cwd, debugPort, process as default, dlopen, domain, emit, emitWarning, env, execArgv, execPath, exit, features, hasUncaughtExceptionCaptureCallback, hrtime, kill, listeners, memoryUsage, moduleLoadList, nextTick, off, on, once, openStdin, pid, platform, ppid, prependListener, prependOnceListener, reallyExit, release, removeAllListeners, removeListener, resourceUsage, setSourceMapsEnabled, setUncaughtExceptionCaptureCallback, stderr, stdin, stdout, title, umask, uptime, version, versions };
+export { process as p };

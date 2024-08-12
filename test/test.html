@@ -1,4 +1,11 @@
 <!doctype html>
+<script type="importmap">
+{
+  "imports": {
+    "@empty": "../nodelibs/@empty.js"
+  }
+}
+</script>
 <script type="module">
   const tests = await await fetch('/tests/list').then(r => r.json());
   let curTest;
@@ -18,5 +25,5 @@
       body: JSON.stringify({ message: err && err.message || String(err), stack: err && err.stack || String(err) }),
     });
   }
-  done = true;
+  globalThis.done = true;
 </script>

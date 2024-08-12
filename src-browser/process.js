@@ -98,6 +98,7 @@ export var release = {
 
 function noop() {}
 
+export var browser = true;
 export var _rawDebug = noop;
 export var moduleLoadList = [];
 export function _linkedBinding(name) { unimplemented('_linkedBinding'); }
@@ -210,6 +211,7 @@ var process = {
   versions,
   arch,
   platform,
+  browser,
   release,
   _rawDebug,
   moduleLoadList,

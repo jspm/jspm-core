@@ -1,8 +1,12 @@
 import rollupPluginJspm from '@jspm/plugin-rollup';
-import { readdirSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import rimraf from 'rimraf';
 
 rimraf.sync('./nodelibs/browser');
+
+// Patch call-bind, pending https://github.com/ljharb/call-bind/pull/8.
+const callBindPath = './node_modules/call-bind/callBound.js';
+writeFileSync(callBindPath, readFileSync(callBindPath, 'utf8').replace('./', 'call-bind'));
 
 const input = Object.fromEntries(
   [
@@ -12,10 +16,11 @@ const input = Object.fromEntries(
     'dns/promises.js',
     'path/posix.js',
     'path/win32.js',
+    'stream/consumers.js',
     'stream/promises.js',
     'stream/web.js',
     'timers/promises.js',
-    'util/types.js'
+    'util/types.js',
   ]
     .filter(n => !n.startsWith('__') && n.endsWith('.js'))
     .map(n => [n.slice(0, -3), './src-browser/' + n])
@@ -24,37 +29,15 @@ const input = Object.fromEntries(
 const jspmPlugin = rollupPluginJspm({
   env: ['browser'],
   inputMap: {
-    // TODO: better way to override scopes?
-    imports: input,
+    imports: {
+      // TODO: fix these cases in JSPM generator
+      './node_modules/asn1.js/lib/asn1': './node_modules/asn1.js/lib/asn1.js',
+      './node_modules/hash.js/lib/hash/sha': './node_modules/hash.js/lib/hash/sha.js',
+      './node_modules/readable-stream/lib/stream': './node_modules/readable-stream/lib/stream.js',
+      punycode: './node_modules/punycode/punycode.js'
+    },
     scopes: {
-      './node_modules/assert/': input,
-      './node_modules/browserify-zlib/': input,
-      './node_modules/buffer/': input,
-      './node_modules/console-browserify/': input,
-      './node_modules/constants-browserify/': input,
-      './node_modules/crypto-browserify/': input,
-      './node_modules/diagnostics_channel/': input,
-      './node_modules/domain-browser/': input,
-      './node_modules/events/': input,
-      './node_modules/glob/': input,
-      './node_modules/https-browserify/': input,
-      './node_modules/kleur/': input,
-      './node_modules/memfs/': input,
-      './node_modules/open/': input,
-      './node_modules/os-browserify/': input,
-      './node_modules/path-browserify/': input,
-      './node_modules/punycode/': input,
-      './node_modules/querystring/': input,
-      './node_modules/rollup/': input,
-      './node_modules/stream-browserify/': input,
-      './node_modules/stream-http/': input,
-      './node_modules/string_decoder/': input,
-      './node_modules/timers-browserify/': input,
-      './node_modules/tty-browserify/': input,
-      './node_modules/url/': input,
-      './node_modules/util/': input,
-      './node_modules/vm-browserify/': input
-      
+      './node_modules/': input
     }
   }
 });
@@ -68,13 +51,5 @@ export default {
     format: 'esm'
   },
   onwarn () {},
-  plugins: [jspmPlugin, {
-    buildStart () {
-      // (async () => {
-      //   for await (const { type, message } of jspmPlugin.logStream()) {
-      //     console.log(`${type}: ${message}`);
-      //   }
-      // })();
-    }
-  }]
+  plugins: [jspmPlugin]
 }

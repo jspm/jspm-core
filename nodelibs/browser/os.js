@@ -1,75 +1,58 @@
 import { uptime } from './process.js';
 
 var exports$1 = {},
-    _dewExec = false;
+  _dewExec = false;
 function dew() {
   if (_dewExec) return exports$1;
   _dewExec = true;
-
   exports$1.endianness = function () {
     return "LE";
   };
-
   exports$1.hostname = function () {
     if (typeof location !== "undefined") {
       return location.hostname;
     } else return "";
   };
-
   exports$1.loadavg = function () {
     return [];
   };
-
   exports$1.uptime = function () {
     return 0;
   };
-
   exports$1.freemem = function () {
     return Number.MAX_VALUE;
   };
-
   exports$1.totalmem = function () {
     return Number.MAX_VALUE;
   };
-
   exports$1.cpus = function () {
     return [];
   };
-
   exports$1.type = function () {
     return "Browser";
   };
-
   exports$1.release = function () {
     if (typeof navigator !== "undefined") {
       return navigator.appVersion;
     }
-
     return "";
   };
-
   exports$1.networkInterfaces = exports$1.getNetworkInterfaces = function () {
     return {};
   };
-
   exports$1.arch = function () {
     return "javascript";
   };
-
   exports$1.platform = function () {
     return "browser";
   };
-
   exports$1.tmpdir = exports$1.tmpDir = function () {
     return "/tmp";
   };
-
   exports$1.EOL = "\n";
-
   exports$1.homedir = function () {
     return "/";
   };
-
   return exports$1;
 }
 
