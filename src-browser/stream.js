@@ -1,4 +1,4 @@
-import stream from 'stream-browserify';
+import stream from 'readable-stream';
 import { promisify } from './util.js';
 export default stream;
 
@@ -23,4 +23,4 @@ export var Stream = stream.Stream;
 export const promises = {
   finished: promisify(stream.finished),
   pipeline: promisify(stream.pipeline)
-};
+}

@@ -1,5 +1,4 @@
 import { once, EventEmitter } from './events.js';
-import './chunk-tHuMsdT0.js';
 
 function unimplemented(name) {
   throw new Error(

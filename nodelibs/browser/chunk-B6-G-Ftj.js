@@ -1,6 +1,9 @@
-import './events.js';
-import { a as dew$1, c as dew$2, e as dew$3, f as dew$4, g as dew$5, h as dew$6, i as dew$7, d as dew$8 } from './chunk-CU2hd6BF.js';
+import './chunk-DtDiafJB.js';
+import { c as dew$3, f as dew$8, g as dew$7, h as dew$2, i as dew$1, j as dew$6, k as dew$4, d as dew$f } from './chunk-B738Er4n.js';
 import { y } from './chunk-tHuMsdT0.js';
+import { p as promisify } from './chunk-CbQqNoLO.js';
+import './chunk-D3uu3VYh.js';
+import './chunk-b0rmRow7.js';
 
 var exports$1 = {},
     _dewExec = false;
@@ -33,16 +36,16 @@ function dew() {
   exports$1 = Stream;
   var EE = y.EventEmitter;
 
-  var inherits = dew$8();
+  var inherits = dew$f();
 
   inherits(Stream, EE);
-  Stream.Readable = dew$1();
-  Stream.Writable = dew$2();
-  Stream.Duplex = dew$3();
-  Stream.Transform = dew$4();
-  Stream.PassThrough = dew$5();
+  Stream.Readable = dew$3();
+  Stream.Writable = dew$8();
+  Stream.Duplex = dew$7();
+  Stream.Transform = dew$2();
+  Stream.PassThrough = dew$1();
   Stream.finished = dew$6();
-  Stream.pipeline = dew$7(); // Backwards-compat with node 0.4.x
+  Stream.pipeline = dew$4(); // Backwards-compat with node 0.4.x
 
   Stream.Stream = Stream; // old-style streams.  Note that the pipe method (the only relevant
   // part of this class) is overridden in the Readable class.
@@ -128,5 +131,28 @@ function dew() {
 }
 
 const exports = dew();
+
+var Readable = exports.Readable;
+Readable.wrap = function(src, options) {
+  options = Object.assign({ objectMode: src.readableObjectMode != null || src.objectMode != null || true }, options);
+  options.destroy = function(err, callback) {
+    src.destroy(err);
+    callback(err);
+  };
+  return new Readable(options).wrap(src);
+};
+
+exports.Writable;
+exports.Duplex;
+exports.Transform;
+exports.PassThrough;
+exports.finished;
+exports.pipeline;
+exports.Stream;
+
+({
+  finished: promisify(exports.finished),
+  pipeline: promisify(exports.pipeline)
+});
 
 export { exports as e };

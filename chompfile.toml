@@ -8,8 +8,9 @@ deps = ['nodelibs/node', 'nodelibs/browser']
 
 [[task]]
 target = 'nodelibs/browser'
-deps = ['src-browser/**/*']
+deps = ['src-browser/**/*', 'rollup.config.mjs']
 run = 'rollup -c'
+# env = { JSPM_GENERATOR_LOG = '1' }
 
 [[task]]
 target = 'nodelibs/node'
